@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Qin Archive</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&family=Dancing+Script:wght@500;600;700&display=swap" rel="stylesheet">
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
  
@@ -66,6 +66,8 @@ body::before { content: ''; position: fixed; inset: 0; z-index: 0; pointer-event
   display: flex; align-items: center; justify-content: center;
   background: var(--bg);
   padding: 20px;
+  flex-direction: column;
+  gap: 0;
 }
 .auth-screen::before {
   content: '';
@@ -74,6 +76,26 @@ body::before { content: ''; position: fixed; inset: 0; z-index: 0; pointer-event
               radial-gradient(ellipse at 70% 70%, rgba(79,209,197,0.07) 0%, transparent 50%);
   pointer-events: none;
 }
+
+/* Welcome message */
+.welcome-msg {
+  font-family: 'Dancing Script', cursive;
+  font-size: 22px;
+  font-weight: 600;
+  color: var(--accent2);
+  text-align: center;
+  margin-bottom: 16px;
+  position: relative; z-index: 1;
+  opacity: 0;
+  animation: welcomeFadeIn 1s ease 0.3s forwards;
+  text-shadow: 0 0 24px rgba(184,159,255,0.35);
+  letter-spacing: 0.3px;
+}
+@keyframes welcomeFadeIn {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
 .auth-box {
   background: var(--bg2);
   border: 1px solid var(--border2);
@@ -126,6 +148,7 @@ body::before { content: ''; position: fixed; inset: 0; z-index: 0; pointer-event
 }
 .auth-btn:hover { transform: translateY(-1px); box-shadow: 0 10px 28px var(--glow); }
 .auth-btn:active { transform: translateY(0); }
+.auth-btn:disabled { opacity: 0.6; cursor: not-allowed; transform: none; }
 .auth-error {
   padding: 10px 13px; border-radius: 9px;
   background: rgba(255,77,109,0.1); border: 1px solid rgba(255,77,109,0.3);
@@ -139,6 +162,23 @@ body::before { content: ''; position: fixed; inset: 0; z-index: 0; pointer-event
 }
 .auth-success.show { display: block; }
 
+/* Sync status indicator */
+.sync-status {
+  display: flex; align-items: center; gap: 6px;
+  font-size: 11px; color: var(--text3); margin-top: -8px;
+  padding: 6px 10px; border-radius: 7px;
+  background: var(--surface); border: 1px solid var(--border);
+}
+.sync-dot {
+  width: 6px; height: 6px; border-radius: 50%;
+  background: var(--text3); flex-shrink: 0;
+  transition: background 0.3s;
+}
+.sync-dot.online { background: var(--success); animation: pulse 2s infinite; }
+.sync-dot.syncing { background: var(--warn); animation: pulse 0.5s infinite; }
+.sync-dot.error { background: var(--danger); }
+@keyframes pulse { 0%,100% { opacity:1; } 50% { opacity:0.4; } }
+
 /* CAPTCHA */
 .captcha-box {
   border-radius: 10px; border: 1px solid var(--border);
@@ -148,8 +188,7 @@ body::before { content: ''; position: fixed; inset: 0; z-index: 0; pointer-event
 .captcha-display {
   font-family: 'Syne', sans-serif; font-size: 20px; font-weight: 800;
   letter-spacing: 6px; user-select: none; cursor: default;
-  color: var(--accent2); text-decoration: line-through;
-  text-decoration-color: transparent;
+  color: var(--accent2);
   filter: blur(0.3px); flex: 1;
   background: linear-gradient(135deg, var(--accent), var(--accent3));
   -webkit-background-clip: text; -webkit-text-fill-color: transparent;
@@ -356,7 +395,7 @@ body::before { content: ''; position: fixed; inset: 0; z-index: 0; pointer-event
 .select-badge { position: absolute; top: 7px; left: 7px; width: 20px; height: 20px; border-radius: 50%; background: var(--accent); color: #fff; font-size: 11px; display: flex; align-items: center; justify-content: center; opacity: 0; transition: opacity var(--tr); z-index: 2; }
 .image-card.selected .select-badge { opacity: 1; }
 
-/* BULK BAR - ENHANCED */
+/* BULK BAR */
 .bulk-bar {
   position: fixed; bottom: 22px; left: 50%; transform: translateX(-50%);
   background: var(--bg2); border: 1px solid var(--border2);
@@ -364,8 +403,7 @@ body::before { content: ''; position: fixed; inset: 0; z-index: 0; pointer-event
   display: flex; align-items: center; gap: 8px;
   box-shadow: var(--shadow); backdrop-filter: blur(16px);
   opacity: 0; pointer-events: none; transition: all var(--tr);
-  z-index: 80; white-space: nowrap;
-  min-width: max-content;
+  z-index: 80; white-space: nowrap; min-width: max-content;
 }
 .bulk-bar.visible { opacity: 1; pointer-events: all; }
 .bulk-count { font-size: 12.5px; font-weight: 700; color: var(--accent2); padding-right: 8px; border-right: 1px solid var(--border2); margin-right: 2px; }
@@ -510,6 +548,7 @@ body::before { content: ''; position: fixed; inset: 0; z-index: 0; pointer-event
   .stats-row { gap: 8px; }
   .sc-widget { width: 260px; }
   .bulk-bar { width: calc(100vw - 28px); justify-content: center; flex-wrap: wrap; }
+  .welcome-msg { font-size: 18px; }
 }
 </style>
 </head>
@@ -519,6 +558,9 @@ body::before { content: ''; position: fixed; inset: 0; z-index: 0; pointer-event
 
 <!-- ===== AUTH SCREEN ===== -->
 <div class="auth-screen" id="authScreen">
+  <!-- Welcome message -->
+  <div class="welcome-msg" id="welcomeMsg">Hello, welcome to the website, developed by NqN ✦</div>
+
   <div class="auth-box">
     <div class="auth-logo">
       <div class="auth-logo-mark">✦</div>
@@ -531,6 +573,10 @@ body::before { content: ''; position: fixed; inset: 0; z-index: 0; pointer-event
 
     <!-- LOGIN -->
     <div class="auth-form-section active" id="loginSection">
+      <div class="sync-status" id="syncStatus">
+        <div class="sync-dot" id="syncDot"></div>
+        <span id="syncText">Đang kết nối...</span>
+      </div>
       <div class="auth-field-group">
         <label class="auth-label">Gmail</label>
         <input class="auth-input" type="email" id="loginEmail" placeholder="your@gmail.com" autocomplete="email">
@@ -548,7 +594,7 @@ body::before { content: ''; position: fixed; inset: 0; z-index: 0; pointer-event
         <input class="auth-input" type="text" id="loginCaptchaInput" placeholder="Nhập mã bên trên..." autocomplete="off" style="margin-top:8px;margin-bottom:0">
       </div>
       <div class="auth-error" id="loginError"></div>
-      <button class="auth-btn" onclick="handleLogin()">Đăng nhập</button>
+      <button class="auth-btn" id="loginBtn" onclick="handleLogin()">Đăng nhập</button>
     </div>
 
     <!-- REGISTER -->
@@ -571,7 +617,7 @@ body::before { content: ''; position: fixed; inset: 0; z-index: 0; pointer-event
       </div>
       <div class="auth-error" id="registerError"></div>
       <div class="auth-success" id="registerSuccess"></div>
-      <button class="auth-btn" onclick="handleRegister()">Đăng ký tài khoản</button>
+      <button class="auth-btn" id="registerBtn" onclick="handleRegister()">Đăng ký tài khoản</button>
     </div>
   </div>
 </div>
@@ -595,7 +641,6 @@ body::before { content: ''; position: fixed; inset: 0; z-index: 0; pointer-event
     <button class="btn-icon" id="trashBtn" title="Thùng rác">🗑️<span class="trash-badge" id="trashNavBadge">0</span></button>
     <button class="btn-icon" id="selectModeBtn" title="Chọn nhiều">⬜</button>
     <button class="btn-upload" id="navUploadBtn"><span>↑</span><span>Upload</span></button>
-    <!-- User avatar -->
     <div style="position:relative">
       <div class="user-avatar" id="userAvatar" onclick="toggleUserDropdown()"></div>
       <div class="user-dropdown" id="userDropdown">
@@ -685,7 +730,7 @@ body::before { content: ''; position: fixed; inset: 0; z-index: 0; pointer-event
 
 </div><!-- /appWrapper -->
 
-<!-- BULK BAR - ENHANCED -->
+<!-- BULK BAR -->
 <div class="bulk-bar" id="bulkBar">
   <span class="bulk-count" id="bulkCount">0 file</span>
   <button class="bulk-action fav-action" onclick="bulkFav()">❤️ Yêu thích</button>
@@ -808,9 +853,58 @@ body::before { content: ''; position: fixed; inset: 0; z-index: 0; pointer-event
 </div>
  
 <script>
-// ===================== AUTH STATE =====================
+// ===================== CLOUD USER STORE (cross-device) =====================
+// Uses window.storage shared=true so all devices share the same account DB.
+// Key: "users_registry" → JSON object { email: { name, hash, createdAt } }
+
+const USERS_KEY = 'qin_users_v1';
+const SESSION_KEY = 'qin_session_v1';
+
 let currentUser = null;
 let currentUserKey = null;
+let cloudUsersCache = null;
+
+// Sync status UI
+function setSyncStatus(state, text) {
+  const dot = document.getElementById('syncDot');
+  const txt = document.getElementById('syncText');
+  if (!dot || !txt) return;
+  dot.className = 'sync-dot' + (state ? ' ' + state : '');
+  txt.textContent = text;
+}
+
+// Load users from shared cloud storage
+async function loadCloudUsers() {
+  setSyncStatus('syncing', 'Đang đồng bộ tài khoản...');
+  try {
+    const result = await window.storage.get(USERS_KEY, true); // shared=true
+    if (result && result.value) {
+      cloudUsersCache = JSON.parse(result.value);
+    } else {
+      cloudUsersCache = {};
+    }
+    setSyncStatus('online', 'Đã kết nối — đăng nhập mọi thiết bị');
+    return cloudUsersCache;
+  } catch (e) {
+    // Fallback to localStorage if storage unavailable
+    setSyncStatus('error', 'Offline — dùng dữ liệu cục bộ');
+    try {
+      cloudUsersCache = JSON.parse(localStorage.getItem('syo_users') || '{}');
+    } catch { cloudUsersCache = {}; }
+    return cloudUsersCache;
+  }
+}
+
+// Save users to shared cloud storage
+async function saveCloudUsers(users) {
+  cloudUsersCache = users;
+  try {
+    await window.storage.set(USERS_KEY, JSON.stringify(users), true); // shared=true
+  } catch (e) {
+    // Fallback to localStorage
+    localStorage.setItem('syo_users', JSON.stringify(users));
+  }
+}
 
 // ===================== CAPTCHA =====================
 const CAPTCHA_CHARS = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789';
@@ -820,8 +914,10 @@ function generateCaptcha(type) {
   let code = '';
   for (let i = 0; i < 6; i++) code += CAPTCHA_CHARS[Math.floor(Math.random() * CAPTCHA_CHARS.length)];
   loginCaptchaCode = code;
-  document.getElementById('loginCaptchaDisplay').textContent = code;
-  if (document.getElementById('loginCaptchaInput')) document.getElementById('loginCaptchaInput').value = '';
+  const el = document.getElementById('loginCaptchaDisplay');
+  if (el) el.textContent = code;
+  const inp = document.getElementById('loginCaptchaInput');
+  if (inp) inp.value = '';
 }
 
 // ===================== AUTH TAB =====================
@@ -846,20 +942,15 @@ function showAuthSuccess(id, msg) {
   el.textContent = msg; el.classList.add('show');
 }
 
-// ===================== AUTH LOGIC =====================
-function getUsers() {
-  try { return JSON.parse(localStorage.getItem('syo_users') || '{}'); } catch { return {}; }
-}
-function saveUsers(users) { localStorage.setItem('syo_users', JSON.stringify(users)); }
-
+// ===================== HASH =====================
 function hashish(str) {
-  // Simple deterministic hash for localStorage (not cryptographic)
   let h = 0;
   for (let i = 0; i < str.length; i++) { h = Math.imul(31, h) + str.charCodeAt(i) | 0; }
   return h.toString(16);
 }
 
-function handleRegister() {
+// ===================== REGISTER =====================
+async function handleRegister() {
   clearAuthErrors();
   const name = document.getElementById('regName').value.trim();
   const email = document.getElementById('regEmail').value.trim().toLowerCase();
@@ -869,16 +960,27 @@ function handleRegister() {
   if (!email || !email.includes('@')) return showAuthError('registerError', 'Vui lòng nhập Gmail hợp lệ.');
   if (pass.length < 6) return showAuthError('registerError', 'Mật khẩu tối thiểu 6 ký tự.');
   if (pass !== pass2) return showAuthError('registerError', 'Mật khẩu xác nhận không khớp.');
-  const users = getUsers();
-  if (users[email]) return showAuthError('registerError', 'Email này đã được đăng ký.');
+
+  const btn = document.getElementById('registerBtn');
+  btn.disabled = true; btn.textContent = 'Đang đăng ký...';
+
+  // Reload latest users from cloud before registering (avoid race conditions)
+  const users = await loadCloudUsers();
+  if (users[email]) {
+    btn.disabled = false; btn.textContent = 'Đăng ký tài khoản';
+    return showAuthError('registerError', 'Email này đã được đăng ký.');
+  }
   users[email] = { name, email, hash: hashish(email + pass), createdAt: Date.now() };
-  saveUsers(users);
-  showAuthSuccess('registerSuccess', '🎉 Đăng ký thành công! Bạn có thể đăng nhập ngay.');
-  setTimeout(() => switchAuthTab('login'), 1500);
+  await saveCloudUsers(users);
+
+  btn.disabled = false; btn.textContent = 'Đăng ký tài khoản';
+  showAuthSuccess('registerSuccess', '🎉 Đăng ký thành công! Bạn có thể đăng nhập từ mọi thiết bị.');
+  setTimeout(() => switchAuthTab('login'), 1600);
   document.getElementById('loginEmail').value = email;
 }
 
-function handleLogin() {
+// ===================== LOGIN =====================
+async function handleLogin() {
   clearAuthErrors();
   const email = document.getElementById('loginEmail').value.trim().toLowerCase();
   const pass = document.getElementById('loginPassword').value;
@@ -889,20 +991,30 @@ function handleLogin() {
     generateCaptcha('login');
     return showAuthError('loginError', 'Mã xác nhận không đúng. Vui lòng thử lại.');
   }
-  const users = getUsers();
+
+  const btn = document.getElementById('loginBtn');
+  btn.disabled = true; btn.textContent = 'Đang đăng nhập...';
+
+  // Always fetch fresh from cloud
+  const users = await loadCloudUsers();
   const user = users[email];
   if (!user || user.hash !== hashish(email + pass)) {
     generateCaptcha('login');
+    btn.disabled = false; btn.textContent = 'Đăng nhập';
     return showAuthError('loginError', 'Email hoặc mật khẩu không đúng.');
   }
+
+  btn.disabled = false; btn.textContent = 'Đăng nhập';
   currentUser = user;
   currentUserKey = 'syo_data_' + email.replace(/[^a-z0-9]/g,'_');
-  localStorage.setItem('syo_session', JSON.stringify({ email, ts: Date.now() }));
+  // Save session locally (device-specific is fine for session)
+  localStorage.setItem(SESSION_KEY, JSON.stringify({ email, ts: Date.now() }));
   launchApp();
 }
 
+// ===================== LOGOUT =====================
 function handleLogout() {
-  localStorage.removeItem('syo_session');
+  localStorage.removeItem(SESSION_KEY);
   currentUser = null; currentUserKey = null;
   images = []; trashItems = [];
   selectedIds.clear(); selectMode = false;
@@ -911,16 +1023,18 @@ function handleLogout() {
   document.getElementById('authScreen').style.display = 'flex';
   generateCaptcha('login');
   clearAuthErrors();
+  // Re-init sync status for next login
+  loadCloudUsers();
   toast('👋 Đã đăng xuất', 'info');
 }
 
-function checkSession() {
+// ===================== SESSION CHECK =====================
+async function checkSession() {
   try {
-    const s = JSON.parse(localStorage.getItem('syo_session') || 'null');
+    const s = JSON.parse(localStorage.getItem(SESSION_KEY) || 'null');
     if (!s) return false;
-    // Session valid for 7 days
-    if (Date.now() - s.ts > 7 * 86400000) { localStorage.removeItem('syo_session'); return false; }
-    const users = getUsers();
+    if (Date.now() - s.ts > 7 * 86400000) { localStorage.removeItem(SESSION_KEY); return false; }
+    const users = await loadCloudUsers();
     const user = users[s.email];
     if (!user) return false;
     currentUser = user;
@@ -932,7 +1046,6 @@ function checkSession() {
 function launchApp() {
   document.getElementById('authScreen').style.display = 'none';
   document.getElementById('appWrapper').style.display = 'block';
-  // Set user UI
   const initials = currentUser.name.split(' ').map(w=>w[0]).join('').slice(0,2).toUpperCase();
   document.getElementById('userAvatar').textContent = initials;
   document.getElementById('dropdownName').textContent = currentUser.name;
@@ -963,10 +1076,9 @@ let selectMode = false;
 let previewIndex = -1;
 let renameTargetId = null;
 const MAX_STORAGE_MB = 100;
- 
 let db;
  
-// ===================== DB (per-user) =====================
+// ===================== DB (per-user, local IndexedDB for media) =====================
 function getDBName() { return 'syo_db_' + (currentUser?.email?.replace(/[^a-z0-9]/g,'_') || 'guest'); }
 const DB_VERSION = 1;
 const STORE_MEDIA = 'media', STORE_TRASH = 'trash';
@@ -1233,13 +1345,6 @@ async function permDelete(id, e) {
   await dbDelete(STORE_TRASH, id);
   renderGallery(); updateCountBadge();
   toast('✕ Đã xóa vĩnh viễn', 'error');
-}
-async function clearAllTrash() {
-  if (!confirm('Xóa vĩnh viễn tất cả ' + trashItems.length + ' file trong thùng rác?')) return;
-  for (const item of trashItems) await dbDelete(STORE_TRASH, item.id);
-  trashItems = [];
-  renderGallery(); updateCountBadge();
-  toast('🗑 Đã dọn sạch thùng rác', 'info');
 }
 async function bulkDelete() {
   if (!selectedIds.size) return;
@@ -1554,8 +1659,8 @@ function renderBgPresets() {
 function applyBg(url, el) {
   activeBgUrl = url;
   const layer = document.getElementById('wallpaperLayer');
-  if (!url) { layer.style.backgroundImage = 'none'; document.documentElement.style.setProperty('--wallpaper', 'none'); }
-  else { layer.style.backgroundImage = `url('${url}')`; document.documentElement.style.setProperty('--wallpaper', `url('${url}')`); }
+  if (!url) { layer.style.backgroundImage = 'none'; } 
+  else { layer.style.backgroundImage = `url('${url}')`; }
   document.querySelectorAll('.bg-preset').forEach(p => p.classList.remove('active'));
   if (el) el.classList.add('active');
   localStorage.setItem('syo_bg_url', url);
@@ -1657,18 +1762,21 @@ heartStyle.textContent = `@keyframes heartPop { 0%{transform:translate(-50%,-50%
 document.head.appendChild(heartStyle);
 
 // ===================== BOOT =====================
-// Generate captcha on load
 generateCaptcha('login');
 
-// Auth enter key handlers
 document.getElementById('loginPassword').addEventListener('keydown', e => { if (e.key==='Enter') handleLogin(); });
 document.getElementById('loginCaptchaInput').addEventListener('keydown', e => { if (e.key==='Enter') handleLogin(); });
 document.getElementById('regPassword2').addEventListener('keydown', e => { if (e.key==='Enter') handleRegister(); });
 
-// Check existing session
-if (checkSession()) {
-  launchApp();
-}
+// Boot: check session first, then load sync status
+(async () => {
+  // Always load cloud users on boot (updates sync indicator)
+  const hasSession = await checkSession();
+  if (hasSession) {
+    launchApp();
+  }
+  // If no session, sync status is already shown in login form
+})();
 </script>
 </body>
 </html>
