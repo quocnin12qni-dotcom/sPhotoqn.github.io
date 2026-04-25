@@ -77,158 +77,70 @@ body::before { content: ''; position: fixed; inset: 0; z-index: 0; pointer-event
   pointer-events: none;
 }
 
-/* Welcome message */
 .welcome-msg {
   font-family: 'Dancing Script', cursive;
-  font-size: 22px;
-  font-weight: 600;
-  color: var(--accent2);
-  text-align: center;
-  margin-bottom: 16px;
-  position: relative; z-index: 1;
-  opacity: 0;
-  animation: welcomeFadeIn 1s ease 0.3s forwards;
-  text-shadow: 0 0 24px rgba(184,159,255,0.35);
-  letter-spacing: 0.3px;
+  font-size: 22px; font-weight: 600;
+  color: var(--accent2); text-align: center;
+  margin-bottom: 16px; position: relative; z-index: 1;
+  opacity: 0; animation: welcomeFadeIn 1s ease 0.3s forwards;
+  text-shadow: 0 0 24px rgba(184,159,255,0.35); letter-spacing: 0.3px;
 }
-@keyframes welcomeFadeIn {
-  from { opacity: 0; transform: translateY(-10px); }
-  to { opacity: 1; transform: translateY(0); }
-}
+@keyframes welcomeFadeIn { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
 
 .auth-box {
-  background: var(--bg2);
-  border: 1px solid var(--border2);
-  border-radius: 22px;
-  padding: 36px 32px;
+  background: var(--bg2); border: 1px solid var(--border2);
+  border-radius: 22px; padding: 36px 32px;
   width: 100%; max-width: 400px;
   box-shadow: 0 40px 80px rgba(0,0,0,0.6);
   position: relative; z-index: 1;
   animation: authIn 0.4s cubic-bezier(0.4,0,0.2,1) both;
 }
 @keyframes authIn { from { opacity:0; transform:translateY(24px) scale(0.97); } to { opacity:1; transform:translateY(0) scale(1); } }
-.auth-logo {
-  display: flex; align-items: center; gap: 10px;
-  font-family: 'Syne', sans-serif; font-size: 22px; font-weight: 800;
-  margin-bottom: 28px; justify-content: center;
-}
-.auth-logo-mark {
-  width: 36px; height: 36px; border-radius: 11px;
-  background: linear-gradient(135deg, var(--accent), var(--accent2));
-  display: flex; align-items: center; justify-content: center;
-  font-size: 16px; box-shadow: 0 0 20px var(--glow);
-}
+.auth-logo { display: flex; align-items: center; gap: 10px; font-family: 'Syne', sans-serif; font-size: 22px; font-weight: 800; margin-bottom: 28px; justify-content: center; }
+.auth-logo-mark { width: 36px; height: 36px; border-radius: 11px; background: linear-gradient(135deg, var(--accent), var(--accent2)); display: flex; align-items: center; justify-content: center; font-size: 16px; box-shadow: 0 0 20px var(--glow); }
 .auth-tabs { display: flex; gap: 3px; background: var(--surface); border-radius: 11px; padding: 3px; margin-bottom: 26px; }
-.auth-tab {
-  flex: 1; padding: 9px; border-radius: 8px; text-align: center;
-  font-size: 13px; font-weight: 600; cursor: pointer; color: var(--text2);
-  transition: all var(--tr); border: none; background: transparent; font-family: 'DM Sans', sans-serif;
-}
+.auth-tab { flex: 1; padding: 9px; border-radius: 8px; text-align: center; font-size: 13px; font-weight: 600; cursor: pointer; color: var(--text2); transition: all var(--tr); border: none; background: transparent; font-family: 'DM Sans', sans-serif; }
 .auth-tab.active { background: var(--bg3); color: var(--text); box-shadow: 0 2px 8px rgba(0,0,0,0.2); }
 .auth-form { display: flex; flex-direction: column; gap: 14px; }
 .auth-form-section { display: none; }
 .auth-form-section.active { display: flex; flex-direction: column; gap: 14px; }
 .auth-field-group { display: flex; flex-direction: column; gap: 6px; }
 .auth-label { font-size: 12px; font-weight: 600; color: var(--text2); letter-spacing: 0.04em; }
-.auth-input {
-  padding: 11px 14px; border-radius: 10px;
-  border: 1px solid var(--border); background: var(--surface);
-  color: var(--text); font-family: 'DM Sans', sans-serif; font-size: 13.5px;
-  outline: none; transition: all var(--tr);
-}
+.auth-input { padding: 11px 14px; border-radius: 10px; border: 1px solid var(--border); background: var(--surface); color: var(--text); font-family: 'DM Sans', sans-serif; font-size: 13.5px; outline: none; transition: all var(--tr); }
 .auth-input:focus { border-color: var(--accent); background: var(--surface2); box-shadow: 0 0 0 3px var(--glow); }
 .auth-input::placeholder { color: var(--text3); }
-.auth-btn {
-  padding: 12px; border-radius: 11px;
-  background: linear-gradient(135deg, var(--accent), var(--accent2));
-  color: #fff; border: none; cursor: pointer;
-  font-family: 'DM Sans', sans-serif; font-size: 14px; font-weight: 600;
-  transition: all var(--tr); box-shadow: 0 6px 20px var(--glow);
-  margin-top: 4px;
-}
+.auth-btn { padding: 12px; border-radius: 11px; background: linear-gradient(135deg, var(--accent), var(--accent2)); color: #fff; border: none; cursor: pointer; font-family: 'DM Sans', sans-serif; font-size: 14px; font-weight: 600; transition: all var(--tr); box-shadow: 0 6px 20px var(--glow); margin-top: 4px; }
 .auth-btn:hover { transform: translateY(-1px); box-shadow: 0 10px 28px var(--glow); }
 .auth-btn:active { transform: translateY(0); }
 .auth-btn:disabled { opacity: 0.6; cursor: not-allowed; transform: none; }
-.auth-error {
-  padding: 10px 13px; border-radius: 9px;
-  background: rgba(255,77,109,0.1); border: 1px solid rgba(255,77,109,0.3);
-  color: var(--danger); font-size: 12.5px; display: none;
-}
+.auth-error { padding: 10px 13px; border-radius: 9px; background: rgba(255,77,109,0.1); border: 1px solid rgba(255,77,109,0.3); color: var(--danger); font-size: 12.5px; display: none; }
 .auth-error.show { display: block; }
-.auth-success {
-  padding: 10px 13px; border-radius: 9px;
-  background: rgba(34,211,160,0.1); border: 1px solid rgba(34,211,160,0.3);
-  color: var(--success); font-size: 12.5px; display: none;
-}
+.auth-success { padding: 10px 13px; border-radius: 9px; background: rgba(34,211,160,0.1); border: 1px solid rgba(34,211,160,0.3); color: var(--success); font-size: 12.5px; display: none; }
 .auth-success.show { display: block; }
 
-/* Sync status indicator */
-.sync-status {
-  display: flex; align-items: center; gap: 6px;
-  font-size: 11px; color: var(--text3); margin-top: -8px;
-  padding: 6px 10px; border-radius: 7px;
-  background: var(--surface); border: 1px solid var(--border);
-}
-.sync-dot {
-  width: 6px; height: 6px; border-radius: 50%;
-  background: var(--text3); flex-shrink: 0;
-  transition: background 0.3s;
-}
+/* Sync status */
+.sync-status { display: flex; align-items: center; gap: 6px; font-size: 11px; color: var(--text3); margin-top: -8px; padding: 6px 10px; border-radius: 7px; background: var(--surface); border: 1px solid var(--border); }
+.sync-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--text3); flex-shrink: 0; transition: background 0.3s; }
 .sync-dot.online { background: var(--success); animation: pulse 2s infinite; }
 .sync-dot.syncing { background: var(--warn); animation: pulse 0.5s infinite; }
 .sync-dot.error { background: var(--danger); }
 @keyframes pulse { 0%,100% { opacity:1; } 50% { opacity:0.4; } }
 
 /* CAPTCHA */
-.captcha-box {
-  border-radius: 10px; border: 1px solid var(--border);
-  background: var(--surface); padding: 12px 14px;
-  display: flex; align-items: center; gap: 12px;
-}
-.captcha-display {
-  font-family: 'Syne', sans-serif; font-size: 20px; font-weight: 800;
-  letter-spacing: 6px; user-select: none; cursor: default;
-  color: var(--accent2);
-  filter: blur(0.3px); flex: 1;
-  background: linear-gradient(135deg, var(--accent), var(--accent3));
-  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-}
-.captcha-refresh {
-  width: 30px; height: 30px; border-radius: 7px; border: 1px solid var(--border);
-  background: var(--surface2); color: var(--text2); cursor: pointer;
-  display: flex; align-items: center; justify-content: center; font-size: 14px;
-  transition: all var(--tr); flex-shrink: 0;
-}
+.captcha-box { border-radius: 10px; border: 1px solid var(--border); background: var(--surface); padding: 12px 14px; display: flex; align-items: center; gap: 12px; }
+.captcha-display { font-family: 'Syne', sans-serif; font-size: 20px; font-weight: 800; letter-spacing: 6px; user-select: none; cursor: default; color: var(--accent2); filter: blur(0.3px); flex: 1; background: linear-gradient(135deg, var(--accent), var(--accent3)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+.captcha-refresh { width: 30px; height: 30px; border-radius: 7px; border: 1px solid var(--border); background: var(--surface2); color: var(--text2); cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 14px; transition: all var(--tr); flex-shrink: 0; }
 .captcha-refresh:hover { color: var(--accent); border-color: var(--accent); transform: rotate(180deg); }
 
-/* User avatar in nav */
-.user-avatar {
-  width: 34px; height: 34px; border-radius: 9px;
-  background: linear-gradient(135deg, var(--accent), var(--accent2));
-  display: flex; align-items: center; justify-content: center;
-  font-size: 13px; font-weight: 700; color: #fff; cursor: pointer;
-  border: 1px solid rgba(255,255,255,0.15);
-  transition: all var(--tr); position: relative;
-  font-family: 'Syne', sans-serif;
-}
+/* User avatar */
+.user-avatar { width: 34px; height: 34px; border-radius: 9px; background: linear-gradient(135deg, var(--accent), var(--accent2)); display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 700; color: #fff; cursor: pointer; border: 1px solid rgba(255,255,255,0.15); transition: all var(--tr); position: relative; font-family: 'Syne', sans-serif; }
 .user-avatar:hover { box-shadow: 0 0 16px var(--glow); transform: scale(1.05); }
-.user-dropdown {
-  position: absolute; top: calc(100% + 8px); right: 0;
-  background: var(--bg2); border: 1px solid var(--border2);
-  border-radius: 13px; padding: 6px;
-  min-width: 180px; box-shadow: var(--shadow);
-  opacity: 0; pointer-events: none; transform: translateY(-6px);
-  transition: all 0.2s ease; z-index: 200;
-}
+.user-dropdown { position: absolute; top: calc(100% + 8px); right: 0; background: var(--bg2); border: 1px solid var(--border2); border-radius: 13px; padding: 6px; min-width: 180px; box-shadow: var(--shadow); opacity: 0; pointer-events: none; transform: translateY(-6px); transition: all 0.2s ease; z-index: 200; }
 .user-dropdown.open { opacity: 1; pointer-events: all; transform: translateY(0); }
 .dropdown-user-info { padding: 10px 12px 8px; border-bottom: 1px solid var(--border); margin-bottom: 4px; }
 .dropdown-email { font-size: 11.5px; color: var(--text2); word-break: break-all; }
 .dropdown-name { font-size: 13px; font-weight: 600; color: var(--text); margin-bottom: 2px; }
-.dropdown-item {
-  display: flex; align-items: center; gap: 9px;
-  padding: 9px 12px; border-radius: 8px; cursor: pointer;
-  font-size: 13px; color: var(--text2); transition: all var(--tr);
-}
+.dropdown-item { display: flex; align-items: center; gap: 9px; padding: 9px 12px; border-radius: 8px; cursor: pointer; font-size: 13px; color: var(--text2); transition: all var(--tr); }
 .dropdown-item:hover { background: var(--surface); color: var(--text); }
 .dropdown-item.danger { color: var(--danger); }
 .dropdown-item.danger:hover { background: rgba(255,77,109,0.1); }
@@ -322,8 +234,20 @@ body::before { content: ''; position: fixed; inset: 0; z-index: 0; pointer-event
 .search-badge strong { color: var(--text); }
  
 /* GALLERY GRID */
-.gallery-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(185px, 1fr)); gap: 14px; }
+.gallery-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(185px, 1fr)); gap: 14px; position: relative; }
 .gallery-grid.list-view { grid-template-columns: 1fr; }
+
+/* LASSO SELECT OVERLAY */
+.lasso-rect {
+  position: fixed;
+  border: 1.5px solid var(--accent);
+  background: rgba(124,111,255,0.1);
+  border-radius: 4px;
+  pointer-events: none;
+  z-index: 9999;
+  display: none;
+}
+.lasso-rect.active { display: block; }
  
 /* IMAGE CARD */
 .image-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; cursor: pointer; transition: all var(--tr); animation: fadeInUp 0.38s ease both; position: relative; }
@@ -416,12 +340,16 @@ body::before { content: ''; position: fixed; inset: 0; z-index: 0; pointer-event
   font-family: 'DM Sans', sans-serif;
 }
 .bulk-action:hover { background: var(--surface2); }
+.bulk-action.sel-all-action { color: var(--accent2); }
+.bulk-action.sel-all-action:hover { background: rgba(124,111,255,0.12); border-color: rgba(124,111,255,0.25); }
 .bulk-action.fav-action { color: var(--fav); }
 .bulk-action.fav-action:hover { background: rgba(255,107,157,0.12); border-color: rgba(255,107,157,0.25); }
 .bulk-action.dl-action { color: var(--accent3); }
 .bulk-action.dl-action:hover { background: rgba(79,209,197,0.1); border-color: rgba(79,209,197,0.22); }
 .bulk-action.ren-action { color: var(--text2); }
 .bulk-action.ren-action:hover { background: var(--surface2); border-color: var(--border2); color: var(--text); }
+.bulk-action.restore-all-action { color: var(--success); }
+.bulk-action.restore-all-action:hover { background: rgba(34,211,160,0.12); border-color: rgba(34,211,160,0.25); }
 .bulk-action.del-action { color: var(--danger); }
 .bulk-action.del-action:hover { background: rgba(255,77,109,0.12); border-color: rgba(255,77,109,0.28); }
 .bulk-cancel-btn {
@@ -432,6 +360,41 @@ body::before { content: ''; position: fixed; inset: 0; z-index: 0; pointer-event
   transition: all var(--tr); margin-left: 2px;
 }
 .bulk-cancel-btn:hover { background: var(--surface2); color: var(--text); }
+
+/* Trash toolbar */
+.trash-toolbar {
+  display: none; align-items: center; gap: 8px;
+  margin-bottom: 14px; padding: 10px 14px;
+  background: rgba(255,140,66,0.07); border: 1px solid rgba(255,140,66,0.2);
+  border-radius: var(--radius-sm);
+}
+.trash-toolbar.visible { display: flex; }
+.trash-toolbar-text { font-size: 12.5px; color: var(--trash); font-weight: 500; flex: 1; }
+.trash-toolbar-btn {
+  display: flex; align-items: center; gap: 5px;
+  padding: 6px 13px; border-radius: 8px; cursor: pointer;
+  font-size: 12px; font-weight: 600; transition: all var(--tr);
+  border: 1px solid transparent; font-family: 'DM Sans', sans-serif;
+}
+.trash-toolbar-btn.restore { background: rgba(34,211,160,0.15); color: var(--success); border-color: rgba(34,211,160,0.3); }
+.trash-toolbar-btn.restore:hover { background: rgba(34,211,160,0.25); }
+.trash-toolbar-btn.empty { background: rgba(255,77,109,0.12); color: var(--danger); border-color: rgba(255,77,109,0.28); }
+.trash-toolbar-btn.empty:hover { background: rgba(255,77,109,0.22); }
+
+/* LASSO BUTTON in trash toolbar */
+.lasso-toggle-btn {
+  display: flex; align-items: center; gap: 5px;
+  padding: 6px 13px; border-radius: 8px; cursor: pointer;
+  font-size: 12px; font-weight: 600; transition: all var(--tr);
+  border: 1px solid rgba(255,140,66,0.3);
+  background: rgba(255,140,66,0.1); color: var(--trash);
+  font-family: 'DM Sans', sans-serif; user-select: none;
+}
+.lasso-toggle-btn:hover { background: rgba(255,140,66,0.2); }
+.lasso-toggle-btn.active {
+  background: rgba(255,140,66,0.28); border-color: var(--trash);
+  box-shadow: 0 0 0 2px rgba(255,140,66,0.2);
+}
 
 /* BULK RENAME MODAL */
 .bulk-rename-modal { background: var(--bg2); border: 1px solid var(--border); border-radius: 15px; padding: 22px; width: 100%; max-width: 380px; transform: scale(0.95); opacity: 0; transition: all 0.28s ease; box-shadow: var(--shadow); }
@@ -509,29 +472,42 @@ body::before { content: ''; position: fixed; inset: 0; z-index: 0; pointer-event
 @keyframes slideIn  { from { opacity: 0; transform: translateX(18px); } to { opacity: 1; transform: translateX(0); } }
 @keyframes slideOut { from { opacity: 1; transform: translateX(0); } to { opacity: 0; transform: translateX(18px); } }
  
-/* SOUNDCLOUD WIDGET */
-.sc-widget { position: fixed; bottom: 22px; right: 22px; z-index: 300; width: 300px; background: var(--bg2); border: 1px solid var(--border2); border-radius: 16px; box-shadow: 0 20px 60px rgba(0,0,0,0.5); overflow: hidden; transition: all 0.3s cubic-bezier(0.4,0,0.2,1); transform-origin: bottom right; }
-.sc-widget.collapsed { width: 200px; border-radius: 12px; }
+/* ===== SOUNDCLOUD WIDGET — SMALLER ===== */
+.sc-widget {
+  position: fixed; bottom: 18px; right: 18px; z-index: 300;
+  width: 250px; /* reduced from 300 */
+  background: var(--bg2); border: 1px solid var(--border2);
+  border-radius: 13px; /* reduced from 16 */
+  box-shadow: 0 16px 48px rgba(0,0,0,0.5);
+  overflow: hidden; transition: all 0.3s cubic-bezier(0.4,0,0.2,1);
+  transform-origin: bottom right;
+}
+.sc-widget.collapsed { width: 170px; border-radius: 10px; }
 .sc-widget.hidden-widget { transform: scale(0.85) translateY(10px); opacity: 0; pointer-events: none; }
-.sc-header { display: flex; align-items: center; gap: 8px; padding: 10px 12px; background: linear-gradient(135deg, rgba(255,83,0,0.15), rgba(255,153,0,0.08)); border-bottom: 1px solid var(--border); cursor: pointer; user-select: none; }
-.sc-logo { font-size: 16px; flex-shrink: 0; }
-.sc-title { flex: 1; font-size: 12px; font-weight: 600; color: var(--text); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-.sc-controls { display: flex; gap: 4px; }
-.sc-ctrl-btn { width: 24px; height: 24px; border-radius: 6px; border: none; background: var(--surface2); color: var(--text2); cursor: pointer; font-size: 11px; display: flex; align-items: center; justify-content: center; transition: all var(--tr); }
+.sc-header {
+  display: flex; align-items: center; gap: 7px;
+  padding: 8px 10px; /* reduced */
+  background: linear-gradient(135deg, rgba(255,83,0,0.15), rgba(255,153,0,0.08));
+  border-bottom: 1px solid var(--border); cursor: pointer; user-select: none;
+}
+.sc-logo { font-size: 14px; flex-shrink: 0; } /* reduced from 16 */
+.sc-title { flex: 1; font-size: 11px; font-weight: 600; color: var(--text); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; } /* reduced from 12 */
+.sc-controls { display: flex; gap: 3px; }
+.sc-ctrl-btn { width: 20px; height: 20px; border-radius: 5px; border: none; background: var(--surface2); color: var(--text2); cursor: pointer; font-size: 10px; display: flex; align-items: center; justify-content: center; transition: all var(--tr); } /* reduced from 24/11 */
 .sc-ctrl-btn:hover { background: var(--surface3); color: var(--text); }
-.sc-body { overflow: hidden; transition: max-height 0.3s ease; max-height: 200px; }
+.sc-body { overflow: hidden; transition: max-height 0.3s ease; max-height: 170px; } /* reduced from 200 */
 .sc-widget.collapsed .sc-body { max-height: 0; }
-.sc-url-row { display: flex; gap: 6px; padding: 10px 12px; border-bottom: 1px solid var(--border); }
-.sc-url-input { flex: 1; padding: 6px 10px; border-radius: 7px; border: 1px solid var(--border); background: var(--surface); color: var(--text); font-size: 11.5px; font-family: 'DM Sans', sans-serif; outline: none; transition: all var(--tr); }
+.sc-url-row { display: flex; gap: 5px; padding: 8px 10px; border-bottom: 1px solid var(--border); } /* reduced padding */
+.sc-url-input { flex: 1; padding: 5px 8px; border-radius: 6px; border: 1px solid var(--border); background: var(--surface); color: var(--text); font-size: 10.5px; font-family: 'DM Sans', sans-serif; outline: none; transition: all var(--tr); } /* reduced from 11.5 */
 .sc-url-input:focus { border-color: #f50; box-shadow: 0 0 0 2px rgba(255,83,0,0.2); }
 .sc-url-input::placeholder { color: var(--text3); }
-.sc-load-btn { padding: 6px 10px; border-radius: 7px; border: none; background: #f50; color: #fff; font-size: 11px; font-weight: 600; cursor: pointer; transition: all var(--tr); white-space: nowrap; }
+.sc-load-btn { padding: 5px 8px; border-radius: 6px; border: none; background: #f50; color: #fff; font-size: 10px; font-weight: 600; cursor: pointer; transition: all var(--tr); white-space: nowrap; } /* reduced */
 .sc-load-btn:hover { background: #ff6a00; }
-.sc-iframe-wrap { position: relative; height: 120px; }
+.sc-iframe-wrap { position: relative; height: 100px; } /* reduced from 120 */
 .sc-iframe-wrap iframe { width: 100%; height: 100%; border: none; display: block; }
-.sc-placeholder { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 6px; height: 120px; color: var(--text3); font-size: 12px; text-align: center; padding: 12px; }
-.sc-placeholder .sc-ph-icon { font-size: 28px; opacity: 0.4; }
-.sc-fab { position: fixed; bottom: 22px; right: 22px; z-index: 299; width: 44px; height: 44px; border-radius: 13px; background: linear-gradient(135deg, #f50, #ff8c00); border: none; color: #fff; cursor: pointer; font-size: 20px; display: flex; align-items: center; justify-content: center; box-shadow: 0 6px 20px rgba(255,83,0,0.4); transition: all var(--tr); }
+.sc-placeholder { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 5px; height: 100px; color: var(--text3); font-size: 11px; text-align: center; padding: 10px; } /* reduced */
+.sc-placeholder .sc-ph-icon { font-size: 22px; opacity: 0.4; } /* reduced from 28 */
+.sc-fab { position: fixed; bottom: 18px; right: 18px; z-index: 299; width: 38px; height: 38px; border-radius: 11px; background: linear-gradient(135deg, #f50, #ff8c00); border: none; color: #fff; cursor: pointer; font-size: 17px; display: flex; align-items: center; justify-content: center; box-shadow: 0 6px 20px rgba(255,83,0,0.4); transition: all var(--tr); }
 .sc-fab:hover { transform: scale(1.08); box-shadow: 0 8px 28px rgba(255,83,0,0.5); }
 .sc-fab.hidden-fab { opacity: 0; pointer-events: none; }
  
@@ -546,7 +522,7 @@ body::before { content: ''; position: fixed; inset: 0; z-index: 0; pointer-event
   .upload-zone { padding: 24px 16px; }
   .btn-upload span:last-child { display: none; }
   .stats-row { gap: 8px; }
-  .sc-widget { width: 260px; }
+  .sc-widget { width: 220px; }
   .bulk-bar { width: calc(100vw - 28px); justify-content: center; flex-wrap: wrap; }
   .welcome-msg { font-size: 18px; }
 }
@@ -556,9 +532,11 @@ body::before { content: ''; position: fixed; inset: 0; z-index: 0; pointer-event
 
 <div class="wallpaper-layer" id="wallpaperLayer"></div>
 
+<!-- LASSO SELECTION RECTANGLE -->
+<div class="lasso-rect" id="lassoRect"></div>
+
 <!-- ===== AUTH SCREEN ===== -->
 <div class="auth-screen" id="authScreen">
-  <!-- Welcome message -->
   <div class="welcome-msg" id="welcomeMsg">Hello, welcome to the website, developed by NqN ✦</div>
 
   <div class="auth-box">
@@ -702,6 +680,15 @@ body::before { content: ''; position: fixed; inset: 0; z-index: 0; pointer-event
     </div>
   </div>
   <div class="search-badge" id="searchBadge">🔍 Kết quả cho <strong id="searchBadgeText"></strong> — <span id="searchBadgeCount"></span> file</div>
+
+  <!-- Trash toolbar (restore all / empty trash / lasso) -->
+  <div class="trash-toolbar" id="trashToolbar">
+    <span class="trash-toolbar-text" id="trashToolbarText">0 file trong thùng rác</span>
+    <button class="lasso-toggle-btn" id="lassoToggleBtn" onclick="toggleLassoMode()" title="Chọn nhanh bằng kéo">⬚ Chọn nhanh</button>
+    <button class="trash-toolbar-btn restore" onclick="restoreAllTrash()">↩ Khôi phục tất cả</button>
+    <button class="trash-toolbar-btn empty" onclick="emptyTrash()">✕ Xóa tất cả</button>
+  </div>
+
   <div class="upload-zone" id="uploadZone">
     <span class="upload-icon">📤</span>
     <h3>Kéo & thả file vào đây</h3>
@@ -733,11 +720,25 @@ body::before { content: ''; position: fixed; inset: 0; z-index: 0; pointer-event
 <!-- BULK BAR -->
 <div class="bulk-bar" id="bulkBar">
   <span class="bulk-count" id="bulkCount">0 file</span>
-  <button class="bulk-action fav-action" onclick="bulkFav()">❤️ Yêu thích</button>
-  <button class="bulk-action dl-action" onclick="bulkDownload()">↓ Tải xuống</button>
-  <button class="bulk-action ren-action" onclick="openBulkRename()">✏️ Đổi tên</button>
+  <button class="bulk-action sel-all-action" id="bulkSelectAllBtn" onclick="bulkSelectAll()">☑ Chọn tất cả</button>
   <div class="bulk-sep"></div>
-  <button class="bulk-action del-action" onclick="bulkDelete()">🗑 Xóa</button>
+  <!-- Normal actions (hidden in trash) -->
+  <span id="bulkNormalActions" style="display:contents">
+    <button class="bulk-action fav-action" onclick="bulkFav()">❤️ Yêu thích</button>
+    <button class="bulk-action dl-action" onclick="bulkDownload()">↓ Tải xuống</button>
+    <button class="bulk-action ren-action" onclick="openBulkRename()">✏️ Đổi tên</button>
+    <div class="bulk-sep"></div>
+    <button class="bulk-action del-action" onclick="bulkDelete()">🗑 Xóa</button>
+  </span>
+  <!-- Trash actions (shown only in trash) -->
+  <span id="bulkTrashActions" style="display:none">
+    <button class="bulk-action sel-all-action" id="bulkSelectAllTrashBtn" onclick="bulkSelectAll()">☑ Chọn tất cả</button>
+    <div class="bulk-sep"></div>
+    <button class="bulk-action restore-all-action" onclick="bulkRestoreSelected()">↩ Khôi phục</button>
+    <button class="bulk-action restore-all-action" onclick="restoreAllTrash()" style="font-weight:700">↩↩ Khôi phục tất cả</button>
+    <div class="bulk-sep"></div>
+    <button class="bulk-action del-action" onclick="bulkPermDelete()">✕ Xóa vĩnh viễn</button>
+  </span>
   <button class="bulk-cancel-btn" onclick="clearSelection()" title="Hủy">✕</button>
 </div>
  
@@ -847,24 +848,24 @@ body::before { content: ''; position: fixed; inset: 0; z-index: 0; pointer-event
     </div>
     <div class="sc-placeholder" id="scPlaceholder">
       <div class="sc-ph-icon">🎶</div>
-      <div>Dán link nhạc SoundCloud<br><span style="opacity:0.6">track, playlist hoặc album</span></div>
+      <div>Dán link nhạc SoundCloud<br><span style="opacity:0.6">track / playlist</span></div>
     </div>
   </div>
 </div>
  
 <script>
-// ===================== CLOUD USER STORE (cross-device) =====================
-// Uses window.storage shared=true so all devices share the same account DB.
-// Key: "users_registry" → JSON object { email: { name, hash, createdAt } }
-
+// ===================== CLOUD USER STORE =====================
 const USERS_KEY = 'qin_users_v1';
 const SESSION_KEY = 'qin_session_v1';
+const CLOUD_MEDIA_PREFIX = 'qin_media_';
+const CLOUD_TRASH_PREFIX = 'qin_trash_';
 
 let currentUser = null;
 let currentUserKey = null;
 let cloudUsersCache = null;
 
-// Sync status UI
+function sanitizeEmail(email) { return email.replace(/[^a-z0-9]/gi, '_').toLowerCase(); }
+
 function setSyncStatus(state, text) {
   const dot = document.getElementById('syncDot');
   const txt = document.getElementById('syncText');
@@ -873,37 +874,34 @@ function setSyncStatus(state, text) {
   txt.textContent = text;
 }
 
-// Load users from shared cloud storage
+async function cloudGet(key) {
+  try { const r = await window.storage.get(key, true); return r ? JSON.parse(r.value) : null; } 
+  catch { return null; }
+}
+async function cloudSet(key, val) {
+  try { await window.storage.set(key, JSON.stringify(val), true); return true; }
+  catch { return false; }
+}
+
 async function loadCloudUsers() {
   setSyncStatus('syncing', 'Đang đồng bộ tài khoản...');
   try {
-    const result = await window.storage.get(USERS_KEY, true); // shared=true
-    if (result && result.value) {
-      cloudUsersCache = JSON.parse(result.value);
-    } else {
-      cloudUsersCache = {};
-    }
+    const result = await window.storage.get(USERS_KEY, true);
+    if (result && result.value) cloudUsersCache = JSON.parse(result.value);
+    else cloudUsersCache = {};
     setSyncStatus('online', 'Đã kết nối — đăng nhập mọi thiết bị');
     return cloudUsersCache;
   } catch (e) {
-    // Fallback to localStorage if storage unavailable
     setSyncStatus('error', 'Offline — dùng dữ liệu cục bộ');
-    try {
-      cloudUsersCache = JSON.parse(localStorage.getItem('syo_users') || '{}');
-    } catch { cloudUsersCache = {}; }
+    try { cloudUsersCache = JSON.parse(localStorage.getItem('syo_users') || '{}'); }
+    catch { cloudUsersCache = {}; }
     return cloudUsersCache;
   }
 }
-
-// Save users to shared cloud storage
 async function saveCloudUsers(users) {
   cloudUsersCache = users;
-  try {
-    await window.storage.set(USERS_KEY, JSON.stringify(users), true); // shared=true
-  } catch (e) {
-    // Fallback to localStorage
-    localStorage.setItem('syo_users', JSON.stringify(users));
-  }
+  try { await window.storage.set(USERS_KEY, JSON.stringify(users), true); }
+  catch { localStorage.setItem('syo_users', JSON.stringify(users)); }
 }
 
 // ===================== CAPTCHA =====================
@@ -920,7 +918,7 @@ function generateCaptcha(type) {
   if (inp) inp.value = '';
 }
 
-// ===================== AUTH TAB =====================
+// ===================== AUTH TABS =====================
 function switchAuthTab(tab) {
   document.querySelectorAll('.auth-tab').forEach((t,i) => t.classList.toggle('active', (tab==='login'&&i===0)||(tab==='register'&&i===1)));
   document.getElementById('loginSection').classList.toggle('active', tab==='login');
@@ -933,23 +931,15 @@ function clearAuthErrors() {
     if (el) { el.textContent = ''; el.className = el.className.replace(' show',''); }
   });
 }
-function showAuthError(id, msg) {
-  const el = document.getElementById(id);
-  el.textContent = msg; el.classList.add('show');
-}
-function showAuthSuccess(id, msg) {
-  const el = document.getElementById(id);
-  el.textContent = msg; el.classList.add('show');
-}
+function showAuthError(id, msg) { const el = document.getElementById(id); el.textContent = msg; el.classList.add('show'); }
+function showAuthSuccess(id, msg) { const el = document.getElementById(id); el.textContent = msg; el.classList.add('show'); }
 
-// ===================== HASH =====================
 function hashish(str) {
   let h = 0;
   for (let i = 0; i < str.length; i++) { h = Math.imul(31, h) + str.charCodeAt(i) | 0; }
   return h.toString(16);
 }
 
-// ===================== REGISTER =====================
 async function handleRegister() {
   clearAuthErrors();
   const name = document.getElementById('regName').value.trim();
@@ -960,11 +950,8 @@ async function handleRegister() {
   if (!email || !email.includes('@')) return showAuthError('registerError', 'Vui lòng nhập Gmail hợp lệ.');
   if (pass.length < 6) return showAuthError('registerError', 'Mật khẩu tối thiểu 6 ký tự.');
   if (pass !== pass2) return showAuthError('registerError', 'Mật khẩu xác nhận không khớp.');
-
   const btn = document.getElementById('registerBtn');
   btn.disabled = true; btn.textContent = 'Đang đăng ký...';
-
-  // Reload latest users from cloud before registering (avoid race conditions)
   const users = await loadCloudUsers();
   if (users[email]) {
     btn.disabled = false; btn.textContent = 'Đăng ký tài khoản';
@@ -972,14 +959,12 @@ async function handleRegister() {
   }
   users[email] = { name, email, hash: hashish(email + pass), createdAt: Date.now() };
   await saveCloudUsers(users);
-
   btn.disabled = false; btn.textContent = 'Đăng ký tài khoản';
   showAuthSuccess('registerSuccess', '🎉 Đăng ký thành công! Bạn có thể đăng nhập từ mọi thiết bị.');
   setTimeout(() => switchAuthTab('login'), 1600);
   document.getElementById('loginEmail').value = email;
 }
 
-// ===================== LOGIN =====================
 async function handleLogin() {
   clearAuthErrors();
   const email = document.getElementById('loginEmail').value.trim().toLowerCase();
@@ -991,11 +976,8 @@ async function handleLogin() {
     generateCaptcha('login');
     return showAuthError('loginError', 'Mã xác nhận không đúng. Vui lòng thử lại.');
   }
-
   const btn = document.getElementById('loginBtn');
   btn.disabled = true; btn.textContent = 'Đang đăng nhập...';
-
-  // Always fetch fresh from cloud
   const users = await loadCloudUsers();
   const user = users[email];
   if (!user || user.hash !== hashish(email + pass)) {
@@ -1003,32 +985,28 @@ async function handleLogin() {
     btn.disabled = false; btn.textContent = 'Đăng nhập';
     return showAuthError('loginError', 'Email hoặc mật khẩu không đúng.');
   }
-
   btn.disabled = false; btn.textContent = 'Đăng nhập';
   currentUser = user;
-  currentUserKey = 'syo_data_' + email.replace(/[^a-z0-9]/g,'_');
-  // Save session locally (device-specific is fine for session)
+  currentUserKey = 'syo_data_' + sanitizeEmail(email);
   localStorage.setItem(SESSION_KEY, JSON.stringify({ email, ts: Date.now() }));
   launchApp();
 }
 
-// ===================== LOGOUT =====================
 function handleLogout() {
   localStorage.removeItem(SESSION_KEY);
   currentUser = null; currentUserKey = null;
   images = []; trashItems = [];
   selectedIds.clear(); selectMode = false;
+  lassoMode = false;
   toggleUserDropdown(true);
   document.getElementById('appWrapper').style.display = 'none';
   document.getElementById('authScreen').style.display = 'flex';
   generateCaptcha('login');
   clearAuthErrors();
-  // Re-init sync status for next login
   loadCloudUsers();
   toast('👋 Đã đăng xuất', 'info');
 }
 
-// ===================== SESSION CHECK =====================
 async function checkSession() {
   try {
     const s = JSON.parse(localStorage.getItem(SESSION_KEY) || 'null');
@@ -1038,7 +1016,7 @@ async function checkSession() {
     const user = users[s.email];
     if (!user) return false;
     currentUser = user;
-    currentUserKey = 'syo_data_' + s.email.replace(/[^a-z0-9]/g,'_');
+    currentUserKey = 'syo_data_' + sanitizeEmail(s.email);
     return true;
   } catch { return false; }
 }
@@ -1053,16 +1031,14 @@ function launchApp() {
   init();
 }
 
-// User dropdown
 function toggleUserDropdown(forceClose) {
   const dd = document.getElementById('userDropdown');
   if (forceClose) { dd.classList.remove('open'); return; }
   dd.classList.toggle('open');
 }
 document.addEventListener('click', e => {
-  if (!e.target.closest('#userAvatar') && !e.target.closest('#userDropdown')) {
+  if (!e.target.closest('#userAvatar') && !e.target.closest('#userDropdown'))
     document.getElementById('userDropdown')?.classList.remove('open');
-  }
 });
 
 // ===================== STATE =====================
@@ -1077,8 +1053,94 @@ let previewIndex = -1;
 let renameTargetId = null;
 const MAX_STORAGE_MB = 100;
 let db;
- 
-// ===================== DB (per-user, local IndexedDB for media) =====================
+
+// ===================== LASSO SELECT STATE =====================
+let lassoMode = false;
+let lassoActive = false;
+let lassoStart = { x: 0, y: 0 };
+let lassoEnd = { x: 0, y: 0 };
+
+function toggleLassoMode() {
+  lassoMode = !lassoMode;
+  const btn = document.getElementById('lassoToggleBtn');
+  btn.classList.toggle('active', lassoMode);
+  btn.textContent = lassoMode ? '⬚ Đang chọn nhanh' : '⬚ Chọn nhanh';
+  if (lassoMode) {
+    // Also enter select mode
+    selectMode = true;
+    document.getElementById('selectModeBtn').textContent = '✓';
+    updateBulkBar();
+    toast('🖱️ Kéo chuột để chọn ảnh!', 'info');
+  } else {
+    document.getElementById('lassoRect').classList.remove('active');
+  }
+}
+
+// Lasso mouse events on the gallery grid container
+document.addEventListener('mousedown', e => {
+  if (!lassoMode) return;
+  const grid = document.getElementById('galleryGrid');
+  // Only if clicked inside gallery grid area (not on buttons)
+  if (!grid.contains(e.target) && e.target !== grid) return;
+  if (e.target.closest('.action-btn') || e.target.closest('.fav-btn')) return;
+  lassoActive = true;
+  lassoStart = { x: e.clientX, y: e.clientY };
+  lassoEnd = { x: e.clientX, y: e.clientY };
+  updateLassoRect();
+  e.preventDefault();
+});
+
+document.addEventListener('mousemove', e => {
+  if (!lassoActive) return;
+  lassoEnd = { x: e.clientX, y: e.clientY };
+  updateLassoRect();
+  selectCardsInLasso();
+  e.preventDefault();
+});
+
+document.addEventListener('mouseup', e => {
+  if (!lassoActive) return;
+  lassoActive = false;
+  document.getElementById('lassoRect').classList.remove('active');
+  selectCardsInLasso();
+});
+
+function updateLassoRect() {
+  const rect = document.getElementById('lassoRect');
+  const x = Math.min(lassoStart.x, lassoEnd.x);
+  const y = Math.min(lassoStart.y, lassoEnd.y);
+  const w = Math.abs(lassoEnd.x - lassoStart.x);
+  const h = Math.abs(lassoEnd.y - lassoStart.y);
+  if (w < 4 && h < 4) { rect.classList.remove('active'); return; }
+  rect.classList.add('active');
+  rect.style.left = x + 'px';
+  rect.style.top = y + 'px';
+  rect.style.width = w + 'px';
+  rect.style.height = h + 'px';
+}
+
+function selectCardsInLasso() {
+  const lassoX1 = Math.min(lassoStart.x, lassoEnd.x);
+  const lassoY1 = Math.min(lassoStart.y, lassoEnd.y);
+  const lassoX2 = Math.max(lassoStart.x, lassoEnd.x);
+  const lassoY2 = Math.max(lassoStart.y, lassoEnd.y);
+  if (lassoX2 - lassoX1 < 4 && lassoY2 - lassoY1 < 4) return;
+
+  const cards = document.querySelectorAll('.gallery-grid .image-card');
+  cards.forEach(card => {
+    const r = card.getBoundingClientRect();
+    const overlaps = r.left < lassoX2 && r.right > lassoX1 && r.top < lassoY2 && r.bottom > lassoY1;
+    const id = card.dataset.id;
+    if (!id) return;
+    if (overlaps) {
+      selectedIds.add(id);
+      card.classList.add('selected');
+    }
+  });
+  updateBulkBar();
+}
+
+// ===================== DB =====================
 function getDBName() { return 'syo_db_' + (currentUser?.email?.replace(/[^a-z0-9]/g,'_') || 'guest'); }
 const DB_VERSION = 1;
 const STORE_MEDIA = 'media', STORE_TRASH = 'trash';
@@ -1118,6 +1180,19 @@ function dbDelete(store, id) {
     tx.oncomplete = res; tx.onerror = rej;
   });
 }
+
+async function syncMediaToCloud() {
+  if (!currentUser) return;
+  const key = CLOUD_MEDIA_PREFIX + sanitizeEmail(currentUser.email);
+  const meta = images.map(({ dataURL, ...rest }) => rest);
+  await cloudSet(key, meta);
+}
+async function syncTrashToCloud() {
+  if (!currentUser) return;
+  const key = CLOUD_TRASH_PREFIX + sanitizeEmail(currentUser.email);
+  const meta = trashItems.map(({ dataURL, ...rest }) => rest);
+  await cloudSet(key, meta);
+}
  
 // ===================== INIT =====================
 async function init() {
@@ -1156,6 +1231,26 @@ function renderGallery() {
   const badge = document.getElementById('searchBadge');
   clearBtn.classList.toggle('visible', search.length > 0);
   const isTrashView = currentFilter === 'trash';
+
+  const trashToolbar = document.getElementById('trashToolbar');
+  const uploadZone = document.getElementById('uploadZone');
+  if (isTrashView) {
+    trashToolbar.classList.add('visible');
+    document.getElementById('trashToolbarText').textContent = `${trashItems.length} file trong thùng rác`;
+    uploadZone.style.display = 'none';
+  } else {
+    trashToolbar.classList.remove('visible');
+    uploadZone.style.display = '';
+    // Turn off lasso mode when leaving trash
+    if (lassoMode) {
+      lassoMode = false;
+      document.getElementById('lassoRect').classList.remove('active');
+    }
+  }
+
+  document.getElementById('bulkNormalActions').style.display = isTrashView ? 'none' : 'contents';
+  document.getElementById('bulkTrashActions').style.display = isTrashView ? 'contents' : 'none';
+
   const pool = isTrashView ? trashItems : images;
   let filtered = pool.filter(item => {
     const nameMatch = search === '' || item.name.toLowerCase().includes(search);
@@ -1251,6 +1346,7 @@ function buildCard(item, i, isList, search, isTrash) {
  
 function handleCardClick(id, e) {
   if (e.target.closest('.action-btn') || e.target.closest('.fav-btn')) return;
+  if (lassoMode) return; // Don't open preview in lasso mode
   if (selectMode) { toggleSelect(id); return; }
   const isTrash = currentFilter === 'trash';
   const pool = isTrash ? trashItems : images;
@@ -1346,6 +1442,33 @@ async function permDelete(id, e) {
   renderGallery(); updateCountBadge();
   toast('✕ Đã xóa vĩnh viễn', 'error');
 }
+
+// ===================== TRASH TOOLBAR ACTIONS =====================
+async function restoreAllTrash() {
+  if (!trashItems.length) return;
+  const count = trashItems.length;
+  for (const item of [...trashItems]) {
+    const clean = { ...item }; delete clean.deletedAt;
+    await dbDelete(STORE_TRASH, item.id);
+    await dbPut(STORE_MEDIA, clean);
+    images.unshift(clean);
+  }
+  trashItems = [];
+  clearSelection();
+  renderGallery(); updateStats(); updateCountBadge();
+  toast(`↩ Đã khôi phục tất cả ${count} file!`, 'success');
+}
+async function emptyTrash() {
+  if (!trashItems.length) return;
+  const count = trashItems.length;
+  for (const item of [...trashItems]) await dbDelete(STORE_TRASH, item.id);
+  trashItems = [];
+  clearSelection();
+  renderGallery(); updateCountBadge();
+  toast(`✕ Đã xóa vĩnh viễn ${count} file`, 'error');
+}
+
+// ===================== BULK ACTIONS =====================
 async function bulkDelete() {
   if (!selectedIds.size) return;
   const count = selectedIds.size;
@@ -1363,7 +1486,63 @@ async function bulkDelete() {
   toast(`🗑 Đã chuyển ${count} file vào thùng rác`, 'info');
 }
 
-// ===================== BULK FAV =====================
+function bulkSelectAll() {
+  const isTrash = currentFilter === 'trash';
+  const pool = isTrash ? trashItems : images;
+  const search = document.getElementById('searchInput').value.toLowerCase().trim();
+  const filtered = pool.filter(item => search === '' || item.name.toLowerCase().includes(search));
+  const allVisibleIds = filtered.map(i => i.id);
+  const allSelected = allVisibleIds.length > 0 && allVisibleIds.every(id => selectedIds.has(id));
+  if (allSelected) {
+    allVisibleIds.forEach(id => selectedIds.delete(id));
+  } else {
+    allVisibleIds.forEach(id => selectedIds.add(id));
+  }
+  document.querySelectorAll('.image-card').forEach(el => {
+    const id = el.dataset.id;
+    if (id) el.classList.toggle('selected', selectedIds.has(id));
+  });
+  updateBulkBar();
+  // Update button text
+  const nowAllSelected = allVisibleIds.every(id => selectedIds.has(id));
+  const btnText = nowAllSelected ? '☐ Bỏ chọn tất' : '☑ Chọn tất cả';
+  document.getElementById('bulkSelectAllBtn').textContent = btnText;
+  const btn2 = document.getElementById('bulkSelectAllTrashBtn');
+  if (btn2) btn2.textContent = btnText;
+  if (!selectMode) {
+    selectMode = true;
+    document.getElementById('selectModeBtn').textContent = '✓';
+  }
+}
+
+async function bulkRestoreSelected() {
+  if (!selectedIds.size) return;
+  const count = selectedIds.size;
+  for (const id of [...selectedIds]) {
+    const idx = trashItems.findIndex(i => i.id === id);
+    if (idx !== -1) {
+      const item = { ...trashItems[idx] }; delete item.deletedAt;
+      trashItems.splice(idx, 1);
+      await dbDelete(STORE_TRASH, id);
+      await dbPut(STORE_MEDIA, item);
+      images.unshift(item);
+    }
+  }
+  clearSelection(); renderGallery(); updateStats(); updateCountBadge();
+  toast(`↩ Đã khôi phục ${count} file!`, 'success');
+}
+
+async function bulkPermDelete() {
+  if (!selectedIds.size) return;
+  const count = selectedIds.size;
+  for (const id of [...selectedIds]) {
+    const idx = trashItems.findIndex(i => i.id === id);
+    if (idx !== -1) { trashItems.splice(idx, 1); await dbDelete(STORE_TRASH, id); }
+  }
+  clearSelection(); renderGallery(); updateCountBadge();
+  toast(`✕ Đã xóa vĩnh viễn ${count} file`, 'error');
+}
+
 async function bulkFav() {
   if (!selectedIds.size) return;
   const ids = [...selectedIds];
@@ -1380,7 +1559,6 @@ async function bulkFav() {
   if (removedCount) toast(`🤍 Đã bỏ ${removedCount} file khỏi yêu thích`, 'info');
 }
 
-// ===================== BULK DOWNLOAD =====================
 async function bulkDownload() {
   if (!selectedIds.size) return;
   const ids = [...selectedIds];
@@ -1391,10 +1569,7 @@ async function bulkDownload() {
     if (!item) continue;
     await new Promise(resolve => setTimeout(resolve, i * 200));
     const a = document.createElement('a');
-    a.href = item.dataURL;
-    a.download = `${item.name}.${item.ext || item.type}`;
-    a.click();
-    i++;
+    a.href = item.dataURL; a.download = `${item.name}.${item.ext || item.type}`; a.click(); i++;
   }
 }
 
@@ -1405,26 +1580,21 @@ function openBulkRename() {
   document.getElementById('bulkRenameDesc').textContent = `Sẽ đổi tên ${count} file đã chọn.`;
   document.getElementById('bulkRenameInput').value = 'file_{n}';
   document.getElementById('bulkRenameModal').classList.add('open');
-  setTimeout(() => {
-    const inp = document.getElementById('bulkRenameInput');
-    inp.focus(); inp.select();
-  }, 100);
+  setTimeout(() => { const inp = document.getElementById('bulkRenameInput'); inp.focus(); inp.select(); }, 100);
 }
 function closeBulkRename(e) { if (e && e.target !== document.getElementById('bulkRenameModal')) return; closeBulkRenameDirect(); }
 function closeBulkRenameDirect() { document.getElementById('bulkRenameModal').classList.remove('open'); }
 async function confirmBulkRename() {
   const pattern = document.getElementById('bulkRenameInput').value.trim();
   if (!pattern) return;
-  const ids = [...selectedIds];
-  let n = 1;
+  const ids = [...selectedIds]; let n = 1;
   for (const id of ids) {
     const item = images.find(i => i.id === id);
     if (!item) continue;
     item.name = pattern.replace('{n}', n++);
     await dbPut(STORE_MEDIA, item);
   }
-  closeBulkRenameDirect();
-  renderGallery();
+  closeBulkRenameDirect(); renderGallery();
   toast(`✏️ Đã đổi tên ${ids.length} file!`, 'success');
 }
  
@@ -1433,10 +1603,7 @@ function downloadItem(id, e) {
   if (e) e.stopPropagation();
   const item = images.find(i => i.id === id) || trashItems.find(i => i.id === id);
   if (!item) return;
-  const a = document.createElement('a');
-  a.href = item.dataURL;
-  a.download = `${item.name}.${item.ext || item.type}`;
-  a.click();
+  const a = document.createElement('a'); a.href = item.dataURL; a.download = `${item.name}.${item.ext || item.type}`; a.click();
   toast('↓ Đang tải xuống...', 'success');
 }
 function downloadCurrent() {
@@ -1460,8 +1627,7 @@ async function toggleFav(id, e) {
       const heart = document.createElement('div');
       heart.textContent = '❤️';
       heart.style.cssText = 'position:absolute;top:50%;left:50%;transform:translate(-50%,-50%) scale(0);font-size:38px;pointer-events:none;z-index:10;animation:heartPop 0.6s ease forwards;';
-      card.appendChild(heart);
-      setTimeout(() => heart.remove(), 700);
+      card.appendChild(heart); setTimeout(() => heart.remove(), 700);
     }
   } else { toast('🤍 Đã bỏ yêu thích', 'info'); }
   if (previewIndex !== -1) updateModalFavUI();
@@ -1551,25 +1717,45 @@ function closePreviewDirect() {
 document.getElementById('selectModeBtn').addEventListener('click', () => {
   selectMode = !selectMode;
   document.getElementById('selectModeBtn').textContent = selectMode ? '✓' : '⬜';
-  if (!selectMode) clearSelection();
-  toast(selectMode ? '⬜ Chế độ chọn nhiều' : 'Đã tắt chọn nhiều', 'info');
+  if (!selectMode) {
+    clearSelection();
+    // Also disable lasso
+    if (lassoMode) {
+      lassoMode = false;
+      const btn = document.getElementById('lassoToggleBtn');
+      if (btn) { btn.classList.remove('active'); btn.textContent = '⬚ Chọn nhanh'; }
+      document.getElementById('lassoRect').classList.remove('active');
+    }
+  } else {
+    updateBulkBar();
+  }
+  toast(selectMode ? '⬜ Chế độ chọn nhiều bật' : 'Đã tắt chọn nhiều', 'info');
 });
 function toggleSelect(id) {
   if (selectedIds.has(id)) selectedIds.delete(id);
   else selectedIds.add(id);
   document.querySelector(`[data-id="${id}"]`)?.classList.toggle('selected', selectedIds.has(id));
   updateBulkBar();
+  const pool = currentFilter === 'trash' ? trashItems : images;
+  const allSelected = pool.length > 0 && pool.every(i => selectedIds.has(i.id));
+  const btnText = allSelected ? '☐ Bỏ chọn tất' : '☑ Chọn tất cả';
+  document.getElementById('bulkSelectAllBtn').textContent = btnText;
+  const btn2 = document.getElementById('bulkSelectAllTrashBtn');
+  if (btn2) btn2.textContent = btnText;
 }
 function clearSelection() {
   selectedIds.clear(); selectMode = false;
   document.getElementById('selectModeBtn').textContent = '⬜';
+  document.getElementById('bulkSelectAllBtn').textContent = '☑ Chọn tất cả';
+  const btn2 = document.getElementById('bulkSelectAllTrashBtn');
+  if (btn2) btn2.textContent = '☑ Chọn tất cả';
   document.querySelectorAll('.image-card.selected').forEach(el => el.classList.remove('selected'));
   updateBulkBar();
 }
 function updateBulkBar() {
   const count = selectedIds.size;
   document.getElementById('bulkCount').textContent = `${count} file đã chọn`;
-  document.getElementById('bulkBar').classList.toggle('visible', count > 0);
+  document.getElementById('bulkBar').classList.toggle('visible', selectMode || count > 0);
 }
  
 // ===================== FILTER =====================
@@ -1579,6 +1765,12 @@ function setFilter(filter, el) {
   if (el) el.classList.add('active');
   const titles = { all:'Tất cả file', recent:'Gần đây', fav:'Yêu thích ❤️', trash:'Thùng rác 🗑️', 'type-image':'Hình ảnh', 'type-video':'Video', 'type-file':'Tài liệu', 'cat-nature':'Thiên nhiên', 'cat-travel':'Du lịch', 'cat-food':'Ẩm thực', 'cat-other':'Khác' };
   document.getElementById('pageTitle').textContent = titles[filter] || 'File';
+  clearSelection();
+  // Reset lasso when leaving trash
+  if (filter !== 'trash' && lassoMode) {
+    lassoMode = false;
+    document.getElementById('lassoRect').classList.remove('active');
+  }
   renderGallery();
   if (window.innerWidth <= 768) document.getElementById('sidebar').classList.remove('open');
 }
@@ -1659,8 +1851,8 @@ function renderBgPresets() {
 function applyBg(url, el) {
   activeBgUrl = url;
   const layer = document.getElementById('wallpaperLayer');
-  if (!url) { layer.style.backgroundImage = 'none'; } 
-  else { layer.style.backgroundImage = `url('${url}')`; }
+  if (!url) layer.style.backgroundImage = 'none';
+  else layer.style.backgroundImage = `url('${url}')`;
   document.querySelectorAll('.bg-preset').forEach(p => p.classList.remove('active'));
   if (el) el.classList.add('active');
   localStorage.setItem('syo_bg_url', url);
@@ -1693,11 +1885,7 @@ document.getElementById('trashBtn').addEventListener('click', () => { setFilter(
  
 // ===================== SOUNDCLOUD =====================
 let scCollapsed = false, scVisible = true;
-function toggleScCollapse() {
-  scCollapsed = !scCollapsed;
-  document.getElementById('scWidget').classList.toggle('collapsed', scCollapsed);
-  document.getElementById('scCollapseBtn').textContent = scCollapsed ? '+' : '−';
-}
+function toggleScCollapse() { scCollapsed = !scCollapsed; document.getElementById('scWidget').classList.toggle('collapsed', scCollapsed); document.getElementById('scCollapseBtn').textContent = scCollapsed ? '+' : '−'; }
 function hideScWidget() { scVisible = false; document.getElementById('scWidget').classList.add('hidden-widget'); document.getElementById('scFab').classList.remove('hidden-fab'); }
 function showScWidget() { scVisible = true; document.getElementById('scWidget').classList.remove('hidden-widget'); document.getElementById('scFab').classList.add('hidden-fab'); }
 function loadSoundCloud() {
@@ -1733,6 +1921,9 @@ document.addEventListener('keydown', e => {
   if (document.getElementById('renameModal').classList.contains('open') && e.key==='Escape') closeRenameDirect();
   if (document.getElementById('bulkRenameModal').classList.contains('open') && e.key==='Escape') closeBulkRenameDirect();
   if (document.getElementById('bgModal').classList.contains('open') && e.key==='Escape') closeBgModalDirect();
+  if ((e.ctrlKey || e.metaKey) && e.key === 'a' && selectMode) { e.preventDefault(); bulkSelectAll(); }
+  if (e.key === 'Escape' && selectMode) clearSelection();
+  if (e.key === 'Escape' && lassoMode) toggleLassoMode();
 });
 document.getElementById('bulkRenameInput')?.addEventListener('keydown', e => { if (e.key==='Enter') confirmBulkRename(); });
  
@@ -1768,14 +1959,9 @@ document.getElementById('loginPassword').addEventListener('keydown', e => { if (
 document.getElementById('loginCaptchaInput').addEventListener('keydown', e => { if (e.key==='Enter') handleLogin(); });
 document.getElementById('regPassword2').addEventListener('keydown', e => { if (e.key==='Enter') handleRegister(); });
 
-// Boot: check session first, then load sync status
 (async () => {
-  // Always load cloud users on boot (updates sync indicator)
   const hasSession = await checkSession();
-  if (hasSession) {
-    launchApp();
-  }
-  // If no session, sync status is already shown in login form
+  if (hasSession) launchApp();
 })();
 </script>
 </body>
