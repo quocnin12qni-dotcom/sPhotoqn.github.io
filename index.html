@@ -52,6 +52,12 @@ body::before { content: ''; position: fixed; inset: 0; z-index: 0; pointer-event
 /* ===== FLOATING HEARTS ===== */
 #heartCanvas { position: fixed; inset: 0; z-index: 2; pointer-events: none; width: 100%; height: 100%; }
 
+/* ===== MUSIC NOTES CANVAS ===== */
+#musicNotesCanvas { position: fixed; inset: 0; z-index: 3; pointer-events: none; width: 100%; height: 100%; }
+
+/* ===== BUTTERFLY CANVAS ===== */
+#butterflyCanvas { position: fixed; inset: 0; z-index: 9997; pointer-events: none; width: 100%; height: 100%; }
+
 /* ===== INTRO SCREEN ===== */
 #introScreen { position: fixed; inset: 0; z-index: 9999; display: flex; align-items: center; justify-content: center; background: var(--bg); pointer-events: none; }
 #introScreen::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 40% 50%, rgba(124,111,255,0.13) 0%, transparent 65%), radial-gradient(ellipse at 70% 60%, rgba(79,209,197,0.07) 0%, transparent 50%); }
@@ -93,68 +99,20 @@ body.ui-transparent .sidebar {
   -webkit-backdrop-filter: blur(36px) saturate(180%) !important;
   border-right: 1px solid rgba(255,255,255,0.14) !important;
 }
-body.ui-transparent .main {
-  background: transparent !important;
-}
-body.ui-transparent .stat-card {
-  background: rgba(255,255,255,0.06) !important;
-  backdrop-filter: blur(20px) saturate(160%) !important;
-  -webkit-backdrop-filter: blur(20px) saturate(160%) !important;
-  border: 1px solid rgba(255,255,255,0.16) !important;
-  box-shadow: 0 4px 16px rgba(0,0,0,0.15), inset 0 1px 0 rgba(255,255,255,0.1) !important;
-}
-body.ui-transparent .upload-zone {
-  background: rgba(255,255,255,0.05) !important;
-  backdrop-filter: blur(16px) !important;
-  -webkit-backdrop-filter: blur(16px) !important;
-  border-color: rgba(255,255,255,0.2) !important;
-}
-body.ui-transparent .gallery-grid .image-card {
-  background: rgba(255,255,255,0.07) !important;
-  backdrop-filter: blur(18px) saturate(160%) !important;
-  -webkit-backdrop-filter: blur(18px) saturate(160%) !important;
-  border: 1px solid rgba(255,255,255,0.15) !important;
-  box-shadow: 0 8px 32px rgba(0,0,0,0.2), inset 0 1px 0 rgba(255,255,255,0.1) !important;
-}
-body.ui-transparent .gallery-grid .image-card:hover {
-  background: rgba(255,255,255,0.13) !important;
-  border-color: rgba(255,255,255,0.28) !important;
-  box-shadow: 0 16px 48px rgba(0,0,0,0.3), inset 0 1px 0 rgba(255,255,255,0.2) !important;
-  transform: translateY(-4px) scale(1.02) !important;
-}
-body.ui-transparent .filter-row .filter-tag {
-  background: rgba(255,255,255,0.06) !important;
-  backdrop-filter: blur(12px) !important;
-  border-color: rgba(255,255,255,0.16) !important;
-}
-body.ui-transparent .storage-bar {
-  background: rgba(255,255,255,0.06) !important;
-  backdrop-filter: blur(12px) !important;
-  border-color: rgba(255,255,255,0.12) !important;
-}
-body.ui-transparent .sidebar-inner {
-  background: transparent !important;
-}
-body.ui-transparent .nav-item {
-  background: transparent !important;
-}
-body.ui-transparent .nav-item:hover {
-  background: rgba(255,255,255,0.08) !important;
-}
-body.ui-transparent .nav-item.active {
-  background: rgba(124,111,255,0.18) !important;
-  backdrop-filter: blur(8px) !important;
-}
-body.ui-transparent .sidebar-section {
-  background: transparent !important;
-}
-body.ui-transparent .page-title {
-  font-weight: 800 !important;
-  text-shadow: 0 0 30px rgba(184,159,255,0.5) !important;
-}
-body.ui-transparent .stat-val {
-  text-shadow: 0 0 20px currentColor !important;
-}
+body.ui-transparent .main { background: transparent !important; }
+body.ui-transparent .stat-card { background: rgba(255,255,255,0.06) !important; backdrop-filter: blur(20px) saturate(160%) !important; -webkit-backdrop-filter: blur(20px) saturate(160%) !important; border: 1px solid rgba(255,255,255,0.16) !important; box-shadow: 0 4px 16px rgba(0,0,0,0.15), inset 0 1px 0 rgba(255,255,255,0.1) !important; }
+body.ui-transparent .upload-zone { background: rgba(255,255,255,0.05) !important; backdrop-filter: blur(16px) !important; -webkit-backdrop-filter: blur(16px) !important; border-color: rgba(255,255,255,0.2) !important; }
+body.ui-transparent .gallery-grid .image-card { background: rgba(255,255,255,0.07) !important; backdrop-filter: blur(18px) saturate(160%) !important; -webkit-backdrop-filter: blur(18px) saturate(160%) !important; border: 1px solid rgba(255,255,255,0.15) !important; box-shadow: 0 8px 32px rgba(0,0,0,0.2), inset 0 1px 0 rgba(255,255,255,0.1) !important; }
+body.ui-transparent .gallery-grid .image-card:hover { background: rgba(255,255,255,0.13) !important; border-color: rgba(255,255,255,0.28) !important; box-shadow: 0 16px 48px rgba(0,0,0,0.3), inset 0 1px 0 rgba(255,255,255,0.2) !important; transform: translateY(-4px) scale(1.02) !important; }
+body.ui-transparent .filter-row .filter-tag { background: rgba(255,255,255,0.06) !important; backdrop-filter: blur(12px) !important; border-color: rgba(255,255,255,0.16) !important; }
+body.ui-transparent .storage-bar { background: rgba(255,255,255,0.06) !important; backdrop-filter: blur(12px) !important; border-color: rgba(255,255,255,0.12) !important; }
+body.ui-transparent .sidebar-inner { background: transparent !important; }
+body.ui-transparent .nav-item { background: transparent !important; }
+body.ui-transparent .nav-item:hover { background: rgba(255,255,255,0.08) !important; }
+body.ui-transparent .nav-item.active { background: rgba(124,111,255,0.18) !important; backdrop-filter: blur(8px) !important; }
+body.ui-transparent .sidebar-section { background: transparent !important; }
+body.ui-transparent .page-title { font-weight: 800 !important; text-shadow: 0 0 30px rgba(184,159,255,0.5) !important; }
+body.ui-transparent .stat-val { text-shadow: 0 0 20px currentColor !important; }
 
 /* LASSO */
 .lasso-rect { position: fixed; border: 1.5px solid var(--accent); background: rgba(124,111,255,0.1); border-radius: 4px; pointer-events: none; z-index: 9999; display: none; }
@@ -490,6 +448,16 @@ body.ui-transparent .stat-val {
 .code-editor-body .CodeMirror { height: 100%; min-height: 320px; font-size: 13px; font-family: 'Fira Code', 'Consolas', monospace; }
 .code-editor-footer { display: flex; gap: 7px; padding: 10px 14px; border-top: 1px solid var(--border); flex-shrink: 0; justify-content: flex-end; }
 
+/* SHARPEN SECTION */
+.sharpen-section { display: flex; align-items: center; gap: 6px; padding: 6px 14px 6px; border-top: 1px solid var(--border); flex-wrap: wrap; background: rgba(124,111,255,0.04); }
+.sharpen-label { font-size: 11px; color: var(--text2); }
+.sharpen-status { font-size: 10.5px; color: var(--text3); }
+.sharpen-btn { display: flex; align-items: center; gap: 5px; padding: 6px 14px; border-radius: 8px; border: 1px solid rgba(79,209,197,0.35); background: rgba(79,209,197,0.1); color: var(--accent3); font-size: 11.5px; font-weight: 600; cursor: pointer; transition: all var(--tr); font-family: 'DM Sans', sans-serif; }
+.sharpen-btn:hover { background: rgba(79,209,197,0.2); border-color: rgba(79,209,197,0.55); }
+.sharpen-btn:disabled { opacity: 0.45; cursor: not-allowed; }
+.sharpen-spinner { display: inline-block; width: 12px; height: 12px; border: 2px solid rgba(79,209,197,0.2); border-top-color: var(--accent3); border-radius: 50%; animation: spin 0.6s linear infinite; }
+@keyframes spin { to { transform: rotate(360deg); } }
+
 /* BACKGROUND PANEL */
 .bg-panel { background: var(--bg2); border: 1px solid var(--border); border-radius: 15px; padding: 22px; width: 100%; max-width: 460px; transform: scale(0.95); opacity: 0; transition: all 0.28s ease; box-shadow: var(--shadow); }
 .modal-backdrop.open .bg-panel { transform: scale(1); opacity: 1; }
@@ -508,10 +476,7 @@ body.ui-transparent .stat-val {
 .bg-url-row .input-field { margin-bottom: 0; flex: 1; }
 .bg-url-btn { padding: 10px 14px; border-radius: 9px; background: var(--accent); color: #fff; border: none; cursor: pointer; font-size: 13px; font-weight: 500; white-space: nowrap; transition: all var(--tr); }
 .bg-url-btn:hover { opacity: 0.85; }
-
-/* SYNC NOTE */
 .bg-sync-note { font-size: 11px; color: var(--accent2); background: rgba(124,111,255,0.08); border: 1px solid rgba(124,111,255,0.2); border-radius: 7px; padding: 7px 10px; margin-top: 8px; display: flex; align-items: center; gap: 6px; }
-
 .sidebar-cover-presets { display: grid; grid-template-columns: repeat(4, 1fr); gap: 7px; margin-bottom: 8px; }
 .sc-preset { aspect-ratio: 16/9; border-radius: 7px; cursor: pointer; border: 2px solid var(--border); transition: all var(--tr); overflow: hidden; }
 .sc-preset:hover { border-color: var(--accent2); transform: scale(1.05); }
@@ -577,7 +542,6 @@ body.ui-transparent .stat-val {
 .yt-search-loader-w { display: none; align-items: center; justify-content: center; gap: 5px; padding: 10px; font-size: 10px; color: rgba(255,255,255,0.3); }
 .yt-search-loader-w.visible { display: flex; }
 .spinner { width: 12px; height: 12px; border: 2px solid rgba(255,0,0,0.2); border-top-color: #ff0000; border-radius: 50%; animation: spin 0.6s linear infinite; }
-@keyframes spin { to { transform: rotate(360deg); } }
 .yt-results-w { max-height: 0; overflow: hidden; transition: max-height 0.3s ease; }
 .yt-results-w.open { max-height: 180px; }
 .yt-results-inner-w { overflow-y: auto; max-height: 180px; padding: 2px 6px 4px; }
@@ -621,6 +585,8 @@ body.ui-transparent .stat-val {
 
 <canvas id="tulipCanvas"></canvas>
 <canvas id="heartCanvas"></canvas>
+<canvas id="musicNotesCanvas"></canvas>
+<canvas id="butterflyCanvas"></canvas>
 
 <div class="glass-orbs" id="glassOrbs">
   <div class="glass-orb"></div>
@@ -918,6 +884,12 @@ body.ui-transparent .stat-val {
     <div class="editor-body" id="editorBody">
       <div class="img-editor-wrap" id="imgEditorPanel">
         <div class="cropper-container-wrap" id="cropperWrap"><img id="cropperImg" src=""></div>
+        <!-- SHARPEN SECTION -->
+        <div class="sharpen-section">
+          <span class="sharpen-label">✨ Làm nét AI:</span>
+          <button class="sharpen-btn" id="sharpenBtn" onclick="sharpenImage()">🔍 Làm nét ảnh</button>
+          <span class="sharpen-status" id="sharpenStatus"></span>
+        </div>
         <div class="filter-sliders" id="filterSliders">
           <div class="filter-slider-row"><label>Sáng</label><input type="range" id="slBrightness" min="-100" max="100" value="0" oninput="applyFilters()"><span id="valBrightness">0</span></div>
           <div class="filter-slider-row"><label>Tương phản</label><input type="range" id="slContrast" min="-100" max="100" value="0" oninput="applyFilters()"><span id="valContrast">0</span></div>
@@ -1004,7 +976,175 @@ body.ui-transparent .stat-val {
 <div class="toast-container" id="toastContainer"></div>
 
 <script>
-// ===================== TULIP ANIMATION (3s visible then fade out) =====================
+// ===================== BUTTERFLY ANIMATION (5 seconds then fade) =====================
+(function() {
+  const canvas = document.getElementById('butterflyCanvas');
+  const ctx = canvas.getContext('2d');
+  let W, H;
+  function resize() { W = canvas.width = window.innerWidth; H = canvas.height = window.innerHeight; }
+  resize();
+  window.addEventListener('resize', resize);
+
+  const butterflyColors = [
+    {body:'#ff6b9d',wing1:'#ffb3ce',wing2:'#ff6b9d',wing3:'rgba(255,107,157,0.5)'},
+    {body:'#a78bfa',wing1:'#d4bcfe',wing2:'#a78bfa',wing3:'rgba(167,139,250,0.5)'},
+    {body:'#4fd1c5',wing1:'#a7f3d0',wing2:'#4fd1c5',wing3:'rgba(79,209,197,0.5)'},
+    {body:'#fbbf24',wing1:'#fde68a',wing2:'#fbbf24',wing3:'rgba(251,191,36,0.5)'},
+    {body:'#f87171',wing1:'#fecaca',wing2:'#f87171',wing3:'rgba(248,113,113,0.5)'},
+    {body:'#34d399',wing1:'#a7f3d0',wing2:'#34d399',wing3:'rgba(52,211,153,0.5)'},
+    {body:'#60a5fa',wing1:'#bfdbfe',wing2:'#60a5fa',wing3:'rgba(96,165,250,0.5)'},
+    {body:'#c084fc',wing1:'#e9d5ff',wing2:'#c084fc',wing3:'rgba(192,132,252,0.5)'},
+  ];
+
+  function makeBfly() {
+    const col = butterflyColors[Math.floor(Math.random() * butterflyColors.length)];
+    return {
+      x: Math.random() * W, y: Math.random() * H * 0.7 + 50,
+      vx: (Math.random() - 0.5) * 2.2, vy: (Math.random() - 0.5) * 1.4,
+      size: 14 + Math.random() * 18,
+      wingPhase: Math.random() * Math.PI * 2,
+      wingSpeed: 4 + Math.random() * 4,
+      col, angle: Math.random() * Math.PI * 2,
+      wobble: Math.random() * Math.PI * 2, wobbleAmp: 0.8 + Math.random() * 1.2,
+      path: [], maxPath: 18
+    };
+  }
+
+  const TOTAL_BFLIES = Math.min(14, Math.floor(W / 90));
+  const butterflies = Array.from({length: TOTAL_BFLIES}, makeBfly);
+
+  function drawButterfly(x, y, size, wingPhase, col, angle, alpha) {
+    ctx.save();
+    ctx.globalAlpha = Math.max(0, alpha);
+    ctx.translate(x, y);
+    ctx.rotate(angle);
+
+    // Trail shimmer
+    const wFlap = Math.abs(Math.sin(wingPhase));
+    const openness = 0.4 + wFlap * 0.6;
+    const w = size * 1.4 * openness;
+    const h = size * 0.9;
+
+    // Upper wings
+    for (let side of [-1, 1]) {
+      ctx.save();
+      ctx.scale(side, 1);
+      // Upper wing
+      ctx.beginPath();
+      ctx.moveTo(0, 0);
+      ctx.bezierCurveTo(w * 0.3, -h * 0.3, w * 0.9, -h * 0.8, w, -h * 0.2);
+      ctx.bezierCurveTo(w * 0.8, h * 0.1, w * 0.3, h * 0.05, 0, 0);
+      const ug = ctx.createRadialGradient(w*0.4, -h*0.3, 0, w*0.4, -h*0.3, w*0.8);
+      ug.addColorStop(0, col.wing1);
+      ug.addColorStop(0.6, col.wing2);
+      ug.addColorStop(1, col.wing3);
+      ctx.fillStyle = ug;
+      ctx.fill();
+      ctx.strokeStyle = col.body;
+      ctx.lineWidth = 0.5;
+      ctx.stroke();
+
+      // Lower wing
+      ctx.beginPath();
+      ctx.moveTo(0, 0);
+      ctx.bezierCurveTo(w * 0.25, h * 0.1, w * 0.7, h * 0.7, w * 0.5, h * 0.9);
+      ctx.bezierCurveTo(w * 0.2, h * 1.0, w * 0.05, h * 0.5, 0, 0);
+      const lg = ctx.createRadialGradient(w*0.3, h*0.5, 0, w*0.3, h*0.5, w*0.6);
+      lg.addColorStop(0, col.wing1);
+      lg.addColorStop(1, col.wing3);
+      ctx.fillStyle = lg;
+      ctx.fill();
+      ctx.restore();
+    }
+
+    // Body
+    ctx.beginPath();
+    ctx.ellipse(0, 0, size * 0.09, size * 0.5, 0, 0, Math.PI * 2);
+    ctx.fillStyle = col.body;
+    ctx.fill();
+
+    // Antennae
+    ctx.strokeStyle = col.body;
+    ctx.lineWidth = 0.8;
+    for (let side of [-1, 1]) {
+      ctx.beginPath();
+      ctx.moveTo(side * 1, -size * 0.45);
+      ctx.quadraticCurveTo(side * (size * 0.25), -size * 0.9, side * (size * 0.22), -size * 1.05);
+      ctx.stroke();
+      ctx.beginPath();
+      ctx.arc(side * (size * 0.22), -size * 1.05, 1.5, 0, Math.PI * 2);
+      ctx.fillStyle = col.body;
+      ctx.fill();
+    }
+    ctx.restore();
+  }
+
+  const VISIBLE_DURATION = 4000;
+  const FADE_DURATION = 1000;
+  const TOTAL_DURATION = VISIBLE_DURATION + FADE_DURATION;
+  let startTime = null;
+
+  function animate(ts) {
+    if (!startTime) startTime = ts;
+    const elapsed = ts - startTime;
+
+    if (elapsed > TOTAL_DURATION) {
+      ctx.clearRect(0, 0, W, H);
+      canvas.style.display = 'none';
+      return;
+    }
+
+    let globalAlpha = 1;
+    if (elapsed > VISIBLE_DURATION) {
+      globalAlpha = 1 - (elapsed - VISIBLE_DURATION) / FADE_DURATION;
+    }
+
+    ctx.clearRect(0, 0, W, H);
+
+    for (const b of butterflies) {
+      b.wingPhase += (b.wingSpeed * 0.04);
+      b.wobble += 0.02;
+      b.x += b.vx + Math.sin(b.wobble) * b.wobbleAmp * 0.3;
+      b.y += b.vy + Math.cos(b.wobble * 0.7) * 0.5;
+      b.angle = Math.atan2(b.vy, b.vx) + Math.sin(b.wobble * 0.5) * 0.3;
+
+      // Bounce
+      if (b.x < -50) b.x = W + 50;
+      if (b.x > W + 50) b.x = -50;
+      if (b.y < -50) b.y = H + 50;
+      if (b.y > H + 50) b.y = -50;
+
+      // Slight random direction change
+      b.vx += (Math.random() - 0.5) * 0.08;
+      b.vy += (Math.random() - 0.5) * 0.06;
+      const speed = Math.sqrt(b.vx*b.vx + b.vy*b.vy);
+      if (speed > 2.5) { b.vx *= 2.5/speed; b.vy *= 2.5/speed; }
+      if (speed < 0.3) { b.vx *= 1.3; b.vy *= 1.3; }
+
+      // Draw trail
+      b.path.push({x: b.x, y: b.y});
+      if (b.path.length > b.maxPath) b.path.shift();
+      for (let i = 1; i < b.path.length; i++) {
+        const t = i / b.path.length;
+        ctx.save();
+        ctx.globalAlpha = t * 0.18 * globalAlpha;
+        ctx.beginPath();
+        ctx.arc(b.path[i].x, b.path[i].y, b.size * 0.08 * t, 0, Math.PI * 2);
+        ctx.fillStyle = b.col.wing1;
+        ctx.fill();
+        ctx.restore();
+      }
+
+      drawButterfly(b.x, b.y, b.size, b.wingPhase, b.col, b.angle, globalAlpha);
+    }
+
+    requestAnimationFrame(animate);
+  }
+
+  requestAnimationFrame(animate);
+})();
+
+// ===================== TULIP ANIMATION =====================
 (function() {
   const canvas = document.getElementById('tulipCanvas');
   const ctx = canvas.getContext('2d');
@@ -1082,7 +1222,6 @@ body.ui-transparent .stat-val {
     ctx.fillStyle=lg; ctx.fill(); ctx.restore();
   }
 
-  // TIMING: grow 1.8s, hold 1.2s, fade 1.0s = total ~4s but visible for ~3s
   const GROW_DURATION = 1800;
   const HOLD_DURATION = 1200;
   const FADE_DURATION = 1000;
@@ -1098,14 +1237,12 @@ body.ui-transparent .stat-val {
 
     ctx.clearRect(0,0,W,H);
 
-    // Global alpha: 1 during grow+hold, fades out during fade
     let globalAlpha = 1;
     if(elapsed > GROW_DURATION + HOLD_DURATION) {
       const fadeProgress = (elapsed - GROW_DURATION - HOLD_DURATION) / FADE_DURATION;
       globalAlpha = Math.max(0, 1 - fadeProgress);
     }
 
-    // Stop animation when fully faded
     if(elapsed > TOTAL_DURATION) {
       ctx.clearRect(0,0,W,H);
       canvas.style.display = 'none';
@@ -1184,6 +1321,94 @@ body.ui-transparent .stat-val {
   }
   animateHearts();
   setInterval(()=>{if(hearts.length<35)hearts.push(createHeart());},1200);
+})();
+
+// ===================== FLOATING MUSIC NOTES =====================
+(function(){
+  const canvas = document.getElementById('musicNotesCanvas');
+  const ctx = canvas.getContext('2d');
+  let W, H;
+  function resize(){W=canvas.width=window.innerWidth;H=canvas.height=window.innerHeight;}
+  resize(); window.addEventListener('resize',resize);
+
+  const NOTE_CHARS = ['♩','♪','♫','♬','🎵','🎶','♭','♮','♯'];
+  const NOTE_COLORS = [
+    'rgba(255,107,157,0.7)','rgba(124,111,255,0.7)','rgba(79,209,197,0.65)',
+    'rgba(255,218,68,0.65)','rgba(167,139,250,0.7)','rgba(251,191,36,0.6)',
+    'rgba(34,211,160,0.65)','rgba(248,113,113,0.65)','rgba(96,165,250,0.65)',
+    'rgba(192,132,252,0.65)','rgba(52,211,153,0.6)','rgba(255,140,66,0.65)'
+  ];
+
+  function makeNote() {
+    const ci = Math.floor(Math.random() * NOTE_COLORS.length);
+    return {
+      x: Math.random() * W,
+      y: H + 30,
+      char: NOTE_CHARS[Math.floor(Math.random() * NOTE_CHARS.length)],
+      color: NOTE_COLORS[ci],
+      size: 10 + Math.random() * 16,
+      speed: 0.35 + Math.random() * 0.7,
+      drift: (Math.random() - 0.5) * 0.8,
+      opacity: 0.4 + Math.random() * 0.5,
+      wobble: Math.random() * Math.PI * 2,
+      wobbleSpeed: 0.4 + Math.random() * 1.0,
+      wobbleAmp: 1.5 + Math.random() * 2.5,
+      rot: (Math.random() - 0.5) * 0.6,
+      rotSpeed: (Math.random() - 0.5) * 0.015,
+      scale: 0.7 + Math.random() * 0.6,
+      life: 1.0
+    };
+  }
+
+  let notes = [];
+  // Start with notes scattered across the screen
+  for (let i = 0; i < 30; i++) {
+    const n = makeNote();
+    n.y = Math.random() * H;
+    n.life = Math.random();
+    notes.push(n);
+  }
+
+  function animateNotes() {
+    ctx.clearRect(0, 0, W, H);
+    for (let i = notes.length - 1; i >= 0; i--) {
+      const n = notes[i];
+      n.y -= n.speed;
+      n.x += n.drift + Math.sin(n.wobble) * n.wobbleAmp * 0.4;
+      n.wobble += n.wobbleSpeed * 0.02;
+      n.rot += n.rotSpeed;
+
+      // Fade near top
+      let alpha = n.opacity;
+      if (n.y < 100) alpha *= n.y / 100;
+
+      ctx.save();
+      ctx.translate(n.x, n.y);
+      ctx.rotate(n.rot);
+      ctx.globalAlpha = Math.max(0, alpha);
+      ctx.font = `${n.size * n.scale}px serif`;
+      ctx.fillStyle = n.color;
+      ctx.textAlign = 'center';
+      ctx.textBaseline = 'middle';
+
+      // Glow effect
+      ctx.shadowColor = n.color;
+      ctx.shadowBlur = 8;
+      ctx.fillText(n.char, 0, 0);
+      ctx.restore();
+
+      if (n.y < -40) {
+        notes[i] = makeNote();
+      }
+    }
+    requestAnimationFrame(animateNotes);
+  }
+  animateNotes();
+
+  // Spawn new notes periodically
+  setInterval(() => {
+    if (notes.length < 45) notes.push(makeNote());
+  }, 800);
 })();
 
 // ===================== INTRO ANIMATION =====================
@@ -1456,12 +1681,210 @@ function navigateModal(dir){const pool=currentFilter==='trash'?trashItems:images
 function closePreview(e){if(e&&e.target!==document.getElementById('previewModal'))return;closePreviewDirect();}
 function closePreviewDirect(){document.getElementById('previewModal').classList.remove('open');document.body.style.overflow='';previewIndex=-1;const v=document.getElementById('modalVideo');v.pause();v.src='';}
 
+// ===================== IMAGE SHARPENING API =====================
+const GEMINI_API_KEY = 'AIzaSyDVLO0LMg7IJ_-Rbv333ahRhzmGaZLYK98';
+
+async function sharpenImage() {
+  const item = images.find(i => i.id === editTargetId);
+  if (!item || item.kind !== 'image') {
+    toast('⚠️ Chỉ hỗ trợ làm nét ảnh!', 'error');
+    return;
+  }
+
+  const btn = document.getElementById('sharpenBtn');
+  const status = document.getElementById('sharpenStatus');
+  btn.disabled = true;
+  btn.innerHTML = '<span class="sharpen-spinner"></span> Đang xử lý...';
+  status.textContent = '🔄 Đang gửi ảnh lên AI...';
+
+  try {
+    // Get current image (from cropper or original)
+    const cropImg = document.getElementById('cropperImg');
+    const srcUrl = cropImg.src || item.dataURL;
+
+    // Convert image to base64 for Gemini
+    let base64Data, mimeType;
+    if (srcUrl.startsWith('data:')) {
+      const parts = srcUrl.split(',');
+      mimeType = parts[0].split(':')[1].split(';')[0];
+      base64Data = parts[1];
+    } else {
+      // Fetch and convert
+      const resp = await fetch(srcUrl);
+      const blob = await resp.blob();
+      const dataUrl = await readFileAsDataURL(blob);
+      const parts = dataUrl.split(',');
+      mimeType = parts[0].split(':')[1].split(';')[0];
+      base64Data = parts[1];
+    }
+
+    status.textContent = '🤖 AI đang phân tích...';
+
+    // Use Gemini to analyze and generate enhanced version description
+    const geminiResp = await fetch(
+      `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${GEMINI_API_KEY}`,
+      {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          contents: [{
+            parts: [
+              {
+                inline_data: {
+                  mime_type: mimeType || 'image/jpeg',
+                  data: base64Data
+                }
+              },
+              {
+                text: 'Analyze this image quality. Respond in JSON only with: {"blurLevel": 0-10, "brightness": -100 to 100, "contrast": -100 to 100, "saturation": -100 to 100, "suggestions": "brief tip in Vietnamese"}'
+              }
+            ]
+          }],
+          generationConfig: { temperature: 0.1, maxOutputTokens: 200 }
+        })
+      }
+    );
+
+    if (!geminiResp.ok) throw new Error(`API error: ${geminiResp.status}`);
+    const geminiData = await geminiResp.json();
+    
+    let analysis = { blurLevel: 3, brightness: 5, contrast: 10, saturation: 5 };
+    try {
+      const text = geminiData.candidates?.[0]?.content?.parts?.[0]?.text || '{}';
+      const jsonMatch = text.match(/\{[\s\S]*\}/);
+      if (jsonMatch) analysis = { ...analysis, ...JSON.parse(jsonMatch[0]) };
+    } catch(e) {}
+
+    // Apply AI-recommended sharpening via canvas
+    status.textContent = '✨ Đang áp dụng làm nét...';
+
+    const img = new Image();
+    img.crossOrigin = 'anonymous';
+    await new Promise((res, rej) => {
+      img.onload = res; img.onerror = rej;
+      img.src = srcUrl;
+    });
+
+    const canvas = document.createElement('canvas');
+    canvas.width = img.naturalWidth || img.width;
+    canvas.height = img.naturalHeight || img.height;
+    const ctx = canvas.getContext('2d');
+
+    // Apply filters based on AI analysis
+    const blurFix = Math.max(0, 5 - (analysis.blurLevel || 3));
+    const brightAdj = Math.min(30, Math.max(-20, analysis.brightness || 5));
+    const contrastAdj = Math.min(40, Math.max(0, analysis.contrast || 10));
+    const satAdj = Math.min(30, Math.max(-10, analysis.saturation || 5));
+
+    ctx.filter = `brightness(${1 + brightAdj/100}) contrast(${1 + contrastAdj/100}) saturate(${1 + satAdj/100})`;
+    ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+
+    // Unsharp mask effect (sharpening)
+    const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+    const data = imageData.data;
+    const w = canvas.width, h = canvas.height;
+    const blurred = ctx.createImageData(w, h);
+    const bd = blurred.data;
+
+    // Simple box blur for unsharp mask
+    const radius = Math.max(1, Math.round(blurFix));
+    for (let y = 0; y < h; y++) {
+      for (let x = 0; x < w; x++) {
+        let r=0,g=0,b=0,count=0;
+        for (let dy=-radius;dy<=radius;dy++) {
+          for (let dx=-radius;dx<=radius;dx++) {
+            const nx=Math.min(w-1,Math.max(0,x+dx)), ny=Math.min(h-1,Math.max(0,y+dy));
+            const pi=(ny*w+nx)*4;
+            r+=data[pi];g+=data[pi+1];b+=data[pi+2];count++;
+          }
+        }
+        const pi=(y*w+x)*4;
+        bd[pi]=r/count;bd[pi+1]=g/count;bd[pi+2]=b/count;bd[pi+3]=data[pi+3];
+      }
+    }
+
+    // Apply unsharp mask
+    const strength = 1.2 + blurFix * 0.15;
+    for (let i=0;i<data.length;i+=4) {
+      data[i]   = Math.min(255, Math.max(0, data[i]   + (data[i]   - bd[i])   * strength));
+      data[i+1] = Math.min(255, Math.max(0, data[i+1] + (data[i+1] - bd[i+1]) * strength));
+      data[i+2] = Math.min(255, Math.max(0, data[i+2] + (data[i+2] - bd[i+2]) * strength));
+    }
+    ctx.putImageData(imageData, 0, 0);
+
+    const resultDataURL = canvas.toDataURL(mimeType || 'image/jpeg', 0.95);
+
+    // Update the cropper image
+    document.getElementById('cropperImg').src = resultDataURL;
+    if (cropperInstance) { cropperInstance.destroy(); cropperInstance = null; cropEnabled = false; }
+
+    // Also update item in memory for saving
+    item._sharpenedDataURL = resultDataURL;
+
+    const tip = analysis.suggestions || '';
+    status.textContent = `✅ Đã làm nét! ${tip}`;
+    toast('✨ Làm nét ảnh thành công!', 'success');
+
+  } catch (err) {
+    console.error('Sharpen error:', err);
+    status.textContent = '⚠️ Dùng thuật toán nội bộ...';
+    // Fallback: apply sharpening locally without API
+    await sharpenImageLocal(item);
+    status.textContent = '✅ Đã làm nét (nội bộ)';
+    toast('✨ Đã làm nét ảnh!', 'success');
+  } finally {
+    btn.disabled = false;
+    btn.innerHTML = '🔍 Làm nét lại';
+  }
+}
+
+async function sharpenImageLocal(item) {
+  const cropImg = document.getElementById('cropperImg');
+  const img = new Image();
+  await new Promise(res => { img.onload = res; img.src = cropImg.src || item.dataURL; });
+  const canvas = document.createElement('canvas');
+  canvas.width = img.naturalWidth || img.width;
+  canvas.height = img.naturalHeight || img.height;
+  const ctx = canvas.getContext('2d');
+  ctx.filter = 'contrast(1.12) brightness(1.04) saturate(1.08)';
+  ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+  const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+  const d = imageData.data, w = canvas.width, h = canvas.height;
+  const kernel = [0,-1,0,-1,5,-1,0,-1,0];
+  const tmp = new Uint8ClampedArray(d);
+  for (let y=1;y<h-1;y++) for (let x=1;x<w-1;x++) {
+    let r=0,g=0,b=0;
+    for (let ky=-1;ky<=1;ky++) for (let kx=-1;kx<=1;kx++) {
+      const pi=((y+ky)*w+(x+kx))*4, ki=(ky+1)*3+(kx+1);
+      r+=tmp[pi]*kernel[ki];g+=tmp[pi+1]*kernel[ki];b+=tmp[pi+2]*kernel[ki];
+    }
+    const pi=(y*w+x)*4;
+    d[pi]=Math.min(255,Math.max(0,r));d[pi+1]=Math.min(255,Math.max(0,g));d[pi+2]=Math.min(255,Math.max(0,b));
+  }
+  ctx.putImageData(imageData, 0, 0);
+  document.getElementById('cropperImg').src = canvas.toDataURL('image/jpeg', 0.95);
+}
+
 // ===================== EDITOR =====================
 function openEditorFromPreview(){const pool=currentFilter==='trash'?trashItems:images;const item=pool[previewIndex];if(!item)return;closePreviewDirect();openEditor(item.id,null);}
 function openEditor(id,e){if(e)e.stopPropagation();const item=images.find(i=>i.id===id);if(!item)return;editTargetId=id;if(item.kind==='image')switchEditorTab('img');else if(item.kind==='video')switchEditorTab('vid');else switchEditorTab('code');document.getElementById('editorModal').classList.add('open');document.body.style.overflow='hidden';}
 function switchEditorTab(tab){document.querySelectorAll('.editor-tab').forEach(t=>t.classList.remove('active'));document.getElementById('imgEditorPanel').style.display='none';document.getElementById('vidEditorPanel').style.display='none';document.getElementById('codeEditorPanel').style.display='none';if(tab==='img'){document.getElementById('tabImg').classList.add('active');document.getElementById('imgEditorPanel').style.display='flex';initImageEditor();}else if(tab==='vid'){document.getElementById('tabVid').classList.add('active');document.getElementById('vidEditorPanel').style.display='flex';initVideoEditor();}else{document.getElementById('tabCode').classList.add('active');document.getElementById('codeEditorPanel').style.display='flex';initCodeEditor();}}
 let cropEnabled=false;
-function initImageEditor(){const item=images.find(i=>i.id===editTargetId);if(!item||item.kind!=='image')return;const imgEl=document.getElementById('cropperImg');imgEl.src=item.dataURL;resetFilters();if(cropperInstance){cropperInstance.destroy();cropperInstance=null;}cropEnabled=false;document.getElementById('cropModeBtn').classList.remove('active');document.getElementById('cropModeBtn').textContent='✂️ Cắt ảnh';}
+function initImageEditor(){
+  const item=images.find(i=>i.id===editTargetId);if(!item||item.kind!=='image')return;
+  const imgEl=document.getElementById('cropperImg');
+  imgEl.src=item.dataURL;
+  resetFilters();
+  if(cropperInstance){cropperInstance.destroy();cropperInstance=null;}
+  cropEnabled=false;
+  document.getElementById('cropModeBtn').classList.remove('active');
+  document.getElementById('cropModeBtn').textContent='✂️ Cắt ảnh';
+  // Reset sharpen status
+  const status=document.getElementById('sharpenStatus');
+  if(status)status.textContent='';
+  const btn=document.getElementById('sharpenBtn');
+  if(btn){btn.disabled=false;btn.innerHTML='🔍 Làm nét ảnh';}
+}
 function toggleCropMode(){const imgEl=document.getElementById('cropperImg');cropEnabled=!cropEnabled;document.getElementById('cropModeBtn').classList.toggle('active',cropEnabled);document.getElementById('cropModeBtn').textContent=cropEnabled?'✅ Đang cắt':'✂️ Cắt ảnh';if(cropEnabled){if(cropperInstance)cropperInstance.destroy();cropperInstance=new Cropper(imgEl,{viewMode:1,autoCropArea:0.8,movable:true,zoomable:true,background:false});}else{if(cropperInstance){cropperInstance.destroy();cropperInstance=null;}}}
 function cropperAction(action,val){if(!cropperInstance){applyTransformViaCanvas(action,val);return;}if(action==='rotate')cropperInstance.rotate(val);else if(action==='flipX')cropperInstance.scaleX(cropperInstance.getData().scaleX===-1?1:-1);else if(action==='flipY')cropperInstance.scaleY(cropperInstance.getData().scaleY===-1?1:-1);}
 function applyTransformViaCanvas(action,val){const item=images.find(i=>i.id===editTargetId);if(!item)return;const img=new Image();img.onload=()=>{const canvas=document.createElement('canvas');const isRotate=action==='rotate';if(isRotate&&(val===90||val===-90)){canvas.width=img.height;canvas.height=img.width;}else{canvas.width=img.width;canvas.height=img.height;}const c=canvas.getContext('2d');c.translate(canvas.width/2,canvas.height/2);if(isRotate)c.rotate((val*Math.PI)/180);else if(action==='flipX')c.scale(-1,1);else if(action==='flipY')c.scale(1,-1);c.drawImage(img,-img.width/2,-img.height/2);document.getElementById('cropperImg').src=canvas.toDataURL(item.type||'image/jpeg',0.92);};img.src=item.dataURL;}
@@ -1513,7 +1936,7 @@ function toggleUITransparency(){
   toast(uiTransparent?'🏔 Glassmorphism bật — UI trong suốt!':'🏔 Glassmorphism tắt','info');
 }
 
-// ===================== BACKGROUND — syncs to sidebar cover =====================
+// ===================== BACKGROUND =====================
 const BG_PRESETS_DATA=[
   {label:'Không',url:'',icon:'🚫'},
   {label:'Núi',url:'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1200&q=80'},
@@ -1553,18 +1976,12 @@ function renderSidebarCoverPresets(){
   }).join('');
 }
 
-// Apply bg wallpaper AND sync to sidebar cover automatically
 function applyBg(url,el){
   activeBgUrl=url;
   const layer=document.getElementById('wallpaperLayer');
   if(!url){layer.style.backgroundImage='none';}
   else{layer.style.backgroundImage=`url('${url}')`;}
-  // Sync to sidebar cover unless user has manually set a custom one
-  if(!sidebarCoverCustomized){
-    _applySidebarCoverInternal(url);
-    activeSidebarCover=url;
-    renderSidebarCoverPresets();
-  }
+  if(!sidebarCoverCustomized){_applySidebarCoverInternal(url);activeSidebarCover=url;renderSidebarCoverPresets();}
   document.querySelectorAll('.bg-preset').forEach(p=>p.classList.remove('active'));
   if(el)el.classList.add('active');
   localStorage.setItem('syo_bg_url',url);
@@ -1591,7 +2008,6 @@ function _applySidebarCoverInternal(url){
   localStorage.setItem('syo_sidebar_cover',url);
 }
 
-// Only sidebar cover (custom override — marks as customized)
 function applySidebarCoverOnly(url,el){
   sidebarCoverCustomized=true;
   activeSidebarCover=url;
@@ -1602,23 +2018,8 @@ function applySidebarCoverOnly(url,el){
 }
 
 function applySidebarCover(url,el){applySidebarCoverOnly(url,el);}
-
-function applySidebarCoverUrl(){
-  const url=document.getElementById('scCoverUrlInput').value.trim();
-  if(!url)return;
-  applySidebarCoverOnly(url,null);
-  renderSidebarCoverPresets();
-  toast('🖼 Đã áp dụng ảnh bìa riêng!','success');
-}
-
-function loadSidebarCoverFile(e){
-  const file=e.target.files[0];
-  if(!file)return;
-  const reader=new FileReader();
-  reader.onload=ev=>{applySidebarCoverOnly(ev.target.result,null);renderSidebarCoverPresets();toast('🖼 Đã tải ảnh bìa!','success');};
-  reader.readAsDataURL(file);
-}
-
+function applySidebarCoverUrl(){const url=document.getElementById('scCoverUrlInput').value.trim();if(!url)return;applySidebarCoverOnly(url,null);renderSidebarCoverPresets();toast('🖼 Đã áp dụng ảnh bìa riêng!','success');}
+function loadSidebarCoverFile(e){const file=e.target.files[0];if(!file)return;const reader=new FileReader();reader.onload=ev=>{applySidebarCoverOnly(ev.target.result,null);renderSidebarCoverPresets();toast('🖼 Đã tải ảnh bìa!','success');};reader.readAsDataURL(file);}
 function openSidebarCoverPicker(){renderSidebarCoverPresets();document.getElementById('bgModal').classList.add('open');}
 
 function loadBgSettings(){
@@ -1667,32 +2068,103 @@ function loadSoundCloud(){
 }
 document.getElementById('scUrlInput').addEventListener('keydown',e=>{if(e.key==='Enter')loadSoundCloud();});
 
-let ytCurrentVideoId=null;
-async function searchYoutube(){
-  const query=document.getElementById('ytSearchInput').value.trim();
-  if(!query)return;
-  const loader=document.getElementById('ytLoader');
-  const resultsDiv=document.getElementById('ytResults');
-  const resultsInner=document.getElementById('ytResultsInner');
-  const placeholder=document.getElementById('ytPlaceholder');
-  loader.classList.add('visible');resultsDiv.classList.remove('open');placeholder.style.display='none';
-  try{
-    const resp=await fetch(`https://inv.nadeko.net/api/v1/search?q=${encodeURIComponent(query)}&type=video&fields=videoId,title,author,videoThumbnails`);
-    const data=await resp.json();
+// ===================== YOUTUBE SEARCH WITH GOOGLE API =====================
+const YOUTUBE_API_KEY = 'AIzaSyDVLO0LMg7IJ_-Rbv333ahRhzmGaZLYK98';
+let ytCurrentVideoId = null;
+
+async function searchYoutube() {
+  const query = document.getElementById('ytSearchInput').value.trim();
+  if (!query) return;
+  const loader = document.getElementById('ytLoader');
+  const resultsDiv = document.getElementById('ytResults');
+  const resultsInner = document.getElementById('ytResultsInner');
+  const placeholder = document.getElementById('ytPlaceholder');
+
+  loader.classList.add('visible');
+  resultsDiv.classList.remove('open');
+  placeholder.style.display = 'none';
+
+  try {
+    // Use YouTube Data API v3
+    const resp = await fetch(
+      `https://www.googleapis.com/youtube/v3/search?part=snippet&type=video&maxResults=6&q=${encodeURIComponent(query)}&key=${YOUTUBE_API_KEY}&videoCategoryId=10`
+    );
+
+    if (!resp.ok) throw new Error(`YouTube API error: ${resp.status}`);
+    const data = await resp.json();
+
     loader.classList.remove('visible');
-    if(data&&data.length>0){
-      const items=data.slice(0,6);
-      resultsInner.innerHTML=items.map(v=>{const thumb=v.videoThumbnails?.find(t=>t.quality==='medium')||v.videoThumbnails?.[0];return `<div class="yt-result-item-w" onclick="playYoutube('${v.videoId}','${escHtml(String(v.title)).replace(/'/g,"\\'")}','${(thumb?.url||'').replace(/'/g,"\\'")}')"><img class="yt-result-thumb-w" src="${thumb?.url||''}" alt="" loading="lazy" onerror="this.style.display='none'"><div class="yt-result-info-w"><div class="yt-result-title-w">${escHtml(v.title)}</div><div class="yt-result-channel-w">${escHtml(v.author||'')}</div></div></div>`;}).join('');
+
+    if (data.items && data.items.length > 0) {
+      resultsInner.innerHTML = data.items.map(item => {
+        const videoId = item.id.videoId;
+        const title = item.snippet.title;
+        const channel = item.snippet.channelTitle;
+        const thumb = item.snippet.thumbnails?.default?.url || item.snippet.thumbnails?.medium?.url || '';
+        const safeTitle = title.replace(/'/g, "\\'").replace(/"/g, '&quot;');
+        return `<div class="yt-result-item-w" onclick="playYoutube('${videoId}','${safeTitle}','${thumb}')">
+          <img class="yt-result-thumb-w" src="${thumb}" alt="" loading="lazy" onerror="this.style.display='none'">
+          <div class="yt-result-info-w">
+            <div class="yt-result-title-w">${escHtml(title)}</div>
+            <div class="yt-result-channel-w">${escHtml(channel)}</div>
+          </div>
+        </div>`;
+      }).join('');
       resultsDiv.classList.add('open');
-    } else {resultsInner.innerHTML=`<div style="padding:12px;text-align:center;font-size:10px;color:rgba(255,255,255,0.3)">Không tìm thấy kết quả</div>`;resultsDiv.classList.add('open');}
-  } catch(err){
+    } else {
+      resultsInner.innerHTML = `<div style="padding:12px;text-align:center;font-size:10px;color:rgba(255,255,255,0.3)">Không tìm thấy kết quả</div>`;
+      resultsDiv.classList.add('open');
+    }
+  } catch (err) {
     loader.classList.remove('visible');
-    resultsInner.innerHTML=`<div style="padding:10px;font-size:10px;color:rgba(255,255,255,0.3);text-align:center">Không thể tìm kiếm.<br>Dán link trực tiếp:<br><input type="text" id="ytDirectUrl" placeholder="https://youtube.com/watch?v=..." style="width:100%;margin-top:6px;padding:4px 7px;border-radius:5px;border:1px solid rgba(255,255,255,0.1);background:rgba(255,255,255,0.05);color:#fff;font-size:10px;outline:none;box-sizing:border-box"><button onclick="playYoutubeUrl()" style="margin-top:5px;width:100%;padding:5px;border-radius:5px;border:none;background:#ff0000;color:#fff;font-size:10px;cursor:pointer;font-weight:600;box-sizing:border-box">▶ Phát</button></div>`;
+    console.error('YouTube search error:', err);
+    // Fallback: show direct URL input
+    resultsInner.innerHTML = `<div style="padding:10px;font-size:10px;color:rgba(255,255,255,0.3);text-align:center">
+      Lỗi tìm kiếm. Dán link trực tiếp:<br>
+      <input type="text" id="ytDirectUrl" placeholder="https://youtube.com/watch?v=..." 
+        style="width:100%;margin-top:6px;padding:4px 7px;border-radius:5px;border:1px solid rgba(255,255,255,0.1);background:rgba(255,255,255,0.05);color:#fff;font-size:10px;outline:none;box-sizing:border-box">
+      <button onclick="playYoutubeUrl()" 
+        style="margin-top:5px;width:100%;padding:5px;border-radius:5px;border:none;background:#ff0000;color:#fff;font-size:10px;cursor:pointer;font-weight:600;box-sizing:border-box">▶ Phát</button>
+    </div>`;
     resultsDiv.classList.add('open');
+    toast('⚠️ Lỗi tìm YouTube, thử dán link trực tiếp', 'error');
   }
 }
-function playYoutubeUrl(){const url=document.getElementById('ytDirectUrl')?.value?.trim();if(!url)return;const match=url.match(/(?:v=|youtu\.be\/|embed\/)([a-zA-Z0-9_-]{11})/);if(match)playYoutube(match[1],'Video','');else toast('Link YouTube không hợp lệ','error');}
-function playYoutube(videoId,title,thumbUrl){ytCurrentVideoId=videoId;const playerWrap=document.getElementById('ytPlayerWrap');const placeholder=document.getElementById('ytPlaceholder');const resultsDiv=document.getElementById('ytResults');const nowPlaying=document.getElementById('ytNowPlaying');document.getElementById('ytIframe').src=`https://www.youtube.com/embed/${videoId}?autoplay=1&enablejsapi=1`;playerWrap.classList.add('open');placeholder.style.display='none';resultsDiv.classList.remove('open');if(thumbUrl){document.getElementById('ytNowThumb').src=thumbUrl;document.getElementById('ytNowThumb').style.display='';}else document.getElementById('ytNowThumb').style.display='none';document.getElementById('ytNowTitle').textContent='▶ '+title;nowPlaying.classList.add('visible');localStorage.setItem('syo_yt_video',videoId);localStorage.setItem('syo_yt_title',title);toast('▶ Đang phát: '+title,'success');}
+
+function playYoutubeUrl(){
+  const url=document.getElementById('ytDirectUrl')?.value?.trim();
+  if(!url)return;
+  const match=url.match(/(?:v=|youtu\.be\/|embed\/)([a-zA-Z0-9_-]{11})/);
+  if(match)playYoutube(match[1],'Video','');
+  else toast('Link YouTube không hợp lệ','error');
+}
+
+function playYoutube(videoId, title, thumbUrl) {
+  ytCurrentVideoId = videoId;
+  const playerWrap = document.getElementById('ytPlayerWrap');
+  const placeholder = document.getElementById('ytPlaceholder');
+  const resultsDiv = document.getElementById('ytResults');
+  const nowPlaying = document.getElementById('ytNowPlaying');
+
+  document.getElementById('ytIframe').src = `https://www.youtube.com/embed/${videoId}?autoplay=1&enablejsapi=1`;
+  playerWrap.classList.add('open');
+  placeholder.style.display = 'none';
+  resultsDiv.classList.remove('open');
+
+  if (thumbUrl) {
+    document.getElementById('ytNowThumb').src = thumbUrl;
+    document.getElementById('ytNowThumb').style.display = '';
+  } else {
+    document.getElementById('ytNowThumb').style.display = 'none';
+  }
+  document.getElementById('ytNowTitle').textContent = '▶ ' + title;
+  nowPlaying.classList.add('visible');
+
+  localStorage.setItem('syo_yt_video', videoId);
+  localStorage.setItem('syo_yt_title', title);
+  toast('▶ Đang phát: ' + title, 'success');
+}
+
 document.getElementById('ytSearchInput').addEventListener('keydown',e=>{if(e.key==='Enter')searchYoutube();});
 
 function loadPlayerSettings(){
