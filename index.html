@@ -6,10 +6,8 @@
 <title>sPhoto</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&display=swap" rel="stylesheet">
-<!-- Cropper.js for image editing -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.13/cropper.min.css">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.13/cropper.min.js"></script>
-<!-- CodeMirror for code editing -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/codemirror.min.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/theme/dracula.min.css">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/codemirror.min.js"></script>
@@ -76,135 +74,97 @@ body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--t
 body::before { content: ''; position: fixed; inset: 0; z-index: 0; pointer-events: none; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.028'/%3E%3C/svg%3E"); opacity: 0.5; }
 
 /* ===== TULIP CANVAS ===== */
-#tulipCanvas {
-  position: fixed;
-  inset: 0;
-  z-index: 9998;
-  pointer-events: none;
-  width: 100%;
-  height: 100%;
-}
+#tulipCanvas { position: fixed; inset: 0; z-index: 9998; pointer-events: none; width: 100%; height: 100%; }
 
 /* ===== INTRO SCREEN ===== */
-#introScreen {
-  position: fixed; inset: 0; z-index: 9999;
-  display: flex; align-items: center; justify-content: center;
-  background: var(--bg);
-  pointer-events: none;
-}
-#introScreen::before {
-  content: '';
-  position: absolute; inset: 0;
-  background: radial-gradient(ellipse at 40% 50%, rgba(124,111,255,0.13) 0%, transparent 65%),
-              radial-gradient(ellipse at 70% 60%, rgba(79,209,197,0.07) 0%, transparent 50%);
-}
-.intro-content {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 0;
-  position: relative;
-  z-index: 1;
-}
-.intro-text {
-  font-family: 'Playfair Display', serif;
-  font-size: clamp(22px, 4vw, 42px);
-  font-weight: 600;
-  font-style: italic;
-  color: var(--text);
-  text-align: center;
-  opacity: 0;
-  letter-spacing: 0.02em;
-  line-height: 1.4;
-  padding: 0 24px;
-  animation: introFadeInOut 3.2s cubic-bezier(0.4,0,0.2,1) 0.2s forwards;
-  text-shadow: 0 0 40px rgba(184,159,255,0.25);
-}
-.intro-text span {
-  display: block;
-  font-family: 'Playfair Display', serif;
-  font-size: clamp(12px, 1.8vw, 18px);
-  font-weight: 400;
-  font-style: normal;
-  color: var(--text2);
-  margin-top: 10px;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-}
-@keyframes introFadeInOut {
-  0%   { opacity: 0; transform: translateY(12px) scale(0.97); }
-  18%  { opacity: 1; transform: translateY(0) scale(1); }
-  72%  { opacity: 1; transform: translateY(0) scale(1); }
-  100% { opacity: 0; transform: translateY(-10px) scale(1.02); }
-}
+#introScreen { position: fixed; inset: 0; z-index: 9999; display: flex; align-items: center; justify-content: center; background: var(--bg); pointer-events: none; }
+#introScreen::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 40% 50%, rgba(124,111,255,0.13) 0%, transparent 65%), radial-gradient(ellipse at 70% 60%, rgba(79,209,197,0.07) 0%, transparent 50%); }
+.intro-content { display: flex; flex-direction: column; align-items: center; gap: 0; position: relative; z-index: 1; }
+.intro-text { font-family: 'Playfair Display', serif; font-size: clamp(22px, 4vw, 42px); font-weight: 600; font-style: italic; color: var(--text); text-align: center; opacity: 0; letter-spacing: 0.02em; line-height: 1.4; padding: 0 24px; animation: introFadeInOut 3.2s cubic-bezier(0.4,0,0.2,1) 0.2s forwards; text-shadow: 0 0 40px rgba(184,159,255,0.25); }
+.intro-text span { display: block; font-family: 'Playfair Display', serif; font-size: clamp(12px, 1.8vw, 18px); font-weight: 400; font-style: normal; color: var(--text2); margin-top: 10px; letter-spacing: 0.12em; text-transform: uppercase; }
+@keyframes introFadeInOut { 0% { opacity: 0; transform: translateY(12px) scale(0.97); } 18% { opacity: 1; transform: translateY(0) scale(1); } 72% { opacity: 1; transform: translateY(0) scale(1); } 100% { opacity: 0; transform: translateY(-10px) scale(1.02); } }
 #introScreen.done { animation: introBgFade 0.5s ease forwards; }
 @keyframes introBgFade { to { opacity: 0; } }
 
 /* ===== UI MOUNTAIN BUTTON ===== */
-#uiMountainBtn {
-  position: fixed;
-  bottom: 22px;
-  left: 50%;
-  transform: translateX(-50%);
-  z-index: 400;
-  display: flex;
-  align-items: center;
-  gap: 7px;
-  padding: 8px 18px 8px 14px;
-  border-radius: 99px;
-  border: 1px solid var(--border2);
-  background: rgba(255,255,255,0.06);
-  backdrop-filter: blur(14px) saturate(160%);
-  color: var(--text2);
-  font-family: 'DM Sans', sans-serif;
-  font-size: 12px;
-  font-weight: 600;
-  cursor: pointer;
-  transition: all 0.3s cubic-bezier(0.4,0,0.2,1);
-  letter-spacing: 0.05em;
-  box-shadow: 0 4px 24px rgba(0,0,0,0.22), inset 0 1px 0 rgba(255,255,255,0.07);
-  user-select: none;
-  white-space: nowrap;
-}
-#uiMountainBtn:hover {
-  background: rgba(255,255,255,0.12);
-  border-color: var(--border3);
-  color: var(--text);
-  box-shadow: 0 8px 32px rgba(0,0,0,0.3), inset 0 1px 0 rgba(255,255,255,0.12);
-  transform: translateX(-50%) translateY(-2px);
-}
-#uiMountainBtn.active {
-  background: rgba(124,111,255,0.1);
-  border-color: rgba(124,111,255,0.3);
-  color: var(--accent2);
-  box-shadow: 0 4px 20px var(--glow);
-}
-#uiMountainBtn .mountain-icon {
-  font-size: 15px;
-  line-height: 1;
+#uiMountainBtn { position: fixed; bottom: 22px; left: 50%; transform: translateX(-50%); z-index: 400; display: flex; align-items: center; gap: 7px; padding: 8px 18px 8px 14px; border-radius: 99px; border: 1px solid var(--border2); background: rgba(255,255,255,0.06); backdrop-filter: blur(14px) saturate(160%); color: var(--text2); font-family: 'DM Sans', sans-serif; font-size: 12px; font-weight: 600; cursor: pointer; transition: all 0.3s cubic-bezier(0.4,0,0.2,1); letter-spacing: 0.05em; box-shadow: 0 4px 24px rgba(0,0,0,0.22), inset 0 1px 0 rgba(255,255,255,0.07); user-select: none; white-space: nowrap; }
+#uiMountainBtn:hover { background: rgba(255,255,255,0.12); border-color: var(--border3); color: var(--text); box-shadow: 0 8px 32px rgba(0,0,0,0.3), inset 0 1px 0 rgba(255,255,255,0.12); transform: translateX(-50%) translateY(-2px); }
+#uiMountainBtn.active { background: rgba(124,111,255,0.18); border-color: rgba(124,111,255,0.4); color: var(--accent2); box-shadow: 0 4px 20px var(--glow); }
+#uiMountainBtn .mountain-icon { font-size: 15px; line-height: 1; }
+
+/* ===== GLASSMORPHISM UI TRANSPARENT MODE ===== */
+/* Animated color orbs background */
+.glass-orbs { position: fixed; inset: 0; z-index: 1; pointer-events: none; opacity: 0; transition: opacity 0.8s ease; overflow: hidden; }
+.glass-orbs.active { opacity: 1; }
+.glass-orb { position: absolute; border-radius: 50%; filter: blur(80px); animation: orbFloat linear infinite; }
+.glass-orb:nth-child(1) { width: 600px; height: 600px; background: radial-gradient(circle, rgba(124,111,255,0.35) 0%, transparent 70%); top: -100px; left: -100px; animation-duration: 18s; animation-delay: 0s; }
+.glass-orb:nth-child(2) { width: 500px; height: 500px; background: radial-gradient(circle, rgba(79,209,197,0.28) 0%, transparent 70%); top: 20%; right: -80px; animation-duration: 22s; animation-delay: -6s; }
+.glass-orb:nth-child(3) { width: 700px; height: 700px; background: radial-gradient(circle, rgba(255,107,157,0.22) 0%, transparent 70%); bottom: -150px; left: 30%; animation-duration: 25s; animation-delay: -12s; }
+.glass-orb:nth-child(4) { width: 400px; height: 400px; background: radial-gradient(circle, rgba(251,191,36,0.2) 0%, transparent 70%); top: 40%; left: 20%; animation-duration: 20s; animation-delay: -3s; }
+.glass-orb:nth-child(5) { width: 450px; height: 450px; background: radial-gradient(circle, rgba(167,139,250,0.25) 0%, transparent 70%); bottom: 10%; right: 20%; animation-duration: 16s; animation-delay: -9s; }
+@keyframes orbFloat {
+  0% { transform: translate(0, 0) scale(1); }
+  25% { transform: translate(60px, -40px) scale(1.05); }
+  50% { transform: translate(30px, 60px) scale(0.95); }
+  75% { transform: translate(-40px, 20px) scale(1.08); }
+  100% { transform: translate(0, 0) scale(1); }
 }
 
-/* UI Transparent mode */
-body.ui-transparent .navbar { opacity: 0.12 !important; transition: opacity 0.5s ease !important; }
-body.ui-transparent .navbar:hover { opacity: 0.85 !important; }
-body.ui-transparent .sidebar { opacity: 0.1 !important; transition: opacity 0.5s ease !important; }
-body.ui-transparent .sidebar:hover { opacity: 0.85 !important; }
-body.ui-transparent .stats-row { opacity: 0.08 !important; transition: opacity 0.5s ease !important; }
-body.ui-transparent .stats-row:hover { opacity: 0.7 !important; }
-body.ui-transparent .page-header { opacity: 0.1 !important; transition: opacity 0.5s ease !important; }
-body.ui-transparent .page-header:hover { opacity: 0.8 !important; }
-body.ui-transparent .upload-zone { opacity: 0.07 !important; transition: opacity 0.5s ease !important; }
-body.ui-transparent .upload-zone:hover { opacity: 0.6 !important; }
-body.ui-transparent .filter-row { opacity: 0.08 !important; transition: opacity 0.5s ease !important; }
-body.ui-transparent .filter-row:hover { opacity: 0.7 !important; }
-body.ui-transparent .gallery-grid .image-card { opacity: 0.65; transition: opacity 0.5s ease; }
-body.ui-transparent .gallery-grid .image-card:hover { opacity: 1 !important; transform: translateY(-3px) scale(1.02); }
-body.ui-transparent .bulk-bar { opacity: 0.15 !important; }
-body.ui-transparent .bulk-bar:hover { opacity: 0.9 !important; }
-body.ui-transparent #uiMountainBtn { opacity: 0.4; }
-body.ui-transparent #uiMountainBtn:hover { opacity: 1; }
-body.ui-transparent .sc-widget { opacity: 0.12; transition: opacity 0.5s ease; }
-body.ui-transparent .sc-widget:hover { opacity: 0.9; }
+body.ui-transparent .navbar {
+  background: rgba(255,255,255,0.08) !important;
+  backdrop-filter: blur(28px) saturate(200%) !important;
+  border-bottom: 1px solid rgba(255,255,255,0.15) !important;
+  box-shadow: 0 4px 32px rgba(0,0,0,0.15), inset 0 1px 0 rgba(255,255,255,0.1) !important;
+  transition: all 0.5s ease !important;
+}
+body.ui-transparent .navbar * { font-weight: 700 !important; text-shadow: 0 1px 4px rgba(0,0,0,0.4) !important; }
+body.ui-transparent .sidebar {
+  background: rgba(255,255,255,0.06) !important;
+  backdrop-filter: blur(32px) saturate(180%) !important;
+  border-right: 1px solid rgba(255,255,255,0.12) !important;
+  transition: all 0.5s ease !important;
+}
+body.ui-transparent .sidebar * { font-weight: 600 !important; }
+body.ui-transparent .stat-card {
+  background: rgba(255,255,255,0.07) !important;
+  backdrop-filter: blur(20px) !important;
+  border: 1px solid rgba(255,255,255,0.15) !important;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.12), inset 0 1px 0 rgba(255,255,255,0.1) !important;
+}
+body.ui-transparent .stat-val { font-weight: 800 !important; text-shadow: 0 0 20px currentColor !important; }
+body.ui-transparent .upload-zone {
+  background: rgba(255,255,255,0.06) !important;
+  backdrop-filter: blur(20px) !important;
+  border-color: rgba(255,255,255,0.2) !important;
+}
+body.ui-transparent .filter-row .filter-tag {
+  background: rgba(255,255,255,0.08) !important;
+  backdrop-filter: blur(12px) !important;
+  border-color: rgba(255,255,255,0.15) !important;
+  font-weight: 600 !important;
+}
+body.ui-transparent .gallery-grid .image-card {
+  background: rgba(255,255,255,0.06) !important;
+  backdrop-filter: blur(16px) saturate(180%) !important;
+  border: 1px solid rgba(255,255,255,0.14) !important;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.2), inset 0 1px 0 rgba(255,255,255,0.1) !important;
+  transition: all 0.4s ease !important;
+}
+body.ui-transparent .gallery-grid .image-card:hover {
+  background: rgba(255,255,255,0.12) !important;
+  border-color: rgba(255,255,255,0.28) !important;
+  box-shadow: 0 16px 48px rgba(0,0,0,0.3), inset 0 1px 0 rgba(255,255,255,0.2) !important;
+  transform: translateY(-4px) scale(1.02) !important;
+}
+body.ui-transparent .card-name, body.ui-transparent .card-meta { font-weight: 700 !important; text-shadow: 0 1px 6px rgba(0,0,0,0.8) !important; }
+body.ui-transparent .bulk-bar {
+  background: rgba(255,255,255,0.1) !important;
+  backdrop-filter: blur(24px) !important;
+  border-color: rgba(255,255,255,0.2) !important;
+}
+body.ui-transparent #uiMountainBtn { box-shadow: 0 0 20px rgba(124,111,255,0.4) !important; }
+body.ui-transparent .page-title { font-weight: 800 !important; text-shadow: 0 0 30px rgba(184,159,255,0.4) !important; }
+body.ui-transparent .sort-select { background: rgba(255,255,255,0.1) !important; backdrop-filter: blur(10px) !important; font-weight: 600 !important; }
 
 /* LASSO SELECT */
 .lasso-rect { position: fixed; border: 1.5px solid var(--accent); background: rgba(124,111,255,0.1); border-radius: 4px; pointer-events: none; z-index: 9999; display: none; }
@@ -239,29 +199,11 @@ body.ui-transparent .sc-widget:hover { opacity: 0.9; }
  
 /* SIDEBAR */
 .sidebar { width: var(--sidebar-w); flex-shrink: 0; padding: 0; background: var(--bg2); border-right: 1px solid var(--border); position: sticky; top: var(--nav-h); height: calc(100vh - var(--nav-h)); overflow-y: auto; transition: transform var(--tr), background var(--tr); display: flex; flex-direction: column; }
-
-/* Sidebar Cover */
-.sidebar-cover {
-  width: 100%; height: 110px; flex-shrink: 0;
-  background-image: var(--sidebar-cover, linear-gradient(135deg, #1f2743, #0d0e14));
-  background-size: cover; background-position: center;
-  position: relative; cursor: pointer; overflow: hidden;
-  transition: background-image 0.4s ease;
-}
-.sidebar-cover::after {
-  content: ''; position: absolute; inset: 0;
-  background: linear-gradient(to bottom, transparent 40%, var(--bg2) 100%);
-  pointer-events: none;
-}
-.sidebar-cover-overlay {
-  position: absolute; inset: 0; z-index: 2;
-  display: flex; align-items: center; justify-content: center;
-  opacity: 0; transition: opacity var(--tr);
-  background: rgba(0,0,0,0.4);
-}
+.sidebar-cover { width: 100%; height: 110px; flex-shrink: 0; background-image: var(--sidebar-cover, linear-gradient(135deg, #1f2743, #0d0e14)); background-size: cover; background-position: center; position: relative; cursor: pointer; overflow: hidden; transition: background-image 0.4s ease; }
+.sidebar-cover::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to bottom, transparent 40%, var(--bg2) 100%); pointer-events: none; }
+.sidebar-cover-overlay { position: absolute; inset: 0; z-index: 2; display: flex; align-items: center; justify-content: center; opacity: 0; transition: opacity var(--tr); background: rgba(0,0,0,0.4); }
 .sidebar-cover:hover .sidebar-cover-overlay { opacity: 1; }
 .sidebar-cover-overlay span { font-size: 11px; color: #fff; font-weight: 600; letter-spacing: 0.06em; background: rgba(0,0,0,0.5); padding: 5px 10px; border-radius: 6px; }
-
 .sidebar-inner { padding: 12px 12px 20px; flex: 1; display: flex; flex-direction: column; }
 .sidebar-section { margin-bottom: 24px; }
 .sidebar-label { font-size: 10px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text3); padding: 0 10px; margin-bottom: 6px; }
@@ -412,13 +354,7 @@ body.ui-transparent .sc-widget:hover { opacity: 0.9; }
 .list-view .image-card.is-fav .fav-btn { color: var(--fav); background: rgba(255,107,157,0.1); }
 
 /* FILE TYPE BADGE */
-.file-type-badge {
-  position: absolute; top: 7px; left: 7px;
-  font-size: 9px; font-weight: 700; letter-spacing: 0.08em;
-  padding: 2px 6px; border-radius: 5px;
-  background: rgba(0,0,0,0.65); backdrop-filter: blur(4px);
-  color: #fff; text-transform: uppercase; pointer-events: none;
-}
+.file-type-badge { position: absolute; top: 7px; left: 7px; font-size: 9px; font-weight: 700; letter-spacing: 0.08em; padding: 2px 6px; border-radius: 5px; background: rgba(0,0,0,0.65); backdrop-filter: blur(4px); color: #fff; text-transform: uppercase; pointer-events: none; }
 .file-type-badge.img-jpg { background: rgba(79,209,197,0.75); }
 .file-type-badge.img-png { background: rgba(124,111,255,0.75); }
 .file-type-badge.img-gif { background: rgba(255,107,157,0.75); }
@@ -515,23 +451,14 @@ body.ui-transparent .sc-widget:hover { opacity: 0.9; }
 .rename-pattern-info { font-size: 11.5px; color: var(--text3); margin-top: 6px; margin-bottom: 13px; padding: 9px 12px; background: var(--surface); border-radius: 8px; border: 1px solid var(--border); line-height: 1.6; }
 .rename-pattern-info strong { color: var(--accent2); }
 
-/* ===== IMAGE EDITOR MODAL ===== */
-.editor-modal {
-  background: var(--bg2); border: 1px solid var(--border);
-  border-radius: 18px; width: 100%; max-width: 900px;
-  max-height: 92vh; display: flex; flex-direction: column;
-  transform: scale(0.95); opacity: 0; transition: all 0.28s cubic-bezier(0.4,0,0.2,1);
-  box-shadow: 0 40px 80px rgba(0,0,0,0.55);
-  overflow: hidden;
-}
+/* EDITOR MODAL */
+.editor-modal { background: var(--bg2); border: 1px solid var(--border); border-radius: 18px; width: 100%; max-width: 900px; max-height: 92vh; display: flex; flex-direction: column; transform: scale(0.95); opacity: 0; transition: all 0.28s cubic-bezier(0.4,0,0.2,1); box-shadow: 0 40px 80px rgba(0,0,0,0.55); overflow: hidden; }
 .modal-backdrop.open .editor-modal { transform: scale(1); opacity: 1; }
 .editor-header { display: flex; align-items: center; justify-content: space-between; padding: 12px 16px; border-bottom: 1px solid var(--border); flex-shrink: 0; }
 .editor-tabs { display: flex; gap: 4px; }
 .editor-tab { padding: 6px 14px; border-radius: 8px; border: 1px solid var(--border); background: transparent; color: var(--text2); font-size: 12px; font-weight: 600; cursor: pointer; transition: all var(--tr); font-family: 'DM Sans', sans-serif; }
 .editor-tab.active { background: linear-gradient(135deg, var(--accent), var(--accent2)); border-color: transparent; color: #fff; }
 .editor-body { flex: 1; overflow: hidden; display: flex; flex-direction: column; min-height: 0; }
-
-/* Image Editor */
 .img-editor-wrap { flex: 1; display: flex; flex-direction: column; min-height: 0; }
 .cropper-container-wrap { flex: 1; min-height: 0; background: #000; position: relative; overflow: hidden; max-height: 420px; }
 #cropperImg { max-width: 100%; display: block; }
@@ -543,15 +470,11 @@ body.ui-transparent .sc-widget:hover { opacity: 0.9; }
 .edit-tool-btn.success { color: var(--success); border-color: rgba(34,211,160,0.3); background: rgba(34,211,160,0.08); }
 .edit-tool-btn.success:hover { background: rgba(34,211,160,0.18); }
 .edit-separator { width: 1px; height: 24px; background: var(--border2); margin: 0 2px; }
-
-/* Filter sliders */
 .filter-sliders { display: flex; gap: 10px; padding: 8px 14px; flex-wrap: wrap; border-top: 1px solid var(--border); }
 .filter-slider-row { display: flex; align-items: center; gap: 7px; }
 .filter-slider-row label { font-size: 11px; color: var(--text2); width: 60px; }
 .filter-slider-row input[type=range] { width: 80px; accent-color: var(--accent); }
 .filter-slider-row span { font-size: 11px; color: var(--text3); width: 30px; }
-
-/* Video Editor */
 .vid-editor-wrap { flex: 1; display: flex; flex-direction: column; min-height: 0; padding: 16px; }
 .vid-preview { flex: 1; min-height: 0; display: flex; align-items: center; justify-content: center; background: #000; border-radius: 10px; overflow: hidden; margin-bottom: 12px; }
 #editVideo { max-width: 100%; max-height: 320px; outline: none; }
@@ -562,8 +485,6 @@ body.ui-transparent .sc-widget:hover { opacity: 0.9; }
 .vid-range-wrap input[type=range] { flex: 1; accent-color: var(--accent3); }
 .vid-range-wrap span { font-size: 11px; color: var(--text2); width: 38px; }
 .vid-toolbar { display: flex; gap: 6px; flex-wrap: wrap; }
-
-/* Code Editor */
 .code-editor-wrap { flex: 1; display: flex; flex-direction: column; min-height: 0; }
 .code-editor-header { display: flex; align-items: center; gap: 8px; padding: 8px 14px; border-bottom: 1px solid var(--border); flex-shrink: 0; }
 .code-lang-select { padding: 4px 10px; border-radius: 7px; border: 1px solid var(--border); background: var(--surface); color: var(--text2); font-size: 11.5px; font-family: 'DM Sans', sans-serif; outline: none; cursor: pointer; }
@@ -589,7 +510,6 @@ body.ui-transparent .sc-widget:hover { opacity: 0.9; }
 .bg-url-row .input-field { margin-bottom: 0; flex: 1; }
 .bg-url-btn { padding: 10px 14px; border-radius: 9px; background: var(--accent); color: #fff; border: none; cursor: pointer; font-size: 13px; font-weight: 500; white-space: nowrap; transition: all var(--tr); }
 .bg-url-btn:hover { opacity: 0.85; }
-/* Sidebar cover presets */
 .sidebar-cover-presets { display: grid; grid-template-columns: repeat(4, 1fr); gap: 7px; margin-bottom: 8px; }
 .sc-preset { aspect-ratio: 16/9; border-radius: 7px; cursor: pointer; border: 2px solid var(--border); transition: all var(--tr); overflow: hidden; }
 .sc-preset:hover { border-color: var(--accent2); transform: scale(1.05); }
@@ -613,33 +533,402 @@ body.ui-transparent .sc-widget:hover { opacity: 0.9; }
 .toast.out { animation: slideOut 0.28s ease both; }
 @keyframes slideIn { from { opacity: 0; transform: translateX(18px); } to { opacity: 1; transform: translateX(0); } }
 @keyframes slideOut { from { opacity: 1; transform: translateX(0); } to { opacity: 0; transform: translateX(18px); } }
- 
-/* SOUNDCLOUD WIDGET */
-.sc-widget { position: fixed; bottom: 18px; right: 18px; z-index: 300; width: 250px; background: var(--bg2); border: 1px solid var(--border2); border-radius: 13px; box-shadow: 0 16px 48px rgba(0,0,0,0.5); overflow: hidden; transition: all 0.3s cubic-bezier(0.4,0,0.2,1); transform-origin: bottom right; }
-.sc-widget.collapsed { width: 170px; border-radius: 10px; }
-.sc-widget.hidden-widget { transform: scale(0.85) translateY(10px); opacity: 0; pointer-events: none; }
-.sc-header { display: flex; align-items: center; gap: 7px; padding: 8px 10px; background: linear-gradient(135deg, rgba(255,83,0,0.15), rgba(255,153,0,0.08)); border-bottom: 1px solid var(--border); cursor: pointer; user-select: none; }
-.sc-logo { font-size: 14px; flex-shrink: 0; }
-.sc-title { flex: 1; font-size: 11px; font-weight: 600; color: var(--text); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-.sc-controls { display: flex; gap: 3px; }
-.sc-ctrl-btn { width: 20px; height: 20px; border-radius: 5px; border: none; background: var(--surface2); color: var(--text2); cursor: pointer; font-size: 10px; display: flex; align-items: center; justify-content: center; transition: all var(--tr); }
-.sc-ctrl-btn:hover { background: var(--surface3); color: var(--text); }
-.sc-body { overflow: hidden; transition: max-height 0.3s ease; max-height: 170px; }
-.sc-widget.collapsed .sc-body { max-height: 0; }
-.sc-url-row { display: flex; gap: 5px; padding: 8px 10px; border-bottom: 1px solid var(--border); }
-.sc-url-input { flex: 1; padding: 5px 8px; border-radius: 6px; border: 1px solid var(--border); background: var(--surface); color: var(--text); font-size: 10.5px; font-family: 'DM Sans', sans-serif; outline: none; transition: all var(--tr); }
-.sc-url-input:focus { border-color: #f50; box-shadow: 0 0 0 2px rgba(255,83,0,0.2); }
+
+/* ===== MEDIA PLAYERS (SC + YT) ===== */
+.media-players-container {
+  position: fixed;
+  bottom: 18px;
+  right: 18px;
+  z-index: 300;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  align-items: flex-end;
+}
+
+/* Player widget base */
+.player-widget {
+  background: rgba(13,14,20,0.92);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 14px;
+  box-shadow: 0 16px 48px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.07);
+  overflow: hidden;
+  transition: all 0.3s cubic-bezier(0.4,0,0.2,1);
+  transform-origin: bottom right;
+  cursor: default;
+  user-select: none;
+  backdrop-filter: blur(20px);
+}
+.player-widget.hidden-widget {
+  transform: scale(0.82) translateY(10px);
+  opacity: 0;
+  pointer-events: none;
+}
+.player-widget.collapsed .player-body { max-height: 0 !important; overflow: hidden; }
+
+/* Player header */
+.player-header {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  padding: 8px 10px;
+  cursor: grab;
+  position: relative;
+}
+.player-header:active { cursor: grabbing; }
+.player-logo-btn {
+  width: 26px; height: 26px;
+  border-radius: 7px;
+  border: none;
+  cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 14px;
+  flex-shrink: 0;
+  transition: all 0.2s ease;
+}
+/* SC logo */
+.sc-logo-btn { background: linear-gradient(135deg, #f50, #ff8c00); box-shadow: 0 2px 8px rgba(255,83,0,0.4); }
+.sc-logo-btn:hover { transform: scale(1.08); box-shadow: 0 4px 14px rgba(255,83,0,0.5); }
+/* YT logo */
+.yt-logo-btn { background: linear-gradient(135deg, #ff0000, #cc0000); box-shadow: 0 2px 8px rgba(255,0,0,0.35); }
+.yt-logo-btn:hover { transform: scale(1.08); box-shadow: 0 4px 14px rgba(255,0,0,0.5); }
+.player-logo-btn.playing { animation: logoPulse 1.5s ease infinite; }
+@keyframes logoPulse { 0%,100% { box-shadow: 0 2px 8px rgba(255,83,0,0.4); } 50% { box-shadow: 0 2px 16px rgba(255,83,0,0.8), 0 0 20px rgba(255,83,0,0.3); } }
+.yt-logo-btn.playing { animation: ytLogoPulse 1.5s ease infinite; }
+@keyframes ytLogoPulse { 0%,100% { box-shadow: 0 2px 8px rgba(255,0,0,0.35); } 50% { box-shadow: 0 2px 16px rgba(255,0,0,0.8), 0 0 20px rgba(255,0,0,0.3); } }
+
+.player-title {
+  flex: 1;
+  font-size: 10.5px;
+  font-weight: 600;
+  color: var(--text);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 140px;
+}
+.player-ctrl-btns {
+  display: flex;
+  gap: 3px;
+  flex-shrink: 0;
+}
+.player-ctrl-btn {
+  width: 20px; height: 20px;
+  border-radius: 5px;
+  border: none;
+  background: rgba(255,255,255,0.07);
+  color: var(--text2);
+  cursor: pointer;
+  font-size: 10px;
+  display: flex; align-items: center; justify-content: center;
+  transition: all 0.15s ease;
+}
+.player-ctrl-btn:hover { background: rgba(255,255,255,0.14); color: var(--text); }
+
+/* Player body */
+.player-body {
+  max-height: 240px;
+  transition: max-height 0.3s ease;
+  overflow: hidden;
+}
+
+/* SC specific */
+.sc-url-row {
+  display: flex;
+  gap: 5px;
+  padding: 7px 10px;
+  border-top: 1px solid rgba(255,255,255,0.06);
+}
+.sc-url-input {
+  flex: 1;
+  padding: 5px 8px;
+  border-radius: 6px;
+  border: 1px solid rgba(255,255,255,0.09);
+  background: rgba(255,255,255,0.05);
+  color: var(--text);
+  font-size: 10px;
+  font-family: 'DM Sans', sans-serif;
+  outline: none;
+  transition: all 0.2s;
+  min-width: 0;
+}
+.sc-url-input:focus { border-color: #f50; box-shadow: 0 0 0 2px rgba(255,83,0,0.18); }
 .sc-url-input::placeholder { color: var(--text3); }
-.sc-load-btn { padding: 5px 8px; border-radius: 6px; border: none; background: #f50; color: #fff; font-size: 10px; font-weight: 600; cursor: pointer; transition: all var(--tr); white-space: nowrap; }
+.sc-load-btn {
+  padding: 5px 8px;
+  border-radius: 6px;
+  border: none;
+  background: #f50;
+  color: #fff;
+  font-size: 9.5px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s;
+  white-space: nowrap;
+  letter-spacing: 0.03em;
+}
 .sc-load-btn:hover { background: #ff6a00; }
-.sc-iframe-wrap { position: relative; height: 100px; }
+
+.sc-iframe-wrap { position: relative; height: 96px; }
 .sc-iframe-wrap iframe { width: 100%; height: 100%; border: none; display: block; }
-.sc-placeholder { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 5px; height: 100px; color: var(--text3); font-size: 11px; text-align: center; padding: 10px; }
-.sc-placeholder .sc-ph-icon { font-size: 22px; opacity: 0.4; }
-.sc-fab { position: fixed; bottom: 18px; right: 18px; z-index: 299; width: 38px; height: 38px; border-radius: 11px; background: linear-gradient(135deg, #f50, #ff8c00); border: none; color: #fff; cursor: pointer; font-size: 17px; display: flex; align-items: center; justify-content: center; box-shadow: 0 6px 20px rgba(255,83,0,0.4); transition: all var(--tr); }
-.sc-fab:hover { transform: scale(1.08); box-shadow: 0 8px 28px rgba(255,83,0,0.5); }
-.sc-fab.hidden-fab { opacity: 0; pointer-events: none; }
- 
+
+.sc-placeholder-new {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  height: 80px;
+  color: var(--text3);
+  font-size: 10px;
+  text-align: center;
+  padding: 8px;
+}
+.sc-placeholder-new .ph-icon { font-size: 20px; opacity: 0.35; }
+
+/* SC song info panel */
+.sc-song-info {
+  display: none;
+  flex-direction: column;
+  gap: 0;
+  border-top: 1px solid rgba(255,255,255,0.06);
+}
+.sc-song-info.visible { display: flex; }
+.sc-song-cover {
+  width: 100%;
+  height: 110px;
+  object-fit: cover;
+  display: block;
+}
+.sc-song-cover-placeholder {
+  width: 100%; height: 110px;
+  background: linear-gradient(135deg, rgba(255,83,0,0.2), rgba(255,140,0,0.1));
+  display: flex; align-items: center; justify-content: center;
+  font-size: 32px;
+}
+.sc-song-meta {
+  padding: 8px 10px;
+  background: rgba(0,0,0,0.3);
+}
+.sc-song-name {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--text);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin-bottom: 2px;
+}
+.sc-song-artist {
+  font-size: 9.5px;
+  color: rgba(255,83,0,0.8);
+  font-weight: 600;
+}
+.sc-lyrics-area {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease;
+  background: rgba(0,0,0,0.2);
+}
+.sc-lyrics-area.open { max-height: 120px; }
+.sc-lyrics-inner {
+  padding: 8px 10px;
+  font-size: 10px;
+  color: var(--text2);
+  line-height: 1.6;
+  max-height: 120px;
+  overflow-y: auto;
+  font-style: italic;
+}
+.sc-lyrics-inner::-webkit-scrollbar { width: 3px; }
+.sc-lyrics-inner::-webkit-scrollbar-track { background: transparent; }
+.sc-lyrics-inner::-webkit-scrollbar-thumb { background: rgba(255,83,0,0.4); border-radius: 2px; }
+.sc-playback-row {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 10px;
+  border-top: 1px solid rgba(255,255,255,0.05);
+}
+.sc-play-btn {
+  width: 26px; height: 26px;
+  border-radius: 50%;
+  border: none;
+  background: linear-gradient(135deg, #f50, #ff8c00);
+  color: #fff;
+  font-size: 11px;
+  cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  transition: all 0.2s;
+  flex-shrink: 0;
+}
+.sc-play-btn:hover { transform: scale(1.1); box-shadow: 0 2px 12px rgba(255,83,0,0.5); }
+.sc-lyrics-toggle {
+  padding: 3px 8px;
+  border-radius: 5px;
+  border: 1px solid rgba(255,83,0,0.3);
+  background: rgba(255,83,0,0.08);
+  color: rgba(255,83,0,0.8);
+  font-size: 9px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+  white-space: nowrap;
+}
+.sc-lyrics-toggle:hover { background: rgba(255,83,0,0.18); }
+
+/* YT specific */
+.yt-search-row {
+  display: flex;
+  gap: 5px;
+  padding: 7px 10px;
+  border-top: 1px solid rgba(255,255,255,0.06);
+}
+.yt-search-input {
+  flex: 1;
+  padding: 5px 8px;
+  border-radius: 6px;
+  border: 1px solid rgba(255,255,255,0.09);
+  background: rgba(255,255,255,0.05);
+  color: var(--text);
+  font-size: 10px;
+  font-family: 'DM Sans', sans-serif;
+  outline: none;
+  transition: all 0.2s;
+  min-width: 0;
+}
+.yt-search-input:focus { border-color: #ff0000; box-shadow: 0 0 0 2px rgba(255,0,0,0.18); }
+.yt-search-input::placeholder { color: var(--text3); }
+.yt-search-btn {
+  padding: 5px 8px;
+  border-radius: 6px;
+  border: none;
+  background: #ff0000;
+  color: #fff;
+  font-size: 9.5px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s;
+  white-space: nowrap;
+}
+.yt-search-btn:hover { background: #cc0000; }
+.yt-results {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease;
+}
+.yt-results.open { max-height: 160px; }
+.yt-results-inner {
+  padding: 4px 6px;
+  overflow-y: auto;
+  max-height: 160px;
+  background: rgba(0,0,0,0.25);
+}
+.yt-results-inner::-webkit-scrollbar { width: 3px; }
+.yt-results-inner::-webkit-scrollbar-track { background: transparent; }
+.yt-results-inner::-webkit-scrollbar-thumb { background: rgba(255,0,0,0.4); border-radius: 2px; }
+.yt-result-item {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  padding: 5px 6px;
+  border-radius: 7px;
+  cursor: pointer;
+  transition: all 0.15s;
+  border: 1px solid transparent;
+}
+.yt-result-item:hover { background: rgba(255,0,0,0.1); border-color: rgba(255,0,0,0.2); }
+.yt-result-thumb {
+  width: 44px;
+  height: 30px;
+  border-radius: 4px;
+  object-fit: cover;
+  flex-shrink: 0;
+  background: #111;
+}
+.yt-result-info { flex: 1; min-width: 0; }
+.yt-result-title {
+  font-size: 9.5px;
+  font-weight: 600;
+  color: var(--text);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  line-height: 1.3;
+}
+.yt-result-channel {
+  font-size: 8.5px;
+  color: var(--text3);
+  margin-top: 1px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.yt-player-wrap {
+  position: relative;
+  padding-bottom: 56.25%;
+  height: 0;
+  overflow: hidden;
+  max-height: 0;
+  transition: max-height 0.3s ease, padding-bottom 0.3s ease;
+}
+.yt-player-wrap.open {
+  max-height: 200px;
+  padding-bottom: 56.25%;
+}
+.yt-player-wrap iframe {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  border: none;
+}
+.yt-placeholder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  height: 70px;
+  color: var(--text3);
+  font-size: 10px;
+  text-align: center;
+  padding: 8px;
+}
+.yt-placeholder .ph-icon { font-size: 20px; opacity: 0.35; }
+.yt-search-loader {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  padding: 10px;
+  font-size: 10px;
+  color: var(--text3);
+}
+.yt-search-loader.visible { display: flex; }
+.spinner { width: 12px; height: 12px; border: 2px solid rgba(255,0,0,0.2); border-top-color: #ff0000; border-radius: 50%; animation: spin 0.6s linear infinite; }
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* Player FABs */
+.player-fabs {
+  display: flex;
+  gap: 6px;
+}
+.player-fab {
+  width: 36px; height: 36px;
+  border-radius: 10px;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+  font-size: 16px;
+  display: flex; align-items: center; justify-content: center;
+  transition: all 0.2s;
+}
+.sc-fab-new { background: linear-gradient(135deg, #f50, #ff8c00); box-shadow: 0 4px 16px rgba(255,83,0,0.4); }
+.sc-fab-new:hover { transform: scale(1.08); box-shadow: 0 6px 22px rgba(255,83,0,0.55); }
+.yt-fab-new { background: linear-gradient(135deg, #ff0000, #cc0000); box-shadow: 0 4px 16px rgba(255,0,0,0.35); }
+.yt-fab-new:hover { transform: scale(1.08); box-shadow: 0 6px 22px rgba(255,0,0,0.5); }
+.player-fab.hidden-fab { opacity: 0; pointer-events: none; transform: scale(0.8); }
+
 /* RESPONSIVE */
 @media (max-width: 768px) {
   .sidebar { position: fixed; top: var(--nav-h); left: 0; bottom: 0; z-index: 90; transform: translateX(-100%); }
@@ -651,7 +940,7 @@ body.ui-transparent .sc-widget:hover { opacity: 0.9; }
   .upload-zone { padding: 24px 16px; }
   .btn-upload span:last-child { display: none; }
   .stats-row { gap: 8px; }
-  .sc-widget { width: 220px; }
+  .media-players-container { bottom: 80px; right: 12px; }
   .bulk-bar { width: calc(100vw - 28px); justify-content: center; flex-wrap: wrap; }
   #uiMountainBtn { bottom: 80px; }
 }
@@ -661,6 +950,15 @@ body.ui-transparent .sc-widget:hover { opacity: 0.9; }
 
 <!-- TULIP CANVAS -->
 <canvas id="tulipCanvas"></canvas>
+
+<!-- GLASS ORBS for UI Transparent mode -->
+<div class="glass-orbs" id="glassOrbs">
+  <div class="glass-orb"></div>
+  <div class="glass-orb"></div>
+  <div class="glass-orb"></div>
+  <div class="glass-orb"></div>
+  <div class="glass-orb"></div>
+</div>
 
 <div class="wallpaper-layer" id="wallpaperLayer"></div>
 
@@ -701,11 +999,9 @@ body.ui-transparent .sc-widget:hover { opacity: 0.9; }
  
 <div class="layout">
 <aside class="sidebar" id="sidebar">
-  <!-- Sidebar Cover -->
   <div class="sidebar-cover" id="sidebarCover" onclick="openSidebarCoverPicker()" title="Click để đổi ảnh bìa">
     <div class="sidebar-cover-overlay"><span>🖼 Đổi ảnh bìa</span></div>
   </div>
-
   <div class="sidebar-inner">
     <div class="sidebar-section">
       <div class="sidebar-label">Thư viện</div>
@@ -824,9 +1120,9 @@ body.ui-transparent .sc-widget:hover { opacity: 0.9; }
 </div>
 
 <!-- UI MOUNTAIN TRANSPARENCY BUTTON -->
-<button id="uiMountainBtn" onclick="toggleUITransparency()" title="Chế độ trong suốt UI">
+<button id="uiMountainBtn" onclick="toggleUITransparency()" title="Chế độ Glassmorphism">
   <span class="mountain-icon">🏔</span>
-  UI
+  Glassmorphism
 </button>
  
 <!-- PREVIEW MODAL -->
@@ -902,32 +1198,15 @@ body.ui-transparent .sc-widget:hover { opacity: 0.9; }
       <button class="modal-close" onclick="closeEditorDirect()">✕</button>
     </div>
     <div class="editor-body" id="editorBody">
-      <!-- Image Editor -->
       <div class="img-editor-wrap" id="imgEditorPanel">
         <div class="cropper-container-wrap" id="cropperWrap">
           <img id="cropperImg" src="">
         </div>
         <div class="filter-sliders" id="filterSliders">
-          <div class="filter-slider-row">
-            <label>Sáng</label>
-            <input type="range" id="slBrightness" min="-100" max="100" value="0" oninput="applyFilters()">
-            <span id="valBrightness">0</span>
-          </div>
-          <div class="filter-slider-row">
-            <label>Tương phản</label>
-            <input type="range" id="slContrast" min="-100" max="100" value="0" oninput="applyFilters()">
-            <span id="valContrast">0</span>
-          </div>
-          <div class="filter-slider-row">
-            <label>Bão hòa</label>
-            <input type="range" id="slSaturation" min="-100" max="100" value="0" oninput="applyFilters()">
-            <span id="valSaturation">0</span>
-          </div>
-          <div class="filter-slider-row">
-            <label>Mờ</label>
-            <input type="range" id="slBlur" min="0" max="20" value="0" oninput="applyFilters()">
-            <span id="valBlur">0</span>
-          </div>
+          <div class="filter-slider-row"><label>Sáng</label><input type="range" id="slBrightness" min="-100" max="100" value="0" oninput="applyFilters()"><span id="valBrightness">0</span></div>
+          <div class="filter-slider-row"><label>Tương phản</label><input type="range" id="slContrast" min="-100" max="100" value="0" oninput="applyFilters()"><span id="valContrast">0</span></div>
+          <div class="filter-slider-row"><label>Bão hòa</label><input type="range" id="slSaturation" min="-100" max="100" value="0" oninput="applyFilters()"><span id="valSaturation">0</span></div>
+          <div class="filter-slider-row"><label>Mờ</label><input type="range" id="slBlur" min="0" max="20" value="0" oninput="applyFilters()"><span id="valBlur">0</span></div>
         </div>
         <div class="img-editor-toolbar">
           <button class="edit-tool-btn" onclick="cropperAction('rotate',-90)">↺ Xoay trái</button>
@@ -941,24 +1220,12 @@ body.ui-transparent .sc-widget:hover { opacity: 0.9; }
           <button class="edit-tool-btn success" onclick="saveEditedImage()">💾 Lưu ảnh</button>
         </div>
       </div>
-
-      <!-- Video Editor -->
       <div class="vid-editor-wrap" id="vidEditorPanel" style="display:none">
-        <div class="vid-preview">
-          <video id="editVideo" controls></video>
-        </div>
+        <div class="vid-preview"><video id="editVideo" controls></video></div>
         <div class="vid-trim-bar">
           <div class="vid-trim-label">✂️ Cắt ghép video (chọn đoạn muốn giữ)</div>
-          <div class="vid-range-wrap">
-            <label>Từ:</label>
-            <input type="range" id="vidStart" min="0" max="100" value="0" step="0.1" oninput="updateVidTrim()">
-            <span id="vidStartVal">0:00</span>
-          </div>
-          <div class="vid-range-wrap" style="margin-top:6px">
-            <label>Đến:</label>
-            <input type="range" id="vidEnd" min="0" max="100" value="100" step="0.1" oninput="updateVidTrim()">
-            <span id="vidEndVal">0:00</span>
-          </div>
+          <div class="vid-range-wrap"><label>Từ:</label><input type="range" id="vidStart" min="0" max="100" value="0" step="0.1" oninput="updateVidTrim()"><span id="vidStartVal">0:00</span></div>
+          <div class="vid-range-wrap" style="margin-top:6px"><label>Đến:</label><input type="range" id="vidEnd" min="0" max="100" value="100" step="0.1" oninput="updateVidTrim()"><span id="vidEndVal">0:00</span></div>
         </div>
         <div class="vid-toolbar">
           <button class="edit-tool-btn" onclick="previewVidTrim()">▶ Xem đoạn cắt</button>
@@ -966,8 +1233,6 @@ body.ui-transparent .sc-widget:hover { opacity: 0.9; }
           <button class="edit-tool-btn" onclick="captureVideoFrame()">📷 Chụp khung hình</button>
         </div>
       </div>
-
-      <!-- Code Editor -->
       <div class="code-editor-wrap" id="codeEditorPanel" style="display:none">
         <div class="code-editor-header">
           <span style="font-size:12px;font-weight:600;color:var(--text2)">💻 Trình soạn thảo code</span>
@@ -994,7 +1259,6 @@ body.ui-transparent .sc-widget:hover { opacity: 0.9; }
 <div class="modal-backdrop" id="bgModal" onclick="closeBgModal(event)">
   <div class="bg-panel">
     <h3>🎨 Tùy chỉnh giao diện</h3>
-
     <div class="bg-section-label">Ảnh nền trang</div>
     <div class="bg-presets" id="bgPresets"></div>
     <div class="bg-opacity-row">
@@ -1006,7 +1270,6 @@ body.ui-transparent .sc-widget:hover { opacity: 0.9; }
       <input class="input-field" id="bgUrlInput" type="text" placeholder="Nhập URL ảnh nền...">
       <button class="bg-url-btn" onclick="applyBgUrl()">Áp dụng</button>
     </div>
-
     <div class="bg-section-label" style="margin-top:18px">Ảnh bìa thanh thư viện</div>
     <div class="sidebar-cover-presets" id="sidebarCoverPresets"></div>
     <div class="sc-url-file-row">
@@ -1015,7 +1278,6 @@ body.ui-transparent .sc-widget:hover { opacity: 0.9; }
       <button class="bg-url-btn" onclick="applySidebarCoverUrl()">Áp dụng</button>
     </div>
     <input type="file" id="sidebarCoverInput" accept="image/*" onchange="loadSidebarCoverFile(event)">
-
     <div class="modal-btns" style="margin-top:14px">
       <button class="btn btn-ghost" onclick="closeBgModalDirect()">Đóng</button>
     </div>
@@ -1024,49 +1286,107 @@ body.ui-transparent .sc-widget:hover { opacity: 0.9; }
  
 <div class="toast-container" id="toastContainer"></div>
 
-<!-- SOUNDCLOUD WIDGET -->
-<button class="sc-fab hidden-fab" id="scFab" onclick="showScWidget()">🎵</button>
-<div class="sc-widget" id="scWidget">
-  <div class="sc-header" onclick="toggleScCollapse()">
-    <span class="sc-logo">🎵</span>
-    <span class="sc-title" id="scTitle">SoundCloud Player</span>
-    <div class="sc-controls" onclick="event.stopPropagation()">
-      <button class="sc-ctrl-btn" onclick="toggleScCollapse()" id="scCollapseBtn">−</button>
-      <button class="sc-ctrl-btn" onclick="hideScWidget()">✕</button>
+<!-- ===== MEDIA PLAYERS ===== -->
+<div class="media-players-container" id="mediaPlayersContainer">
+  <!-- Player FABs (shown when widgets hidden) -->
+  <div class="player-fabs" id="playerFabs" style="display:none">
+    <button class="player-fab sc-fab-new" id="scFabNew" onclick="showScWidget()" title="SoundCloud">🎵</button>
+    <button class="player-fab yt-fab-new" id="ytFabNew" onclick="showYtWidget()" title="YouTube Music">▶</button>
+  </div>
+
+  <!-- YouTube Widget -->
+  <div class="player-widget" id="ytWidget" style="width:260px">
+    <div class="player-header" id="ytHeader">
+      <button class="player-logo-btn yt-logo-btn" id="ytLogoBtn" onclick="toggleYtPlay()" title="Bật/Tắt nhạc">▶</button>
+      <span class="player-title" id="ytTitle">YouTube Music</span>
+      <div class="player-ctrl-btns">
+        <button class="player-ctrl-btn" onclick="toggleYtCollapse()" id="ytCollapseBtn" title="Thu gọn">−</button>
+        <button class="player-ctrl-btn" onclick="hideYtWidget()" title="Đóng">✕</button>
+      </div>
+    </div>
+    <div class="player-body" id="ytBody">
+      <div class="yt-search-row">
+        <input class="yt-search-input" id="ytSearchInput" type="text" placeholder="Tìm bài hát YouTube...">
+        <button class="yt-search-btn" onclick="searchYoutube()">🔍</button>
+      </div>
+      <div class="yt-search-loader" id="ytLoader">
+        <div class="spinner"></div>
+        <span>Đang tìm kiếm...</span>
+      </div>
+      <div class="yt-results" id="ytResults">
+        <div class="yt-results-inner" id="ytResultsInner"></div>
+      </div>
+      <div class="yt-player-wrap" id="ytPlayerWrap">
+        <iframe id="ytIframe" allow="autoplay; encrypted-media" allowfullscreen src=""></iframe>
+      </div>
+      <div class="yt-placeholder" id="ytPlaceholder">
+        <div class="ph-icon">▶</div>
+        <div>Tìm kiếm bài hát<br><span style="opacity:0.6">trên YouTube</span></div>
+      </div>
     </div>
   </div>
-  <div class="sc-body" id="scBody">
-    <div class="sc-url-row">
-      <input class="sc-url-input" id="scUrlInput" type="text" placeholder="Dán link SoundCloud...">
-      <button class="sc-load-btn" onclick="loadSoundCloud()">Tải</button>
+
+  <!-- SoundCloud Widget -->
+  <div class="player-widget" id="scWidgetNew" style="width:260px">
+    <div class="player-header" id="scHeader">
+      <button class="player-logo-btn sc-logo-btn" id="scLogoBtn" onclick="toggleScPlay()" title="Bật/Tắt nhạc">🎵</button>
+      <span class="player-title" id="scTitleNew">SoundCloud</span>
+      <div class="player-ctrl-btns">
+        <button class="player-ctrl-btn" onclick="toggleScCollapseNew()" id="scCollapseBtnNew" title="Thu gọn">−</button>
+        <button class="player-ctrl-btn" onclick="hideScWidgetNew()" title="Đóng">✕</button>
+      </div>
     </div>
-    <div id="scIframeWrap" class="sc-iframe-wrap" style="display:none">
-      <iframe id="scIframe" scrolling="no" frameborder="no" allow="autoplay" src=""></iframe>
-    </div>
-    <div class="sc-placeholder" id="scPlaceholder">
-      <div class="sc-ph-icon">🎶</div>
-      <div>Dán link nhạc SoundCloud<br><span style="opacity:0.6">track / playlist</span></div>
+    <div class="player-body" id="scBodyNew">
+      <!-- Song info panel -->
+      <div class="sc-song-info" id="scSongInfo">
+        <div id="scSongCoverWrap">
+          <div class="sc-song-cover-placeholder" id="scCoverPlaceholder">🎶</div>
+          <img class="sc-song-cover" id="scSongCover" src="" alt="" style="display:none">
+        </div>
+        <div class="sc-song-meta">
+          <div class="sc-song-name" id="scSongName">—</div>
+          <div class="sc-song-artist" id="scSongArtist">—</div>
+        </div>
+        <div class="sc-playback-row">
+          <button class="sc-play-btn" id="scPlayBtn" onclick="toggleScPlay()">▶</button>
+          <span style="font-size:9px;color:var(--text3);flex:1">đang phát</span>
+          <button class="sc-lyrics-toggle" onclick="toggleScLyrics()">🎤 Lyrics</button>
+        </div>
+        <div class="sc-lyrics-area" id="scLyricsArea">
+          <div class="sc-lyrics-inner" id="scLyricsInner">
+            <span style="color:var(--text3);font-style:italic">SoundCloud không cung cấp lyrics trực tiếp.<br>Tìm lyrics tại genius.com hoặc azlyrics.com 🎤</span>
+          </div>
+        </div>
+      </div>
+      <!-- SC iframe -->
+      <div class="sc-iframe-wrap" id="scIframeWrapNew" style="display:none">
+        <iframe id="scIframeNew" scrolling="no" frameborder="no" allow="autoplay" src=""></iframe>
+      </div>
+      <!-- URL input -->
+      <div class="sc-url-row">
+        <input class="sc-url-input" id="scUrlInputNew" type="text" placeholder="Dán link SoundCloud...">
+        <button class="sc-load-btn" onclick="loadSoundCloudNew()">Tải</button>
+      </div>
+      <div class="sc-placeholder-new" id="scPlaceholderNew">
+        <div class="ph-icon">🎶</div>
+        <div>Dán link nhạc SoundCloud</div>
+      </div>
     </div>
   </div>
 </div>
 
 <script>
 // ===========================
-// TULIP ANIMATION
+// TULIP ANIMATION — 2.5 seconds display
 // ===========================
 (function() {
   const canvas = document.getElementById('tulipCanvas');
   const ctx = canvas.getContext('2d');
   let W, H;
-
-  function resize() {
-    W = canvas.width = window.innerWidth;
-    H = canvas.height = window.innerHeight;
-  }
+  function resize() { W = canvas.width = window.innerWidth; H = canvas.height = window.innerHeight; }
   resize();
   window.addEventListener('resize', resize);
 
-  // Tulip color palettes - many colors!
   const tulipPalettes = [
     { petal: '#ff6b9d', dark: '#c94870', light: '#ffb3ce' },
     { petal: '#ff8c42', dark: '#c95c20', light: '#ffc49a' },
@@ -1084,296 +1404,145 @@ body.ui-transparent .sc-widget:hover { opacity: 0.9; }
 
   function makeTulip(i, total) {
     const palette = tulipPalettes[i % tulipPalettes.length];
-    // Spread across full width with slight randomness
     const segment = W / total;
     const x = segment * i + segment * (0.2 + Math.random() * 0.6);
     const stemH = 95 + Math.random() * 80;
     const lean = (Math.random() - 0.5) * 0.22;
-    const delay = i * 90 + Math.random() * 40; // staggered entrance
+    const delay = i * 90 + Math.random() * 40;
     const scale = 0.8 + Math.random() * 0.45;
-    return {
-      x, stemH, lean, palette, delay, scale,
-      sway: Math.random() * Math.PI * 2,
-      swaySpeed: 0.5 + Math.random() * 0.6,
-      swayAmp: 3 + Math.random() * 4,
-    };
+    return { x, stemH, lean, palette, delay, scale, sway: Math.random() * Math.PI * 2, swaySpeed: 0.5 + Math.random() * 0.6, swayAmp: 3 + Math.random() * 4 };
   }
 
   const TOTAL = Math.max(8, Math.min(16, Math.floor(W / 80)));
   const tulips = Array.from({ length: TOTAL }, (_, i) => makeTulip(i, TOTAL));
 
   function lightenColor(hex, pct) {
-    let r = parseInt(hex.slice(1,3),16);
-    let g = parseInt(hex.slice(3,5),16);
-    let b = parseInt(hex.slice(5,7),16);
-    r = Math.min(255, r + Math.round(pct * 2.55));
-    g = Math.min(255, g + Math.round(pct * 2.55));
-    b = Math.min(255, b + Math.round(pct * 2.55));
+    let r = parseInt(hex.slice(1,3),16), g = parseInt(hex.slice(3,5),16), b = parseInt(hex.slice(5,7),16);
+    r = Math.min(255, r + Math.round(pct * 2.55)); g = Math.min(255, g + Math.round(pct * 2.55)); b = Math.min(255, b + Math.round(pct * 2.55));
     return `rgb(${r},${g},${b})`;
   }
 
-  // Draw one realistic tulip petal set
   function drawTulipHead(x, y, palette, scale, alpha, openness) {
-    ctx.save();
-    ctx.globalAlpha = Math.max(0, alpha);
-    ctx.translate(x, y);
-    ctx.scale(scale, scale);
-
-    const open = Math.max(0, Math.min(1, openness));
-    const spread = open * 14;
-    const cupH = 30 + open * 8;
-
-    // Draw 6 petals in two layers
+    ctx.save(); ctx.globalAlpha = Math.max(0, alpha); ctx.translate(x, y); ctx.scale(scale, scale);
+    const open = Math.max(0, Math.min(1, openness)), spread = open * 14, cupH = 30 + open * 8;
     for (let layer = 0; layer < 2; layer++) {
-      const count = layer === 0 ? 3 : 3;
-      const baseAngle = layer === 0 ? 0 : Math.PI / 3;
+      const count = 3, baseAngle = layer === 0 ? 0 : Math.PI / 3;
       for (let p = 0; p < count; p++) {
-        const angle = baseAngle + (p / count) * Math.PI * 2;
-        ctx.save();
-        ctx.rotate(angle);
-
-        const pw = 9 + spread * 0.6;
-        const ph = cupH + (layer === 0 ? 0 : 4);
-        const curl = open * 6;
-
-        ctx.beginPath();
-        ctx.moveTo(0, 0);
+        const angle = baseAngle + (p / count) * Math.PI * 2; ctx.save(); ctx.rotate(angle);
+        const pw = 9 + spread * 0.6, ph = cupH + (layer === 0 ? 0 : 4), curl = open * 6;
+        ctx.beginPath(); ctx.moveTo(0, 0);
         ctx.bezierCurveTo(-pw * 0.7, -ph * 0.25, -pw - curl, -ph * 0.65, -pw * 0.4, -ph);
         ctx.bezierCurveTo(0, -ph - curl * 0.5, pw * 0.4, -ph, pw + curl, -ph * 0.65);
         ctx.bezierCurveTo(pw * 0.7, -ph * 0.25, 0, 0, 0, 0);
-
         const pg = ctx.createLinearGradient(-pw, 0, pw, -ph);
-        if (layer === 0) {
-          pg.addColorStop(0, palette.dark);
-          pg.addColorStop(0.45, palette.petal);
-          pg.addColorStop(1, lightenColor(palette.petal, 25));
-        } else {
-          pg.addColorStop(0, palette.petal);
-          pg.addColorStop(0.5, palette.light);
-          pg.addColorStop(1, lightenColor(palette.light, 15));
-        }
-        ctx.fillStyle = pg;
-        ctx.fill();
-
-        // Petal sheen line
-        ctx.beginPath();
-        ctx.moveTo(0, -4);
-        ctx.bezierCurveTo(-pw * 0.15, -ph * 0.45, -pw * 0.1, -ph * 0.8, 0, -ph * 0.95);
-        ctx.strokeStyle = 'rgba(255,255,255,0.28)';
-        ctx.lineWidth = 0.9;
-        ctx.stroke();
-
-        ctx.restore();
+        if (layer === 0) { pg.addColorStop(0, palette.dark); pg.addColorStop(0.45, palette.petal); pg.addColorStop(1, lightenColor(palette.petal, 25)); }
+        else { pg.addColorStop(0, palette.petal); pg.addColorStop(0.5, palette.light); pg.addColorStop(1, lightenColor(palette.light, 15)); }
+        ctx.fillStyle = pg; ctx.fill();
+        ctx.beginPath(); ctx.moveTo(0, -4); ctx.bezierCurveTo(-pw * 0.15, -ph * 0.45, -pw * 0.1, -ph * 0.8, 0, -ph * 0.95);
+        ctx.strokeStyle = 'rgba(255,255,255,0.28)'; ctx.lineWidth = 0.9; ctx.stroke(); ctx.restore();
       }
     }
-
-    // Center pistil
-    ctx.beginPath();
-    ctx.arc(0, 0, 5 + open * 2, 0, Math.PI * 2);
+    ctx.beginPath(); ctx.arc(0, 0, 5 + open * 2, 0, Math.PI * 2);
     const cg = ctx.createRadialGradient(0, -1, 0, 0, 0, 5 + open * 2);
-    cg.addColorStop(0, lightenColor(palette.petal, 40));
-    cg.addColorStop(1, palette.dark);
-    ctx.fillStyle = cg;
-    ctx.fill();
-
-    ctx.restore();
+    cg.addColorStop(0, lightenColor(palette.petal, 40)); cg.addColorStop(1, palette.dark);
+    ctx.fillStyle = cg; ctx.fill(); ctx.restore();
   }
 
-  // Draw a leaf
   function drawLeaf(x, y, angle, len, width, alpha) {
-    ctx.save();
-    ctx.globalAlpha = Math.max(0, alpha);
-    ctx.translate(x, y);
-    ctx.rotate(angle);
-
-    ctx.beginPath();
-    ctx.moveTo(0, 0);
+    ctx.save(); ctx.globalAlpha = Math.max(0, alpha); ctx.translate(x, y); ctx.rotate(angle);
+    ctx.beginPath(); ctx.moveTo(0, 0);
     ctx.bezierCurveTo(width * 0.5, -len * 0.25, width * 1.1 + 2, -len * 0.55, width * 0.9, -len);
     ctx.bezierCurveTo(width * 0.5, -len * 0.85, -width * 0.1, -len * 0.5, 0, 0);
-
     const lg = ctx.createLinearGradient(0, 0, width, -len);
-    lg.addColorStop(0, '#1a6632');
-    lg.addColorStop(0.5, '#2d9e52');
-    lg.addColorStop(1, '#1a5526');
-    ctx.fillStyle = lg;
-    ctx.fill();
-
-    // Vein
-    ctx.beginPath();
-    ctx.moveTo(0, 0);
-    ctx.bezierCurveTo(width * 0.4, -len * 0.35, width * 0.7, -len * 0.65, width * 0.9, -len);
-    ctx.strokeStyle = 'rgba(255,255,255,0.2)';
-    ctx.lineWidth = 0.8;
-    ctx.stroke();
-
-    ctx.restore();
+    lg.addColorStop(0, '#1a6632'); lg.addColorStop(0.5, '#2d9e52'); lg.addColorStop(1, '#1a5526');
+    ctx.fillStyle = lg; ctx.fill();
+    ctx.beginPath(); ctx.moveTo(0, 0); ctx.bezierCurveTo(width * 0.4, -len * 0.35, width * 0.7, -len * 0.65, width * 0.9, -len);
+    ctx.strokeStyle = 'rgba(255,255,255,0.2)'; ctx.lineWidth = 0.8; ctx.stroke(); ctx.restore();
   }
 
-  // Draw grass blades at bottom for ambiance
   function drawGrassBlade(x, h, alpha) {
-    ctx.save();
-    ctx.globalAlpha = alpha * 0.5;
-    ctx.beginPath();
-    const cp = x + (Math.random() - 0.5) * 10;
-    ctx.moveTo(x, H);
-    ctx.quadraticCurveTo(cp, H - h * 0.5, x + (Math.random()-0.5)*8, H - h);
-    ctx.strokeStyle = '#2d9e52';
-    ctx.lineWidth = 1.5;
-    ctx.lineCap = 'round';
-    ctx.stroke();
-    ctx.restore();
+    ctx.save(); ctx.globalAlpha = alpha * 0.5;
+    ctx.beginPath(); const cp = x + (Math.random() - 0.5) * 10;
+    ctx.moveTo(x, H); ctx.quadraticCurveTo(cp, H - h * 0.5, x + (Math.random()-0.5)*8, H - h);
+    ctx.strokeStyle = '#2d9e52'; ctx.lineWidth = 1.5; ctx.lineCap = 'round'; ctx.stroke(); ctx.restore();
   }
 
-  const GROW_DURATION = 2000;
-  const HOLD_DURATION = 1200;
+  // UPDATED: 2500ms grow + 600ms hold + 700ms fade = ~3800ms total but tulips visible ~2.5s
+  const GROW_DURATION = 1800;
+  const HOLD_DURATION = 500;
   const FADE_DURATION = 700;
   const TOTAL_DURATION = GROW_DURATION + HOLD_DURATION + FADE_DURATION;
 
   let startTime = null;
-
-  // Ease out cubic
   function easeOut(t) { return 1 - Math.pow(1 - t, 3); }
   function easeInOut(t) { return t < 0.5 ? 4*t*t*t : 1-Math.pow(-2*t+2,3)/2; }
 
   function animate(ts) {
     if (!startTime) startTime = ts;
     const elapsed = ts - startTime;
-
     ctx.clearRect(0, 0, W, H);
-
-    // Global fade out
     let globalAlpha = 1;
     if (elapsed > GROW_DURATION + HOLD_DURATION) {
       globalAlpha = 1 - Math.min(1, (elapsed - GROW_DURATION - HOLD_DURATION) / FADE_DURATION);
     }
+    if (globalAlpha <= 0) { ctx.clearRect(0, 0, W, H); canvas.style.display = 'none'; return; }
 
-    if (globalAlpha <= 0) {
-      ctx.clearRect(0, 0, W, H);
-      canvas.style.display = 'none';
-      return;
-    }
-
-    // Draw ground line glow
-    ctx.save();
-    ctx.globalAlpha = globalAlpha * 0.15;
+    ctx.save(); ctx.globalAlpha = globalAlpha * 0.15;
     const groundGrad = ctx.createLinearGradient(0, H - 20, 0, H);
-    groundGrad.addColorStop(0, 'rgba(45,158,82,0.8)');
-    groundGrad.addColorStop(1, 'transparent');
-    ctx.fillStyle = groundGrad;
-    ctx.fillRect(0, H - 20, W, 20);
-    ctx.restore();
+    groundGrad.addColorStop(0, 'rgba(45,158,82,0.8)'); groundGrad.addColorStop(1, 'transparent');
+    ctx.fillStyle = groundGrad; ctx.fillRect(0, H - 20, W, 20); ctx.restore();
 
-    // Draw some background grass
     for (let i = 0; i < TOTAL * 3; i++) {
-      const gx = (W / (TOTAL * 3)) * i + 15;
-      const gh = 20 + (i % 7) * 4;
-      const gElapsed = elapsed - (i % 5) * 60;
-      if (gElapsed > 0) {
-        const gP = Math.min(1, gElapsed / 800);
-        drawGrassBlade(gx, gh * easeOut(gP), globalAlpha);
-      }
+      const gx = (W / (TOTAL * 3)) * i + 15, gh = 20 + (i % 7) * 4, gElapsed = elapsed - (i % 5) * 60;
+      if (gElapsed > 0) { const gP = Math.min(1, gElapsed / 800); drawGrassBlade(gx, gh * easeOut(gP), globalAlpha); }
     }
 
     for (const t of tulips) {
       const tElapsed = elapsed - t.delay;
       if (tElapsed < 0) continue;
-
-      const rawGrow = Math.min(1, tElapsed / GROW_DURATION);
-      const grow = easeOut(rawGrow);
-
+      const rawGrow = Math.min(1, tElapsed / GROW_DURATION), grow = easeOut(rawGrow);
       const sway = Math.sin(ts / 1000 * t.swaySpeed + t.sway) * t.swayAmp * Math.min(rawGrow, 1);
-      const baseX = t.x + sway;
-      const baseY = H;
-      const stemH = t.stemH * grow * t.scale;
-      const leanX = Math.sin(t.lean) * stemH;
-      const topX = baseX + leanX + sway * 0.4;
-      const topY = baseY - stemH;
-
-      // Stem - draw as bezier for natural curve
-      ctx.save();
-      ctx.globalAlpha = globalAlpha;
-      ctx.beginPath();
-      ctx.moveTo(baseX, baseY);
-      const cpX = baseX + leanX * 0.5 + sway * 0.2;
-      const cpY = baseY - stemH * 0.55;
+      const baseX = t.x + sway, baseY = H, stemH = t.stemH * grow * t.scale;
+      const leanX = Math.sin(t.lean) * stemH, topX = baseX + leanX + sway * 0.4, topY = baseY - stemH;
+      ctx.save(); ctx.globalAlpha = globalAlpha;
+      ctx.beginPath(); ctx.moveTo(baseX, baseY);
+      const cpX = baseX + leanX * 0.5 + sway * 0.2, cpY = baseY - stemH * 0.55;
       ctx.quadraticCurveTo(cpX, cpY, topX, topY);
-
       const stemGrad = ctx.createLinearGradient(baseX, baseY, topX, topY);
-      stemGrad.addColorStop(0, '#1a6632');
-      stemGrad.addColorStop(0.4, '#2d9e52');
-      stemGrad.addColorStop(1, '#3db868');
-      ctx.strokeStyle = stemGrad;
-      ctx.lineWidth = 3.5 * t.scale;
-      ctx.lineCap = 'round';
-      ctx.stroke();
-      ctx.restore();
-
-      // Leaves - appear after 30% growth
+      stemGrad.addColorStop(0, '#1a6632'); stemGrad.addColorStop(0.4, '#2d9e52'); stemGrad.addColorStop(1, '#3db868');
+      ctx.strokeStyle = stemGrad; ctx.lineWidth = 3.5 * t.scale; ctx.lineCap = 'round'; ctx.stroke(); ctx.restore();
       if (rawGrow > 0.3) {
-        const leafP = Math.min(1, (rawGrow - 0.3) / 0.7);
-        const leafEased = easeOut(leafP);
-
-        // Left leaf
-        const lPos = 0.38;
-        const lx1 = baseX + Math.sin(t.lean) * t.stemH * lPos * grow * t.scale + sway * 0.25;
-        const ly1 = baseY - t.stemH * lPos * grow * t.scale;
+        const leafP = Math.min(1, (rawGrow - 0.3) / 0.7), leafEased = easeOut(leafP);
+        const lPos = 0.38, lx1 = baseX + Math.sin(t.lean) * t.stemH * lPos * grow * t.scale + sway * 0.25, ly1 = baseY - t.stemH * lPos * grow * t.scale;
         drawLeaf(lx1, ly1, -0.55 + t.lean, 32 * leafEased * t.scale, 12 * leafEased * t.scale, globalAlpha * leafP);
-
-        // Right leaf higher up
-        const lPos2 = 0.58;
-        const lx2 = baseX + Math.sin(t.lean) * t.stemH * lPos2 * grow * t.scale + sway * 0.38;
-        const ly2 = baseY - t.stemH * lPos2 * grow * t.scale;
+        const lPos2 = 0.58, lx2 = baseX + Math.sin(t.lean) * t.stemH * lPos2 * grow * t.scale + sway * 0.38, ly2 = baseY - t.stemH * lPos2 * grow * t.scale;
         drawLeaf(lx2, ly2, 0.62 + t.lean, 26 * leafEased * t.scale, 10 * leafEased * t.scale, globalAlpha * leafP * 0.88);
       }
-
-      // Flower head - appears after 55% growth, blooms open
       if (rawGrow > 0.55) {
         const headP = Math.min(1, (rawGrow - 0.55) / 0.45);
-        const headScale = easeOut(headP) * t.scale;
-        const openness = easeInOut(Math.min(1, headP * 1.2));
-        drawTulipHead(topX, topY, t.palette, headScale, globalAlpha, openness);
+        drawTulipHead(topX, topY, t.palette, easeOut(headP) * t.scale, globalAlpha, easeInOut(Math.min(1, headP * 1.2)));
       }
     }
-
     requestAnimationFrame(animate);
   }
-
-  // Start after short delay so intro text appears alongside
   setTimeout(() => requestAnimationFrame(animate), 150);
 })();
 
 // ===================== INTRO ANIMATION =====================
 (function() {
   const intro = document.getElementById('introScreen');
-  setTimeout(() => {
-    intro.classList.add('done');
-    setTimeout(() => { intro.style.display = 'none'; }, 500);
-  }, 3600);
+  setTimeout(() => { intro.classList.add('done'); setTimeout(() => { intro.style.display = 'none'; }, 500); }, 3600);
 })();
 
 // ===================== STATE =====================
-let images = [];
-let trashItems = [];
-let currentFilter = 'all';
-let currentTypeFilter = 'all';
-let showDupFilter = false;
-let currentView = 'grid';
-let selectedIds = new Set();
-let selectMode = false;
-let previewIndex = -1;
-let renameTargetId = null;
-let duplicateIds = new Set();
+let images = [], trashItems = [], currentFilter = 'all', currentTypeFilter = 'all';
+let showDupFilter = false, currentView = 'grid', selectedIds = new Set();
+let selectMode = false, previewIndex = -1, renameTargetId = null, duplicateIds = new Set();
 const MAX_STORAGE_MB = 100;
-let db;
-let editTargetId = null;
-let cropperInstance = null;
-let cropMode = false;
-let cmEditor = null;
+let db, editTargetId = null, cropperInstance = null, cropMode = false, cmEditor = null;
 
 // ===================== LASSO SELECT =====================
-let lassoMode = false, lassoActive = false;
-let lassoStart = {x:0,y:0}, lassoEnd = {x:0,y:0};
-
+let lassoMode = false, lassoActive = false, lassoStart = {x:0,y:0}, lassoEnd = {x:0,y:0};
 function toggleLassoMode() {
   lassoMode = !lassoMode;
   const btn = document.getElementById('lassoToggleBtn');
@@ -1382,24 +1551,15 @@ function toggleLassoMode() {
   if (lassoMode) { selectMode = true; document.getElementById('selectModeBtn').textContent = '✓'; updateBulkBar(); toast('🖱️ Kéo chuột để chọn ảnh!', 'info'); }
   else { document.getElementById('lassoRect').classList.remove('active'); }
 }
-
 document.addEventListener('mousedown', e => {
   if (!lassoMode) return;
   const grid = document.getElementById('galleryGrid');
   if (!grid.contains(e.target) && e.target !== grid) return;
   if (e.target.closest('.action-btn') || e.target.closest('.fav-btn')) return;
-  lassoActive = true; lassoStart = {x:e.clientX,y:e.clientY}; lassoEnd = {x:e.clientX,y:e.clientY};
-  updateLassoRect(); e.preventDefault();
+  lassoActive = true; lassoStart = {x:e.clientX,y:e.clientY}; lassoEnd = {x:e.clientX,y:e.clientY}; updateLassoRect(); e.preventDefault();
 });
-document.addEventListener('mousemove', e => {
-  if (!lassoActive) return;
-  lassoEnd = {x:e.clientX,y:e.clientY}; updateLassoRect(); selectCardsInLasso(); e.preventDefault();
-});
-document.addEventListener('mouseup', e => {
-  if (!lassoActive) return;
-  lassoActive = false; document.getElementById('lassoRect').classList.remove('active'); selectCardsInLasso();
-});
-
+document.addEventListener('mousemove', e => { if (!lassoActive) return; lassoEnd = {x:e.clientX,y:e.clientY}; updateLassoRect(); selectCardsInLasso(); e.preventDefault(); });
+document.addEventListener('mouseup', e => { if (!lassoActive) return; lassoActive = false; document.getElementById('lassoRect').classList.remove('active'); selectCardsInLasso(); });
 function updateLassoRect() {
   const rect = document.getElementById('lassoRect');
   const x = Math.min(lassoStart.x, lassoEnd.x), y = Math.min(lassoStart.y, lassoEnd.y);
@@ -1421,8 +1581,7 @@ function selectCardsInLasso() {
 }
 
 // ===================== DB =====================
-const DB_NAME='sphoto_db_v2',DB_VERSION=1;
-const STORE_MEDIA='media',STORE_TRASH='trash';
+const DB_NAME='sphoto_db_v2',DB_VERSION=1,STORE_MEDIA='media',STORE_TRASH='trash';
 function initDB() {
   return new Promise((res,rej) => {
     if(db){db.close();db=null;}
@@ -1443,76 +1602,28 @@ async function init() {
   trashItems = await dbGetAll(STORE_TRASH);
   images.sort((a,b)=>b.timestamp-a.timestamp);
   computeDuplicates(); renderGallery(); updateStats(); updateCountBadge();
-  loadBgSettings(); loadScSettings(); loadSidebarCoverSettings();
+  loadBgSettings(); loadSidebarCoverSettings(); loadPlayerSettings();
+  initDraggablePlayers();
 }
 
 // ===================== FILE TYPE DETECTION =====================
-const IMAGE_EXTS = {
-  jpg: 'jpg', jpeg: 'jpg', png: 'png', gif: 'gif', webp: 'webp',
-  svg: 'svg', bmp: 'bmp', tiff: 'tiff', tif: 'tiff',
-  heic: 'heic', heif: 'heic', raw: 'raw', cr2: 'raw', nef: 'raw', arw: 'raw',
-  dng: 'raw', orf: 'raw', rw2: 'raw'
-};
-const CODE_EXTS = ['js','ts','jsx','tsx','html','htm','css','scss','less','py','rb','php','java','c','cpp','h','go','rs','swift','kt','json','xml','yaml','yml','md','txt','sh','bash','sql'];
-
-function getFileKind(mimeType, ext) {
-  const m=(mimeType||'').toLowerCase(), e=(ext||'').toLowerCase();
-  if (m.startsWith('image/')||IMAGE_EXTS[e]) return 'image';
-  if (m.startsWith('video/')||['mp4','mkv','avi','mov','webm','flv','wmv'].includes(e)) return 'video';
-  return 'document';
-}
-function getImageSubtype(ext) { return IMAGE_EXTS[ext?.toLowerCase()] || 'other'; }
-function getFileIcon(ext) {
-  const e=(ext||'').toLowerCase();
-  if (CODE_EXTS.includes(e)) return '💻';
-  const icons={pdf:'📑',doc:'📝',docx:'📝',txt:'📄',xls:'📊',xlsx:'📊',ppt:'📊',pptx:'📊',zip:'🗜',rar:'🗜','7z':'🗜',mp3:'🎵',wav:'🎵',flac:'🎵',aac:'🎵',json:'📋',xml:'📋',csv:'📊',html:'🌐',js:'⚙️',py:'🐍'};
-  return icons[e]||'📄';
-}
-function getFileTypeBadgeClass(item) {
-  if (item.kind === 'video') return 'vid';
-  if (item.kind === 'document') return 'doc';
-  const sub = getImageSubtype(item.ext);
-  if (['jpg','png','gif','webp','svg','heic','tiff','raw'].includes(sub)) return 'img-' + sub;
-  return '';
-}
-function getFileTypeBadgeLabel(item) {
-  if (item.kind === 'video') return (item.ext||'vid').toUpperCase();
-  if (item.kind === 'document') return (item.ext||'file').toUpperCase();
-  const sub = getImageSubtype(item.ext);
-  const labels = { jpg:'JPG', png:'PNG', gif:'GIF', webp:'WebP', svg:'SVG', heic:'HEIC', tiff:'TIFF', raw:'RAW', bmp:'BMP' };
-  return labels[sub] || (item.ext||'IMG').toUpperCase();
-}
+const IMAGE_EXTS={jpg:'jpg',jpeg:'jpg',png:'png',gif:'gif',webp:'webp',svg:'svg',bmp:'bmp',tiff:'tiff',tif:'tiff',heic:'heic',heif:'heic',raw:'raw',cr2:'raw',nef:'raw',arw:'raw',dng:'raw',orf:'raw',rw2:'raw'};
+const CODE_EXTS=['js','ts','jsx','tsx','html','htm','css','scss','less','py','rb','php','java','c','cpp','h','go','rs','swift','kt','json','xml','yaml','yml','md','txt','sh','bash','sql'];
+function getFileKind(mimeType,ext){const m=(mimeType||'').toLowerCase(),e=(ext||'').toLowerCase();if(m.startsWith('image/')||IMAGE_EXTS[e])return 'image';if(m.startsWith('video/')||['mp4','mkv','avi','mov','webm','flv','wmv'].includes(e))return 'video';return 'document';}
+function getImageSubtype(ext){return IMAGE_EXTS[ext?.toLowerCase()]||'other';}
+function getFileIcon(ext){const e=(ext||'').toLowerCase();if(CODE_EXTS.includes(e))return '💻';const icons={pdf:'📑',doc:'📝',docx:'📝',txt:'📄',xls:'📊',xlsx:'📊',ppt:'📊',pptx:'📊',zip:'🗜',rar:'🗜','7z':'🗜',mp3:'🎵',wav:'🎵',flac:'🎵',aac:'🎵',json:'📋',xml:'📋',csv:'📊',html:'🌐',js:'⚙️',py:'🐍'};return icons[e]||'📄';}
+function getFileTypeBadgeClass(item){if(item.kind==='video')return 'vid';if(item.kind==='document')return 'doc';const sub=getImageSubtype(item.ext);if(['jpg','png','gif','webp','svg','heic','tiff','raw'].includes(sub))return 'img-'+sub;return '';}
+function getFileTypeBadgeLabel(item){if(item.kind==='video')return (item.ext||'vid').toUpperCase();if(item.kind==='document')return (item.ext||'file').toUpperCase();const sub=getImageSubtype(item.ext);const labels={jpg:'JPG',png:'PNG',gif:'GIF',webp:'WebP',svg:'SVG',heic:'HEIC',tiff:'TIFF',raw:'RAW',bmp:'BMP'};return labels[sub]||(item.ext||'IMG').toUpperCase();}
 
 // ===================== DUPLICATE DETECTION =====================
-function fileHash(item) { return item.name.toLowerCase().trim()+'::'+item.size; }
-function computeDuplicates() {
-  duplicateIds.clear();
-  const seen = new Map();
-  for (const item of images) { const h=fileHash(item); if(!seen.has(h))seen.set(h,[]); seen.get(h).push(item.id); }
-  for (const [,ids] of seen) { if(ids.length>1) for(let i=1;i<ids.length;i++) duplicateIds.add(ids[i]); }
-  updateCountBadge();
-}
-function getDuplicateGroups() {
-  const seen=new Map();
-  for(const item of images){const h=fileHash(item);if(!seen.has(h))seen.set(h,[]);seen.get(h).push(item);}
-  return [...seen.values()].filter(g=>g.length>1);
-}
-function toggleDupFilter(el) {
-  showDupFilter=!showDupFilter; el.classList.toggle('active',showDupFilter);
-  if(showDupFilter){currentFilter='all';document.querySelectorAll('.nav-item').forEach(n=>n.classList.remove('active'));document.querySelector('[data-filter="all"]').classList.add('active');document.getElementById('pageTitle').textContent='⚠️ File trùng';computeDuplicates();}
-  else document.getElementById('pageTitle').textContent='Tất cả file';
-  renderGallery();
-}
-async function removeAllDuplicates() {
-  if(!duplicateIds.size) return;
-  const count=duplicateIds.size;
-  for(const id of duplicateIds){const idx=images.findIndex(i=>i.id===id);if(idx!==-1){const item={...images[idx],deletedAt:Date.now()};images.splice(idx,1);await dbDelete(STORE_MEDIA,id);await dbPut(STORE_TRASH,item);trashItems.push(item);}}
-  duplicateIds.clear(); showDupFilter=false; document.getElementById('dupFilterTag').classList.remove('active'); document.getElementById('pageTitle').textContent='Tất cả file';
-  renderGallery(); updateStats(); updateCountBadge(); toast(`🗑 Đã xóa ${count} file trùng vào thùng rác`,'info');
-}
+function fileHash(item){return item.name.toLowerCase().trim()+'::'+item.size;}
+function computeDuplicates(){duplicateIds.clear();const seen=new Map();for(const item of images){const h=fileHash(item);if(!seen.has(h))seen.set(h,[]);seen.get(h).push(item.id);}for(const[,ids]of seen){if(ids.length>1)for(let i=1;i<ids.length;i++)duplicateIds.add(ids[i]);}updateCountBadge();}
+function getDuplicateGroups(){const seen=new Map();for(const item of images){const h=fileHash(item);if(!seen.has(h))seen.set(h,[]);seen.get(h).push(item);}return[...seen.values()].filter(g=>g.length>1);}
+function toggleDupFilter(el){showDupFilter=!showDupFilter;el.classList.toggle('active',showDupFilter);if(showDupFilter){currentFilter='all';document.querySelectorAll('.nav-item').forEach(n=>n.classList.remove('active'));document.querySelector('[data-filter="all"]').classList.add('active');document.getElementById('pageTitle').textContent='⚠️ File trùng';computeDuplicates();}else document.getElementById('pageTitle').textContent='Tất cả file';renderGallery();}
+async function removeAllDuplicates(){if(!duplicateIds.size)return;const count=duplicateIds.size;for(const id of duplicateIds){const idx=images.findIndex(i=>i.id===id);if(idx!==-1){const item={...images[idx],deletedAt:Date.now()};images.splice(idx,1);await dbDelete(STORE_MEDIA,id);await dbPut(STORE_TRASH,item);trashItems.push(item);}}duplicateIds.clear();showDupFilter=false;document.getElementById('dupFilterTag').classList.remove('active');document.getElementById('pageTitle').textContent='Tất cả file';renderGallery();updateStats();updateCountBadge();toast(`🗑 Đã xóa ${count} file trùng vào thùng rác`,'info');}
 
 // ===================== RENDER =====================
-function renderGallery() {
+function renderGallery(){
   const grid=document.getElementById('galleryGrid');
   const search=document.getElementById('searchInput').value.toLowerCase().trim();
   const sort=document.getElementById('sortSelect').value;
@@ -1522,50 +1633,43 @@ function renderGallery() {
   const trashToolbar=document.getElementById('trashToolbar');
   const uploadZone=document.getElementById('uploadZone');
   const dupBanner=document.getElementById('dupBanner');
-
   if(isTrashView){trashToolbar.classList.add('visible');document.getElementById('trashToolbarText').textContent=`${trashItems.length} file trong thùng rác`;uploadZone.style.display='none';dupBanner.classList.remove('visible');}
   else{trashToolbar.classList.remove('visible');uploadZone.style.display='';}
-
   if(isDupView&&!isTrashView){const groups=getDuplicateGroups();const totalDup=groups.reduce((s,g)=>s+g.length-1,0);if(totalDup>0){dupBanner.classList.add('visible');document.getElementById('dupBannerText').textContent=`⚠️ Tìm thấy ${totalDup} file trùng trong ${groups.length} nhóm.`;}else dupBanner.classList.remove('visible');}
   else dupBanner.classList.remove('visible');
-
   document.getElementById('bulkNormalActions').style.display=isTrashView?'none':'contents';
   document.getElementById('bulkTrashActions').style.display=isTrashView?'contents':'none';
-
   const pool=isTrashView?trashItems:images;
   let filtered=pool.filter(item=>{
     const nameMatch=search===''||item.name.toLowerCase().includes(search);
-    if(isTrashView) return nameMatch;
-    if(isDupView) return nameMatch&&duplicateIds.has(item.id);
+    if(isTrashView)return nameMatch;
+    if(isDupView)return nameMatch&&duplicateIds.has(item.id);
     const typeMatch=currentTypeFilter==='all'||item.kind===currentTypeFilter;
     let catMatch=true;
-    if(currentFilter==='recent') catMatch=item.timestamp>=Date.now()-86400000;
-    else if(currentFilter==='fav') catMatch=item.fav===true;
-    else if(currentFilter==='type-image') catMatch=item.kind==='image';
-    else if(currentFilter==='type-video') catMatch=item.kind==='video';
-    else if(currentFilter==='type-file') catMatch=item.kind==='document';
-    else if(currentFilter.startsWith('cat-')) catMatch=item.category===currentFilter.replace('cat-','');
-    else if(currentFilter.startsWith('fmt-')) {
+    if(currentFilter==='recent')catMatch=item.timestamp>=Date.now()-86400000;
+    else if(currentFilter==='fav')catMatch=item.fav===true;
+    else if(currentFilter==='type-image')catMatch=item.kind==='image';
+    else if(currentFilter==='type-video')catMatch=item.kind==='video';
+    else if(currentFilter==='type-file')catMatch=item.kind==='document';
+    else if(currentFilter.startsWith('cat-'))catMatch=item.category===currentFilter.replace('cat-','');
+    else if(currentFilter.startsWith('fmt-')){
       const fmt=currentFilter.replace('fmt-','');
-      if(fmt==='jpg') catMatch=item.kind==='image'&&['jpg','jpeg'].includes((item.ext||'').toLowerCase());
-      else if(fmt==='other') catMatch=item.kind==='image'&&['heic','heif','tiff','tif','raw','cr2','nef','arw','dng'].includes((item.ext||'').toLowerCase());
+      if(fmt==='jpg')catMatch=item.kind==='image'&&['jpg','jpeg'].includes((item.ext||'').toLowerCase());
+      else if(fmt==='other')catMatch=item.kind==='image'&&['heic','heif','tiff','tif','raw','cr2','nef','arw','dng'].includes((item.ext||'').toLowerCase());
       else catMatch=item.kind==='image'&&(item.ext||'').toLowerCase()===fmt;
     }
     return nameMatch&&typeMatch&&catMatch;
   });
-
   const badge=document.getElementById('searchBadge');
   if(search){badge.classList.add('visible');document.getElementById('searchBadgeText').textContent=`"${search}"`;document.getElementById('searchBadgeCount').textContent=filtered.length;}
   else badge.classList.remove('visible');
-
   if(!isTrashView){
-    if(sort==='newest') filtered.sort((a,b)=>b.timestamp-a.timestamp);
-    else if(sort==='oldest') filtered.sort((a,b)=>a.timestamp-b.timestamp);
-    else if(sort==='name') filtered.sort((a,b)=>a.name.localeCompare(b.name));
-    else if(sort==='size') filtered.sort((a,b)=>b.size-a.size);
-    else if(sort==='fav') filtered.sort((a,b)=>(b.fav?1:0)-(a.fav?1:0)||b.timestamp-a.timestamp);
+    if(sort==='newest')filtered.sort((a,b)=>b.timestamp-a.timestamp);
+    else if(sort==='oldest')filtered.sort((a,b)=>a.timestamp-b.timestamp);
+    else if(sort==='name')filtered.sort((a,b)=>a.name.localeCompare(b.name));
+    else if(sort==='size')filtered.sort((a,b)=>b.size-a.size);
+    else if(sort==='fav')filtered.sort((a,b)=>(b.fav?1:0)-(a.fav?1:0)||b.timestamp-a.timestamp);
   }
-
   if(filtered.length===0){
     const icon=isTrashView?'🗑️':(isDupView?'✅':(search?'🔍':(currentFilter==='fav'?'❤️':'🗂')));
     const title=isTrashView?'Thùng rác trống':(isDupView?'Không có file trùng!':(search?'Không tìm thấy':(currentFilter==='fav'?'Chưa có yêu thích':'Chưa có file nào')));
@@ -1579,81 +1683,43 @@ function renderGallery() {
   grid.innerHTML=filtered.map((item,i)=>buildCard(item,i,isList,search,isTrashView,isDupView)).join('');
 }
 
-function highlightName(name,search){
-  if(!search) return escHtml(name);
-  const idx=name.toLowerCase().indexOf(search.toLowerCase());
-  if(idx===-1) return escHtml(name);
-  return escHtml(name.slice(0,idx))+`<span style="color:var(--accent2);font-weight:600">${escHtml(name.slice(idx,idx+search.length))}</span>`+escHtml(name.slice(idx+search.length));
-}
+function highlightName(name,search){if(!search)return escHtml(name);const idx=name.toLowerCase().indexOf(search.toLowerCase());if(idx===-1)return escHtml(name);return escHtml(name.slice(0,idx))+`<span style="color:var(--accent2);font-weight:600">${escHtml(name.slice(idx,idx+search.length))}</span>`+escHtml(name.slice(idx+search.length));}
 
-function buildCard(item,i,isList,search,isTrash,isDup) {
-  const sel=selectedIds.has(item.id)?'selected':'';
-  const fav=(!isTrash&&item.fav)?'is-fav':'';
-  const trashCls=isTrash?'is-trash':'';
-  const dupCls=(!isTrash&&isDup&&duplicateIds.has(item.id))?'is-dup':'';
-  const delay=Math.min(i*35,350);
-  const sizeStr=formatSize(item.size);
-  const dateStr=new Date(item.timestamp).toLocaleDateString('vi-VN');
-  const displayName=highlightName(item.name,search||'');
-  const favActive=item.fav?'active':'';
-  const typeBadgeCls=getFileTypeBadgeClass(item);
-  const typeBadgeLabel=getFileTypeBadgeLabel(item);
+function buildCard(item,i,isList,search,isTrash,isDup){
+  const sel=selectedIds.has(item.id)?'selected':'',fav=(!isTrash&&item.fav)?'is-fav':'',trashCls=isTrash?'is-trash':'',dupCls=(!isTrash&&isDup&&duplicateIds.has(item.id))?'is-dup':'';
+  const delay=Math.min(i*35,350),sizeStr=formatSize(item.size),dateStr=new Date(item.timestamp).toLocaleDateString('vi-VN');
+  const displayName=highlightName(item.name,search||''),favActive=item.fav?'active':'';
+  const typeBadgeCls=getFileTypeBadgeClass(item),typeBadgeLabel=getFileTypeBadgeLabel(item);
   let thumbHtml='';
-  if(item.kind==='image') thumbHtml=`<img class="card-thumb" src="${item.dataURL}" alt="${escHtml(item.name)}" loading="lazy">`;
-  else if(item.kind==='video') thumbHtml=`<video class="card-thumb-video" src="${item.dataURL}" preload="metadata" muted></video><div class="video-play-indicator">▶</div>`;
+  if(item.kind==='image')thumbHtml=`<img class="card-thumb" src="${item.dataURL}" alt="${escHtml(item.name)}" loading="lazy">`;
+  else if(item.kind==='video')thumbHtml=`<video class="card-thumb-video" src="${item.dataURL}" preload="metadata" muted></video><div class="video-play-indicator">▶</div>`;
   else thumbHtml=`<div class="card-thumb-file">${getFileIcon(item.ext)}<span class="file-ext">${(item.ext||'FILE').toUpperCase()}</span></div>`;
-
-  const editBtnHtml = !isTrash ? `<button class="action-btn edit-btn" onclick="openEditor('${item.id}',event)" title="Chỉnh sửa">✏️</button>` : '';
-
+  const editBtnHtml=!isTrash?`<button class="action-btn edit-btn" onclick="openEditor('${item.id}',event)" title="Chỉnh sửa">✏️</button>`:'';
   const actionsHtml=isTrash
     ?`<button class="action-btn restore" onclick="restoreItem('${item.id}',event)">↩</button><button class="action-btn perm-del" onclick="permDelete('${item.id}',event)">✕</button>`
     :(isDup&&duplicateIds.has(item.id)
       ?`<button class="fav-btn ${favActive}" onclick="toggleFav('${item.id}',event)">${item.fav?'❤️':'🤍'}</button>${editBtnHtml}<button class="action-btn dup-del" onclick="deleteItem('${item.id}',event)">🗑</button>`
       :`<button class="fav-btn ${favActive}" onclick="toggleFav('${item.id}',event)">${item.fav?'❤️':'🤍'}</button>${editBtnHtml}<button class="action-btn ren" onclick="openRename('${item.id}',event)">✏️</button><button class="action-btn dl" onclick="downloadItem('${item.id}',event)">↓</button><button class="action-btn del" onclick="deleteItem('${item.id}',event)">✕</button>`);
-
-  const badgeHtml=isTrash
-    ?`<div class="trash-badge-card">🗑 Đã xóa</div>`
-    :(isDup&&duplicateIds.has(item.id)?`<div class="dup-badge-card">⚠️ Trùng</div>`:`<span class="fav-indicator">❤️</span>`);
-
+  const badgeHtml=isTrash?`<div class="trash-badge-card">🗑 Đã xóa</div>`:(isDup&&duplicateIds.has(item.id)?`<div class="dup-badge-card">⚠️ Trùng</div>`:`<span class="fav-indicator">❤️</span>`);
   if(isList){
     const thumbEl=item.kind==='image'?`<img class="card-thumb" src="${item.dataURL}" alt="" loading="lazy" style="width:52px;height:52px;border-radius:9px;object-fit:cover;flex-shrink:0">`
       :item.kind==='video'?`<video class="card-thumb" src="${item.dataURL}" style="width:52px;height:52px;border-radius:9px;object-fit:cover;flex-shrink:0" muted preload="metadata"></video>`
       :`<div class="card-thumb-file" style="width:52px;height:52px;border-radius:9px;flex-shrink:0;font-size:22px">${getFileIcon(item.ext)}</div>`;
     return `<div class="image-card ${sel} ${fav} ${trashCls} ${dupCls}" data-id="${item.id}" style="animation-delay:${delay}ms" onclick="handleCardClick('${item.id}',event)">
-      ${thumbEl}
-      <div class="card-info">
-        <div class="card-name-list">${displayName}</div>
-        <div class="card-meta-list">${item.fav&&!isTrash?'<span>❤️</span>':''}<span style="font-size:9px;padding:1px 5px;border-radius:4px;background:var(--surface2);color:var(--text3)">${typeBadgeLabel}</span> ${sizeStr} · ${dateStr}</div>
-      </div>
-      <div class="card-top">${actionsHtml}</div>
-    </div>`;
+      ${thumbEl}<div class="card-info"><div class="card-name-list">${displayName}</div><div class="card-meta-list">${item.fav&&!isTrash?'<span>❤️</span>':''}<span style="font-size:9px;padding:1px 5px;border-radius:4px;background:var(--surface2);color:var(--text3)">${typeBadgeLabel}</span> ${sizeStr} · ${dateStr}</div></div>
+      <div class="card-top">${actionsHtml}</div></div>`;
   }
   return `<div class="image-card ${sel} ${fav} ${trashCls} ${dupCls}" data-id="${item.id}" style="animation-delay:${delay}ms" onclick="handleCardClick('${item.id}',event)">
-    <div class="select-badge">✓</div>
-    ${thumbHtml}
-    <div class="file-type-badge ${typeBadgeCls}">${typeBadgeLabel}</div>
-    ${badgeHtml}
-    <div class="card-overlay">
-      <div class="card-name">${displayName}</div>
-      <div class="card-meta">${sizeStr}</div>
-    </div>
-    <div class="card-top">${actionsHtml}</div>
-  </div>`;
+    <div class="select-badge">✓</div>${thumbHtml}
+    <div class="file-type-badge ${typeBadgeCls}">${typeBadgeLabel}</div>${badgeHtml}
+    <div class="card-overlay"><div class="card-name">${displayName}</div><div class="card-meta">${sizeStr}</div></div>
+    <div class="card-top">${actionsHtml}</div></div>`;
 }
 
-function handleCardClick(id,e) {
-  if(e.target.closest('.action-btn')||e.target.closest('.fav-btn')) return;
-  if(lassoMode) return;
-  if(selectMode){toggleSelect(id);return;}
-  const isTrash=currentFilter==='trash';
-  const pool=isTrash?trashItems:images;
-  const idx=pool.findIndex(i=>i.id===id);
-  if(idx!==-1) openPreview(id);
-}
+function handleCardClick(id,e){if(e.target.closest('.action-btn')||e.target.closest('.fav-btn'))return;if(lassoMode)return;if(selectMode){toggleSelect(id);return;}const isTrash=currentFilter==='trash';const pool=isTrash?trashItems:images;const idx=pool.findIndex(i=>i.id===id);if(idx!==-1)openPreview(id);}
 
 // ===================== UPLOAD =====================
-const uploadZoneEl=document.getElementById('uploadZone');
-const fileInput=document.getElementById('fileInput');
+const uploadZoneEl=document.getElementById('uploadZone'),fileInput=document.getElementById('fileInput');
 uploadZoneEl.addEventListener('click',()=>fileInput.click());
 document.getElementById('navUploadBtn').addEventListener('click',()=>fileInput.click());
 fileInput.addEventListener('change',e=>handleFiles([...e.target.files]));
@@ -1663,27 +1729,22 @@ uploadZoneEl.addEventListener('drop',e=>{e.preventDefault();uploadZoneEl.classLi
 document.addEventListener('dragover',e=>e.preventDefault());
 document.addEventListener('drop',e=>{e.preventDefault();if(e.target.closest('#uploadZone'))return;const files=[...e.dataTransfer.files];if(files.length)handleFiles(files);});
 
-async function handleFiles(files) {
-  if(!files.length) return;
-  let added=0,skipped=0,errors=0;
+async function handleFiles(files){
+  if(!files.length)return;let added=0,skipped=0,errors=0;
   for(const file of files){
     try{
-      const ext=file.name.split('.').pop().toLowerCase();
-      const nameWithoutExt=file.name.replace(/\.[^/.]+$/,'');
-      const kind=getFileKind(file.type,ext);
-      const candidateHash=nameWithoutExt.toLowerCase().trim()+'::'+file.size;
+      const ext=file.name.split('.').pop().toLowerCase(),nameWithoutExt=file.name.replace(/\.[^/.]+$/,'');
+      const kind=getFileKind(file.type,ext),candidateHash=nameWithoutExt.toLowerCase().trim()+'::'+file.size;
       if(images.some(img=>fileHash(img)===candidateHash)){skipped++;continue;}
       const dataURL=await readFileAsDataURL(file);
       const item={id:'f_'+Date.now()+'_'+Math.random().toString(36).slice(2,6),name:nameWithoutExt,ext,kind,type:kind==='image'?(ext==='png'?'png':ext==='webp'?'webp':'jpg'):ext,size:file.size,dataURL,timestamp:Date.now(),fav:false,category:'other'};
-      await dbPut(STORE_MEDIA,item);
-      images.unshift(item);
-      added++;
+      await dbPut(STORE_MEDIA,item);images.unshift(item);added++;
     }catch{errors++;}
   }
-  computeDuplicates(); renderGallery(); updateStats(); updateCountBadge();
-  if(added) toast(`✓ Đã upload ${added} file!`,'success');
-  if(skipped) toast(`⚠️ Bỏ qua ${skipped} file đã tồn tại`,'info');
-  if(errors) toast(`${errors} file không thể đọc`,'error');
+  computeDuplicates();renderGallery();updateStats();updateCountBadge();
+  if(added)toast(`✓ Đã upload ${added} file!`,'success');
+  if(skipped)toast(`⚠️ Bỏ qua ${skipped} file đã tồn tại`,'info');
+  if(errors)toast(`${errors} file không thể đọc`,'error');
   fileInput.value='';
 }
 function readFileAsDataURL(file){return new Promise((res,rej)=>{const r=new FileReader();r.onload=e=>res(e.target.result);r.onerror=rej;r.readAsDataURL(file);});}
@@ -1714,7 +1775,7 @@ function downloadCurrent(){const pool=currentFilter==='trash'?trashItems:images;
 // ===================== FAVORITES =====================
 async function toggleFav(id,e){if(e){e.stopPropagation();e.preventDefault();}const item=images.find(i=>i.id===id);if(!item)return;item.fav=!item.fav;await dbPut(STORE_MEDIA,item);renderGallery();updateStats();updateCountBadge();if(item.fav){toast('❤️ Đã thêm vào yêu thích!','fav');const card=document.querySelector(`[data-id="${id}"]`);if(card){const heart=document.createElement('div');heart.textContent='❤️';heart.style.cssText='position:absolute;top:50%;left:50%;transform:translate(-50%,-50%) scale(0);font-size:38px;pointer-events:none;z-index:10;animation:heartPop 0.6s ease forwards;';card.appendChild(heart);setTimeout(()=>heart.remove(),700);}}else toast('🤍 Đã bỏ yêu thích','info');if(previewIndex!==-1)updateModalFavUI();}
 async function toggleFavModal(){const pool=currentFilter==='trash'?trashItems:images;const item=pool[previewIndex];if(item&&currentFilter!=='trash')await toggleFav(item.id,null);}
-function updateModalFavUI(){const pool=currentFilter==='trash'?trashItems:images;const item=pool[previewIndex];if(!item)return;const btn=document.getElementById('modalFavBtn');const ind=document.getElementById('modalFavIndicator');btn.classList.toggle('active',!!item.fav);btn.textContent=item.fav?'❤️':'🤍';ind.style.display=item.fav?'inline':'none';btn.style.display=currentFilter==='trash'?'none':'';}
+function updateModalFavUI(){const pool=currentFilter==='trash'?trashItems:images;const item=pool[previewIndex];if(!item)return;const btn=document.getElementById('modalFavBtn'),ind=document.getElementById('modalFavIndicator');btn.classList.toggle('active',!!item.fav);btn.textContent=item.fav?'❤️':'🤍';ind.style.display=item.fav?'inline':'none';btn.style.display=currentFilter==='trash'?'none':'';}
 
 // ===================== RENAME =====================
 function openRename(id,e){if(e)e.stopPropagation();const item=images.find(i=>i.id===id);if(!item)return;renameTargetId=id;document.getElementById('renameInput').value=item.name;document.getElementById('renameModal').classList.add('open');setTimeout(()=>document.getElementById('renameInput').select(),100);}
@@ -1725,329 +1786,44 @@ document.getElementById('renameInput').addEventListener('keydown',e=>{if(e.key==
 
 // ===================== PREVIEW =====================
 function openPreview(id){const pool=currentFilter==='trash'?trashItems:images;const idx=pool.findIndex(i=>i.id===id);if(idx===-1)return;previewIndex=idx;updateModalContent();document.getElementById('previewModal').classList.add('open');document.body.style.overflow='hidden';}
-function updateModalContent(){const pool=currentFilter==='trash'?trashItems:images;const item=pool[previewIndex];if(!item)return;const imgEl=document.getElementById('modalImg'),vidEl=document.getElementById('modalVideo'),filePrev=document.getElementById('modalFilePrev');imgEl.style.display='none';vidEl.style.display='none';filePrev.style.display='none';if(item.kind==='image'){imgEl.src=item.dataURL;imgEl.style.display='block';}else if(item.kind==='video'){vidEl.src=item.dataURL;vidEl.style.display='block';}else{document.getElementById('modalFileIcon').textContent=getFileIcon(item.ext);document.getElementById('modalFileName').textContent=item.name+'.'+item.ext;filePrev.style.display='flex';}document.getElementById('modalTitle').textContent=item.name;document.getElementById('modalNameText').textContent=item.name+'.'+(item.ext||item.type||'?');document.getElementById('modalMeta').textContent=`${typeBadgeLabelFromItem(item)} · ${formatSize(item.size)} · ${new Date(item.timestamp).toLocaleString('vi-VN')}`;document.getElementById('modalCounter').textContent=`${previewIndex+1} / ${pool.length}`;const editBtn=document.getElementById('modalEditBtn');editBtn.style.display=currentFilter==='trash'?'none':'';updateModalFavUI();}
-function typeBadgeLabelFromItem(item){return getFileTypeBadgeLabel(item);}
+function updateModalContent(){const pool=currentFilter==='trash'?trashItems:images;const item=pool[previewIndex];if(!item)return;const imgEl=document.getElementById('modalImg'),vidEl=document.getElementById('modalVideo'),filePrev=document.getElementById('modalFilePrev');imgEl.style.display='none';vidEl.style.display='none';filePrev.style.display='none';if(item.kind==='image'){imgEl.src=item.dataURL;imgEl.style.display='block';}else if(item.kind==='video'){vidEl.src=item.dataURL;vidEl.style.display='block';}else{document.getElementById('modalFileIcon').textContent=getFileIcon(item.ext);document.getElementById('modalFileName').textContent=item.name+'.'+item.ext;filePrev.style.display='flex';}document.getElementById('modalTitle').textContent=item.name;document.getElementById('modalNameText').textContent=item.name+'.'+(item.ext||item.type||'?');document.getElementById('modalMeta').textContent=`${getFileTypeBadgeLabel(item)} · ${formatSize(item.size)} · ${new Date(item.timestamp).toLocaleString('vi-VN')}`;document.getElementById('modalCounter').textContent=`${previewIndex+1} / ${pool.length}`;document.getElementById('modalEditBtn').style.display=currentFilter==='trash'?'none':'';updateModalFavUI();}
 function navigateModal(dir){const pool=currentFilter==='trash'?trashItems:images;previewIndex=(previewIndex+dir+pool.length)%pool.length;updateModalContent();}
 function closePreview(e){if(e&&e.target!==document.getElementById('previewModal'))return;closePreviewDirect();}
 function closePreviewDirect(){document.getElementById('previewModal').classList.remove('open');document.body.style.overflow='';previewIndex=-1;const v=document.getElementById('modalVideo');v.pause();v.src='';}
 
 // ===================== EDITOR =====================
-function openEditorFromPreview() {
-  const pool=currentFilter==='trash'?trashItems:images;
-  const item=pool[previewIndex];
-  if(!item) return;
-  closePreviewDirect();
-  openEditor(item.id, null);
-}
-
-function openEditor(id, e) {
-  if(e) e.stopPropagation();
-  const item=images.find(i=>i.id===id);
-  if(!item) return;
-  editTargetId=id;
-  if(item.kind==='image') switchEditorTab('img');
-  else if(item.kind==='video') switchEditorTab('vid');
-  else switchEditorTab('code');
-  document.getElementById('editorModal').classList.add('open');
-  document.body.style.overflow='hidden';
-}
-
-function switchEditorTab(tab) {
-  document.querySelectorAll('.editor-tab').forEach(t=>t.classList.remove('active'));
-  document.getElementById('imgEditorPanel').style.display='none';
-  document.getElementById('vidEditorPanel').style.display='none';
-  document.getElementById('codeEditorPanel').style.display='none';
-
-  if(tab==='img'){
-    document.getElementById('tabImg').classList.add('active');
-    document.getElementById('imgEditorPanel').style.display='flex';
-    initImageEditor();
-  } else if(tab==='vid'){
-    document.getElementById('tabVid').classList.add('active');
-    document.getElementById('vidEditorPanel').style.display='flex';
-    initVideoEditor();
-  } else {
-    document.getElementById('tabCode').classList.add('active');
-    document.getElementById('codeEditorPanel').style.display='flex';
-    initCodeEditor();
-  }
-}
-
-// --- Image Editor ---
-let filterState = { brightness: 0, contrast: 0, saturation: 0, blur: 0 };
-let cropEnabled = false;
-
-function initImageEditor() {
-  const item=images.find(i=>i.id===editTargetId);
-  if(!item||item.kind!=='image') return;
-  const imgEl=document.getElementById('cropperImg');
-  imgEl.src=item.dataURL;
-  resetFilters();
-  if(cropperInstance){cropperInstance.destroy();cropperInstance=null;}
-  cropEnabled=false;
-  document.getElementById('cropModeBtn').classList.remove('active');
-  document.getElementById('cropModeBtn').textContent='✂️ Cắt ảnh';
-  imgEl.onload=()=>{if(cropperInstance){cropperInstance.destroy();cropperInstance=null;}};
-}
-
-function toggleCropMode() {
-  const imgEl=document.getElementById('cropperImg');
-  cropEnabled=!cropEnabled;
-  document.getElementById('cropModeBtn').classList.toggle('active',cropEnabled);
-  document.getElementById('cropModeBtn').textContent=cropEnabled?'✅ Đang cắt':'✂️ Cắt ảnh';
-  if(cropEnabled){
-    if(cropperInstance) cropperInstance.destroy();
-    cropperInstance=new Cropper(imgEl,{viewMode:1,autoCropArea:0.8,movable:true,zoomable:true,background:false});
-  } else {
-    if(cropperInstance){cropperInstance.destroy();cropperInstance=null;}
-  }
-}
-
-function cropperAction(action, val) {
-  if(!cropperInstance&&(action==='flipX'||action==='flipY'||action==='rotate')) {
-    applyTransformViaCanvas(action, val); return;
-  }
-  if(cropperInstance){
-    if(action==='rotate') cropperInstance.rotate(val);
-    else if(action==='flipX') cropperInstance.scaleX(cropperInstance.getData().scaleX===-1?1:-1);
-    else if(action==='flipY') cropperInstance.scaleY(cropperInstance.getData().scaleY===-1?1:-1);
-  } else {
-    applyTransformViaCanvas(action, val);
-  }
-}
-
-function applyTransformViaCanvas(action, val) {
-  const item=images.find(i=>i.id===editTargetId);
-  if(!item) return;
-  const img=new Image();
-  img.onload=()=>{
-    const canvas=document.createElement('canvas');
-    const isRotate=action==='rotate';
-    if(isRotate&&(val===90||val===-90)){canvas.width=img.height;canvas.height=img.width;}
-    else{canvas.width=img.width;canvas.height=img.height;}
-    const c=canvas.getContext('2d');
-    c.translate(canvas.width/2,canvas.height/2);
-    if(isRotate) c.rotate((val*Math.PI)/180);
-    else if(action==='flipX') c.scale(-1,1);
-    else if(action==='flipY') c.scale(1,-1);
-    c.drawImage(img,-img.width/2,-img.height/2);
-    document.getElementById('cropperImg').src=canvas.toDataURL(item.type||'image/jpeg',0.92);
-  };
-  img.src=item.dataURL;
-}
-
-function applyFilters() {
-  const b=document.getElementById('slBrightness').value;
-  const c=document.getElementById('slContrast').value;
-  const s=document.getElementById('slSaturation').value;
-  const bl=document.getElementById('slBlur').value;
-  document.getElementById('valBrightness').textContent=b;
-  document.getElementById('valContrast').textContent=c;
-  document.getElementById('valSaturation').textContent=s;
-  document.getElementById('valBlur').textContent=bl;
-  const img=document.getElementById('cropperImg');
-  img.style.filter=`brightness(${1+b/100}) contrast(${1+c/100}) saturate(${1+s/100}) blur(${bl/5}px)`;
-}
-
-function resetFilters() {
-  ['slBrightness','slContrast','slSaturation','slBlur'].forEach(id=>{document.getElementById(id).value=0;});
-  ['valBrightness','valContrast','valSaturation','valBlur'].forEach(id=>{document.getElementById(id).textContent=0;});
-  document.getElementById('cropperImg').style.filter='';
-}
-
-async function saveEditedImage() {
-  const item=images.find(i=>i.id===editTargetId);
-  if(!item) return;
-  try {
-    let dataURL;
-    if(cropEnabled&&cropperInstance){
-      const canvas=cropperInstance.getCroppedCanvas({imageSmoothingQuality:'high'});
-      const finalCanvas=document.createElement('canvas');
-      finalCanvas.width=canvas.width; finalCanvas.height=canvas.height;
-      const ctx=finalCanvas.getContext('2d');
-      const b=document.getElementById('slBrightness').value/100;
-      const c=document.getElementById('slContrast').value/100;
-      const s=document.getElementById('slSaturation').value/100;
-      const bl=document.getElementById('slBlur').value/5;
-      ctx.filter=`brightness(${1+b}) contrast(${1+c}) saturate(${1+s}) blur(${bl}px)`;
-      ctx.drawImage(canvas,0,0);
-      dataURL=finalCanvas.toDataURL(item.type==='png'?'image/png':'image/jpeg',0.92);
-      if(cropperInstance){cropperInstance.destroy();cropperInstance=null;cropEnabled=false;}
-    } else {
-      const img=document.getElementById('cropperImg');
-      const srcImg=new Image();
-      srcImg.src=img.src;
-      await new Promise(r=>srcImg.complete?r():srcImg.onload=r);
-      const canvas=document.createElement('canvas');
-      canvas.width=srcImg.naturalWidth||srcImg.width;
-      canvas.height=srcImg.naturalHeight||srcImg.height;
-      const ctx=canvas.getContext('2d');
-      const b=document.getElementById('slBrightness').value/100;
-      const c=document.getElementById('slContrast').value/100;
-      const s=document.getElementById('slSaturation').value/100;
-      const bl=document.getElementById('slBlur').value/5;
-      ctx.filter=`brightness(${1+b}) contrast(${1+c}) saturate(${1+s}) blur(${bl}px)`;
-      ctx.drawImage(srcImg,0,0,canvas.width,canvas.height);
-      dataURL=canvas.toDataURL(item.type==='png'?'image/png':'image/jpeg',0.92);
-    }
-    item.dataURL=dataURL;
-    await dbPut(STORE_MEDIA,item);
-    renderGallery(); updateStats();
-    closeEditorDirect();
-    toast('💾 Đã lưu ảnh đã chỉnh sửa!','success');
-  } catch(err) {
-    toast('Lỗi khi lưu ảnh: '+err.message,'error');
-  }
-}
-
-// --- Video Editor ---
-function initVideoEditor() {
-  const item=images.find(i=>i.id===editTargetId);
-  if(!item||item.kind!=='video') return;
-  const vid=document.getElementById('editVideo');
-  vid.src=item.dataURL;
-  vid.onloadedmetadata=()=>{document.getElementById('vidEnd').value=100;document.getElementById('vidStart').value=0;updateVidTrim();};
-}
-
-function updateVidTrim() {
-  const vid=document.getElementById('editVideo');
-  const dur=vid.duration||0;
-  const startPct=document.getElementById('vidStart').value/100;
-  const endPct=document.getElementById('vidEnd').value/100;
-  document.getElementById('vidStartVal').textContent=formatDuration(dur*startPct);
-  document.getElementById('vidEndVal').textContent=formatDuration(dur*endPct);
-}
-
-function formatDuration(s) {
-  const m=Math.floor(s/60);
-  const sec=Math.floor(s%60);
-  return `${m}:${sec.toString().padStart(2,'0')}`;
-}
-
-function previewVidTrim() {
-  const vid=document.getElementById('editVideo');
-  const dur=vid.duration||0;
-  const startSec=dur*(document.getElementById('vidStart').value/100);
-  const endSec=dur*(document.getElementById('vidEnd').value/100);
-  vid.currentTime=startSec;
-  vid.play();
-  setTimeout(()=>{vid.pause();},(endSec-startSec)*1000+100);
-  toast(`▶ Xem đoạn từ ${formatDuration(startSec)} đến ${formatDuration(endSec)}`,'info');
-}
-
-function saveVidTrimNote() {
-  const vid=document.getElementById('editVideo');
-  const dur=vid.duration||0;
-  const startSec=dur*(document.getElementById('vidStart').value/100);
-  const endSec=dur*(document.getElementById('vidEnd').value/100);
-  const item=images.find(i=>i.id===editTargetId);
-  if(!item) return;
-  item.trimStart=startSec; item.trimEnd=endSec;
-  dbPut(STORE_MEDIA,item);
-  toast(`💾 Đã lưu thông tin cắt: ${formatDuration(startSec)} → ${formatDuration(endSec)}`,'success');
-  closeEditorDirect();
-}
-
-function captureVideoFrame() {
-  const vid=document.getElementById('editVideo');
-  const canvas=document.createElement('canvas');
-  canvas.width=vid.videoWidth||640; canvas.height=vid.videoHeight||360;
-  canvas.getContext('2d').drawImage(vid,0,0,canvas.width,canvas.height);
-  const dataURL=canvas.toDataURL('image/jpeg',0.92);
-  const item=images.find(i=>i.id===editTargetId);
-  const newItem={id:'f_'+Date.now()+'_cap',name:(item?item.name:'frame')+'_capture',ext:'jpg',kind:'image',type:'jpg',size:dataURL.length,dataURL,timestamp:Date.now(),fav:false,category:'other'};
-  dbPut(STORE_MEDIA,newItem);
-  images.unshift(newItem);
-  computeDuplicates(); renderGallery(); updateStats(); updateCountBadge();
-  toast('📷 Đã chụp khung hình thành công!','success');
-}
-
-// --- Code Editor ---
-function initCodeEditor() {
-  const item=images.find(i=>i.id===editTargetId);
-  if(!item||item.kind!=='document') {
-    if(cmEditor) cmEditor.setValue('// Tải nội dung file để chỉnh sửa...\n// Chức năng này hỗ trợ file văn bản và code.');
-    else setupCodeMirror('// Tải nội dung file để chỉnh sửa...');
-    return;
-  }
-  let content='';
-  try {
-    const base64=item.dataURL.split(',')[1];
-    if(base64) content=atob(base64);
-    else content=decodeURIComponent(item.dataURL.split(',')[1]||'');
-  } catch { content='// Không thể đọc nội dung file này dưới dạng văn bản.'; }
-  const ext=(item.ext||'').toLowerCase();
-  let mode='javascript';
-  if(['html','htm','xml'].includes(ext)) mode='xml';
-  else if(ext==='css'||ext==='scss') mode='css';
-  else if(ext==='py') mode='python';
-  else if(ext==='md') mode='markdown';
-  else if(CODE_EXTS.includes(ext)) mode='javascript';
-  else mode='text';
-  document.getElementById('codeLangSelect').value=mode;
-  setupCodeMirror(content, mode);
-}
-
-function setupCodeMirror(content, mode='javascript') {
-  const container=document.getElementById('codeEditorBody');
-  container.innerHTML='';
-  const textarea=document.createElement('textarea');
-  container.appendChild(textarea);
-  textarea.value=content;
-  cmEditor=CodeMirror.fromTextArea(textarea,{
-    mode: mode==='text'?null:mode,
-    theme:'dracula',lineNumbers:true,lineWrapping:true,autoCloseBrackets:true,matchBrackets:true,indentWithTabs:true,tabSize:2,
-  });
-  cmEditor.setSize('100%','100%');
-}
-
-function changeCodeLang() {
-  const lang=document.getElementById('codeLangSelect').value;
-  if(cmEditor) cmEditor.setOption('mode', lang==='text'?null:lang);
-}
-
-async function saveCodeEdit() {
-  if(!cmEditor) return;
-  const newContent=cmEditor.getValue();
-  const item=images.find(i=>i.id===editTargetId);
-  if(!item) return;
-  const blob=new Blob([newContent],{type:'text/plain'});
-  const dataURL=await readFileAsDataURL(blob);
-  item.dataURL=dataURL; item.size=blob.size;
-  await dbPut(STORE_MEDIA,item);
-  renderGallery(); updateStats();
-  closeEditorDirect();
-  toast('💾 Đã lưu file code!','success');
-}
-
+function openEditorFromPreview(){const pool=currentFilter==='trash'?trashItems:images;const item=pool[previewIndex];if(!item)return;closePreviewDirect();openEditor(item.id,null);}
+function openEditor(id,e){if(e)e.stopPropagation();const item=images.find(i=>i.id===id);if(!item)return;editTargetId=id;if(item.kind==='image')switchEditorTab('img');else if(item.kind==='video')switchEditorTab('vid');else switchEditorTab('code');document.getElementById('editorModal').classList.add('open');document.body.style.overflow='hidden';}
+function switchEditorTab(tab){document.querySelectorAll('.editor-tab').forEach(t=>t.classList.remove('active'));document.getElementById('imgEditorPanel').style.display='none';document.getElementById('vidEditorPanel').style.display='none';document.getElementById('codeEditorPanel').style.display='none';if(tab==='img'){document.getElementById('tabImg').classList.add('active');document.getElementById('imgEditorPanel').style.display='flex';initImageEditor();}else if(tab==='vid'){document.getElementById('tabVid').classList.add('active');document.getElementById('vidEditorPanel').style.display='flex';initVideoEditor();}else{document.getElementById('tabCode').classList.add('active');document.getElementById('codeEditorPanel').style.display='flex';initCodeEditor();}}
+let cropEnabled=false;
+function initImageEditor(){const item=images.find(i=>i.id===editTargetId);if(!item||item.kind!=='image')return;const imgEl=document.getElementById('cropperImg');imgEl.src=item.dataURL;resetFilters();if(cropperInstance){cropperInstance.destroy();cropperInstance=null;}cropEnabled=false;document.getElementById('cropModeBtn').classList.remove('active');document.getElementById('cropModeBtn').textContent='✂️ Cắt ảnh';imgEl.onload=()=>{if(cropperInstance){cropperInstance.destroy();cropperInstance=null;}};}
+function toggleCropMode(){const imgEl=document.getElementById('cropperImg');cropEnabled=!cropEnabled;document.getElementById('cropModeBtn').classList.toggle('active',cropEnabled);document.getElementById('cropModeBtn').textContent=cropEnabled?'✅ Đang cắt':'✂️ Cắt ảnh';if(cropEnabled){if(cropperInstance)cropperInstance.destroy();cropperInstance=new Cropper(imgEl,{viewMode:1,autoCropArea:0.8,movable:true,zoomable:true,background:false});}else{if(cropperInstance){cropperInstance.destroy();cropperInstance=null;}}}
+function cropperAction(action,val){if(!cropperInstance&&(action==='flipX'||action==='flipY'||action==='rotate')){applyTransformViaCanvas(action,val);return;}if(cropperInstance){if(action==='rotate')cropperInstance.rotate(val);else if(action==='flipX')cropperInstance.scaleX(cropperInstance.getData().scaleX===-1?1:-1);else if(action==='flipY')cropperInstance.scaleY(cropperInstance.getData().scaleY===-1?1:-1);}else{applyTransformViaCanvas(action,val);}}
+function applyTransformViaCanvas(action,val){const item=images.find(i=>i.id===editTargetId);if(!item)return;const img=new Image();img.onload=()=>{const canvas=document.createElement('canvas');const isRotate=action==='rotate';if(isRotate&&(val===90||val===-90)){canvas.width=img.height;canvas.height=img.width;}else{canvas.width=img.width;canvas.height=img.height;}const c=canvas.getContext('2d');c.translate(canvas.width/2,canvas.height/2);if(isRotate)c.rotate((val*Math.PI)/180);else if(action==='flipX')c.scale(-1,1);else if(action==='flipY')c.scale(1,-1);c.drawImage(img,-img.width/2,-img.height/2);document.getElementById('cropperImg').src=canvas.toDataURL(item.type||'image/jpeg',0.92);};img.src=item.dataURL;}
+function applyFilters(){const b=document.getElementById('slBrightness').value,c=document.getElementById('slContrast').value,s=document.getElementById('slSaturation').value,bl=document.getElementById('slBlur').value;document.getElementById('valBrightness').textContent=b;document.getElementById('valContrast').textContent=c;document.getElementById('valSaturation').textContent=s;document.getElementById('valBlur').textContent=bl;document.getElementById('cropperImg').style.filter=`brightness(${1+b/100}) contrast(${1+c/100}) saturate(${1+s/100}) blur(${bl/5}px)`;}
+function resetFilters(){['slBrightness','slContrast','slSaturation','slBlur'].forEach(id=>{document.getElementById(id).value=0;});['valBrightness','valContrast','valSaturation','valBlur'].forEach(id=>{document.getElementById(id).textContent=0;});document.getElementById('cropperImg').style.filter='';}
+async function saveEditedImage(){const item=images.find(i=>i.id===editTargetId);if(!item)return;try{let dataURL;if(cropEnabled&&cropperInstance){const canvas=cropperInstance.getCroppedCanvas({imageSmoothingQuality:'high'});const finalCanvas=document.createElement('canvas');finalCanvas.width=canvas.width;finalCanvas.height=canvas.height;const ctx=finalCanvas.getContext('2d');const b=document.getElementById('slBrightness').value/100,c=document.getElementById('slContrast').value/100,s=document.getElementById('slSaturation').value/100,bl=document.getElementById('slBlur').value/5;ctx.filter=`brightness(${1+b}) contrast(${1+c}) saturate(${1+s}) blur(${bl}px)`;ctx.drawImage(canvas,0,0);dataURL=finalCanvas.toDataURL(item.type==='png'?'image/png':'image/jpeg',0.92);if(cropperInstance){cropperInstance.destroy();cropperInstance=null;cropEnabled=false;}}else{const img=document.getElementById('cropperImg');const srcImg=new Image();srcImg.src=img.src;await new Promise(r=>srcImg.complete?r():srcImg.onload=r);const canvas=document.createElement('canvas');canvas.width=srcImg.naturalWidth||srcImg.width;canvas.height=srcImg.naturalHeight||srcImg.height;const ctx=canvas.getContext('2d');const b=document.getElementById('slBrightness').value/100,c=document.getElementById('slContrast').value/100,s=document.getElementById('slSaturation').value/100,bl=document.getElementById('slBlur').value/5;ctx.filter=`brightness(${1+b}) contrast(${1+c}) saturate(${1+s}) blur(${bl}px)`;ctx.drawImage(srcImg,0,0,canvas.width,canvas.height);dataURL=canvas.toDataURL(item.type==='png'?'image/png':'image/jpeg',0.92);}item.dataURL=dataURL;await dbPut(STORE_MEDIA,item);renderGallery();updateStats();closeEditorDirect();toast('💾 Đã lưu ảnh đã chỉnh sửa!','success');}catch(err){toast('Lỗi khi lưu ảnh: '+err.message,'error');}}
+function initVideoEditor(){const item=images.find(i=>i.id===editTargetId);if(!item||item.kind!=='video')return;const vid=document.getElementById('editVideo');vid.src=item.dataURL;vid.onloadedmetadata=()=>{document.getElementById('vidEnd').value=100;document.getElementById('vidStart').value=0;updateVidTrim();};}
+function updateVidTrim(){const vid=document.getElementById('editVideo'),dur=vid.duration||0;document.getElementById('vidStartVal').textContent=formatDuration(dur*(document.getElementById('vidStart').value/100));document.getElementById('vidEndVal').textContent=formatDuration(dur*(document.getElementById('vidEnd').value/100));}
+function formatDuration(s){const m=Math.floor(s/60),sec=Math.floor(s%60);return `${m}:${sec.toString().padStart(2,'0')}`;}
+function previewVidTrim(){const vid=document.getElementById('editVideo'),dur=vid.duration||0;const startSec=dur*(document.getElementById('vidStart').value/100),endSec=dur*(document.getElementById('vidEnd').value/100);vid.currentTime=startSec;vid.play();setTimeout(()=>{vid.pause();},(endSec-startSec)*1000+100);toast(`▶ Xem đoạn từ ${formatDuration(startSec)} đến ${formatDuration(endSec)}`,'info');}
+function saveVidTrimNote(){const vid=document.getElementById('editVideo'),dur=vid.duration||0;const startSec=dur*(document.getElementById('vidStart').value/100),endSec=dur*(document.getElementById('vidEnd').value/100);const item=images.find(i=>i.id===editTargetId);if(!item)return;item.trimStart=startSec;item.trimEnd=endSec;dbPut(STORE_MEDIA,item);toast(`💾 Đã lưu thông tin cắt: ${formatDuration(startSec)} → ${formatDuration(endSec)}`,'success');closeEditorDirect();}
+function captureVideoFrame(){const vid=document.getElementById('editVideo');const canvas=document.createElement('canvas');canvas.width=vid.videoWidth||640;canvas.height=vid.videoHeight||360;canvas.getContext('2d').drawImage(vid,0,0,canvas.width,canvas.height);const dataURL=canvas.toDataURL('image/jpeg',0.92);const item=images.find(i=>i.id===editTargetId);const newItem={id:'f_'+Date.now()+'_cap',name:(item?item.name:'frame')+'_capture',ext:'jpg',kind:'image',type:'jpg',size:dataURL.length,dataURL,timestamp:Date.now(),fav:false,category:'other'};dbPut(STORE_MEDIA,newItem);images.unshift(newItem);computeDuplicates();renderGallery();updateStats();updateCountBadge();toast('📷 Đã chụp khung hình thành công!','success');}
+function initCodeEditor(){const item=images.find(i=>i.id===editTargetId);if(!item||item.kind!=='document'){if(cmEditor)cmEditor.setValue('// Tải nội dung file để chỉnh sửa...');else setupCodeMirror('// Tải nội dung file để chỉnh sửa...');return;}let content='';try{const base64=item.dataURL.split(',')[1];if(base64)content=atob(base64);else content=decodeURIComponent(item.dataURL.split(',')[1]||'');}catch{content='// Không thể đọc nội dung file này.';}const ext=(item.ext||'').toLowerCase();let mode='javascript';if(['html','htm','xml'].includes(ext))mode='xml';else if(ext==='css'||ext==='scss')mode='css';else if(ext==='py')mode='python';else if(ext==='md')mode='markdown';else if(CODE_EXTS.includes(ext))mode='javascript';else mode='text';document.getElementById('codeLangSelect').value=mode;setupCodeMirror(content,mode);}
+function setupCodeMirror(content,mode='javascript'){const container=document.getElementById('codeEditorBody');container.innerHTML='';const textarea=document.createElement('textarea');container.appendChild(textarea);textarea.value=content;cmEditor=CodeMirror.fromTextArea(textarea,{mode:mode==='text'?null:mode,theme:'dracula',lineNumbers:true,lineWrapping:true,autoCloseBrackets:true,matchBrackets:true,indentWithTabs:true,tabSize:2});cmEditor.setSize('100%','100%');}
+function changeCodeLang(){const lang=document.getElementById('codeLangSelect').value;if(cmEditor)cmEditor.setOption('mode',lang==='text'?null:lang);}
+async function saveCodeEdit(){if(!cmEditor)return;const newContent=cmEditor.getValue();const item=images.find(i=>i.id===editTargetId);if(!item)return;const blob=new Blob([newContent],{type:'text/plain'});const dataURL=await readFileAsDataURL(blob);item.dataURL=dataURL;item.size=blob.size;await dbPut(STORE_MEDIA,item);renderGallery();updateStats();closeEditorDirect();toast('💾 Đã lưu file code!','success');}
 function closeEditorModal(e){if(e&&e.target!==document.getElementById('editorModal'))return;closeEditorDirect();}
-function closeEditorDirect(){
-  document.getElementById('editorModal').classList.remove('open');
-  document.body.style.overflow='';
-  if(cropperInstance){cropperInstance.destroy();cropperInstance=null;cropEnabled=false;}
-  const v=document.getElementById('editVideo');v.pause();v.src='';
-  editTargetId=null;
-}
+function closeEditorDirect(){document.getElementById('editorModal').classList.remove('open');document.body.style.overflow='';if(cropperInstance){cropperInstance.destroy();cropperInstance=null;cropEnabled=false;}const v=document.getElementById('editVideo');v.pause();v.src='';editTargetId=null;}
 
 // ===================== SELECTION =====================
 document.getElementById('selectModeBtn').addEventListener('click',()=>{selectMode=!selectMode;document.getElementById('selectModeBtn').textContent=selectMode?'✓':'⬜';if(!selectMode){clearSelection();if(lassoMode){lassoMode=false;const btn=document.getElementById('lassoToggleBtn');if(btn){btn.classList.remove('active');btn.textContent='⬚ Chọn nhanh';}document.getElementById('lassoRect').classList.remove('active');}}else updateBulkBar();toast(selectMode?'⬜ Chế độ chọn nhiều bật':'Đã tắt chọn nhiều','info');});
-function toggleSelect(id){if(selectedIds.has(id))selectedIds.delete(id);else selectedIds.add(id);document.querySelector(`[data-id="${id}"]`)?.classList.toggle('selected',selectedIds.has(id));updateBulkBar();const pool=currentFilter==='trash'?trashItems:images;const allSelected=pool.length>0&&pool.every(i=>selectedIds.has(i.id));const btnText=allSelected?'☐ Bỏ chọn tất':'☑ Chọn tất cả';document.getElementById('bulkSelectAllBtn').textContent=btnText;const btn2=document.getElementById('bulkSelectAllTrashBtn');if(btn2)btn2.textContent=btnText;}
-function clearSelection(){selectedIds.clear();selectMode=false;document.getElementById('selectModeBtn').textContent='⬜';document.getElementById('bulkSelectAllBtn').textContent='☑ Chọn tất cả';const btn2=document.getElementById('bulkSelectAllTrashBtn');if(btn2)btn2.textContent='☑ Chọn tất cả';document.querySelectorAll('.image-card.selected').forEach(el=>el.classList.remove('selected'));updateBulkBar();}
+function toggleSelect(id){if(selectedIds.has(id))selectedIds.delete(id);else selectedIds.add(id);document.querySelector(`[data-id="${id}"]`)?.classList.toggle('selected',selectedIds.has(id));updateBulkBar();}
+function clearSelection(){selectedIds.clear();selectMode=false;document.getElementById('selectModeBtn').textContent='⬜';['bulkSelectAllBtn','bulkSelectAllTrashBtn'].forEach(id=>{const el=document.getElementById(id);if(el)el.textContent='☑ Chọn tất cả';});document.querySelectorAll('.image-card.selected').forEach(el=>el.classList.remove('selected'));updateBulkBar();}
 function updateBulkBar(){const count=selectedIds.size;document.getElementById('bulkCount').textContent=`${count} file đã chọn`;document.getElementById('bulkBar').classList.toggle('visible',selectMode||count>0);}
 
 // ===================== FILTER =====================
-function setFilter(filter,el){
-  currentFilter=filter;
-  if(filter==='dup'){showDupFilter=false;document.getElementById('dupFilterTag').classList.remove('active');computeDuplicates();}
-  document.querySelectorAll('.nav-item').forEach(n=>n.classList.remove('active'));
-  if(el)el.classList.add('active');
-  const titles={all:'Tất cả file',recent:'Gần đây',fav:'Yêu thích ❤️',dup:'⚠️ File trùng',trash:'Thùng rác 🗑️','type-image':'Hình ảnh','type-video':'Video','type-file':'Tài liệu','cat-nature':'Thiên nhiên','cat-travel':'Du lịch','cat-food':'Ẩm thực','cat-other':'Khác','fmt-jpg':'JPG/JPEG','fmt-png':'PNG','fmt-gif':'GIF','fmt-webp':'WebP','fmt-svg':'SVG','fmt-other':'HEIC/TIFF/RAW'};
-  document.getElementById('pageTitle').textContent=titles[filter]||'File';
-  clearSelection();
-  if(filter!=='trash'&&lassoMode){lassoMode=false;document.getElementById('lassoRect').classList.remove('active');}
-  renderGallery();
-  if(window.innerWidth<=768)document.getElementById('sidebar').classList.remove('open');
-}
+function setFilter(filter,el){currentFilter=filter;if(filter==='dup'){showDupFilter=false;document.getElementById('dupFilterTag').classList.remove('active');computeDuplicates();}document.querySelectorAll('.nav-item').forEach(n=>n.classList.remove('active'));if(el)el.classList.add('active');const titles={all:'Tất cả file',recent:'Gần đây',fav:'Yêu thích ❤️',dup:'⚠️ File trùng',trash:'Thùng rác 🗑️','type-image':'Hình ảnh','type-video':'Video','type-file':'Tài liệu','cat-nature':'Thiên nhiên','cat-travel':'Du lịch','cat-food':'Ẩm thực','cat-other':'Khác','fmt-jpg':'JPG/JPEG','fmt-png':'PNG','fmt-gif':'GIF','fmt-webp':'WebP','fmt-svg':'SVG','fmt-other':'HEIC/TIFF/RAW'};document.getElementById('pageTitle').textContent=titles[filter]||'File';clearSelection();if(filter!=='trash'&&lassoMode){lassoMode=false;document.getElementById('lassoRect').classList.remove('active');}renderGallery();if(window.innerWidth<=768)document.getElementById('sidebar').classList.remove('open');}
 function setSortFilter(type,el){currentTypeFilter=type;document.querySelectorAll('.filter-tag').forEach(t=>t.classList.remove('active'));el.classList.add('active');if(showDupFilter)document.getElementById('dupFilterTag').classList.add('active');renderGallery();}
 function setView(v){currentView=v;document.getElementById('gridViewBtn').classList.toggle('active',v==='grid');document.getElementById('listViewBtn').classList.toggle('active',v==='list');renderGallery();}
 
@@ -2056,80 +1832,340 @@ document.getElementById('searchInput').addEventListener('input',()=>renderGaller
 document.getElementById('searchClear').addEventListener('click',()=>{document.getElementById('searchInput').value='';renderGallery();document.getElementById('searchInput').focus();});
 
 // ===================== STATS =====================
-function updateStats(){const total=images.length;const today=images.filter(i=>Date.now()-i.timestamp<86400000).length;const favCount=images.filter(i=>i.fav).length;const totalSize=images.reduce((s,i)=>s+i.size,0);document.getElementById('statTotal').textContent=total;document.getElementById('statToday').textContent=today;document.getElementById('statFav').textContent=favCount;document.getElementById('statSize').textContent=formatSize(totalSize);document.getElementById('storageUsed').textContent=formatSize(totalSize);const pct=Math.min((totalSize/(MAX_STORAGE_MB*1024*1024))*100,100);document.getElementById('storageBar').style.width=pct+'%';}
+function updateStats(){const total=images.length,today=images.filter(i=>Date.now()-i.timestamp<86400000).length,favCount=images.filter(i=>i.fav).length,totalSize=images.reduce((s,i)=>s+i.size,0);document.getElementById('statTotal').textContent=total;document.getElementById('statToday').textContent=today;document.getElementById('statFav').textContent=favCount;document.getElementById('statSize').textContent=formatSize(totalSize);document.getElementById('storageUsed').textContent=formatSize(totalSize);const pct=Math.min((totalSize/(MAX_STORAGE_MB*1024*1024))*100,100);document.getElementById('storageBar').style.width=pct+'%';}
 function updateCountBadge(){document.getElementById('countAll').textContent=images.length;document.getElementById('countFav').textContent=images.filter(i=>i.fav).length;document.getElementById('countDup').textContent=duplicateIds.size;const tc=trashItems.length;document.getElementById('countTrash').textContent=tc;const badge=document.getElementById('trashNavBadge');badge.textContent=tc;badge.classList.toggle('show',tc>0);}
 
 // ===================== THEME =====================
 document.getElementById('themeToggle').addEventListener('click',()=>{const isLight=document.documentElement.dataset.theme==='light';document.documentElement.dataset.theme=isLight?'dark':'light';document.getElementById('themeToggle').textContent=isLight?'☀️':'🌙';});
 
-// ===================== UI TRANSPARENCY =====================
+// ===================== UI GLASSMORPHISM =====================
 let uiTransparent = false;
 function toggleUITransparency() {
   uiTransparent = !uiTransparent;
   document.body.classList.toggle('ui-transparent', uiTransparent);
+  document.getElementById('glassOrbs').classList.toggle('active', uiTransparent);
   const btn = document.getElementById('uiMountainBtn');
   btn.classList.toggle('active', uiTransparent);
-  btn.title = uiTransparent ? '🏔 Tắt chế độ trong suốt' : '🏔 Chế độ trong suốt UI';
-  toast(uiTransparent ? '🏔 UI trong suốt — hover để thấy' : '🏔 UI thường', 'info');
+  toast(uiTransparent ? '🏔 Glassmorphism bật — giao diện kính mờ' : '🏔 Glassmorphism tắt', 'info');
 }
 
 // ===================== BACKGROUND =====================
-const BG_PRESETS_DATA=[
-  {label:'Không',url:'',icon:'🚫'},
-  {label:'Núi',url:'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1200&q=80'},
-  {label:'Biển',url:'https://images.unsplash.com/photo-1505118380757-91f5f5632de0?w=1200&q=80'},
-  {label:'Rừng',url:'https://images.unsplash.com/photo-1448375240586-882707db888b?w=1200&q=80'},
-  {label:'Thành phố',url:'https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?w=1200&q=80'},
-  {label:'Thiên hà',url:'https://images.unsplash.com/photo-1446776811953-b23d57bd21aa?w=1200&q=80'},
-  {label:'Hoàng hôn',url:'https://images.unsplash.com/photo-1495616811223-4d98c6e9c869?w=1200&q=80'},
-  {label:'Nin cute',url:'https://f20-zpc.zdn.vn/jpg/4707497388115613718/d651cfbaa4c4259a7cd5.jpg'},
-];
-const SIDEBAR_COVER_PRESETS=[
-  {label:'Không',url:''},
-  {label:'Tím',url:'https://images.unsplash.com/photo-1579546929518-9e396f3cc809?w=400&q=80'},
-  {label:'Xanh dương',url:'https://images.unsplash.com/photo-1557682250-33bd709cbe85?w=400&q=80'},
-  {label:'Rừng',url:'https://images.unsplash.com/photo-1448375240586-882707db888b?w=400&q=80'},
-  {label:'Hoa',url:'https://images.unsplash.com/photo-1490750967868-88df5691cc27?w=400&q=80'},
-  {label:'Vũ trụ',url:'https://images.unsplash.com/photo-1444703686981-a3abbc4d4fe3?w=400&q=80'},
-  {label:'Núi',url:'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400&q=80'},
-  {label:'Biển',url:'https://images.unsplash.com/photo-1505118380757-91f5f5632de0?w=400&q=80'},
-];
-let activeBgUrl='', activeSidebarCover='';
-
-function renderBgPresets(){const container=document.getElementById('bgPresets');container.innerHTML=BG_PRESETS_DATA.map(p=>{if(!p.url)return`<div class="bg-preset no-bg ${activeBgUrl===''?'active':''}" data-bg="" onclick="applyBg('',this)" title="${p.label}">${p.icon}</div>`;return`<div class="bg-preset ${activeBgUrl===p.url?'active':''}" data-bg="${p.url}" onclick="applyBg('${p.url}',this)" title="${p.label}"><img src="${p.url}" loading="lazy" alt="${p.label}"></div>`;}).join('');}
-function renderSidebarCoverPresets(){const c=document.getElementById('sidebarCoverPresets');if(!c) return;c.innerHTML=SIDEBAR_COVER_PRESETS.map((p)=>{if(!p.url)return`<div class="sc-preset no-sc ${activeSidebarCover===''?'active':''}" onclick="applySidebarCover('',this)" title="Không">🚫</div>`;return`<div class="sc-preset ${activeSidebarCover===p.url?'active':''}" onclick="applySidebarCover('${p.url}',this)" title="${p.label}"><img src="${p.url}" loading="lazy" alt="${p.label}"></div>`;}).join('');}
+const BG_PRESETS_DATA=[{label:'Không',url:'',icon:'🚫'},{label:'Núi',url:'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1200&q=80'},{label:'Biển',url:'https://images.unsplash.com/photo-1505118380757-91f5f5632de0?w=1200&q=80'},{label:'Rừng',url:'https://images.unsplash.com/photo-1448375240586-882707db888b?w=1200&q=80'},{label:'Thành phố',url:'https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?w=1200&q=80'},{label:'Thiên hà',url:'https://images.unsplash.com/photo-1446776811953-b23d57bd21aa?w=1200&q=80'},{label:'Hoàng hôn',url:'https://images.unsplash.com/photo-1495616811223-4d98c6e9c869?w=1200&q=80'},{label:'Nin cute',url:'https://f20-zpc.zdn.vn/jpg/4707497388115613718/d651cfbaa4c4259a7cd5.jpg'}];
+const SIDEBAR_COVER_PRESETS=[{label:'Không',url:''},{label:'Tím',url:'https://images.unsplash.com/photo-1579546929518-9e396f3cc809?w=400&q=80'},{label:'Xanh dương',url:'https://images.unsplash.com/photo-1557682250-33bd709cbe85?w=400&q=80'},{label:'Rừng',url:'https://images.unsplash.com/photo-1448375240586-882707db888b?w=400&q=80'},{label:'Hoa',url:'https://images.unsplash.com/photo-1490750967868-88df5691cc27?w=400&q=80'},{label:'Vũ trụ',url:'https://images.unsplash.com/photo-1444703686981-a3abbc4d4fe3?w=400&q=80'},{label:'Núi',url:'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400&q=80'},{label:'Biển',url:'https://images.unsplash.com/photo-1505118380757-91f5f5632de0?w=400&q=80'}];
+let activeBgUrl='',activeSidebarCover='';
+function renderBgPresets(){const container=document.getElementById('bgPresets');container.innerHTML=BG_PRESETS_DATA.map(p=>{if(!p.url)return`<div class="bg-preset no-bg ${activeBgUrl===''?'active':''}" onclick="applyBg('',this)">${p.icon}</div>`;return`<div class="bg-preset ${activeBgUrl===p.url?'active':''}" onclick="applyBg('${p.url}',this)"><img src="${p.url}" loading="lazy" alt="${p.label}"></div>`;}).join('');}
+function renderSidebarCoverPresets(){const c=document.getElementById('sidebarCoverPresets');if(!c)return;c.innerHTML=SIDEBAR_COVER_PRESETS.map(p=>{if(!p.url)return`<div class="sc-preset no-sc ${activeSidebarCover===''?'active':''}" onclick="applySidebarCover('',this)">🚫</div>`;return`<div class="sc-preset ${activeSidebarCover===p.url?'active':''}" onclick="applySidebarCover('${p.url}',this)"><img src="${p.url}" loading="lazy" alt="${p.label}"></div>`;}).join('');}
 function applyBg(url,el){activeBgUrl=url;const layer=document.getElementById('wallpaperLayer');if(!url)layer.style.backgroundImage='none';else layer.style.backgroundImage=`url('${url}')`;document.querySelectorAll('.bg-preset').forEach(p=>p.classList.remove('active'));if(el)el.classList.add('active');localStorage.setItem('syo_bg_url',url);}
 function applyBgUrl(){const url=document.getElementById('bgUrlInput').value.trim();if(!url)return;applyBg(url,null);renderBgPresets();toast('🎨 Đã áp dụng ảnh nền!','success');}
 function updateBgOpacity(val){document.getElementById('wallpaperLayer').style.opacity=val;document.getElementById('bgOpacityVal').textContent=Math.round(val*100)+'%';localStorage.setItem('syo_bg_opacity',val);}
-function loadBgSettings(){const url=localStorage.getItem('syo_bg_url')||'';const opacity=localStorage.getItem('syo_bg_opacity')||'0.18';activeBgUrl=url;if(url)document.getElementById('wallpaperLayer').style.backgroundImage=`url('${url}')`;document.getElementById('wallpaperLayer').style.opacity=opacity;document.getElementById('bgOpacity').value=opacity;document.getElementById('bgOpacityVal').textContent=Math.round(opacity*100)+'%';renderBgPresets();}
-
-function applySidebarCover(url, el) {
-  activeSidebarCover=url;
-  const cover=document.getElementById('sidebarCover');
-  if(!url) cover.style.backgroundImage='linear-gradient(135deg, #1f2743, #0d0e14)';
-  else cover.style.backgroundImage=`url('${url}')`;
-  document.querySelectorAll('.sc-preset').forEach(p=>p.classList.remove('active'));
-  if(el) el.classList.add('active');
-  localStorage.setItem('syo_sidebar_cover',url);
-}
+function loadBgSettings(){const url=localStorage.getItem('syo_bg_url')||'',opacity=localStorage.getItem('syo_bg_opacity')||'0.18';activeBgUrl=url;if(url)document.getElementById('wallpaperLayer').style.backgroundImage=`url('${url}')`;document.getElementById('wallpaperLayer').style.opacity=opacity;document.getElementById('bgOpacity').value=opacity;document.getElementById('bgOpacityVal').textContent=Math.round(opacity*100)+'%';renderBgPresets();}
+function applySidebarCover(url,el){activeSidebarCover=url;const cover=document.getElementById('sidebarCover');if(!url)cover.style.backgroundImage='linear-gradient(135deg, #1f2743, #0d0e14)';else cover.style.backgroundImage=`url('${url}')`;document.querySelectorAll('.sc-preset').forEach(p=>p.classList.remove('active'));if(el)el.classList.add('active');localStorage.setItem('syo_sidebar_cover',url);}
 function applySidebarCoverUrl(){const url=document.getElementById('scCoverUrlInput').value.trim();if(!url)return;applySidebarCover(url,null);renderSidebarCoverPresets();toast('🖼 Đã áp dụng ảnh bìa sidebar!','success');}
 function loadSidebarCoverFile(e){const file=e.target.files[0];if(!file)return;const reader=new FileReader();reader.onload=ev=>{applySidebarCover(ev.target.result,null);renderSidebarCoverPresets();toast('🖼 Đã tải ảnh bìa từ file!','success');};reader.readAsDataURL(file);}
 function openSidebarCoverPicker(){renderSidebarCoverPresets();document.getElementById('bgModal').classList.add('open');}
-function loadSidebarCoverSettings(){const url=localStorage.getItem('syo_sidebar_cover')||'';if(url){activeSidebarCover=url;const cover=document.getElementById('sidebarCover');cover.style.backgroundImage=`url('${url}')`;}renderSidebarCoverPresets();}
-
+function loadSidebarCoverSettings(){const url=localStorage.getItem('syo_sidebar_cover')||'';if(url){activeSidebarCover=url;document.getElementById('sidebarCover').style.backgroundImage=`url('${url}')`;}renderSidebarCoverPresets();}
 document.getElementById('bgToggleBtn').addEventListener('click',()=>{renderBgPresets();renderSidebarCoverPresets();document.getElementById('bgModal').classList.add('open');});
 function closeBgModal(e){if(e&&e.target!==document.getElementById('bgModal'))return;closeBgModalDirect();}
 function closeBgModalDirect(){document.getElementById('bgModal').classList.remove('open');}
 document.getElementById('trashBtn').addEventListener('click',()=>{setFilter('trash',document.querySelector('[data-filter="trash"]'));});
 
-// ===================== SOUNDCLOUD =====================
-let scCollapsed=false,scVisible=true;
-function toggleScCollapse(){scCollapsed=!scCollapsed;document.getElementById('scWidget').classList.toggle('collapsed',scCollapsed);document.getElementById('scCollapseBtn').textContent=scCollapsed?'+':'−';}
-function hideScWidget(){scVisible=false;document.getElementById('scWidget').classList.add('hidden-widget');document.getElementById('scFab').classList.remove('hidden-fab');}
-function showScWidget(){scVisible=true;document.getElementById('scWidget').classList.remove('hidden-widget');document.getElementById('scFab').classList.add('hidden-fab');}
-function loadSoundCloud(){let url=document.getElementById('scUrlInput').value.trim();if(!url)return;if(!url.includes('soundcloud.com')){toast('Vui lòng nhập link SoundCloud hợp lệ','error');return;}const encoded=encodeURIComponent(url);const iframeSrc=`https://w.soundcloud.com/player/?url=${encoded}&color=%237c6fff&auto_play=false&hide_related=true&show_comments=false&show_user=true&show_reposts=false&show_teaser=false&visual=false`;document.getElementById('scIframe').src=iframeSrc;document.getElementById('scIframeWrap').style.display='block';document.getElementById('scPlaceholder').style.display='none';const parts=url.split('/').filter(Boolean);const titleGuess=parts[parts.length-1]?.replace(/-/g,' ')||'SoundCloud';document.getElementById('scTitle').textContent=titleGuess;localStorage.setItem('syo_sc_url',url);if(scCollapsed)toggleScCollapse();toast('🎵 Đã tải nhạc!','success');}
-function loadScSettings(){const url=localStorage.getItem('syo_sc_url');if(url){document.getElementById('scUrlInput').value=url;loadSoundCloud();}}
-document.getElementById('scUrlInput').addEventListener('keydown',e=>{if(e.key==='Enter')loadSoundCloud();});
+// ===================== DRAGGABLE PLAYERS =====================
+function initDraggablePlayers() {
+  makeDraggable(document.getElementById('scWidgetNew'), document.getElementById('scHeader'));
+  makeDraggable(document.getElementById('ytWidget'), document.getElementById('ytHeader'));
+}
+
+function makeDraggable(el, handle) {
+  let startX, startY, startLeft, startBottom, isDragging = false;
+  handle.addEventListener('mousedown', e => {
+    if (e.target.tagName === 'BUTTON' || e.target.tagName === 'INPUT') return;
+    isDragging = true;
+    startX = e.clientX; startY = e.clientY;
+    const rect = el.getBoundingClientRect();
+    startLeft = rect.left; startBottom = window.innerHeight - rect.bottom;
+    el.style.transition = 'none';
+    e.preventDefault();
+  });
+  document.addEventListener('mousemove', e => {
+    if (!isDragging) return;
+    const dx = e.clientX - startX, dy = e.clientY - startY;
+    const newLeft = Math.max(0, Math.min(window.innerWidth - el.offsetWidth, startLeft + dx));
+    const newBottom = Math.max(0, Math.min(window.innerHeight - el.offsetHeight, startBottom - dy));
+    el.style.position = 'fixed';
+    el.style.left = newLeft + 'px';
+    el.style.bottom = newBottom + 'px';
+    el.style.right = 'auto';
+  });
+  document.addEventListener('mouseup', () => {
+    if (isDragging) { isDragging = false; el.style.transition = ''; }
+  });
+  // Touch support
+  handle.addEventListener('touchstart', e => {
+    if (e.target.tagName === 'BUTTON' || e.target.tagName === 'INPUT') return;
+    isDragging = true;
+    const t = e.touches[0];
+    startX = t.clientX; startY = t.clientY;
+    const rect = el.getBoundingClientRect();
+    startLeft = rect.left; startBottom = window.innerHeight - rect.bottom;
+    el.style.transition = 'none';
+  }, {passive: true});
+  document.addEventListener('touchmove', e => {
+    if (!isDragging) return;
+    const t = e.touches[0];
+    const dx = t.clientX - startX, dy = t.clientY - startY;
+    const newLeft = Math.max(0, Math.min(window.innerWidth - el.offsetWidth, startLeft + dx));
+    const newBottom = Math.max(0, Math.min(window.innerHeight - el.offsetHeight, startBottom - dy));
+    el.style.position = 'fixed';
+    el.style.left = newLeft + 'px';
+    el.style.bottom = newBottom + 'px';
+    el.style.right = 'auto';
+  }, {passive: true});
+  document.addEventListener('touchend', () => { if (isDragging) { isDragging = false; el.style.transition = ''; } });
+}
+
+// ===================== SOUNDCLOUD PLAYER =====================
+let scCollapsedNew = false, scIsPlaying = false;
+
+function toggleScCollapseNew() {
+  scCollapsedNew = !scCollapsedNew;
+  const widget = document.getElementById('scWidgetNew');
+  const btn = document.getElementById('scCollapseBtnNew');
+  widget.classList.toggle('collapsed', scCollapsedNew);
+  btn.textContent = scCollapsedNew ? '+' : '−';
+}
+
+function hideScWidgetNew() {
+  document.getElementById('scWidgetNew').classList.add('hidden-widget');
+  const fabs = document.getElementById('playerFabs');
+  fabs.style.display = 'flex';
+  document.getElementById('scFabNew').classList.remove('hidden-fab');
+}
+
+function showScWidget() {
+  document.getElementById('scWidgetNew').classList.remove('hidden-widget');
+  checkFabsVisibility();
+}
+
+function toggleScPlay() {
+  // Toggle playing state visual — actual control via iframe
+  scIsPlaying = !scIsPlaying;
+  const logo = document.getElementById('scLogoBtn');
+  const playBtn = document.getElementById('scPlayBtn');
+  logo.classList.toggle('playing', scIsPlaying);
+  logo.textContent = scIsPlaying ? '⏸' : '🎵';
+  playBtn.textContent = scIsPlaying ? '⏸' : '▶';
+  toast(scIsPlaying ? '▶ Đang phát nhạc SC' : '⏸ Đã tạm dừng', 'info');
+}
+
+function loadSoundCloudNew() {
+  let url = document.getElementById('scUrlInputNew').value.trim();
+  if (!url) return;
+  if (!url.includes('soundcloud.com')) { toast('Vui lòng nhập link SoundCloud hợp lệ', 'error'); return; }
+
+  const encoded = encodeURIComponent(url);
+  const iframeSrc = `https://w.soundcloud.com/player/?url=${encoded}&color=%23f50000&auto_play=false&hide_related=true&show_comments=false&show_user=true&show_reposts=false&show_teaser=false&visual=false`;
+  document.getElementById('scIframeNew').src = iframeSrc;
+  document.getElementById('scIframeWrapNew').style.display = 'block';
+  document.getElementById('scPlaceholderNew').style.display = 'none';
+
+  // Parse song info from URL
+  const parts = url.split('/').filter(Boolean);
+  let artist = 'Artist', songName = 'Unknown Track';
+  if (parts.length >= 4) {
+    artist = decodeURIComponent(parts[2]).replace(/-/g, ' ');
+    songName = decodeURIComponent(parts[3]).replace(/-/g, ' ');
+  } else if (parts.length >= 3) {
+    artist = decodeURIComponent(parts[2]).replace(/-/g, ' ');
+    songName = artist;
+  }
+
+  // Show song info
+  document.getElementById('scSongName').textContent = songName;
+  document.getElementById('scSongArtist').textContent = artist;
+  document.getElementById('scTitleNew').textContent = songName;
+  document.getElementById('scSongInfo').classList.add('visible');
+  document.getElementById('scCoverPlaceholder').style.display = 'flex';
+  document.getElementById('scSongCover').style.display = 'none';
+
+  // Try to load artwork from SoundCloud oEmbed
+  fetch(`https://soundcloud.com/oembed?format=json&url=${encodeURIComponent(url)}`)
+    .then(r => r.json())
+    .then(data => {
+      if (data.thumbnail_url) {
+        const img = document.getElementById('scSongCover');
+        img.src = data.thumbnail_url.replace('-large','-t500x500');
+        img.style.display = 'block';
+        document.getElementById('scCoverPlaceholder').style.display = 'none';
+      }
+      if (data.title) {
+        const parts2 = data.title.split(' - ');
+        if (parts2.length >= 2) { document.getElementById('scSongArtist').textContent = parts2[0]; document.getElementById('scSongName').textContent = parts2.slice(1).join(' - '); document.getElementById('scTitleNew').textContent = parts2.slice(1).join(' - '); }
+        else { document.getElementById('scSongName').textContent = data.title; document.getElementById('scTitleNew').textContent = data.title; }
+      }
+    }).catch(() => {});
+
+  localStorage.setItem('syo_sc_url_new', url);
+  scIsPlaying = true;
+  document.getElementById('scLogoBtn').classList.add('playing');
+  document.getElementById('scLogoBtn').textContent = '⏸';
+  document.getElementById('scPlayBtn').textContent = '⏸';
+  if (scCollapsedNew) toggleScCollapseNew();
+  toast('🎵 Đã tải nhạc SoundCloud!', 'success');
+}
+
+function toggleScLyrics() {
+  const area = document.getElementById('scLyricsArea');
+  area.classList.toggle('open');
+  const btn = document.querySelector('.sc-lyrics-toggle');
+  btn.textContent = area.classList.contains('open') ? '🎤 Ẩn' : '🎤 Lyrics';
+}
+
+document.getElementById('scUrlInputNew').addEventListener('keydown', e => { if (e.key === 'Enter') loadSoundCloudNew(); });
+
+// ===================== YOUTUBE PLAYER =====================
+let ytCollapsed = false, ytIsPlaying = false, ytCurrentVideoId = null;
+
+function toggleYtCollapse() {
+  ytCollapsed = !ytCollapsed;
+  const widget = document.getElementById('ytWidget');
+  const btn = document.getElementById('ytCollapseBtn');
+  widget.classList.toggle('collapsed', ytCollapsed);
+  btn.textContent = ytCollapsed ? '+' : '−';
+}
+
+function hideYtWidget() {
+  document.getElementById('ytWidget').classList.add('hidden-widget');
+  const fabs = document.getElementById('playerFabs');
+  fabs.style.display = 'flex';
+  document.getElementById('ytFabNew').classList.remove('hidden-fab');
+}
+
+function showYtWidget() {
+  document.getElementById('ytWidget').classList.remove('hidden-widget');
+  checkFabsVisibility();
+}
+
+function checkFabsVisibility() {
+  const scHidden = document.getElementById('scWidgetNew').classList.contains('hidden-widget');
+  const ytHidden = document.getElementById('ytWidget').classList.contains('hidden-widget');
+  const fabs = document.getElementById('playerFabs');
+  document.getElementById('scFabNew').classList.toggle('hidden-fab', !scHidden);
+  document.getElementById('ytFabNew').classList.toggle('hidden-fab', !ytHidden);
+  fabs.style.display = (scHidden || ytHidden) ? 'flex' : 'none';
+}
+
+function toggleYtPlay() {
+  if (!ytCurrentVideoId) { toast('Hãy chọn bài hát trước!', 'info'); return; }
+  ytIsPlaying = !ytIsPlaying;
+  const logo = document.getElementById('ytLogoBtn');
+  logo.classList.toggle('playing', ytIsPlaying);
+  logo.textContent = ytIsPlaying ? '⏸' : '▶';
+  // Control iframe via postMessage
+  const iframe = document.getElementById('ytIframe');
+  try {
+    iframe.contentWindow.postMessage(JSON.stringify({event: 'command', func: ytIsPlaying ? 'playVideo' : 'pauseVideo'}), '*');
+  } catch(e) {}
+  toast(ytIsPlaying ? '▶ Đang phát YouTube' : '⏸ Đã tạm dừng', 'info');
+}
+
+async function searchYoutube() {
+  const query = document.getElementById('ytSearchInput').value.trim();
+  if (!query) return;
+
+  const loader = document.getElementById('ytLoader');
+  const resultsDiv = document.getElementById('ytResults');
+  const resultsInner = document.getElementById('ytResultsInner');
+  const placeholder = document.getElementById('ytPlaceholder');
+
+  loader.classList.add('visible');
+  resultsDiv.classList.remove('open');
+  placeholder.style.display = 'none';
+
+  // Use YouTube search via a CORS-friendly approach
+  // We'll use the YouTube oEmbed and search suggestions to get results
+  try {
+    // Use invidious or piped public API for search (no API key needed)
+    const searchUrl = `https://inv.nadeko.net/api/v1/search?q=${encodeURIComponent(query)}&type=video&fields=videoId,title,author,videoThumbnails`;
+    const resp = await fetch(searchUrl);
+    const data = await resp.json();
+    loader.classList.remove('visible');
+    if (data && data.length > 0) {
+      const items = data.slice(0, 6);
+      resultsInner.innerHTML = items.map(v => {
+        const thumb = v.videoThumbnails?.find(t => t.quality === 'medium') || v.videoThumbnails?.[0];
+        const thumbUrl = thumb ? thumb.url : '';
+        return `<div class="yt-result-item" onclick="playYoutube('${v.videoId}','${escHtml(v.title).replace(/'/g,"\\'")}')">
+          <img class="yt-result-thumb" src="${thumbUrl}" alt="" loading="lazy" onerror="this.style.display='none'">
+          <div class="yt-result-info">
+            <div class="yt-result-title">${escHtml(v.title)}</div>
+            <div class="yt-result-channel">${escHtml(v.author||'')}</div>
+          </div>
+        </div>`;
+      }).join('');
+      resultsDiv.classList.add('open');
+    } else {
+      resultsInner.innerHTML = `<div style="padding:12px;text-align:center;font-size:10px;color:var(--text3)">Không tìm thấy kết quả</div>`;
+      resultsDiv.classList.add('open');
+    }
+  } catch (err) {
+    loader.classList.remove('visible');
+    // Fallback: show manual URL entry
+    resultsInner.innerHTML = `<div style="padding:10px;font-size:10px;color:var(--text3);text-align:center">
+      Không thể tìm kiếm.<br>Dán link YouTube trực tiếp:<br>
+      <input type="text" id="ytDirectUrl" placeholder="https://youtube.com/watch?v=..." style="width:100%;margin-top:6px;padding:4px 7px;border-radius:5px;border:1px solid rgba(255,255,255,0.1);background:rgba(255,255,255,0.05);color:var(--text);font-size:10px;outline:none;">
+      <button onclick="playYoutubeUrl()" style="margin-top:5px;width:100%;padding:5px;border-radius:5px;border:none;background:#ff0000;color:#fff;font-size:10px;cursor:pointer;font-weight:600;">Phát</button>
+    </div>`;
+    resultsDiv.classList.add('open');
+  }
+}
+
+function playYoutubeUrl() {
+  const url = document.getElementById('ytDirectUrl')?.value?.trim();
+  if (!url) return;
+  const match = url.match(/(?:v=|youtu\.be\/|embed\/)([a-zA-Z0-9_-]{11})/);
+  if (match) playYoutube(match[1], 'Video');
+  else toast('Link YouTube không hợp lệ', 'error');
+}
+
+function playYoutube(videoId, title) {
+  ytCurrentVideoId = videoId;
+  const playerWrap = document.getElementById('ytPlayerWrap');
+  const placeholder = document.getElementById('ytPlaceholder');
+  const resultsDiv = document.getElementById('ytResults');
+
+  document.getElementById('ytIframe').src = `https://www.youtube.com/embed/${videoId}?autoplay=1&enablejsapi=1`;
+  playerWrap.classList.add('open');
+  placeholder.style.display = 'none';
+  resultsDiv.classList.remove('open');
+
+  document.getElementById('ytTitle').textContent = title || 'YouTube Music';
+  document.getElementById('ytLogoBtn').classList.add('playing');
+  document.getElementById('ytLogoBtn').textContent = '⏸';
+  ytIsPlaying = true;
+
+  if (ytCollapsed) toggleYtCollapse();
+  localStorage.setItem('syo_yt_video', videoId);
+  localStorage.setItem('syo_yt_title', title);
+  toast('▶ Đang phát YouTube!', 'success');
+}
+
+document.getElementById('ytSearchInput').addEventListener('keydown', e => { if (e.key === 'Enter') searchYoutube(); });
+
+// ===================== PLAYER SETTINGS PERSISTENCE =====================
+function loadPlayerSettings() {
+  const scUrl = localStorage.getItem('syo_sc_url_new');
+  if (scUrl) {
+    document.getElementById('scUrlInputNew').value = scUrl;
+    loadSoundCloudNew();
+  }
+  const ytId = localStorage.getItem('syo_yt_video');
+  const ytTitle = localStorage.getItem('syo_yt_title');
+  if (ytId) {
+    // Don't autoplay on load, just restore state
+    document.getElementById('ytTitle').textContent = ytTitle || 'YouTube Music';
+    ytCurrentVideoId = ytId;
+  }
+}
 
 // ===================== KEYBOARD =====================
 document.addEventListener('keydown',e=>{
