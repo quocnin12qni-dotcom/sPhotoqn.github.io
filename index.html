@@ -75,8 +75,8 @@ body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--t
 .wallpaper-layer { position: fixed; inset: 0; z-index: 0; pointer-events: none; background-image: var(--wallpaper); background-size: cover; background-position: center; opacity: var(--wallpaper-opacity); transition: opacity 0.4s ease, background-image 0.4s ease; }
 body::before { content: ''; position: fixed; inset: 0; z-index: 0; pointer-events: none; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.028'/%3E%3C/svg%3E"); opacity: 0.5; }
 
-/* ===== WHALE ANIMATION ===== */
-#whaleCanvas {
+/* ===== TULIP CANVAS ===== */
+#tulipCanvas {
   position: fixed;
   inset: 0;
   z-index: 9998;
@@ -98,6 +98,14 @@ body::before { content: ''; position: fixed; inset: 0; z-index: 0; pointer-event
   background: radial-gradient(ellipse at 40% 50%, rgba(124,111,255,0.13) 0%, transparent 65%),
               radial-gradient(ellipse at 70% 60%, rgba(79,209,197,0.07) 0%, transparent 50%);
 }
+.intro-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0;
+  position: relative;
+  z-index: 1;
+}
 .intro-text {
   font-family: 'Playfair Display', serif;
   font-size: clamp(22px, 4vw, 42px);
@@ -105,7 +113,6 @@ body::before { content: ''; position: fixed; inset: 0; z-index: 0; pointer-event
   font-style: italic;
   color: var(--text);
   text-align: center;
-  position: relative; z-index: 1;
   opacity: 0;
   letter-spacing: 0.02em;
   line-height: 1.4;
@@ -132,6 +139,72 @@ body::before { content: ''; position: fixed; inset: 0; z-index: 0; pointer-event
 }
 #introScreen.done { animation: introBgFade 0.5s ease forwards; }
 @keyframes introBgFade { to { opacity: 0; } }
+
+/* ===== UI MOUNTAIN BUTTON ===== */
+#uiMountainBtn {
+  position: fixed;
+  bottom: 22px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 400;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  padding: 8px 18px 8px 14px;
+  border-radius: 99px;
+  border: 1px solid var(--border2);
+  background: rgba(255,255,255,0.06);
+  backdrop-filter: blur(14px) saturate(160%);
+  color: var(--text2);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4,0,0.2,1);
+  letter-spacing: 0.05em;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.22), inset 0 1px 0 rgba(255,255,255,0.07);
+  user-select: none;
+  white-space: nowrap;
+}
+#uiMountainBtn:hover {
+  background: rgba(255,255,255,0.12);
+  border-color: var(--border3);
+  color: var(--text);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.3), inset 0 1px 0 rgba(255,255,255,0.12);
+  transform: translateX(-50%) translateY(-2px);
+}
+#uiMountainBtn.active {
+  background: rgba(124,111,255,0.1);
+  border-color: rgba(124,111,255,0.3);
+  color: var(--accent2);
+  box-shadow: 0 4px 20px var(--glow);
+}
+#uiMountainBtn .mountain-icon {
+  font-size: 15px;
+  line-height: 1;
+}
+
+/* UI Transparent mode */
+body.ui-transparent .navbar { opacity: 0.12 !important; transition: opacity 0.5s ease !important; }
+body.ui-transparent .navbar:hover { opacity: 0.85 !important; }
+body.ui-transparent .sidebar { opacity: 0.1 !important; transition: opacity 0.5s ease !important; }
+body.ui-transparent .sidebar:hover { opacity: 0.85 !important; }
+body.ui-transparent .stats-row { opacity: 0.08 !important; transition: opacity 0.5s ease !important; }
+body.ui-transparent .stats-row:hover { opacity: 0.7 !important; }
+body.ui-transparent .page-header { opacity: 0.1 !important; transition: opacity 0.5s ease !important; }
+body.ui-transparent .page-header:hover { opacity: 0.8 !important; }
+body.ui-transparent .upload-zone { opacity: 0.07 !important; transition: opacity 0.5s ease !important; }
+body.ui-transparent .upload-zone:hover { opacity: 0.6 !important; }
+body.ui-transparent .filter-row { opacity: 0.08 !important; transition: opacity 0.5s ease !important; }
+body.ui-transparent .filter-row:hover { opacity: 0.7 !important; }
+body.ui-transparent .gallery-grid .image-card { opacity: 0.65; transition: opacity 0.5s ease; }
+body.ui-transparent .gallery-grid .image-card:hover { opacity: 1 !important; transform: translateY(-3px) scale(1.02); }
+body.ui-transparent .bulk-bar { opacity: 0.15 !important; }
+body.ui-transparent .bulk-bar:hover { opacity: 0.9 !important; }
+body.ui-transparent #uiMountainBtn { opacity: 0.4; }
+body.ui-transparent #uiMountainBtn:hover { opacity: 1; }
+body.ui-transparent .sc-widget { opacity: 0.12; transition: opacity 0.5s ease; }
+body.ui-transparent .sc-widget:hover { opacity: 0.9; }
 
 /* LASSO SELECT */
 .lasso-rect { position: fixed; border: 1.5px solid var(--accent); background: rgba(124,111,255,0.1); border-radius: 4px; pointer-events: none; z-index: 9999; display: none; }
@@ -580,21 +653,24 @@ body::before { content: ''; position: fixed; inset: 0; z-index: 0; pointer-event
   .stats-row { gap: 8px; }
   .sc-widget { width: 220px; }
   .bulk-bar { width: calc(100vw - 28px); justify-content: center; flex-wrap: wrap; }
+  #uiMountainBtn { bottom: 80px; }
 }
 </style>
 </head>
 <body>
 
-<!-- WHALE CANVAS -->
-<canvas id="whaleCanvas"></canvas>
+<!-- TULIP CANVAS -->
+<canvas id="tulipCanvas"></canvas>
 
 <div class="wallpaper-layer" id="wallpaperLayer"></div>
 
 <!-- INTRO SCREEN -->
 <div id="introScreen">
-  <div class="intro-text">
-    Chào mừng đến với sPhoto
-    <span>được phát triển bởi NqN</span>
+  <div class="intro-content">
+    <div class="intro-text">
+      Chào mừng đến với sPhoto
+      <span>được phát triển bởi NqN</span>
+    </div>
   </div>
 </div>
 
@@ -746,6 +822,12 @@ body::before { content: ''; position: fixed; inset: 0; z-index: 0; pointer-event
   </span>
   <button class="bulk-cancel-btn" onclick="clearSelection()">✕</button>
 </div>
+
+<!-- UI MOUNTAIN TRANSPARENCY BUTTON -->
+<button id="uiMountainBtn" onclick="toggleUITransparency()" title="Chế độ trong suốt UI">
+  <span class="mountain-icon">🏔</span>
+  UI
+</button>
  
 <!-- PREVIEW MODAL -->
 <div class="modal-backdrop" id="previewModal" onclick="closePreview(event)">
@@ -970,16 +1052,12 @@ body::before { content: ''; position: fixed; inset: 0; z-index: 0; pointer-event
 
 <script>
 // ===========================
-// WHALE ANIMATION
+// TULIP ANIMATION
 // ===========================
 (function() {
-  const canvas = document.getElementById('whaleCanvas');
+  const canvas = document.getElementById('tulipCanvas');
   const ctx = canvas.getContext('2d');
   let W, H;
-  let whale = null;
-  let particles = [];
-  let animFrame = null;
-  let done = false;
 
   function resize() {
     W = canvas.width = window.innerWidth;
@@ -988,259 +1066,280 @@ body::before { content: ''; position: fixed; inset: 0; z-index: 0; pointer-event
   resize();
   window.addEventListener('resize', resize);
 
-  // Bezier path points for whale swim trajectory
-  // Starts bottom-left, curves up and to the right, fades out at top-center-right
-  function getWhalePos(t) {
-    // Cubic bezier: P0, P1, P2, P3
-    const P0 = { x: -120, y: H + 80 };
-    const P1 = { x: W * 0.15, y: H * 0.55 };
-    const P2 = { x: W * 0.45, y: H * 0.22 };
-    const P3 = { x: W * 0.78, y: H * 0.05 };
-    const mt = 1 - t;
+  // Tulip color palettes - many colors!
+  const tulipPalettes = [
+    { petal: '#ff6b9d', dark: '#c94870', light: '#ffb3ce' },
+    { petal: '#ff8c42', dark: '#c95c20', light: '#ffc49a' },
+    { petal: '#ffda44', dark: '#c99200', light: '#fff0a0' },
+    { petal: '#a78bfa', dark: '#5b21b6', light: '#d4bcfe' },
+    { petal: '#f9a8d4', dark: '#be185d', light: '#fde4f0' },
+    { petal: '#6ee7b7', dark: '#047857', light: '#bbf7e0' },
+    { petal: '#ff6b6b', dark: '#b91c1c', light: '#ffc4c4' },
+    { petal: '#fbbf24', dark: '#b45309', light: '#fde68a' },
+    { petal: '#c084fc', dark: '#7e22ce', light: '#e9d5ff' },
+    { petal: '#fb7185', dark: '#be123c', light: '#fecdd3' },
+    { petal: '#34d399', dark: '#065f46', light: '#a7f3d0' },
+    { petal: '#60a5fa', dark: '#1d4ed8', light: '#bfdbfe' },
+  ];
+
+  function makeTulip(i, total) {
+    const palette = tulipPalettes[i % tulipPalettes.length];
+    // Spread across full width with slight randomness
+    const segment = W / total;
+    const x = segment * i + segment * (0.2 + Math.random() * 0.6);
+    const stemH = 95 + Math.random() * 80;
+    const lean = (Math.random() - 0.5) * 0.22;
+    const delay = i * 90 + Math.random() * 40; // staggered entrance
+    const scale = 0.8 + Math.random() * 0.45;
     return {
-      x: mt*mt*mt*P0.x + 3*mt*mt*t*P1.x + 3*mt*t*t*P2.x + t*t*t*P3.x,
-      y: mt*mt*mt*P0.y + 3*mt*mt*t*P1.y + 3*mt*t*t*P2.y + t*t*t*P3.y,
+      x, stemH, lean, palette, delay, scale,
+      sway: Math.random() * Math.PI * 2,
+      swaySpeed: 0.5 + Math.random() * 0.6,
+      swayAmp: 3 + Math.random() * 4,
     };
   }
 
-  function getWhaleAngle(t) {
-    const dt = 0.01;
-    const t2 = Math.min(t + dt, 1);
-    const p1 = getWhalePos(t);
-    const p2 = getWhalePos(t2);
-    return Math.atan2(p2.y - p1.y, p2.x - p1.x);
+  const TOTAL = Math.max(8, Math.min(16, Math.floor(W / 80)));
+  const tulips = Array.from({ length: TOTAL }, (_, i) => makeTulip(i, TOTAL));
+
+  function lightenColor(hex, pct) {
+    let r = parseInt(hex.slice(1,3),16);
+    let g = parseInt(hex.slice(3,5),16);
+    let b = parseInt(hex.slice(5,7),16);
+    r = Math.min(255, r + Math.round(pct * 2.55));
+    g = Math.min(255, g + Math.round(pct * 2.55));
+    b = Math.min(255, b + Math.round(pct * 2.55));
+    return `rgb(${r},${g},${b})`;
   }
 
-  // Draw a realistic whale SVG-like shape on canvas
-  function drawWhale(x, y, angle, scale, alpha, waveT) {
+  // Draw one realistic tulip petal set
+  function drawTulipHead(x, y, palette, scale, alpha, openness) {
     ctx.save();
-    ctx.globalAlpha = alpha;
+    ctx.globalAlpha = Math.max(0, alpha);
     ctx.translate(x, y);
-    ctx.rotate(angle);
     ctx.scale(scale, scale);
 
-    // Tail flap wave
-    const tailWave = Math.sin(waveT * 4) * 12;
+    const open = Math.max(0, Math.min(1, openness));
+    const spread = open * 14;
+    const cupH = 30 + open * 8;
 
-    // Body
-    ctx.save();
-    ctx.beginPath();
-    // Main body ellipse
-    ctx.moveTo(-90, 0);
-    ctx.bezierCurveTo(-90, -28, -50, -38, 0, -36);
-    ctx.bezierCurveTo(50, -34, 80, -22, 95, -8);
-    ctx.bezierCurveTo(110, 6, 100, 22, 80, 26);
-    ctx.bezierCurveTo(50, 32, -40, 32, -70, 20);
-    ctx.bezierCurveTo(-90, 12, -90, 0, -90, 0);
-    ctx.closePath();
-
-    const bodyGrad = ctx.createLinearGradient(-90, -38, 0, 36);
-    bodyGrad.addColorStop(0, '#1a3a5c');
-    bodyGrad.addColorStop(0.4, '#2a5c8a');
-    bodyGrad.addColorStop(1, '#0d2035');
-    ctx.fillStyle = bodyGrad;
-    ctx.fill();
-    ctx.restore();
-
-    // Belly (lighter patch)
-    ctx.save();
-    ctx.beginPath();
-    ctx.moveTo(-60, 8);
-    ctx.bezierCurveTo(-40, 30, 20, 34, 55, 24);
-    ctx.bezierCurveTo(70, 18, 65, 10, 50, 8);
-    ctx.bezierCurveTo(20, 6, -30, 10, -60, 8);
-    ctx.closePath();
-    const bellyGrad = ctx.createLinearGradient(-60, 8, 40, 34);
-    bellyGrad.addColorStop(0, 'rgba(180,210,240,0.35)');
-    bellyGrad.addColorStop(1, 'rgba(140,190,230,0.18)');
-    ctx.fillStyle = bellyGrad;
-    ctx.fill();
-    ctx.restore();
-
-    // Tail fin with wave
-    ctx.save();
-    ctx.translate(90, 0);
-    ctx.beginPath();
-    // Upper tail lobe
-    ctx.moveTo(0, -6);
-    ctx.bezierCurveTo(15, -8 + tailWave*0.4, 28, -22 + tailWave, 18, -30 + tailWave);
-    ctx.bezierCurveTo(10, -36 + tailWave, -2, -20 + tailWave*0.6, 0, -6);
-    // Lower tail lobe
-    ctx.moveTo(0, 6);
-    ctx.bezierCurveTo(15, 8 - tailWave*0.4, 28, 22 - tailWave, 18, 30 - tailWave);
-    ctx.bezierCurveTo(10, 36 - tailWave, -2, 20 - tailWave*0.6, 0, 6);
-    ctx.fillStyle = '#162f4a';
-    ctx.fill();
-    ctx.restore();
-
-    // Dorsal fin
-    ctx.save();
-    ctx.beginPath();
-    ctx.moveTo(-10, -32);
-    ctx.bezierCurveTo(5, -52, 22, -50, 20, -34);
-    ctx.bezierCurveTo(15, -30, -5, -30, -10, -32);
-    ctx.fillStyle = '#162f4a';
-    ctx.fill();
-    ctx.restore();
-
-    // Pectoral fin (left side visible)
-    ctx.save();
-    ctx.beginPath();
-    ctx.moveTo(-20, 8);
-    ctx.bezierCurveTo(-10, 28, 10, 38, 5, 42);
-    ctx.bezierCurveTo(-5, 44, -22, 32, -30, 18);
-    ctx.bezierCurveTo(-32, 12, -24, 4, -20, 8);
-    ctx.fillStyle = '#1e3d5e';
-    ctx.fill();
-    ctx.restore();
-
-    // Eye
-    ctx.save();
-    ctx.beginPath();
-    ctx.arc(-62, -12, 4, 0, Math.PI * 2);
-    ctx.fillStyle = '#0a1a2e';
-    ctx.fill();
-    ctx.beginPath();
-    ctx.arc(-61, -13, 1.5, 0, Math.PI * 2);
-    ctx.fillStyle = 'rgba(255,255,255,0.7)';
-    ctx.fill();
-    ctx.restore();
-
-    // Mouth curve
-    ctx.save();
-    ctx.beginPath();
-    ctx.moveTo(-88, 2);
-    ctx.bezierCurveTo(-80, 6, -72, 8, -65, 5);
-    ctx.strokeStyle = 'rgba(10,26,46,0.7)';
-    ctx.lineWidth = 1.5;
-    ctx.stroke();
-    ctx.restore();
-
-    // Skin texture lines
-    ctx.save();
-    ctx.strokeStyle = 'rgba(255,255,255,0.06)';
-    ctx.lineWidth = 1;
-    ctx.beginPath();
-    ctx.moveTo(-40, -30); ctx.bezierCurveTo(-20, -28, 10, -25, 30, -20);
-    ctx.stroke();
-    ctx.beginPath();
-    ctx.moveTo(-30, 22); ctx.bezierCurveTo(-10, 26, 20, 28, 40, 22);
-    ctx.stroke();
-    ctx.restore();
-
-    ctx.restore(); // main
-  }
-
-  // Bubble particles
-  function spawnBubbles(x, y) {
-    for (let i = 0; i < 3; i++) {
-      particles.push({
-        x: x + (Math.random() - 0.5) * 80,
-        y: y + (Math.random() - 0.5) * 30,
-        r: Math.random() * 4 + 1,
-        vx: (Math.random() - 0.5) * 0.5,
-        vy: -(Math.random() * 0.8 + 0.3),
-        alpha: Math.random() * 0.5 + 0.2,
-        life: 1
-      });
-    }
-  }
-
-  function drawBubbles() {
-    particles.forEach(p => {
-      p.x += p.vx;
-      p.y += p.vy;
-      p.life -= 0.012;
-      p.alpha = p.life * 0.5;
-      if (p.life > 0) {
+    // Draw 6 petals in two layers
+    for (let layer = 0; layer < 2; layer++) {
+      const count = layer === 0 ? 3 : 3;
+      const baseAngle = layer === 0 ? 0 : Math.PI / 3;
+      for (let p = 0; p < count; p++) {
+        const angle = baseAngle + (p / count) * Math.PI * 2;
         ctx.save();
-        ctx.globalAlpha = p.alpha;
+        ctx.rotate(angle);
+
+        const pw = 9 + spread * 0.6;
+        const ph = cupH + (layer === 0 ? 0 : 4);
+        const curl = open * 6;
+
         ctx.beginPath();
-        ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-        ctx.strokeStyle = 'rgba(100,180,255,0.8)';
-        ctx.lineWidth = 1;
+        ctx.moveTo(0, 0);
+        ctx.bezierCurveTo(-pw * 0.7, -ph * 0.25, -pw - curl, -ph * 0.65, -pw * 0.4, -ph);
+        ctx.bezierCurveTo(0, -ph - curl * 0.5, pw * 0.4, -ph, pw + curl, -ph * 0.65);
+        ctx.bezierCurveTo(pw * 0.7, -ph * 0.25, 0, 0, 0, 0);
+
+        const pg = ctx.createLinearGradient(-pw, 0, pw, -ph);
+        if (layer === 0) {
+          pg.addColorStop(0, palette.dark);
+          pg.addColorStop(0.45, palette.petal);
+          pg.addColorStop(1, lightenColor(palette.petal, 25));
+        } else {
+          pg.addColorStop(0, palette.petal);
+          pg.addColorStop(0.5, palette.light);
+          pg.addColorStop(1, lightenColor(palette.light, 15));
+        }
+        ctx.fillStyle = pg;
+        ctx.fill();
+
+        // Petal sheen line
+        ctx.beginPath();
+        ctx.moveTo(0, -4);
+        ctx.bezierCurveTo(-pw * 0.15, -ph * 0.45, -pw * 0.1, -ph * 0.8, 0, -ph * 0.95);
+        ctx.strokeStyle = 'rgba(255,255,255,0.28)';
+        ctx.lineWidth = 0.9;
         ctx.stroke();
+
         ctx.restore();
       }
-    });
-    particles = particles.filter(p => p.life > 0);
+    }
+
+    // Center pistil
+    ctx.beginPath();
+    ctx.arc(0, 0, 5 + open * 2, 0, Math.PI * 2);
+    const cg = ctx.createRadialGradient(0, -1, 0, 0, 0, 5 + open * 2);
+    cg.addColorStop(0, lightenColor(palette.petal, 40));
+    cg.addColorStop(1, palette.dark);
+    ctx.fillStyle = cg;
+    ctx.fill();
+
+    ctx.restore();
   }
 
-  // Glow trail
-  let trail = [];
-  function drawTrail() {
-    trail.forEach((pt, i) => {
-      const ratio = i / trail.length;
-      ctx.save();
-      ctx.globalAlpha = pt.alpha * ratio * 0.4;
-      ctx.beginPath();
-      ctx.arc(pt.x, pt.y, 18 * ratio, 0, Math.PI * 2);
-      const g = ctx.createRadialGradient(pt.x, pt.y, 0, pt.x, pt.y, 18 * ratio);
-      g.addColorStop(0, 'rgba(79,180,255,0.5)');
-      g.addColorStop(1, 'rgba(79,180,255,0)');
-      ctx.fillStyle = g;
-      ctx.fill();
-      ctx.restore();
-    });
+  // Draw a leaf
+  function drawLeaf(x, y, angle, len, width, alpha) {
+    ctx.save();
+    ctx.globalAlpha = Math.max(0, alpha);
+    ctx.translate(x, y);
+    ctx.rotate(angle);
+
+    ctx.beginPath();
+    ctx.moveTo(0, 0);
+    ctx.bezierCurveTo(width * 0.5, -len * 0.25, width * 1.1 + 2, -len * 0.55, width * 0.9, -len);
+    ctx.bezierCurveTo(width * 0.5, -len * 0.85, -width * 0.1, -len * 0.5, 0, 0);
+
+    const lg = ctx.createLinearGradient(0, 0, width, -len);
+    lg.addColorStop(0, '#1a6632');
+    lg.addColorStop(0.5, '#2d9e52');
+    lg.addColorStop(1, '#1a5526');
+    ctx.fillStyle = lg;
+    ctx.fill();
+
+    // Vein
+    ctx.beginPath();
+    ctx.moveTo(0, 0);
+    ctx.bezierCurveTo(width * 0.4, -len * 0.35, width * 0.7, -len * 0.65, width * 0.9, -len);
+    ctx.strokeStyle = 'rgba(255,255,255,0.2)';
+    ctx.lineWidth = 0.8;
+    ctx.stroke();
+
+    ctx.restore();
   }
+
+  // Draw grass blades at bottom for ambiance
+  function drawGrassBlade(x, h, alpha) {
+    ctx.save();
+    ctx.globalAlpha = alpha * 0.5;
+    ctx.beginPath();
+    const cp = x + (Math.random() - 0.5) * 10;
+    ctx.moveTo(x, H);
+    ctx.quadraticCurveTo(cp, H - h * 0.5, x + (Math.random()-0.5)*8, H - h);
+    ctx.strokeStyle = '#2d9e52';
+    ctx.lineWidth = 1.5;
+    ctx.lineCap = 'round';
+    ctx.stroke();
+    ctx.restore();
+  }
+
+  const GROW_DURATION = 2000;
+  const HOLD_DURATION = 1200;
+  const FADE_DURATION = 700;
+  const TOTAL_DURATION = GROW_DURATION + HOLD_DURATION + FADE_DURATION;
 
   let startTime = null;
-  const DURATION = 5800; // ms total whale animation
+
+  // Ease out cubic
+  function easeOut(t) { return 1 - Math.pow(1 - t, 3); }
+  function easeInOut(t) { return t < 0.5 ? 4*t*t*t : 1-Math.pow(-2*t+2,3)/2; }
 
   function animate(ts) {
-    if (done) return;
     if (!startTime) startTime = ts;
     const elapsed = ts - startTime;
-    const t = Math.min(elapsed / DURATION, 1);
 
     ctx.clearRect(0, 0, W, H);
 
-    // Fade in/out alpha for whale
-    let alpha = 1;
-    if (t < 0.12) alpha = t / 0.12;
-    else if (t > 0.78) alpha = 1 - (t - 0.78) / 0.22;
+    // Global fade out
+    let globalAlpha = 1;
+    if (elapsed > GROW_DURATION + HOLD_DURATION) {
+      globalAlpha = 1 - Math.min(1, (elapsed - GROW_DURATION - HOLD_DURATION) / FADE_DURATION);
+    }
 
-    const pos = getWhalePos(t);
-    const angle = getWhaleAngle(t);
-    const waveT = elapsed / 600;
+    if (globalAlpha <= 0) {
+      ctx.clearRect(0, 0, W, H);
+      canvas.style.display = 'none';
+      return;
+    }
 
-    // Trail
-    trail.push({ x: pos.x, y: pos.y, alpha });
-    if (trail.length > 28) trail.shift();
-    drawTrail();
-
-    // Bubbles
-    if (Math.random() < 0.25) spawnBubbles(pos.x, pos.y);
-    drawBubbles();
-
-    // Underwater glow around whale
+    // Draw ground line glow
     ctx.save();
-    ctx.globalAlpha = alpha * 0.18;
-    const glow = ctx.createRadialGradient(pos.x, pos.y, 0, pos.x, pos.y, 140);
-    glow.addColorStop(0, 'rgba(79,150,255,0.6)');
-    glow.addColorStop(1, 'rgba(79,150,255,0)');
-    ctx.fillStyle = glow;
-    ctx.beginPath();
-    ctx.ellipse(pos.x, pos.y, 140, 80, angle, 0, Math.PI * 2);
-    ctx.fill();
+    ctx.globalAlpha = globalAlpha * 0.15;
+    const groundGrad = ctx.createLinearGradient(0, H - 20, 0, H);
+    groundGrad.addColorStop(0, 'rgba(45,158,82,0.8)');
+    groundGrad.addColorStop(1, 'transparent');
+    ctx.fillStyle = groundGrad;
+    ctx.fillRect(0, H - 20, W, 20);
     ctx.restore();
 
-    drawWhale(pos.x, pos.y, angle, 1.1, alpha, waveT);
-
-    if (t < 1) {
-      animFrame = requestAnimationFrame(animate);
-    } else {
-      ctx.clearRect(0, 0, W, H);
-      done = true;
-      canvas.style.pointerEvents = 'none';
-      setTimeout(() => { canvas.style.display = 'none'; }, 300);
+    // Draw some background grass
+    for (let i = 0; i < TOTAL * 3; i++) {
+      const gx = (W / (TOTAL * 3)) * i + 15;
+      const gh = 20 + (i % 7) * 4;
+      const gElapsed = elapsed - (i % 5) * 60;
+      if (gElapsed > 0) {
+        const gP = Math.min(1, gElapsed / 800);
+        drawGrassBlade(gx, gh * easeOut(gP), globalAlpha);
+      }
     }
+
+    for (const t of tulips) {
+      const tElapsed = elapsed - t.delay;
+      if (tElapsed < 0) continue;
+
+      const rawGrow = Math.min(1, tElapsed / GROW_DURATION);
+      const grow = easeOut(rawGrow);
+
+      const sway = Math.sin(ts / 1000 * t.swaySpeed + t.sway) * t.swayAmp * Math.min(rawGrow, 1);
+      const baseX = t.x + sway;
+      const baseY = H;
+      const stemH = t.stemH * grow * t.scale;
+      const leanX = Math.sin(t.lean) * stemH;
+      const topX = baseX + leanX + sway * 0.4;
+      const topY = baseY - stemH;
+
+      // Stem - draw as bezier for natural curve
+      ctx.save();
+      ctx.globalAlpha = globalAlpha;
+      ctx.beginPath();
+      ctx.moveTo(baseX, baseY);
+      const cpX = baseX + leanX * 0.5 + sway * 0.2;
+      const cpY = baseY - stemH * 0.55;
+      ctx.quadraticCurveTo(cpX, cpY, topX, topY);
+
+      const stemGrad = ctx.createLinearGradient(baseX, baseY, topX, topY);
+      stemGrad.addColorStop(0, '#1a6632');
+      stemGrad.addColorStop(0.4, '#2d9e52');
+      stemGrad.addColorStop(1, '#3db868');
+      ctx.strokeStyle = stemGrad;
+      ctx.lineWidth = 3.5 * t.scale;
+      ctx.lineCap = 'round';
+      ctx.stroke();
+      ctx.restore();
+
+      // Leaves - appear after 30% growth
+      if (rawGrow > 0.3) {
+        const leafP = Math.min(1, (rawGrow - 0.3) / 0.7);
+        const leafEased = easeOut(leafP);
+
+        // Left leaf
+        const lPos = 0.38;
+        const lx1 = baseX + Math.sin(t.lean) * t.stemH * lPos * grow * t.scale + sway * 0.25;
+        const ly1 = baseY - t.stemH * lPos * grow * t.scale;
+        drawLeaf(lx1, ly1, -0.55 + t.lean, 32 * leafEased * t.scale, 12 * leafEased * t.scale, globalAlpha * leafP);
+
+        // Right leaf higher up
+        const lPos2 = 0.58;
+        const lx2 = baseX + Math.sin(t.lean) * t.stemH * lPos2 * grow * t.scale + sway * 0.38;
+        const ly2 = baseY - t.stemH * lPos2 * grow * t.scale;
+        drawLeaf(lx2, ly2, 0.62 + t.lean, 26 * leafEased * t.scale, 10 * leafEased * t.scale, globalAlpha * leafP * 0.88);
+      }
+
+      // Flower head - appears after 55% growth, blooms open
+      if (rawGrow > 0.55) {
+        const headP = Math.min(1, (rawGrow - 0.55) / 0.45);
+        const headScale = easeOut(headP) * t.scale;
+        const openness = easeInOut(Math.min(1, headP * 1.2));
+        drawTulipHead(topX, topY, t.palette, headScale, globalAlpha, openness);
+      }
+    }
+
+    requestAnimationFrame(animate);
   }
 
-  // Start whale after a brief delay (intro text is showing)
-  setTimeout(() => {
-    animFrame = requestAnimationFrame(animate);
-  }, 400);
+  // Start after short delay so intro text appears alongside
+  setTimeout(() => requestAnimationFrame(animate), 150);
 })();
 
 // ===================== INTRO ANIMATION =====================
@@ -1347,7 +1446,7 @@ async function init() {
   loadBgSettings(); loadScSettings(); loadSidebarCoverSettings();
 }
 
-// ===================== FILE TYPE DETECTION (extended) =====================
+// ===================== FILE TYPE DETECTION =====================
 const IMAGE_EXTS = {
   jpg: 'jpg', jpeg: 'jpg', png: 'png', gif: 'gif', webp: 'webp',
   svg: 'svg', bmp: 'bmp', tiff: 'tiff', tif: 'tiff',
@@ -1362,9 +1461,7 @@ function getFileKind(mimeType, ext) {
   if (m.startsWith('video/')||['mp4','mkv','avi','mov','webm','flv','wmv'].includes(e)) return 'video';
   return 'document';
 }
-function getImageSubtype(ext) {
-  return IMAGE_EXTS[ext?.toLowerCase()] || 'other';
-}
+function getImageSubtype(ext) { return IMAGE_EXTS[ext?.toLowerCase()] || 'other'; }
 function getFileIcon(ext) {
   const e=(ext||'').toLowerCase();
   if (CODE_EXTS.includes(e)) return '💻';
@@ -1648,7 +1745,6 @@ function openEditor(id, e) {
   const item=images.find(i=>i.id===id);
   if(!item) return;
   editTargetId=id;
-  // Determine which tab to show
   if(item.kind==='image') switchEditorTab('img');
   else if(item.kind==='video') switchEditorTab('vid');
   else switchEditorTab('code');
@@ -1691,9 +1787,7 @@ function initImageEditor() {
   cropEnabled=false;
   document.getElementById('cropModeBtn').classList.remove('active');
   document.getElementById('cropModeBtn').textContent='✂️ Cắt ảnh';
-  imgEl.onload=()=>{
-    if(cropperInstance){cropperInstance.destroy();cropperInstance=null;}
-  };
+  imgEl.onload=()=>{if(cropperInstance){cropperInstance.destroy();cropperInstance=null;}};
 }
 
 function toggleCropMode() {
@@ -1711,9 +1805,7 @@ function toggleCropMode() {
 
 function cropperAction(action, val) {
   if(!cropperInstance&&(action==='flipX'||action==='flipY'||action==='rotate')) {
-    // Apply via canvas transform when no cropper
-    applyTransformViaCanvas(action, val);
-    return;
+    applyTransformViaCanvas(action, val); return;
   }
   if(cropperInstance){
     if(action==='rotate') cropperInstance.rotate(val);
@@ -1770,7 +1862,6 @@ async function saveEditedImage() {
     let dataURL;
     if(cropEnabled&&cropperInstance){
       const canvas=cropperInstance.getCroppedCanvas({imageSmoothingQuality:'high'});
-      // Apply CSS filter to a canvas
       const finalCanvas=document.createElement('canvas');
       finalCanvas.width=canvas.width; finalCanvas.height=canvas.height;
       const ctx=finalCanvas.getContext('2d');
@@ -1783,7 +1874,6 @@ async function saveEditedImage() {
       dataURL=finalCanvas.toDataURL(item.type==='png'?'image/png':'image/jpeg',0.92);
       if(cropperInstance){cropperInstance.destroy();cropperInstance=null;cropEnabled=false;}
     } else {
-      // Apply filters via canvas
       const img=document.getElementById('cropperImg');
       const srcImg=new Image();
       srcImg.src=img.src;
@@ -1816,11 +1906,7 @@ function initVideoEditor() {
   if(!item||item.kind!=='video') return;
   const vid=document.getElementById('editVideo');
   vid.src=item.dataURL;
-  vid.onloadedmetadata=()=>{
-    document.getElementById('vidEnd').value=100;
-    document.getElementById('vidStart').value=0;
-    updateVidTrim();
-  };
+  vid.onloadedmetadata=()=>{document.getElementById('vidEnd').value=100;document.getElementById('vidStart').value=0;updateVidTrim();};
 }
 
 function updateVidTrim() {
@@ -1828,10 +1914,8 @@ function updateVidTrim() {
   const dur=vid.duration||0;
   const startPct=document.getElementById('vidStart').value/100;
   const endPct=document.getElementById('vidEnd').value/100;
-  const startSec=dur*startPct;
-  const endSec=dur*endPct;
-  document.getElementById('vidStartVal').textContent=formatDuration(startSec);
-  document.getElementById('vidEndVal').textContent=formatDuration(endSec);
+  document.getElementById('vidStartVal').textContent=formatDuration(dur*startPct);
+  document.getElementById('vidEndVal').textContent=formatDuration(dur*endPct);
 }
 
 function formatDuration(s) {
@@ -1843,13 +1927,11 @@ function formatDuration(s) {
 function previewVidTrim() {
   const vid=document.getElementById('editVideo');
   const dur=vid.duration||0;
-  const startPct=document.getElementById('vidStart').value/100;
-  const endPct=document.getElementById('vidEnd').value/100;
-  const startSec=dur*startPct;
-  const endSec=dur*endPct;
+  const startSec=dur*(document.getElementById('vidStart').value/100);
+  const endSec=dur*(document.getElementById('vidEnd').value/100);
   vid.currentTime=startSec;
   vid.play();
-  setTimeout(()=>{vid.pause();},  (endSec-startSec)*1000+100);
+  setTimeout(()=>{vid.pause();},(endSec-startSec)*1000+100);
   toast(`▶ Xem đoạn từ ${formatDuration(startSec)} đến ${formatDuration(endSec)}`,'info');
 }
 
@@ -1884,20 +1966,16 @@ function captureVideoFrame() {
 function initCodeEditor() {
   const item=images.find(i=>i.id===editTargetId);
   if(!item||item.kind!=='document') {
-    // For non-document, show placeholder
     if(cmEditor) cmEditor.setValue('// Tải nội dung file để chỉnh sửa...\n// Chức năng này hỗ trợ file văn bản và code.');
     else setupCodeMirror('// Tải nội dung file để chỉnh sửa...');
     return;
   }
   let content='';
   try {
-    // Try to decode dataURL as text
     const base64=item.dataURL.split(',')[1];
     if(base64) content=atob(base64);
     else content=decodeURIComponent(item.dataURL.split(',')[1]||'');
   } catch { content='// Không thể đọc nội dung file này dưới dạng văn bản.'; }
-
-  // Auto detect language
   const ext=(item.ext||'').toLowerCase();
   let mode='javascript';
   if(['html','htm','xml'].includes(ext)) mode='xml';
@@ -1918,13 +1996,7 @@ function setupCodeMirror(content, mode='javascript') {
   textarea.value=content;
   cmEditor=CodeMirror.fromTextArea(textarea,{
     mode: mode==='text'?null:mode,
-    theme:'dracula',
-    lineNumbers:true,
-    lineWrapping:true,
-    autoCloseBrackets:true,
-    matchBrackets:true,
-    indentWithTabs:true,
-    tabSize:2,
+    theme:'dracula',lineNumbers:true,lineWrapping:true,autoCloseBrackets:true,matchBrackets:true,indentWithTabs:true,tabSize:2,
   });
   cmEditor.setSize('100%','100%');
 }
@@ -1939,11 +2011,9 @@ async function saveCodeEdit() {
   const newContent=cmEditor.getValue();
   const item=images.find(i=>i.id===editTargetId);
   if(!item) return;
-  // Re-encode as dataURL
   const blob=new Blob([newContent],{type:'text/plain'});
   const dataURL=await readFileAsDataURL(blob);
-  item.dataURL=dataURL;
-  item.size=blob.size;
+  item.dataURL=dataURL; item.size=blob.size;
   await dbPut(STORE_MEDIA,item);
   renderGallery(); updateStats();
   closeEditorDirect();
@@ -1992,6 +2062,17 @@ function updateCountBadge(){document.getElementById('countAll').textContent=imag
 // ===================== THEME =====================
 document.getElementById('themeToggle').addEventListener('click',()=>{const isLight=document.documentElement.dataset.theme==='light';document.documentElement.dataset.theme=isLight?'dark':'light';document.getElementById('themeToggle').textContent=isLight?'☀️':'🌙';});
 
+// ===================== UI TRANSPARENCY =====================
+let uiTransparent = false;
+function toggleUITransparency() {
+  uiTransparent = !uiTransparent;
+  document.body.classList.toggle('ui-transparent', uiTransparent);
+  const btn = document.getElementById('uiMountainBtn');
+  btn.classList.toggle('active', uiTransparent);
+  btn.title = uiTransparent ? '🏔 Tắt chế độ trong suốt' : '🏔 Chế độ trong suốt UI';
+  toast(uiTransparent ? '🏔 UI trong suốt — hover để thấy' : '🏔 UI thường', 'info');
+}
+
 // ===================== BACKGROUND =====================
 const BG_PRESETS_DATA=[
   {label:'Không',url:'',icon:'🚫'},
@@ -2016,13 +2097,12 @@ const SIDEBAR_COVER_PRESETS=[
 let activeBgUrl='', activeSidebarCover='';
 
 function renderBgPresets(){const container=document.getElementById('bgPresets');container.innerHTML=BG_PRESETS_DATA.map(p=>{if(!p.url)return`<div class="bg-preset no-bg ${activeBgUrl===''?'active':''}" data-bg="" onclick="applyBg('',this)" title="${p.label}">${p.icon}</div>`;return`<div class="bg-preset ${activeBgUrl===p.url?'active':''}" data-bg="${p.url}" onclick="applyBg('${p.url}',this)" title="${p.label}"><img src="${p.url}" loading="lazy" alt="${p.label}"></div>`;}).join('');}
-function renderSidebarCoverPresets(){const c=document.getElementById('sidebarCoverPresets');if(!c) return;c.innerHTML=SIDEBAR_COVER_PRESETS.map((p,idx)=>{if(!p.url)return`<div class="sc-preset no-sc ${activeSidebarCover===''?'active':''}" onclick="applySidebarCover('',this)" title="Không">🚫</div>`;return`<div class="sc-preset ${activeSidebarCover===p.url?'active':''}" onclick="applySidebarCover('${p.url}',this)" title="${p.label}"><img src="${p.url}" loading="lazy" alt="${p.label}"></div>`;}).join('');}
+function renderSidebarCoverPresets(){const c=document.getElementById('sidebarCoverPresets');if(!c) return;c.innerHTML=SIDEBAR_COVER_PRESETS.map((p)=>{if(!p.url)return`<div class="sc-preset no-sc ${activeSidebarCover===''?'active':''}" onclick="applySidebarCover('',this)" title="Không">🚫</div>`;return`<div class="sc-preset ${activeSidebarCover===p.url?'active':''}" onclick="applySidebarCover('${p.url}',this)" title="${p.label}"><img src="${p.url}" loading="lazy" alt="${p.label}"></div>`;}).join('');}
 function applyBg(url,el){activeBgUrl=url;const layer=document.getElementById('wallpaperLayer');if(!url)layer.style.backgroundImage='none';else layer.style.backgroundImage=`url('${url}')`;document.querySelectorAll('.bg-preset').forEach(p=>p.classList.remove('active'));if(el)el.classList.add('active');localStorage.setItem('syo_bg_url',url);}
 function applyBgUrl(){const url=document.getElementById('bgUrlInput').value.trim();if(!url)return;applyBg(url,null);renderBgPresets();toast('🎨 Đã áp dụng ảnh nền!','success');}
 function updateBgOpacity(val){document.getElementById('wallpaperLayer').style.opacity=val;document.getElementById('bgOpacityVal').textContent=Math.round(val*100)+'%';localStorage.setItem('syo_bg_opacity',val);}
 function loadBgSettings(){const url=localStorage.getItem('syo_bg_url')||'';const opacity=localStorage.getItem('syo_bg_opacity')||'0.18';activeBgUrl=url;if(url)document.getElementById('wallpaperLayer').style.backgroundImage=`url('${url}')`;document.getElementById('wallpaperLayer').style.opacity=opacity;document.getElementById('bgOpacity').value=opacity;document.getElementById('bgOpacityVal').textContent=Math.round(opacity*100)+'%';renderBgPresets();}
 
-// Sidebar cover
 function applySidebarCover(url, el) {
   activeSidebarCover=url;
   const cover=document.getElementById('sidebarCover');
