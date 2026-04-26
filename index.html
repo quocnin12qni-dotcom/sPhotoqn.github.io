@@ -79,15 +79,82 @@ body::before { content: ''; position: fixed; inset: 0; z-index: 0; pointer-event
 .glass-orb:nth-child(5) { width: 450px; height: 450px; background: radial-gradient(circle, rgba(167,139,250,0.25) 0%, transparent 70%); bottom: 10%; right: 20%; animation-duration: 16s; animation-delay: -9s; }
 @keyframes orbFloat { 0% { transform: translate(0,0) scale(1); } 25% { transform: translate(60px,-40px) scale(1.05); } 50% { transform: translate(30px,60px) scale(0.95); } 75% { transform: translate(-40px,20px) scale(1.08); } 100% { transform: translate(0,0) scale(1); } }
 
-body.ui-transparent .navbar { background: rgba(255,255,255,0.08) !important; backdrop-filter: blur(28px) saturate(200%) !important; border-bottom: 1px solid rgba(255,255,255,0.15) !important; box-shadow: 0 4px 32px rgba(0,0,0,0.15), inset 0 1px 0 rgba(255,255,255,0.1) !important; }
-body.ui-transparent .navbar * { font-weight: 700 !important; text-shadow: 0 1px 4px rgba(0,0,0,0.4) !important; }
-body.ui-transparent .sidebar { background: rgba(255,255,255,0.06) !important; backdrop-filter: blur(32px) saturate(180%) !important; border-right: 1px solid rgba(255,255,255,0.12) !important; }
-body.ui-transparent .stat-card { background: rgba(255,255,255,0.07) !important; backdrop-filter: blur(20px) !important; border: 1px solid rgba(255,255,255,0.15) !important; box-shadow: 0 4px 16px rgba(0,0,0,0.12), inset 0 1px 0 rgba(255,255,255,0.1) !important; }
-body.ui-transparent .stat-val { font-weight: 800 !important; text-shadow: 0 0 20px currentColor !important; }
-body.ui-transparent .upload-zone { background: rgba(255,255,255,0.06) !important; backdrop-filter: blur(20px) !important; border-color: rgba(255,255,255,0.2) !important; }
-body.ui-transparent .gallery-grid .image-card { background: rgba(255,255,255,0.06) !important; backdrop-filter: blur(16px) saturate(180%) !important; border: 1px solid rgba(255,255,255,0.14) !important; box-shadow: 0 8px 32px rgba(0,0,0,0.2), inset 0 1px 0 rgba(255,255,255,0.1) !important; }
-body.ui-transparent .gallery-grid .image-card:hover { background: rgba(255,255,255,0.12) !important; border-color: rgba(255,255,255,0.28) !important; box-shadow: 0 16px 48px rgba(0,0,0,0.3), inset 0 1px 0 rgba(255,255,255,0.2) !important; transform: translateY(-4px) scale(1.02) !important; }
-body.ui-transparent .page-title { font-weight: 800 !important; text-shadow: 0 0 30px rgba(184,159,255,0.4) !important; }
+/* ===== GLASSMORPHISM UI TRANSPARENT ===== */
+body.ui-transparent .navbar {
+  background: rgba(15,16,30,0.35) !important;
+  backdrop-filter: blur(32px) saturate(200%) brightness(1.1) !important;
+  -webkit-backdrop-filter: blur(32px) saturate(200%) brightness(1.1) !important;
+  border-bottom: 1px solid rgba(255,255,255,0.18) !important;
+  box-shadow: 0 4px 32px rgba(0,0,0,0.2), inset 0 1px 0 rgba(255,255,255,0.12) !important;
+}
+body.ui-transparent .sidebar {
+  background: rgba(10,11,22,0.28) !important;
+  backdrop-filter: blur(36px) saturate(180%) !important;
+  -webkit-backdrop-filter: blur(36px) saturate(180%) !important;
+  border-right: 1px solid rgba(255,255,255,0.14) !important;
+}
+body.ui-transparent .main {
+  background: transparent !important;
+}
+body.ui-transparent .stat-card {
+  background: rgba(255,255,255,0.06) !important;
+  backdrop-filter: blur(20px) saturate(160%) !important;
+  -webkit-backdrop-filter: blur(20px) saturate(160%) !important;
+  border: 1px solid rgba(255,255,255,0.16) !important;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.15), inset 0 1px 0 rgba(255,255,255,0.1) !important;
+}
+body.ui-transparent .upload-zone {
+  background: rgba(255,255,255,0.05) !important;
+  backdrop-filter: blur(16px) !important;
+  -webkit-backdrop-filter: blur(16px) !important;
+  border-color: rgba(255,255,255,0.2) !important;
+}
+body.ui-transparent .gallery-grid .image-card {
+  background: rgba(255,255,255,0.07) !important;
+  backdrop-filter: blur(18px) saturate(160%) !important;
+  -webkit-backdrop-filter: blur(18px) saturate(160%) !important;
+  border: 1px solid rgba(255,255,255,0.15) !important;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.2), inset 0 1px 0 rgba(255,255,255,0.1) !important;
+}
+body.ui-transparent .gallery-grid .image-card:hover {
+  background: rgba(255,255,255,0.13) !important;
+  border-color: rgba(255,255,255,0.28) !important;
+  box-shadow: 0 16px 48px rgba(0,0,0,0.3), inset 0 1px 0 rgba(255,255,255,0.2) !important;
+  transform: translateY(-4px) scale(1.02) !important;
+}
+body.ui-transparent .filter-row .filter-tag {
+  background: rgba(255,255,255,0.06) !important;
+  backdrop-filter: blur(12px) !important;
+  border-color: rgba(255,255,255,0.16) !important;
+}
+body.ui-transparent .storage-bar {
+  background: rgba(255,255,255,0.06) !important;
+  backdrop-filter: blur(12px) !important;
+  border-color: rgba(255,255,255,0.12) !important;
+}
+body.ui-transparent .sidebar-inner {
+  background: transparent !important;
+}
+body.ui-transparent .nav-item {
+  background: transparent !important;
+}
+body.ui-transparent .nav-item:hover {
+  background: rgba(255,255,255,0.08) !important;
+}
+body.ui-transparent .nav-item.active {
+  background: rgba(124,111,255,0.18) !important;
+  backdrop-filter: blur(8px) !important;
+}
+body.ui-transparent .sidebar-section {
+  background: transparent !important;
+}
+body.ui-transparent .page-title {
+  font-weight: 800 !important;
+  text-shadow: 0 0 30px rgba(184,159,255,0.5) !important;
+}
+body.ui-transparent .stat-val {
+  text-shadow: 0 0 20px currentColor !important;
+}
 
 /* LASSO */
 .lasso-rect { position: fixed; border: 1.5px solid var(--accent); background: rgba(124,111,255,0.1); border-radius: 4px; pointer-events: none; z-index: 9999; display: none; }
@@ -192,7 +259,7 @@ body.ui-transparent .page-title { font-weight: 800 !important; text-shadow: 0 0 
 .search-badge.visible { display: flex; }
 .search-badge strong { color: var(--text); }
 
-/* DUP BANNER - UPDATED */
+/* DUP BANNER */
 .dup-banner { display: none; flex-direction: column; gap: 10px; margin-bottom: 14px; padding: 14px 16px; background: rgba(167,139,250,0.08); border: 1px solid rgba(167,139,250,0.25); border-radius: var(--radius-sm); }
 .dup-banner.visible { display: flex; }
 .dup-banner-header { display: flex; align-items: center; gap: 10px; }
@@ -203,7 +270,6 @@ body.ui-transparent .page-title { font-weight: 800 !important; text-shadow: 0 0 
 .dup-action-btn.danger { color: var(--danger); border-color: rgba(255,77,109,0.3); background: rgba(255,77,109,0.07); }
 .dup-action-btn.danger:hover { background: rgba(255,77,109,0.15); }
 .dup-action-btn.active-btn { background: rgba(167,139,250,0.25); border-color: var(--dup); box-shadow: 0 0 0 2px rgba(167,139,250,0.2); }
-/* DUP MODE TOGGLE */
 .dup-strict-toggle { display: flex; align-items: center; gap: 8px; padding: 8px 12px; border-radius: 8px; background: rgba(167,139,250,0.06); border: 1px solid rgba(167,139,250,0.18); font-size: 11.5px; color: var(--text2); }
 .dup-strict-toggle label { cursor: pointer; display: flex; align-items: center; gap: 6px; }
 .dup-strict-toggle input[type=checkbox] { accent-color: var(--dup); width: 14px; height: 14px; }
@@ -442,6 +508,10 @@ body.ui-transparent .page-title { font-weight: 800 !important; text-shadow: 0 0 
 .bg-url-row .input-field { margin-bottom: 0; flex: 1; }
 .bg-url-btn { padding: 10px 14px; border-radius: 9px; background: var(--accent); color: #fff; border: none; cursor: pointer; font-size: 13px; font-weight: 500; white-space: nowrap; transition: all var(--tr); }
 .bg-url-btn:hover { opacity: 0.85; }
+
+/* SYNC NOTE */
+.bg-sync-note { font-size: 11px; color: var(--accent2); background: rgba(124,111,255,0.08); border: 1px solid rgba(124,111,255,0.2); border-radius: 7px; padding: 7px 10px; margin-top: 8px; display: flex; align-items: center; gap: 6px; }
+
 .sidebar-cover-presets { display: grid; grid-template-columns: repeat(4, 1fr); gap: 7px; margin-bottom: 8px; }
 .sc-preset { aspect-ratio: 16/9; border-radius: 7px; cursor: pointer; border: 2px solid var(--border); transition: all var(--tr); overflow: hidden; }
 .sc-preset:hover { border-color: var(--accent2); transform: scale(1.05); }
@@ -466,89 +536,21 @@ body.ui-transparent .page-title { font-weight: 800 !important; text-shadow: 0 0 
 @keyframes slideIn { from { opacity: 0; transform: translateX(18px); } to { opacity: 1; transform: translateX(0); } }
 @keyframes slideOut { from { opacity: 1; transform: translateX(0); } to { opacity: 0; transform: translateX(18px); } }
 
-/* ===== COMBINED MUSIC PLAYER ===== */
-.music-fab {
-  position: fixed;
-  bottom: 22px;
-  right: 22px;
-  z-index: 300;
-  width: 48px; height: 48px;
-  border-radius: 14px;
-  border: none;
-  background: linear-gradient(135deg, #f50, #ff6b9d, #7c6fff);
-  color: #fff;
-  font-size: 20px;
-  cursor: pointer;
-  display: flex; align-items: center; justify-content: center;
-  box-shadow: 0 6px 24px rgba(255,83,0,0.4), 0 2px 8px rgba(124,111,255,0.3);
-  transition: all 0.3s cubic-bezier(0.4,0,0.2,1);
-  animation: fabPulse 3s ease infinite;
-}
+/* ===== MUSIC PLAYER ===== */
+.music-fab { position: fixed; bottom: 22px; right: 22px; z-index: 300; width: 48px; height: 48px; border-radius: 14px; border: none; background: linear-gradient(135deg, #f50, #ff6b9d, #7c6fff); color: #fff; font-size: 20px; cursor: pointer; display: flex; align-items: center; justify-content: center; box-shadow: 0 6px 24px rgba(255,83,0,0.4), 0 2px 8px rgba(124,111,255,0.3); transition: all 0.3s cubic-bezier(0.4,0,0.2,1); animation: fabPulse 3s ease infinite; }
 .music-fab:hover { transform: scale(1.1) translateY(-2px); box-shadow: 0 12px 36px rgba(255,83,0,0.5); }
 @keyframes fabPulse { 0%,100% { box-shadow: 0 6px 24px rgba(255,83,0,0.4), 0 2px 8px rgba(124,111,255,0.3); } 50% { box-shadow: 0 6px 32px rgba(255,107,157,0.6), 0 2px 16px rgba(124,111,255,0.5); } }
-
-.music-player-widget {
-  position: fixed;
-  bottom: 80px;
-  right: 18px;
-  z-index: 300;
-  width: 300px;
-  background: rgba(10,11,18,0.95);
-  border: 1px solid rgba(255,255,255,0.1);
-  border-radius: 18px;
-  box-shadow: 0 20px 60px rgba(0,0,0,0.6), inset 0 1px 0 rgba(255,255,255,0.08);
-  overflow: hidden;
-  backdrop-filter: blur(24px);
-  transform: scale(0.85) translateY(20px);
-  opacity: 0;
-  pointer-events: none;
-  transition: all 0.35s cubic-bezier(0.4,0,0.2,1);
-}
-.music-player-widget.open {
-  transform: scale(1) translateY(0);
-  opacity: 1;
-  pointer-events: all;
-}
-.player-header-bar {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  padding: 12px 14px 8px;
-  border-bottom: 1px solid rgba(255,255,255,0.07);
-}
-.player-tab-btn {
-  flex: 1;
-  padding: 7px 10px;
-  border-radius: 10px;
-  border: 1px solid rgba(255,255,255,0.08);
-  background: rgba(255,255,255,0.04);
-  color: rgba(255,255,255,0.5);
-  font-size: 11px;
-  font-weight: 700;
-  cursor: pointer;
-  transition: all 0.2s;
-  font-family: 'DM Sans', sans-serif;
-  display: flex; align-items: center; justify-content: center; gap: 5px;
-  letter-spacing: 0.03em;
-}
+.music-player-widget { position: fixed; bottom: 80px; right: 18px; z-index: 300; width: 300px; background: rgba(10,11,18,0.95); border: 1px solid rgba(255,255,255,0.1); border-radius: 18px; box-shadow: 0 20px 60px rgba(0,0,0,0.6), inset 0 1px 0 rgba(255,255,255,0.08); overflow: hidden; backdrop-filter: blur(24px); transform: scale(0.85) translateY(20px); opacity: 0; pointer-events: none; transition: all 0.35s cubic-bezier(0.4,0,0.2,1); }
+.music-player-widget.open { transform: scale(1) translateY(0); opacity: 1; pointer-events: all; }
+.player-header-bar { display: flex; align-items: center; gap: 6px; padding: 12px 14px 8px; border-bottom: 1px solid rgba(255,255,255,0.07); }
+.player-tab-btn { flex: 1; padding: 7px 10px; border-radius: 10px; border: 1px solid rgba(255,255,255,0.08); background: rgba(255,255,255,0.04); color: rgba(255,255,255,0.5); font-size: 11px; font-weight: 700; cursor: pointer; transition: all 0.2s; font-family: 'DM Sans', sans-serif; display: flex; align-items: center; justify-content: center; gap: 5px; letter-spacing: 0.03em; }
 .player-tab-btn.active { background: rgba(255,255,255,0.12); border-color: rgba(255,255,255,0.2); color: #fff; }
 .player-tab-btn.sc-tab.active { background: rgba(255,83,0,0.25); border-color: rgba(255,83,0,0.5); color: #ff8c00; }
 .player-tab-btn.yt-tab.active { background: rgba(255,0,0,0.2); border-color: rgba(255,0,0,0.4); color: #ff4444; }
-.player-close-btn {
-  width: 22px; height: 22px;
-  border-radius: 6px; border: none;
-  background: rgba(255,255,255,0.08);
-  color: rgba(255,255,255,0.5); cursor: pointer;
-  font-size: 11px;
-  display: flex; align-items: center; justify-content: center;
-  transition: all 0.15s;
-}
+.player-close-btn { width: 22px; height: 22px; border-radius: 6px; border: none; background: rgba(255,255,255,0.08); color: rgba(255,255,255,0.5); cursor: pointer; font-size: 11px; display: flex; align-items: center; justify-content: center; transition: all 0.15s; }
 .player-close-btn:hover { background: rgba(255,77,109,0.4); color: #fff; }
-
 .player-panel { display: none; padding: 10px 0 4px; }
 .player-panel.active { display: block; }
-
-/* SC Panel */
 .sc-url-row { display: flex; gap: 5px; padding: 0 12px 8px; }
 .sc-url-input-w { flex: 1; padding: 7px 9px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.09); background: rgba(255,255,255,0.05); color: #fff; font-size: 10.5px; font-family: 'DM Sans', sans-serif; outline: none; transition: all 0.2s; min-width: 0; }
 .sc-url-input-w:focus { border-color: #f50; box-shadow: 0 0 0 2px rgba(255,83,0,0.18); }
@@ -566,8 +568,6 @@ body.ui-transparent .page-title { font-weight: 800 !important; text-shadow: 0 0 
 .sc-iframe-w iframe { width: 100%; height: 100%; border: none; display: block; }
 .sc-placeholder-w { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 6px; padding: 24px 12px; color: rgba(255,255,255,0.2); font-size: 11px; text-align: center; }
 .sc-placeholder-w .ph-ico { font-size: 28px; opacity: 0.3; }
-
-/* YT Panel */
 .yt-search-row-w { display: flex; gap: 5px; padding: 0 12px 8px; }
 .yt-search-input-w { flex: 1; padding: 7px 9px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.09); background: rgba(255,255,255,0.05); color: #fff; font-size: 10.5px; font-family: 'DM Sans', sans-serif; outline: none; transition: all 0.2s; min-width: 0; }
 .yt-search-input-w:focus { border-color: #f00; box-shadow: 0 0 0 2px rgba(255,0,0,0.18); }
@@ -599,7 +599,7 @@ body.ui-transparent .page-title { font-weight: 800 !important; text-shadow: 0 0 
 .yt-now-playing-thumb { width: 32px; height: 22px; border-radius: 4px; object-fit: cover; flex-shrink: 0; }
 .yt-now-playing-title { flex: 1; font-size: 10px; font-weight: 600; color: rgba(255,0,0,0.9); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 
-/* ===== RESPONSIVE ===== */
+/* RESPONSIVE */
 @media (max-width: 768px) {
   .sidebar { position: fixed; top: var(--nav-h); left: 0; bottom: 0; z-index: 90; transform: translateX(-100%); }
   .sidebar.open { transform: translateX(0); box-shadow: 8px 0 32px rgba(0,0,0,0.4); }
@@ -619,13 +619,9 @@ body.ui-transparent .page-title { font-weight: 800 !important; text-shadow: 0 0 
 </head>
 <body>
 
-<!-- TULIP CANVAS -->
 <canvas id="tulipCanvas"></canvas>
-
-<!-- FLOATING HEARTS CANVAS -->
 <canvas id="heartCanvas"></canvas>
 
-<!-- GLASS ORBS -->
 <div class="glass-orbs" id="glassOrbs">
   <div class="glass-orb"></div>
   <div class="glass-orb"></div>
@@ -636,7 +632,6 @@ body.ui-transparent .page-title { font-weight: 800 !important; text-shadow: 0 0 
 
 <div class="wallpaper-layer" id="wallpaperLayer"></div>
 
-<!-- INTRO SCREEN -->
 <div id="introScreen">
   <div class="intro-content">
     <div class="intro-text">
@@ -646,7 +641,6 @@ body.ui-transparent .page-title { font-weight: 800 !important; text-shadow: 0 0 
   </div>
 </div>
 
-<!-- LASSO RECT -->
 <div class="lasso-rect" id="lassoRect"></div>
 
 <div id="appWrapper">
@@ -732,7 +726,6 @@ body.ui-transparent .page-title { font-weight: 800 !important; text-shadow: 0 0 
   </div>
   <div class="search-badge" id="searchBadge">🔍 Kết quả cho <strong id="searchBadgeText"></strong> — <span id="searchBadgeCount"></span> file</div>
   
-  <!-- UPDATED DUP BANNER -->
   <div class="dup-banner" id="dupBanner">
     <div class="dup-banner-header">
       <span class="dup-banner-text" id="dupBannerText">⚠️ Phát hiện file trùng</span>
@@ -740,7 +733,7 @@ body.ui-transparent .page-title { font-weight: 800 !important; text-shadow: 0 0 
     <div class="dup-strict-toggle">
       <label>
         <input type="checkbox" id="dupStrictMode" onchange="toggleDupStrictMode()">
-        🚫 Chặn upload file trùng (bật để không cho phép thêm file đã tồn tại)
+        🚫 Chặn upload file trùng
       </label>
     </div>
     <div class="dup-actions-row">
@@ -805,13 +798,11 @@ body.ui-transparent .page-title { font-weight: 800 !important; text-shadow: 0 0 
   <button class="bulk-cancel-btn" onclick="clearSelection()">✕</button>
 </div>
 
-<!-- UI MOUNTAIN TRANSPARENCY BUTTON -->
 <button id="uiMountainBtn" onclick="toggleUITransparency()" title="Glassmorphism">
   <span class="mountain-icon">🏔</span>
   Glassmorphism
 </button>
 
-<!-- ===== COMBINED MUSIC PLAYER ===== -->
 <button class="music-fab" id="musicFab" onclick="toggleMusicPlayer()">🎵</button>
 
 <div class="music-player-widget" id="musicPlayerWidget">
@@ -820,8 +811,6 @@ body.ui-transparent .page-title { font-weight: 800 !important; text-shadow: 0 0 
     <button class="player-tab-btn yt-tab" id="ytTabBtn" onclick="switchMusicTab('yt')">🔴 YouTube</button>
     <button class="player-close-btn" onclick="toggleMusicPlayer()">✕</button>
   </div>
-
-  <!-- SOUNDCLOUD PANEL -->
   <div class="player-panel active" id="scPanel">
     <div class="sc-url-row">
       <input class="sc-url-input-w" id="scUrlInput" type="text" placeholder="Dán link SoundCloud...">
@@ -834,8 +823,6 @@ body.ui-transparent .page-title { font-weight: 800 !important; text-shadow: 0 0 
       </div>
     </div>
   </div>
-
-  <!-- YOUTUBE PANEL -->
   <div class="player-panel" id="ytPanel">
     <div class="yt-search-row-w">
       <input class="yt-search-input-w" id="ytSearchInput" type="text" placeholder="Tìm bài hát YouTube...">
@@ -859,7 +846,7 @@ body.ui-transparent .page-title { font-weight: 800 !important; text-shadow: 0 0 
   </div>
 </div>
 
-<!-- PREVIEW MODAL -->
+<!-- MODALS -->
 <div class="modal-backdrop" id="previewModal" onclick="closePreview(event)">
   <div class="modal">
     <div class="modal-header">
@@ -894,7 +881,6 @@ body.ui-transparent .page-title { font-weight: 800 !important; text-shadow: 0 0 
   </div>
 </div>
 
-<!-- RENAME MODAL -->
 <div class="modal-backdrop" id="renameModal" onclick="closeRename(event)">
   <div class="input-modal">
     <h3>✏️ Đổi tên file</h3>
@@ -906,7 +892,6 @@ body.ui-transparent .page-title { font-weight: 800 !important; text-shadow: 0 0 
   </div>
 </div>
 
-<!-- BULK RENAME MODAL -->
 <div class="modal-backdrop" id="bulkRenameModal" onclick="closeBulkRename(event)">
   <div class="bulk-rename-modal">
     <h3>✏️ Đổi tên hàng loạt</h3>
@@ -920,7 +905,6 @@ body.ui-transparent .page-title { font-weight: 800 !important; text-shadow: 0 0 
   </div>
 </div>
 
-<!-- EDITOR MODAL -->
 <div class="modal-backdrop" id="editorModal" onclick="closeEditorModal(event)">
   <div class="editor-modal">
     <div class="editor-header">
@@ -987,7 +971,7 @@ body.ui-transparent .page-title { font-weight: 800 !important; text-shadow: 0 0 
   </div>
 </div>
 
-<!-- BACKGROUND PANEL MODAL -->
+<!-- BACKGROUND PANEL -->
 <div class="modal-backdrop" id="bgModal" onclick="closeBgModal(event)">
   <div class="bg-panel">
     <h3>🎨 Tùy chỉnh giao diện</h3>
@@ -1002,10 +986,11 @@ body.ui-transparent .page-title { font-weight: 800 !important; text-shadow: 0 0 
       <input class="input-field" id="bgUrlInput" type="text" placeholder="Nhập URL ảnh nền...">
       <button class="bg-url-btn" onclick="applyBgUrl()">Áp dụng</button>
     </div>
-    <div class="bg-section-label" style="margin-top:18px">Ảnh bìa thanh thư viện</div>
+    <div class="bg-sync-note">🔗 Ảnh nền trang sẽ tự đồng bộ sang ảnh bìa sidebar</div>
+    <div class="bg-section-label" style="margin-top:18px">Ảnh bìa thanh thư viện (tùy chỉnh riêng)</div>
     <div class="sidebar-cover-presets" id="sidebarCoverPresets"></div>
     <div class="sc-url-file-row">
-      <input class="input-field" id="scCoverUrlInput" type="text" placeholder="URL ảnh bìa sidebar...">
+      <input class="input-field" id="scCoverUrlInput" type="text" placeholder="URL ảnh bìa sidebar riêng...">
       <button class="sc-file-btn" onclick="document.getElementById('sidebarCoverInput').click()">📁 File</button>
       <button class="bg-url-btn" onclick="applySidebarCoverUrl()">Áp dụng</button>
     </div>
@@ -1019,7 +1004,7 @@ body.ui-transparent .page-title { font-weight: 800 !important; text-shadow: 0 0 
 <div class="toast-container" id="toastContainer"></div>
 
 <script>
-// ===================== TULIP ANIMATION (2.5s then fade) =====================
+// ===================== TULIP ANIMATION (3s visible then fade out) =====================
 (function() {
   const canvas = document.getElementById('tulipCanvas');
   const ctx = canvas.getContext('2d');
@@ -1027,6 +1012,7 @@ body.ui-transparent .page-title { font-weight: 800 !important; text-shadow: 0 0 
   function resize() { W = canvas.width = window.innerWidth; H = canvas.height = window.innerHeight; }
   resize();
   window.addEventListener('resize', resize);
+
   const tulipPalettes = [
     {petal:'#ff6b9d',dark:'#c94870',light:'#ffb3ce'},
     {petal:'#ff8c42',dark:'#c95c20',light:'#ffc49a'},
@@ -1041,23 +1027,27 @@ body.ui-transparent .page-title { font-weight: 800 !important; text-shadow: 0 0 
     {petal:'#34d399',dark:'#065f46',light:'#a7f3d0'},
     {petal:'#60a5fa',dark:'#1d4ed8',light:'#bfdbfe'},
   ];
+
   function makeTulip(i, total) {
     const palette = tulipPalettes[i % tulipPalettes.length];
     const segment = W / total;
     const x = segment * i + segment * (0.2 + Math.random() * 0.6);
     const stemH = 95 + Math.random() * 80;
     const lean = (Math.random() - 0.5) * 0.22;
-    const delay = i * 90 + Math.random() * 40;
+    const delay = i * 80 + Math.random() * 40;
     const scale = 0.8 + Math.random() * 0.45;
     return { x, stemH, lean, palette, delay, scale, sway: Math.random() * Math.PI * 2, swaySpeed: 0.5 + Math.random() * 0.6, swayAmp: 3 + Math.random() * 4 };
   }
-  const TOTAL = Math.max(8, Math.min(16, Math.floor(W / 80)));
+
+  const TOTAL = Math.max(8, Math.min(18, Math.floor(W / 72)));
   const tulips = Array.from({ length: TOTAL }, (_, i) => makeTulip(i, TOTAL));
+
   function lightenColor(hex, pct) {
     let r=parseInt(hex.slice(1,3),16),g=parseInt(hex.slice(3,5),16),b=parseInt(hex.slice(5,7),16);
     r=Math.min(255,r+Math.round(pct*2.55));g=Math.min(255,g+Math.round(pct*2.55));b=Math.min(255,b+Math.round(pct*2.55));
     return `rgb(${r},${g},${b})`;
   }
+
   function drawTulipHead(x, y, palette, scale, alpha, openness) {
     ctx.save(); ctx.globalAlpha=Math.max(0,alpha); ctx.translate(x,y); ctx.scale(scale,scale);
     const open=Math.max(0,Math.min(1,openness)), spread=open*14, cupH=30+open*8;
@@ -1081,6 +1071,7 @@ body.ui-transparent .page-title { font-weight: 800 !important; text-shadow: 0 0 
     cg.addColorStop(0,lightenColor(palette.petal,40)); cg.addColorStop(1,palette.dark);
     ctx.fillStyle=cg; ctx.fill(); ctx.restore();
   }
+
   function drawLeaf(x,y,angle,len,width,alpha){
     ctx.save(); ctx.globalAlpha=Math.max(0,alpha); ctx.translate(x,y); ctx.rotate(angle);
     ctx.beginPath(); ctx.moveTo(0,0);
@@ -1090,45 +1081,76 @@ body.ui-transparent .page-title { font-weight: 800 !important; text-shadow: 0 0 
     lg.addColorStop(0,'#1a6632'); lg.addColorStop(0.5,'#2d9e52'); lg.addColorStop(1,'#1a5526');
     ctx.fillStyle=lg; ctx.fill(); ctx.restore();
   }
-  const GROW_DURATION=1800, HOLD_DURATION=500, FADE_DURATION=700;
-  let startTime=null;
+
+  // TIMING: grow 1.8s, hold 1.2s, fade 1.0s = total ~4s but visible for ~3s
+  const GROW_DURATION = 1800;
+  const HOLD_DURATION = 1200;
+  const FADE_DURATION = 1000;
+  const TOTAL_DURATION = GROW_DURATION + HOLD_DURATION + FADE_DURATION;
+
+  let startTime = null;
   function easeOut(t){return 1-Math.pow(1-t,3);}
   function easeInOut(t){return t<0.5?4*t*t*t:1-Math.pow(-2*t+2,3)/2;}
-  function animate(ts){
-    if(!startTime)startTime=ts;
-    const elapsed=ts-startTime;
+
+  function animate(ts) {
+    if(!startTime) startTime = ts;
+    const elapsed = ts - startTime;
+
     ctx.clearRect(0,0,W,H);
-    let globalAlpha=1;
-    if(elapsed>GROW_DURATION+HOLD_DURATION){globalAlpha=1-Math.min(1,(elapsed-GROW_DURATION-HOLD_DURATION)/FADE_DURATION);}
-    if(globalAlpha<=0){ctx.clearRect(0,0,W,H);canvas.style.display='none';return;}
-    for(const t of tulips){
-      const tElapsed=elapsed-t.delay;
-      if(tElapsed<0)continue;
-      const rawGrow=Math.min(1,tElapsed/GROW_DURATION),grow=easeOut(rawGrow);
-      const sway=Math.sin(ts/1000*t.swaySpeed+t.sway)*t.swayAmp*Math.min(rawGrow,1);
-      const baseX=t.x+sway,baseY=H,stemH=t.stemH*grow*t.scale;
-      const leanX=Math.sin(t.lean)*stemH,topX=baseX+leanX+sway*0.4,topY=baseY-stemH;
-      ctx.save(); ctx.globalAlpha=globalAlpha;
+
+    // Global alpha: 1 during grow+hold, fades out during fade
+    let globalAlpha = 1;
+    if(elapsed > GROW_DURATION + HOLD_DURATION) {
+      const fadeProgress = (elapsed - GROW_DURATION - HOLD_DURATION) / FADE_DURATION;
+      globalAlpha = Math.max(0, 1 - fadeProgress);
+    }
+
+    // Stop animation when fully faded
+    if(elapsed > TOTAL_DURATION) {
+      ctx.clearRect(0,0,W,H);
+      canvas.style.display = 'none';
+      return;
+    }
+
+    for(const t of tulips) {
+      const tElapsed = elapsed - t.delay;
+      if(tElapsed < 0) continue;
+
+      const rawGrow = Math.min(1, tElapsed / GROW_DURATION);
+      const grow = easeOut(rawGrow);
+      const sway = Math.sin(ts/1000*t.swaySpeed+t.sway)*t.swayAmp*Math.min(rawGrow,1);
+      const baseX = t.x + sway, baseY = H;
+      const stemH = t.stemH*grow*t.scale;
+      const leanX = Math.sin(t.lean)*stemH;
+      const topX = baseX + leanX + sway*0.4, topY = baseY - stemH;
+
+      ctx.save(); ctx.globalAlpha = globalAlpha;
       ctx.beginPath(); ctx.moveTo(baseX,baseY);
-      ctx.quadraticCurveTo(baseX+leanX*0.5+sway*0.2,baseY-stemH*0.55,topX,topY);
-      const stemGrad=ctx.createLinearGradient(baseX,baseY,topX,topY);
+      ctx.quadraticCurveTo(baseX+leanX*0.5+sway*0.2, baseY-stemH*0.55, topX, topY);
+      const stemGrad = ctx.createLinearGradient(baseX,baseY,topX,topY);
       stemGrad.addColorStop(0,'#1a6632'); stemGrad.addColorStop(0.4,'#2d9e52'); stemGrad.addColorStop(1,'#3db868');
-      ctx.strokeStyle=stemGrad; ctx.lineWidth=3.5*t.scale; ctx.lineCap='round'; ctx.stroke(); ctx.restore();
-      if(rawGrow>0.3){
-        const leafP=Math.min(1,(rawGrow-0.3)/0.7),leafEased=easeOut(leafP);
-        const lPos=0.38,lx1=baseX+Math.sin(t.lean)*t.stemH*lPos*grow*t.scale+sway*0.25,ly1=baseY-t.stemH*lPos*grow*t.scale;
+      ctx.strokeStyle = stemGrad; ctx.lineWidth = 3.5*t.scale; ctx.lineCap = 'round'; ctx.stroke(); ctx.restore();
+
+      if(rawGrow > 0.3) {
+        const leafP = Math.min(1,(rawGrow-0.3)/0.7), leafEased = easeOut(leafP);
+        const lPos = 0.38;
+        const lx1 = baseX+Math.sin(t.lean)*t.stemH*lPos*grow*t.scale+sway*0.25;
+        const ly1 = baseY-t.stemH*lPos*grow*t.scale;
         drawLeaf(lx1,ly1,-0.55+t.lean,32*leafEased*t.scale,12*leafEased*t.scale,globalAlpha*leafP);
-        const lPos2=0.58,lx2=baseX+Math.sin(t.lean)*t.stemH*lPos2*grow*t.scale+sway*0.38,ly2=baseY-t.stemH*lPos2*grow*t.scale;
+        const lPos2 = 0.58;
+        const lx2 = baseX+Math.sin(t.lean)*t.stemH*lPos2*grow*t.scale+sway*0.38;
+        const ly2 = baseY-t.stemH*lPos2*grow*t.scale;
         drawLeaf(lx2,ly2,0.62+t.lean,26*leafEased*t.scale,10*leafEased*t.scale,globalAlpha*leafP*0.88);
       }
-      if(rawGrow>0.55){
-        const headP=Math.min(1,(rawGrow-0.55)/0.45);
+
+      if(rawGrow > 0.55) {
+        const headP = Math.min(1,(rawGrow-0.55)/0.45);
         drawTulipHead(topX,topY,t.palette,easeOut(headP)*t.scale,globalAlpha,easeInOut(Math.min(1,headP*1.2)));
       }
     }
     requestAnimationFrame(animate);
   }
-  setTimeout(()=>requestAnimationFrame(animate),150);
+  setTimeout(() => requestAnimationFrame(animate), 100);
 })();
 
 // ===================== FLOATING HEARTS =====================
@@ -1138,78 +1160,30 @@ body.ui-transparent .page-title { font-weight: 800 !important; text-shadow: 0 0 
   let W, H;
   function resize(){W=canvas.width=window.innerWidth;H=canvas.height=window.innerHeight;}
   resize(); window.addEventListener('resize',resize);
-  const heartColors=[
-    'rgba(255,107,157,0)', // transparent pink border
-    'rgba(255,77,109,0)',  // transparent red
-    'rgba(79,209,197,0)',  // transparent teal
-    'rgba(124,111,255,0)', // transparent purple
-    'rgba(255,218,68,0)',  // transparent yellow
-    'rgba(167,139,250,0)', // transparent lavender
-    'rgba(251,191,36,0)',  // transparent gold
-    'rgba(34,211,160,0)',  // transparent green
-  ];
+  const heartColors=['rgba(255,107,157,0)','rgba(255,77,109,0)','rgba(79,209,197,0)','rgba(124,111,255,0)','rgba(255,218,68,0)','rgba(167,139,250,0)','rgba(251,191,36,0)','rgba(34,211,160,0)'];
   const heartBorders=['rgba(255,107,157,0.55)','rgba(255,77,109,0.5)','rgba(79,209,197,0.5)','rgba(124,111,255,0.55)','rgba(255,218,68,0.45)','rgba(167,139,250,0.5)','rgba(251,191,36,0.45)','rgba(34,211,160,0.5)'];
-  
   function createHeart(){
     const ci=Math.floor(Math.random()*heartColors.length);
-    return {
-      x: Math.random()*W, y: H+40,
-      size: 6+Math.random()*14,
-      speed: 0.4+Math.random()*0.8,
-      drift: (Math.random()-0.5)*0.6,
-      opacity: 0.3+Math.random()*0.55,
-      fill: heartColors[ci],
-      border: heartBorders[ci],
-      wobble: Math.random()*Math.PI*2,
-      wobbleSpeed: 0.5+Math.random()*1.2,
-      rot: (Math.random()-0.5)*0.5,
-    };
+    return {x:Math.random()*W,y:H+40,size:6+Math.random()*14,speed:0.4+Math.random()*0.8,drift:(Math.random()-0.5)*0.6,opacity:0.3+Math.random()*0.55,fill:heartColors[ci],border:heartBorders[ci],wobble:Math.random()*Math.PI*2,wobbleSpeed:0.5+Math.random()*1.2,rot:(Math.random()-0.5)*0.5};
   }
-  
-  let hearts = [];
-  for(let i=0;i<25;i++){
-    const h=createHeart();
-    h.y=Math.random()*H;
-    hearts.push(h);
-  }
-  
+  let hearts=[];
+  for(let i=0;i<25;i++){const h=createHeart();h.y=Math.random()*H;hearts.push(h);}
   function drawHeart(x,y,size,fill,stroke,opacity,rot){
-    ctx.save();
-    ctx.translate(x,y);
-    ctx.rotate(rot);
-    ctx.globalAlpha=opacity;
-    ctx.beginPath();
-    const s=size*0.5;
-    ctx.moveTo(0,s*0.4);
-    ctx.bezierCurveTo(s*0.6,-s*0.4,s*1.6,-s*0.1,0,s*1.2);
-    ctx.bezierCurveTo(-s*1.6,-s*0.1,-s*0.6,-s*0.4,0,s*0.4);
-    ctx.fillStyle=fill;
-    ctx.fill();
-    ctx.strokeStyle=stroke;
-    ctx.lineWidth=1.2;
-    ctx.stroke();
-    ctx.restore();
+    ctx.save();ctx.translate(x,y);ctx.rotate(rot);ctx.globalAlpha=opacity;ctx.beginPath();
+    const s=size*0.5;ctx.moveTo(0,s*0.4);ctx.bezierCurveTo(s*0.6,-s*0.4,s*1.6,-s*0.1,0,s*1.2);ctx.bezierCurveTo(-s*1.6,-s*0.1,-s*0.6,-s*0.4,0,s*0.4);
+    ctx.fillStyle=fill;ctx.fill();ctx.strokeStyle=stroke;ctx.lineWidth=1.2;ctx.stroke();ctx.restore();
   }
-  
   function animateHearts(){
     ctx.clearRect(0,0,W,H);
     for(let i=hearts.length-1;i>=0;i--){
-      const h=hearts[i];
-      h.y-=h.speed;
-      h.x+=h.drift+Math.sin(h.wobble)*0.4;
-      h.wobble+=h.wobbleSpeed*0.02;
-      h.rot+=0.005;
+      const h=hearts[i];h.y-=h.speed;h.x+=h.drift+Math.sin(h.wobble)*0.4;h.wobble+=h.wobbleSpeed*0.02;h.rot+=0.005;
       drawHeart(h.x,h.y,h.size,h.fill,h.border,h.opacity,h.rot);
-      if(h.y<-50){hearts[i]=createHeart();}
+      if(h.y<-50)hearts[i]=createHeart();
     }
     requestAnimationFrame(animateHearts);
   }
   animateHearts();
-  
-  // Spawn extra hearts periodically
-  setInterval(()=>{
-    if(hearts.length<35)hearts.push(createHeart());
-  },1200);
+  setInterval(()=>{if(hearts.length<35)hearts.push(createHeart());},1200);
 })();
 
 // ===================== INTRO ANIMATION =====================
@@ -1222,9 +1196,7 @@ body.ui-transparent .page-title { font-weight: 800 !important; text-shadow: 0 0 
 let images=[],trashItems=[],currentFilter='all',currentTypeFilter='all';
 let showDupFilter=false,currentView='grid',selectedIds=new Set();
 let selectMode=false,previewIndex=-1,renameTargetId=null,duplicateIds=new Set();
-let dupStrictMode=false; // whether to block duplicate uploads
-let dupShowOnlyMode=false; // show only duplicates
-let dupHideMode=false; // hide duplicates
+let dupStrictMode=false,_showOnlyDups=false,_hideDups=false;
 const MAX_STORAGE_MB=100;
 let db,editTargetId=null,cropperInstance=null,cropMode=false,cmEditor=null;
 
@@ -1282,7 +1254,6 @@ function dbGetAll(store){return new Promise((res,rej)=>{const tx=db.transaction(
 function dbPut(store,item){return new Promise((res,rej)=>{const tx=db.transaction(store,'readwrite');tx.objectStore(store).put(item);tx.oncomplete=res;tx.onerror=rej;});}
 function dbDelete(store,id){return new Promise((res,rej)=>{const tx=db.transaction(store,'readwrite');tx.objectStore(store).delete(id);tx.oncomplete=res;tx.onerror=rej;});}
 
-// ===================== INIT =====================
 async function init(){
   await initDB();
   images=await dbGetAll(STORE_MEDIA);
@@ -1301,7 +1272,7 @@ function getFileIcon(ext){const e=(ext||'').toLowerCase();if(CODE_EXTS.includes(
 function getFileTypeBadgeClass(item){if(item.kind==='video')return 'vid';if(item.kind==='document')return 'doc';const sub=getImageSubtype(item.ext);if(['jpg','png','gif','webp','svg','heic','tiff','raw'].includes(sub))return 'img-'+sub;return '';}
 function getFileTypeBadgeLabel(item){if(item.kind==='video')return (item.ext||'vid').toUpperCase();if(item.kind==='document')return (item.ext||'file').toUpperCase();const sub=getImageSubtype(item.ext);const labels={jpg:'JPG',png:'PNG',gif:'GIF',webp:'WebP',svg:'SVG',heic:'HEIC',tiff:'TIFF',raw:'RAW',bmp:'BMP'};return labels[sub]||(item.ext||'IMG').toUpperCase();}
 
-// ===================== DUPLICATE DETECTION =====================
+// ===================== DUPLICATES =====================
 function fileHash(item){return item.name.toLowerCase().trim()+'::'+item.size;}
 function computeDuplicates(){
   duplicateIds.clear();
@@ -1315,55 +1286,11 @@ function getDuplicateGroups(){
   for(const item of images){const h=fileHash(item);if(!seen.has(h))seen.set(h,[]);seen.get(h).push(item);}
   return[...seen.values()].filter(g=>g.length>1);
 }
-
-// DUP STRICT MODE — toggle whether uploads are blocked
-function toggleDupStrictMode(){
-  dupStrictMode=document.getElementById('dupStrictMode').checked;
-  toast(dupStrictMode?'🚫 Chặn upload file trùng: BẬT':'✅ Chặn upload file trùng: TẮT','info');
-}
-
-// Show only dups toggle
-let _showOnlyDups=false,_hideDups=false;
-function toggleShowOnlyDups(){
-  _showOnlyDups=!_showOnlyDups;
-  _hideDups=false;
-  document.getElementById('dupShowOnlyBtn').classList.toggle('active-btn',_showOnlyDups);
-  document.getElementById('dupHideBtn').classList.remove('active-btn');
-  renderGallery();
-  toast(_showOnlyDups?'👁 Chỉ hiện file trùng':'👁 Hiện tất cả','info');
-}
-function toggleHideDups(){
-  _hideDups=!_hideDups;
-  _showOnlyDups=false;
-  document.getElementById('dupHideBtn').classList.toggle('active-btn',_hideDups);
-  document.getElementById('dupShowOnlyBtn').classList.remove('active-btn');
-  renderGallery();
-  toast(_hideDups?'🙈 Ẩn file trùng':'🙈 Hiện tất cả','info');
-}
-
-function toggleDupFilter(el){
-  showDupFilter=!showDupFilter;
-  el.classList.toggle('active',showDupFilter);
-  if(showDupFilter){currentFilter='all';document.querySelectorAll('.nav-item').forEach(n=>n.classList.remove('active'));document.querySelector('[data-filter="all"]').classList.add('active');document.getElementById('pageTitle').textContent='⚠️ File trùng';computeDuplicates();}
-  else document.getElementById('pageTitle').textContent='Tất cả file';
-  renderGallery();
-}
-
-async function removeAllDuplicates(){
-  if(!duplicateIds.size){toast('✅ Không có file trùng nào!','info');return;}
-  const count=duplicateIds.size;
-  for(const id of duplicateIds){
-    const idx=images.findIndex(i=>i.id===id);
-    if(idx!==-1){const item={...images[idx],deletedAt:Date.now()};images.splice(idx,1);await dbDelete(STORE_MEDIA,id);await dbPut(STORE_TRASH,item);trashItems.push(item);}
-  }
-  duplicateIds.clear();showDupFilter=false;_showOnlyDups=false;_hideDups=false;
-  document.getElementById('dupFilterTag').classList.remove('active');
-  document.getElementById('pageTitle').textContent='Tất cả file';
-  document.getElementById('dupShowOnlyBtn').classList.remove('active-btn');
-  document.getElementById('dupHideBtn').classList.remove('active-btn');
-  renderGallery();updateStats();updateCountBadge();
-  toast(`🗑 Đã xóa ${count} bản trùng, giữ lại file gốc!`,'success');
-}
+function toggleDupStrictMode(){dupStrictMode=document.getElementById('dupStrictMode').checked;toast(dupStrictMode?'🚫 Chặn upload file trùng: BẬT':'✅ Chặn upload file trùng: TẮT','info');}
+function toggleShowOnlyDups(){_showOnlyDups=!_showOnlyDups;_hideDups=false;document.getElementById('dupShowOnlyBtn').classList.toggle('active-btn',_showOnlyDups);document.getElementById('dupHideBtn').classList.remove('active-btn');renderGallery();toast(_showOnlyDups?'👁 Chỉ hiện file trùng':'👁 Hiện tất cả','info');}
+function toggleHideDups(){_hideDups=!_hideDups;_showOnlyDups=false;document.getElementById('dupHideBtn').classList.toggle('active-btn',_hideDups);document.getElementById('dupShowOnlyBtn').classList.remove('active-btn');renderGallery();toast(_hideDups?'🙈 Ẩn file trùng':'🙈 Hiện tất cả','info');}
+function toggleDupFilter(el){showDupFilter=!showDupFilter;el.classList.toggle('active',showDupFilter);if(showDupFilter){currentFilter='all';document.querySelectorAll('.nav-item').forEach(n=>n.classList.remove('active'));document.querySelector('[data-filter="all"]').classList.add('active');document.getElementById('pageTitle').textContent='⚠️ File trùng';computeDuplicates();}else document.getElementById('pageTitle').textContent='Tất cả file';renderGallery();}
+async function removeAllDuplicates(){if(!duplicateIds.size){toast('✅ Không có file trùng nào!','info');return;}const count=duplicateIds.size;for(const id of duplicateIds){const idx=images.findIndex(i=>i.id===id);if(idx!==-1){const item={...images[idx],deletedAt:Date.now()};images.splice(idx,1);await dbDelete(STORE_MEDIA,id);await dbPut(STORE_TRASH,item);trashItems.push(item);}}duplicateIds.clear();showDupFilter=false;_showOnlyDups=false;_hideDups=false;document.getElementById('dupFilterTag').classList.remove('active');document.getElementById('pageTitle').textContent='Tất cả file';document.getElementById('dupShowOnlyBtn').classList.remove('active-btn');document.getElementById('dupHideBtn').classList.remove('active-btn');renderGallery();updateStats();updateCountBadge();toast(`🗑 Đã xóa ${count} bản trùng, giữ lại file gốc!`,'success');}
 
 // ===================== RENDER =====================
 function renderGallery(){
@@ -1378,24 +1305,13 @@ function renderGallery(){
   const dupBanner=document.getElementById('dupBanner');
   if(isTrashView){trashToolbar.classList.add('visible');document.getElementById('trashToolbarText').textContent=`${trashItems.length} file trong thùng rác`;uploadZone.style.display='none';dupBanner.classList.remove('visible');}
   else{trashToolbar.classList.remove('visible');uploadZone.style.display='';}
-  if(!isTrashView){
-    const groups=getDuplicateGroups();
-    const totalDup=groups.reduce((s,g)=>s+g.length-1,0);
-    if(totalDup>0){
-      dupBanner.classList.add('visible');
-      document.getElementById('dupBannerText').textContent=`⚠️ Tìm thấy ${totalDup} file trùng trong ${groups.length} nhóm.`;
-      document.getElementById('dupStrictMode').checked=dupStrictMode;
-    } else {
-      dupBanner.classList.remove('visible');
-    }
-  }
+  if(!isTrashView){const groups=getDuplicateGroups();const totalDup=groups.reduce((s,g)=>s+g.length-1,0);if(totalDup>0){dupBanner.classList.add('visible');document.getElementById('dupBannerText').textContent=`⚠️ Tìm thấy ${totalDup} file trùng trong ${groups.length} nhóm.`;document.getElementById('dupStrictMode').checked=dupStrictMode;}else{dupBanner.classList.remove('visible');}}
   document.getElementById('bulkNormalActions').style.display=isTrashView?'none':'contents';
   document.getElementById('bulkTrashActions').style.display=isTrashView?'contents':'none';
   const pool=isTrashView?trashItems:images;
   let filtered=pool.filter(item=>{
     const nameMatch=search===''||item.name.toLowerCase().includes(search);
     if(isTrashView)return nameMatch;
-    // Apply dup view modes
     if(_showOnlyDups&&!isDupView){if(!duplicateIds.has(item.id))return false;}
     if(_hideDups){if(duplicateIds.has(item.id))return false;}
     if(isDupView)return nameMatch&&duplicateIds.has(item.id);
@@ -1407,17 +1323,11 @@ function renderGallery(){
     else if(currentFilter==='type-video')catMatch=item.kind==='video';
     else if(currentFilter==='type-file')catMatch=item.kind==='document';
     else if(currentFilter.startsWith('cat-'))catMatch=item.category===currentFilter.replace('cat-','');
-    else if(currentFilter.startsWith('fmt-')){
-      const fmt=currentFilter.replace('fmt-','');
-      if(fmt==='jpg')catMatch=item.kind==='image'&&['jpg','jpeg'].includes((item.ext||'').toLowerCase());
-      else if(fmt==='other')catMatch=item.kind==='image'&&['heic','heif','tiff','tif','raw','cr2','nef','arw','dng'].includes((item.ext||'').toLowerCase());
-      else catMatch=item.kind==='image'&&(item.ext||'').toLowerCase()===fmt;
-    }
+    else if(currentFilter.startsWith('fmt-')){const fmt=currentFilter.replace('fmt-','');if(fmt==='jpg')catMatch=item.kind==='image'&&['jpg','jpeg'].includes((item.ext||'').toLowerCase());else if(fmt==='other')catMatch=item.kind==='image'&&['heic','heif','tiff','tif','raw','cr2','nef','arw','dng'].includes((item.ext||'').toLowerCase());else catMatch=item.kind==='image'&&(item.ext||'').toLowerCase()===fmt;}
     return nameMatch&&typeMatch&&catMatch;
   });
   const badge=document.getElementById('searchBadge');
-  if(search){badge.classList.add('visible');document.getElementById('searchBadgeText').textContent=`"${search}"`;document.getElementById('searchBadgeCount').textContent=filtered.length;}
-  else badge.classList.remove('visible');
+  if(search){badge.classList.add('visible');document.getElementById('searchBadgeText').textContent=`"${search}"`;document.getElementById('searchBadgeCount').textContent=filtered.length;}else badge.classList.remove('visible');
   if(!isTrashView){
     if(sort==='newest')filtered.sort((a,b)=>b.timestamp-a.timestamp);
     else if(sort==='oldest')filtered.sort((a,b)=>a.timestamp-b.timestamp);
@@ -1490,7 +1400,6 @@ async function handleFiles(files){
     try{
       const ext=file.name.split('.').pop().toLowerCase(),nameWithoutExt=file.name.replace(/\.[^/.]+$/,'');
       const kind=getFileKind(file.type,ext),candidateHash=nameWithoutExt.toLowerCase().trim()+'::'+file.size;
-      // Only block duplicates if strict mode is ON
       if(dupStrictMode&&images.some(img=>fileHash(img)===candidateHash)){skipped++;continue;}
       const dataURL=await readFileAsDataURL(file);
       const item={id:'f_'+Date.now()+'_'+Math.random().toString(36).slice(2,6),name:nameWithoutExt,ext,kind,type:kind==='image'?(ext==='png'?'png':ext==='webp'?'webp':'jpg'):ext,size:file.size,dataURL,timestamp:Date.now(),fav:false,category:'other'};
@@ -1499,7 +1408,7 @@ async function handleFiles(files){
   }
   computeDuplicates();renderGallery();updateStats();updateCountBadge();
   if(added)toast(`✓ Đã upload ${added} file!`,'success');
-  if(skipped)toast(`🚫 Bỏ qua ${skipped} file trùng (chặn bật),'info'`);
+  if(skipped)toast(`🚫 Bỏ qua ${skipped} file trùng`,'info');
   if(errors)toast(`${errors} file không thể đọc`,'error');
   fileInput.value='';
 }
@@ -1512,7 +1421,7 @@ async function permDelete(id,e){if(e)e.stopPropagation();const idx=trashItems.fi
 async function restoreAllTrash(){if(!trashItems.length)return;const count=trashItems.length;for(const item of[...trashItems]){const clean={...item};delete clean.deletedAt;await dbDelete(STORE_TRASH,item.id);await dbPut(STORE_MEDIA,clean);images.unshift(clean);}trashItems=[];clearSelection();computeDuplicates();renderGallery();updateStats();updateCountBadge();toast(`↩ Đã khôi phục ${count} file!`,'success');}
 async function emptyTrash(){if(!trashItems.length)return;const count=trashItems.length;for(const item of[...trashItems])await dbDelete(STORE_TRASH,item.id);trashItems=[];clearSelection();renderGallery();updateCountBadge();toast(`✕ Đã xóa vĩnh viễn ${count} file`,'error');}
 
-// ===================== BULK ACTIONS =====================
+// ===================== BULK =====================
 async function bulkDelete(){if(!selectedIds.size)return;const count=selectedIds.size;for(const id of selectedIds){const idx=images.findIndex(i=>i.id===id);if(idx!==-1){const item={...images[idx],deletedAt:Date.now()};images.splice(idx,1);await dbDelete(STORE_MEDIA,id);await dbPut(STORE_TRASH,item);trashItems.push(item);}}clearSelection();computeDuplicates();renderGallery();updateStats();updateCountBadge();toast(`🗑 Đã chuyển ${count} file vào thùng rác`,'info');}
 function bulkSelectAll(){const isTrash=currentFilter==='trash';const pool=isTrash?trashItems:images;const search=document.getElementById('searchInput').value.toLowerCase().trim();const filtered=pool.filter(item=>search===''||item.name.toLowerCase().includes(search));const allVisibleIds=filtered.map(i=>i.id);const allSelected=allVisibleIds.length>0&&allVisibleIds.every(id=>selectedIds.has(id));if(allSelected)allVisibleIds.forEach(id=>selectedIds.delete(id));else allVisibleIds.forEach(id=>selectedIds.add(id));document.querySelectorAll('.image-card').forEach(el=>{const id=el.dataset.id;if(id)el.classList.toggle('selected',selectedIds.has(id));});updateBulkBar();const nowAll=allVisibleIds.every(id=>selectedIds.has(id));document.getElementById('bulkSelectAllBtn').textContent=nowAll?'☐ Bỏ chọn tất':'☑ Chọn tất cả';if(!selectMode){selectMode=true;document.getElementById('selectModeBtn').textContent='✓';}}
 async function bulkRestoreSelected(){if(!selectedIds.size)return;const count=selectedIds.size;for(const id of[...selectedIds]){const idx=trashItems.findIndex(i=>i.id===id);if(idx!==-1){const item={...trashItems[idx]};delete item.deletedAt;trashItems.splice(idx,1);await dbDelete(STORE_TRASH,id);await dbPut(STORE_MEDIA,item);images.unshift(item);}}clearSelection();computeDuplicates();renderGallery();updateStats();updateCountBadge();toast(`↩ Đã khôi phục ${count} file!`,'success');}
@@ -1594,89 +1503,170 @@ function updateCountBadge(){document.getElementById('countAll').textContent=imag
 // ===================== THEME =====================
 document.getElementById('themeToggle').addEventListener('click',()=>{const isLight=document.documentElement.dataset.theme==='light';document.documentElement.dataset.theme=isLight?'dark':'light';document.getElementById('themeToggle').textContent=isLight?'☀️':'🌙';});
 
-// ===================== UI GLASSMORPHISM =====================
+// ===================== GLASSMORPHISM =====================
 let uiTransparent=false;
-function toggleUITransparency(){uiTransparent=!uiTransparent;document.body.classList.toggle('ui-transparent',uiTransparent);document.getElementById('glassOrbs').classList.toggle('active',uiTransparent);document.getElementById('uiMountainBtn').classList.toggle('active',uiTransparent);toast(uiTransparent?'🏔 Glassmorphism bật':'🏔 Glassmorphism tắt','info');}
+function toggleUITransparency(){
+  uiTransparent=!uiTransparent;
+  document.body.classList.toggle('ui-transparent',uiTransparent);
+  document.getElementById('glassOrbs').classList.toggle('active',uiTransparent);
+  document.getElementById('uiMountainBtn').classList.toggle('active',uiTransparent);
+  toast(uiTransparent?'🏔 Glassmorphism bật — UI trong suốt!':'🏔 Glassmorphism tắt','info');
+}
 
-// ===================== BACKGROUND =====================
-const BG_PRESETS_DATA=[{label:'Không',url:'',icon:'🚫'},{label:'Núi',url:'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1200&q=80'},{label:'Biển',url:'https://images.unsplash.com/photo-1505118380757-91f5f5632de0?w=1200&q=80'},{label:'Rừng',url:'https://images.unsplash.com/photo-1448375240586-882707db888b?w=1200&q=80'},{label:'Thành phố',url:'https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?w=1200&q=80'},{label:'Thiên hà',url:'https://images.unsplash.com/photo-1446776811953-b23d57bd21aa?w=1200&q=80'},{label:'Hoàng hôn',url:'https://images.unsplash.com/photo-1495616811223-4d98c6e9c869?w=1200&q=80'},{label:'Nin cute',url:'https://f20-zpc.zdn.vn/jpg/2099424691657149001/2f54959d4fe4ceba97f5.jpg'}];
-const SIDEBAR_COVER_PRESETS=[{label:'Không',url:''},{label:'Tím',url:'https://images.unsplash.com/photo-1579546929518-9e396f3cc809?w=400&q=80'},{label:'Xanh',url:'https://images.unsplash.com/photo-1557682250-33bd709cbe85?w=400&q=80'},{label:'Rừng',url:'https://images.unsplash.com/photo-1448375240586-882707db888b?w=400&q=80'},{label:'Tulip',url:'https://f20-zpc.zdn.vn/jpg/7303708017271043775/fed6491f936612384b77.jpg'},{label:'Vũ trụ',url:'https://images.unsplash.com/photo-1444703686981-a3abbc4d4fe3?w=400&q=80'},{label:'Núi',url:'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400&q=80'},{label:'Biển',url:'https://images.unsplash.com/photo-1505118380757-91f5f5632de0?w=400&q=80'}];
-let activeBgUrl='',activeSidebarCover='';
-function renderBgPresets(){const container=document.getElementById('bgPresets');container.innerHTML=BG_PRESETS_DATA.map(p=>{if(!p.url)return`<div class="bg-preset no-bg ${activeBgUrl===''?'active':''}" onclick="applyBg('',this)">${p.icon}</div>`;return`<div class="bg-preset ${activeBgUrl===p.url?'active':''}" onclick="applyBg('${p.url}',this)"><img src="${p.url}" loading="lazy" alt="${p.label}"></div>`;}).join('');}
-function renderSidebarCoverPresets(){const c=document.getElementById('sidebarCoverPresets');if(!c)return;c.innerHTML=SIDEBAR_COVER_PRESETS.map(p=>{if(!p.url)return`<div class="sc-preset no-sc ${activeSidebarCover===''?'active':''}" onclick="applySidebarCover('',this)">🚫</div>`;return`<div class="sc-preset ${activeSidebarCover===p.url?'active':''}" onclick="applySidebarCover('${p.url}',this)"><img src="${p.url}" loading="lazy" alt="${p.label}"></div>`;}).join('');}
-function applyBg(url,el){activeBgUrl=url;const layer=document.getElementById('wallpaperLayer');if(!url)layer.style.backgroundImage='none';else layer.style.backgroundImage=`url('${url}')`;document.querySelectorAll('.bg-preset').forEach(p=>p.classList.remove('active'));if(el)el.classList.add('active');localStorage.setItem('syo_bg_url',url);}
-function applyBgUrl(){const url=document.getElementById('bgUrlInput').value.trim();if(!url)return;applyBg(url,null);renderBgPresets();toast('🎨 Đã áp dụng ảnh nền!','success');}
-function updateBgOpacity(val){document.getElementById('wallpaperLayer').style.opacity=val;document.getElementById('bgOpacityVal').textContent=Math.round(val*100)+'%';localStorage.setItem('syo_bg_opacity',val);}
-function loadBgSettings(){const url=localStorage.getItem('syo_bg_url')||'',opacity=localStorage.getItem('syo_bg_opacity')||'0.18';activeBgUrl=url;if(url)document.getElementById('wallpaperLayer').style.backgroundImage=`url('${url}')`;document.getElementById('wallpaperLayer').style.opacity=opacity;document.getElementById('bgOpacity').value=opacity;document.getElementById('bgOpacityVal').textContent=Math.round(opacity*100)+'%';renderBgPresets();}
-function applySidebarCover(url,el){activeSidebarCover=url;const cover=document.getElementById('sidebarCover');if(!url)cover.style.backgroundImage='linear-gradient(135deg, #1f2743, #0d0e14)';else cover.style.backgroundImage=`url('${url}')`;document.querySelectorAll('.sc-preset').forEach(p=>p.classList.remove('active'));if(el)el.classList.add('active');localStorage.setItem('syo_sidebar_cover',url);}
-function applySidebarCoverUrl(){const url=document.getElementById('scCoverUrlInput').value.trim();if(!url)return;applySidebarCover(url,null);renderSidebarCoverPresets();toast('🖼 Đã áp dụng ảnh bìa!','success');}
-function loadSidebarCoverFile(e){const file=e.target.files[0];if(!file)return;const reader=new FileReader();reader.onload=ev=>{applySidebarCover(ev.target.result,null);renderSidebarCoverPresets();toast('🖼 Đã tải ảnh bìa!','success');};reader.readAsDataURL(file);}
+// ===================== BACKGROUND — syncs to sidebar cover =====================
+const BG_PRESETS_DATA=[
+  {label:'Không',url:'',icon:'🚫'},
+  {label:'Núi',url:'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1200&q=80'},
+  {label:'Biển',url:'https://images.unsplash.com/photo-1505118380757-91f5f5632de0?w=1200&q=80'},
+  {label:'Rừng',url:'https://images.unsplash.com/photo-1448375240586-882707db888b?w=1200&q=80'},
+  {label:'Thành phố',url:'https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?w=1200&q=80'},
+  {label:'Thiên hà',url:'https://images.unsplash.com/photo-1446776811953-b23d57bd21aa?w=1200&q=80'},
+  {label:'Hoàng hôn',url:'https://images.unsplash.com/photo-1495616811223-4d98c6e9c869?w=1200&q=80'},
+  {label:'Nin cute',url:'https://f20-zpc.zdn.vn/jpg/4707497388115613718/d651cfbaa4c4259a7cd5.jpg'}
+];
+const SIDEBAR_COVER_PRESETS=[
+  {label:'Không',url:''},
+  {label:'Tím',url:'https://images.unsplash.com/photo-1579546929518-9e396f3cc809?w=400&q=80'},
+  {label:'Xanh',url:'https://images.unsplash.com/photo-1557682250-33bd709cbe85?w=400&q=80'},
+  {label:'Rừng',url:'https://images.unsplash.com/photo-1448375240586-882707db888b?w=400&q=80'},
+  {label:'Hoa',url:'https://images.unsplash.com/photo-1490750967868-88df5691cc27?w=400&q=80'},
+  {label:'Vũ trụ',url:'https://images.unsplash.com/photo-1444703686981-a3abbc4d4fe3?w=400&q=80'},
+  {label:'Núi',url:'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400&q=80'},
+  {label:'Biển',url:'https://images.unsplash.com/photo-1505118380757-91f5f5632de0?w=400&q=80'}
+];
+let activeBgUrl='',activeSidebarCover='',sidebarCoverCustomized=false;
+
+function renderBgPresets(){
+  const container=document.getElementById('bgPresets');
+  container.innerHTML=BG_PRESETS_DATA.map(p=>{
+    if(!p.url)return`<div class="bg-preset no-bg ${activeBgUrl===''?'active':''}" onclick="applyBg('',this)">${p.icon}</div>`;
+    return`<div class="bg-preset ${activeBgUrl===p.url?'active':''}" onclick="applyBg('${p.url}',this)"><img src="${p.url}" loading="lazy" alt="${p.label}"></div>`;
+  }).join('');
+}
+
+function renderSidebarCoverPresets(){
+  const c=document.getElementById('sidebarCoverPresets');
+  if(!c)return;
+  c.innerHTML=SIDEBAR_COVER_PRESETS.map(p=>{
+    if(!p.url)return`<div class="sc-preset no-sc ${activeSidebarCover===''?'active':''}" onclick="applySidebarCoverOnly('',this)">🚫</div>`;
+    return`<div class="sc-preset ${activeSidebarCover===p.url?'active':''}" onclick="applySidebarCoverOnly('${p.url}',this)"><img src="${p.url}" loading="lazy" alt="${p.label}"></div>`;
+  }).join('');
+}
+
+// Apply bg wallpaper AND sync to sidebar cover automatically
+function applyBg(url,el){
+  activeBgUrl=url;
+  const layer=document.getElementById('wallpaperLayer');
+  if(!url){layer.style.backgroundImage='none';}
+  else{layer.style.backgroundImage=`url('${url}')`;}
+  // Sync to sidebar cover unless user has manually set a custom one
+  if(!sidebarCoverCustomized){
+    _applySidebarCoverInternal(url);
+    activeSidebarCover=url;
+    renderSidebarCoverPresets();
+  }
+  document.querySelectorAll('.bg-preset').forEach(p=>p.classList.remove('active'));
+  if(el)el.classList.add('active');
+  localStorage.setItem('syo_bg_url',url);
+}
+
+function applyBgUrl(){
+  const url=document.getElementById('bgUrlInput').value.trim();
+  if(!url)return;
+  applyBg(url,null);
+  renderBgPresets();
+  toast('🎨 Đã áp dụng ảnh nền + đồng bộ ảnh bìa!','success');
+}
+
+function updateBgOpacity(val){
+  document.getElementById('wallpaperLayer').style.opacity=val;
+  document.getElementById('bgOpacityVal').textContent=Math.round(val*100)+'%';
+  localStorage.setItem('syo_bg_opacity',val);
+}
+
+function _applySidebarCoverInternal(url){
+  const cover=document.getElementById('sidebarCover');
+  if(!url)cover.style.backgroundImage='linear-gradient(135deg, #1f2743, #0d0e14)';
+  else cover.style.backgroundImage=`url('${url}')`;
+  localStorage.setItem('syo_sidebar_cover',url);
+}
+
+// Only sidebar cover (custom override — marks as customized)
+function applySidebarCoverOnly(url,el){
+  sidebarCoverCustomized=true;
+  activeSidebarCover=url;
+  _applySidebarCoverInternal(url);
+  document.querySelectorAll('.sc-preset').forEach(p=>p.classList.remove('active'));
+  if(el)el.classList.add('active');
+  localStorage.setItem('syo_sidebar_customized','1');
+}
+
+function applySidebarCover(url,el){applySidebarCoverOnly(url,el);}
+
+function applySidebarCoverUrl(){
+  const url=document.getElementById('scCoverUrlInput').value.trim();
+  if(!url)return;
+  applySidebarCoverOnly(url,null);
+  renderSidebarCoverPresets();
+  toast('🖼 Đã áp dụng ảnh bìa riêng!','success');
+}
+
+function loadSidebarCoverFile(e){
+  const file=e.target.files[0];
+  if(!file)return;
+  const reader=new FileReader();
+  reader.onload=ev=>{applySidebarCoverOnly(ev.target.result,null);renderSidebarCoverPresets();toast('🖼 Đã tải ảnh bìa!','success');};
+  reader.readAsDataURL(file);
+}
+
 function openSidebarCoverPicker(){renderSidebarCoverPresets();document.getElementById('bgModal').classList.add('open');}
-function loadSidebarCoverSettings(){const url=localStorage.getItem('syo_sidebar_cover')||'';if(url){activeSidebarCover=url;document.getElementById('sidebarCover').style.backgroundImage=`url('${url}')`;}renderSidebarCoverPresets();}
+
+function loadBgSettings(){
+  const url=localStorage.getItem('syo_bg_url')||'';
+  const opacity=localStorage.getItem('syo_bg_opacity')||'0.18';
+  activeBgUrl=url;
+  if(url)document.getElementById('wallpaperLayer').style.backgroundImage=`url('${url}')`;
+  document.getElementById('wallpaperLayer').style.opacity=opacity;
+  document.getElementById('bgOpacity').value=opacity;
+  document.getElementById('bgOpacityVal').textContent=Math.round(opacity*100)+'%';
+  renderBgPresets();
+}
+
+function loadSidebarCoverSettings(){
+  sidebarCoverCustomized=!!localStorage.getItem('syo_sidebar_customized');
+  const url=localStorage.getItem('syo_sidebar_cover')||'';
+  if(url){activeSidebarCover=url;document.getElementById('sidebarCover').style.backgroundImage=`url('${url}')`;}
+  renderSidebarCoverPresets();
+}
+
 document.getElementById('bgToggleBtn').addEventListener('click',()=>{renderBgPresets();renderSidebarCoverPresets();document.getElementById('bgModal').classList.add('open');});
 function closeBgModal(e){if(e&&e.target!==document.getElementById('bgModal'))return;closeBgModalDirect();}
 function closeBgModalDirect(){document.getElementById('bgModal').classList.remove('open');}
 document.getElementById('trashBtn').addEventListener('click',()=>{setFilter('trash',document.querySelector('[data-filter="trash"]'));});
 
-// ===================== COMBINED MUSIC PLAYER =====================
+// ===================== MUSIC PLAYER =====================
 let musicPlayerOpen=false,currentMusicTab='sc';
+function toggleMusicPlayer(){musicPlayerOpen=!musicPlayerOpen;document.getElementById('musicPlayerWidget').classList.toggle('open',musicPlayerOpen);document.getElementById('musicFab').textContent=musicPlayerOpen?'✕':'🎵';}
+function switchMusicTab(tab){currentMusicTab=tab;document.getElementById('scTabBtn').classList.toggle('active',tab==='sc');document.getElementById('ytTabBtn').classList.toggle('active',tab==='yt');document.getElementById('scPanel').classList.toggle('active',tab==='sc');document.getElementById('ytPanel').classList.toggle('active',tab==='yt');}
 
-function toggleMusicPlayer(){
-  musicPlayerOpen=!musicPlayerOpen;
-  document.getElementById('musicPlayerWidget').classList.toggle('open',musicPlayerOpen);
-  const fab=document.getElementById('musicFab');
-  fab.textContent=musicPlayerOpen?'✕':'🎵';
-}
-
-function switchMusicTab(tab){
-  currentMusicTab=tab;
-  document.getElementById('scTabBtn').classList.toggle('active',tab==='sc');
-  document.getElementById('ytTabBtn').classList.toggle('active',tab==='yt');
-  document.getElementById('scPanel').classList.toggle('active',tab==='sc');
-  document.getElementById('ytPanel').classList.toggle('active',tab==='yt');
-}
-
-// SOUNDCLOUD
 function loadSoundCloud(){
   let url=document.getElementById('scUrlInput').value.trim();
   if(!url){toast('Nhập link SoundCloud!','error');return;}
   if(!url.includes('soundcloud.com')){toast('Link SoundCloud không hợp lệ!','error');return;}
   const encoded=encodeURIComponent(url);
   const iframeSrc=`https://w.soundcloud.com/player/?url=${encoded}&color=%23f50000&auto_play=true&hide_related=true&show_comments=false&show_user=true&show_reposts=false&visual=false`;
-  // Parse info
   const parts=url.split('/').filter(Boolean);
   let artist='Artist',songName='Unknown Track';
   if(parts.length>=4){artist=decodeURIComponent(parts[2]).replace(/-/g,' ');songName=decodeURIComponent(parts[3]).replace(/-/g,' ');}
   else if(parts.length>=3){artist=decodeURIComponent(parts[2]).replace(/-/g,' ');songName=artist;}
   const scContent=document.getElementById('scContent');
-  scContent.innerHTML=`
-    <div class="sc-song-info-w">
-      <div class="sc-cover-w" id="scCoverWrap">
-        <div class="sc-cover-placeholder" id="scCoverPh">🎶</div>
-        <img id="scCoverImg" src="" alt="" style="display:none;width:100%;height:100%;object-fit:cover;position:absolute;top:0;left:0">
-      </div>
-      <div class="sc-meta-w">
-        <div class="sc-song-name-w" id="scSongNameW">${escHtml(songName)}</div>
-        <div class="sc-artist-w" id="scArtistW">${escHtml(artist)}</div>
-      </div>
-    </div>
-    <div class="sc-iframe-w"><iframe src="${iframeSrc}" scrolling="no" frameborder="no" allow="autoplay"></iframe></div>
-  `;
-  document.getElementById('scPlaceholder') && (document.getElementById('scPlaceholder').style.display='none');
-  // Try oEmbed for cover art
-  fetch(`https://soundcloud.com/oembed?format=json&url=${encodeURIComponent(url)}`)
-    .then(r=>r.json())
-    .then(data=>{
-      if(data.thumbnail_url){const img=document.getElementById('scCoverImg');if(img){img.src=data.thumbnail_url.replace('-large','-t300x300');img.style.display='block';const ph=document.getElementById('scCoverPh');if(ph)ph.style.display='none';}}
-      if(data.title){const parts2=data.title.split(' - ');const nameEl=document.getElementById('scSongNameW');const artEl=document.getElementById('scArtistW');if(nameEl&&artEl){if(parts2.length>=2){artEl.textContent=parts2[0];nameEl.textContent=parts2.slice(1).join(' - ');}else{nameEl.textContent=data.title;}}}
-    }).catch(()=>{});
+  scContent.innerHTML=`<div class="sc-song-info-w"><div class="sc-cover-w" id="scCoverWrap"><div class="sc-cover-placeholder" id="scCoverPh">🎶</div><img id="scCoverImg" src="" alt="" style="display:none;width:100%;height:100%;object-fit:cover;position:absolute;top:0;left:0"></div><div class="sc-meta-w"><div class="sc-song-name-w" id="scSongNameW">${escHtml(songName)}</div><div class="sc-artist-w" id="scArtistW">${escHtml(artist)}</div></div></div><div class="sc-iframe-w"><iframe src="${iframeSrc}" scrolling="no" frameborder="no" allow="autoplay"></iframe></div>`;
+  fetch(`https://soundcloud.com/oembed?format=json&url=${encodeURIComponent(url)}`).then(r=>r.json()).then(data=>{if(data.thumbnail_url){const img=document.getElementById('scCoverImg');if(img){img.src=data.thumbnail_url.replace('-large','-t300x300');img.style.display='block';const ph=document.getElementById('scCoverPh');if(ph)ph.style.display='none';}}if(data.title){const parts2=data.title.split(' - ');const nameEl=document.getElementById('scSongNameW');const artEl=document.getElementById('scArtistW');if(nameEl&&artEl){if(parts2.length>=2){artEl.textContent=parts2[0];nameEl.textContent=parts2.slice(1).join(' - ');}else{nameEl.textContent=data.title;}}}}).catch(()=>{});
   localStorage.setItem('syo_sc_url',url);
   toast('🎵 Đã tải nhạc SoundCloud!','success');
 }
-
 document.getElementById('scUrlInput').addEventListener('keydown',e=>{if(e.key==='Enter')loadSoundCloud();});
 
-// YOUTUBE
 let ytCurrentVideoId=null;
 async function searchYoutube(){
   const query=document.getElementById('ytSearchInput').value.trim();
@@ -1685,64 +1675,29 @@ async function searchYoutube(){
   const resultsDiv=document.getElementById('ytResults');
   const resultsInner=document.getElementById('ytResultsInner');
   const placeholder=document.getElementById('ytPlaceholder');
-  loader.classList.add('visible');
-  resultsDiv.classList.remove('open');
-  placeholder.style.display='none';
+  loader.classList.add('visible');resultsDiv.classList.remove('open');placeholder.style.display='none';
   try{
     const resp=await fetch(`https://inv.nadeko.net/api/v1/search?q=${encodeURIComponent(query)}&type=video&fields=videoId,title,author,videoThumbnails`);
     const data=await resp.json();
     loader.classList.remove('visible');
     if(data&&data.length>0){
       const items=data.slice(0,6);
-      resultsInner.innerHTML=items.map(v=>{
-        const thumb=v.videoThumbnails?.find(t=>t.quality==='medium')||v.videoThumbnails?.[0];
-        return `<div class="yt-result-item-w" onclick="playYoutube('${v.videoId}','${escHtml(String(v.title)).replace(/'/g,"\\'")}','${(thumb?.url||'').replace(/'/g,"\\'")}')">
-          <img class="yt-result-thumb-w" src="${thumb?.url||''}" alt="" loading="lazy" onerror="this.style.display='none'">
-          <div class="yt-result-info-w">
-            <div class="yt-result-title-w">${escHtml(v.title)}</div>
-            <div class="yt-result-channel-w">${escHtml(v.author||'')}</div>
-          </div>
-        </div>`;
-      }).join('');
+      resultsInner.innerHTML=items.map(v=>{const thumb=v.videoThumbnails?.find(t=>t.quality==='medium')||v.videoThumbnails?.[0];return `<div class="yt-result-item-w" onclick="playYoutube('${v.videoId}','${escHtml(String(v.title)).replace(/'/g,"\\'")}','${(thumb?.url||'').replace(/'/g,"\\'")}')"><img class="yt-result-thumb-w" src="${thumb?.url||''}" alt="" loading="lazy" onerror="this.style.display='none'"><div class="yt-result-info-w"><div class="yt-result-title-w">${escHtml(v.title)}</div><div class="yt-result-channel-w">${escHtml(v.author||'')}</div></div></div>`;}).join('');
       resultsDiv.classList.add('open');
-    } else {
-      resultsInner.innerHTML=`<div style="padding:12px;text-align:center;font-size:10px;color:rgba(255,255,255,0.3)">Không tìm thấy kết quả</div>`;
-      resultsDiv.classList.add('open');
-    }
+    } else {resultsInner.innerHTML=`<div style="padding:12px;text-align:center;font-size:10px;color:rgba(255,255,255,0.3)">Không tìm thấy kết quả</div>`;resultsDiv.classList.add('open');}
   } catch(err){
     loader.classList.remove('visible');
-    resultsInner.innerHTML=`<div style="padding:10px;font-size:10px;color:rgba(255,255,255,0.3);text-align:center">
-      Không thể tìm kiếm qua API.<br>Dán link YouTube trực tiếp:<br>
-      <input type="text" id="ytDirectUrl" placeholder="https://youtube.com/watch?v=..." style="width:100%;margin-top:6px;padding:4px 7px;border-radius:5px;border:1px solid rgba(255,255,255,0.1);background:rgba(255,255,255,0.05);color:#fff;font-size:10px;outline:none;box-sizing:border-box">
-      <button onclick="playYoutubeUrl()" style="margin-top:5px;width:100%;padding:5px;border-radius:5px;border:none;background:#ff0000;color:#fff;font-size:10px;cursor:pointer;font-weight:600;box-sizing:border-box">▶ Phát</button>
-    </div>`;
+    resultsInner.innerHTML=`<div style="padding:10px;font-size:10px;color:rgba(255,255,255,0.3);text-align:center">Không thể tìm kiếm.<br>Dán link trực tiếp:<br><input type="text" id="ytDirectUrl" placeholder="https://youtube.com/watch?v=..." style="width:100%;margin-top:6px;padding:4px 7px;border-radius:5px;border:1px solid rgba(255,255,255,0.1);background:rgba(255,255,255,0.05);color:#fff;font-size:10px;outline:none;box-sizing:border-box"><button onclick="playYoutubeUrl()" style="margin-top:5px;width:100%;padding:5px;border-radius:5px;border:none;background:#ff0000;color:#fff;font-size:10px;cursor:pointer;font-weight:600;box-sizing:border-box">▶ Phát</button></div>`;
     resultsDiv.classList.add('open');
   }
 }
 function playYoutubeUrl(){const url=document.getElementById('ytDirectUrl')?.value?.trim();if(!url)return;const match=url.match(/(?:v=|youtu\.be\/|embed\/)([a-zA-Z0-9_-]{11})/);if(match)playYoutube(match[1],'Video','');else toast('Link YouTube không hợp lệ','error');}
-function playYoutube(videoId,title,thumbUrl){
-  ytCurrentVideoId=videoId;
-  const playerWrap=document.getElementById('ytPlayerWrap');
-  const placeholder=document.getElementById('ytPlaceholder');
-  const resultsDiv=document.getElementById('ytResults');
-  const nowPlaying=document.getElementById('ytNowPlaying');
-  document.getElementById('ytIframe').src=`https://www.youtube.com/embed/${videoId}?autoplay=1&enablejsapi=1`;
-  playerWrap.classList.add('open');
-  placeholder.style.display='none';
-  resultsDiv.classList.remove('open');
-  if(thumbUrl){document.getElementById('ytNowThumb').src=thumbUrl;document.getElementById('ytNowThumb').style.display='';}else document.getElementById('ytNowThumb').style.display='none';
-  document.getElementById('ytNowTitle').textContent='▶ '+title;
-  nowPlaying.classList.add('visible');
-  localStorage.setItem('syo_yt_video',videoId);
-  localStorage.setItem('syo_yt_title',title);
-  toast('▶ Đang phát: '+title,'success');
-}
+function playYoutube(videoId,title,thumbUrl){ytCurrentVideoId=videoId;const playerWrap=document.getElementById('ytPlayerWrap');const placeholder=document.getElementById('ytPlaceholder');const resultsDiv=document.getElementById('ytResults');const nowPlaying=document.getElementById('ytNowPlaying');document.getElementById('ytIframe').src=`https://www.youtube.com/embed/${videoId}?autoplay=1&enablejsapi=1`;playerWrap.classList.add('open');placeholder.style.display='none';resultsDiv.classList.remove('open');if(thumbUrl){document.getElementById('ytNowThumb').src=thumbUrl;document.getElementById('ytNowThumb').style.display='';}else document.getElementById('ytNowThumb').style.display='none';document.getElementById('ytNowTitle').textContent='▶ '+title;nowPlaying.classList.add('visible');localStorage.setItem('syo_yt_video',videoId);localStorage.setItem('syo_yt_title',title);toast('▶ Đang phát: '+title,'success');}
 document.getElementById('ytSearchInput').addEventListener('keydown',e=>{if(e.key==='Enter')searchYoutube();});
 
-// PLAYER SETTINGS PERSISTENCE
 function loadPlayerSettings(){
   const scUrl=localStorage.getItem('syo_sc_url');
-  if(scUrl){document.getElementById('scUrlInput').value=scUrl;}
+  if(scUrl)document.getElementById('scUrlInput').value=scUrl;
   const ytId=localStorage.getItem('syo_yt_video');
   const ytTitle=localStorage.getItem('syo_yt_title');
   if(ytId){ytCurrentVideoId=ytId;document.getElementById('ytNowTitle').textContent='▶ '+ytTitle;document.getElementById('ytNowPlaying').classList.add('visible');}
@@ -1770,7 +1725,6 @@ function escHtml(str){return String(str).replace(/&/g,'&amp;').replace(/</g,'&lt
 // ===================== TOAST =====================
 function toast(msg,type='info'){const container=document.getElementById('toastContainer');const el=document.createElement('div');const icons={success:'✅',error:'❌',info:'ℹ️',fav:'❤️'};el.className=`toast ${type}`;el.innerHTML=`<span class="toast-icon">${icons[type]||'ℹ️'}</span><span>${msg}</span>`;container.appendChild(el);setTimeout(()=>{el.classList.add('out');el.addEventListener('animationend',()=>el.remove());},2800);}
 
-// Heart pop animation style
 const heartStyle=document.createElement('style');
 heartStyle.textContent=`@keyframes heartPop{0%{transform:translate(-50%,-50%) scale(0);opacity:1}50%{transform:translate(-50%,-50%) scale(1.4);opacity:1}100%{transform:translate(-50%,-70%) scale(1);opacity:0}}`;
 document.head.appendChild(heartStyle);
