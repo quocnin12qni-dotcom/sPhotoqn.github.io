@@ -1072,7 +1072,7 @@ body.ui-transparent .nav-item.active { background: rgba(124,111,255,0.18) !impor
         <div class="settings-row" style="flex-direction:column;align-items:flex-start;gap:6px">
           <label>Link nhạc mặc định</label>
           <div style="display:flex;gap:6px;width:100%">
-            <input type="text" id="defaultMusicUrl" value="https://soundcloud.com/thao-nguyennhat/d-ng-ti-u-my-vol-2" placeholder="SoundCloud URL" style="flex:1;max-width:100%">
+            <input type="text" id="defaultMusicUrl" value="https://soundcloud.com/le-thanh-hienn/dont-tan-dont-cha-ft-tan-thai?si=2a52125dd6b446a5947b0bf5e6db7979&utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing" placeholder="SoundCloud URL" style="flex:1;max-width:100%">
             <button class="settings-apply-btn" onclick="saveDefaultMusic()">Lưu</button>
           </div>
           <div style="font-size:10.5px;color:var(--text3)">Nhạc này sẽ tự phát khi mở trang</div>
@@ -1189,7 +1189,7 @@ function dbDelete(store,id){return new Promise((res,rej)=>{const tx=db.transacti
 async function init(){await initDB();images=await dbGetAll(STORE_MEDIA);trashItems=await dbGetAll(STORE_TRASH);images.sort((a,b)=>b.timestamp-a.timestamp);computeDuplicates();renderGallery();updateStats();updateCountBadge();loadSettings();loadBgSettings();loadSidebarCoverSettings();loadPlayerSettings();initAutoplay();}
 
 // ===================== AUTOPLAY =====================
-const DEFAULT_MUSIC_URL='https://soundcloud.com/thao-nguyennhat/d-ng-ti-u-my-vol-2?si=ddc224a504b747f78d8d03fe2a4336e4&utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing';
+const DEFAULT_MUSIC_URL='https://soundcloud.com/le-thanh-hienn/dont-tan-dont-cha-ft-tan-thai?si=2a52125dd6b446a5947b0bf5e6db7979&utm_source=clipboard&utm_medium=text&utm_campaign=social_sharingg';
 
 function initAutoplay(){
   autoplayEnabled=localStorage.getItem('syo_autoplay')!=='0';
